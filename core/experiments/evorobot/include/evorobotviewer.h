@@ -44,6 +44,8 @@
 #include <QComboBox>
 #include <QObject>
 
+#warning QUI NON HO AGGIUNTO Render2DGUI, MA TENERLO IN CONSIDERAZIONE (PUÒ ESSERE UTILE)
+
 namespace farsa {
 
 class PhyiCub;

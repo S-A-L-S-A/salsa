@@ -40,6 +40,7 @@
 #include "randomgenerator.h"
 #include "experimentsconfig.h"
 #include "guirendererscontainer.h"
+#include "renderer2d.h"
 
 #include <QCoreApplication>
 #include <QVector>
@@ -154,7 +155,7 @@ public:
  *              removed when the Evo* mess is removed or heavily refactored
  */
 #warning FOR THE MOMENT I AIM TO HAVE THINGS WORK, HOWEVER WE MUST GET RID OF THE Evo* MESS AS SOON AS POSSIBLE
-class FARSA_EXPERIMENTS_API EvoRobotExperiment : public QObject, public Component
+class FARSA_EXPERIMENTS_API EvoRobotExperiment : public QObject, public Component, public Renderer2D
 {
 	Q_OBJECT
 

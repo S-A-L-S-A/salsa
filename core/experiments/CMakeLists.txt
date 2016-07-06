@@ -10,6 +10,8 @@ set(FARSAEXPERIMENTS_SRCS
 	evorobot/src/evorobotexperiment.cpp
 	evorobot/src/evorobotviewer.cpp
 	evorobot/src/holisticviewer.cpp
+	evorobot/src/renderer2d.cpp
+	evorobot/src/render2dgui.cpp
 	evorobot/src/tests.cpp
 	src/arena.cpp
 	src/baseexperiment.cpp
@@ -45,6 +47,8 @@ set(FARSAEXPERIMENTS_HDRS
 	evorobot/include/evorobotexperiment.h
 	evorobot/include/evorobotviewer.h
 	evorobot/include/holisticviewer.h
+	evorobot/include/render2dgui.h
+	evorobot/include/renderer2d.h
 	evorobot/include/tests.h
 	include/arena.h
 	include/baseexperiment.h
