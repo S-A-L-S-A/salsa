@@ -1,0 +1,57 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/evorobot">
+
+	<file>open.png</file>
+	<file>save.png</file>
+	<file>rotate.png</file>
+	<file>show.png</file>
+	<file>bias.png</file>
+	<file>delta.png</file>
+	<file>gain.png</file>
+	<file>lesion.png</file>
+	<file>label.png</file>
+	<file>weight.png</file>
+	<file>ddelta.png</file>
+	<file>dbias.png</file>
+	<file>dgain.png</file>
+	<file>speedup.png</file>
+	<file>speeddown.png</file>
+	<file>wall.png</file>
+	<file>round.png</file>
+	<file>sround.png</file>
+	<file>light.png</file>
+	<file>t_area.png</file>
+	<file>epuck.png</file>
+	<file>epuckBN.png</file>
+	<file>showNetwork.png</file>
+	<file>addblock.png</file>
+	<file>addublock.png</file>
+	<file>displayblocks.png</file>
+	<file>erase.png</file>
+	<file>robot-env.png</file>
+	<file>parameters.png</file>
+	<file>showfitness.png</file>
+	<file>showparam.png</file>
+	<file>parse.png</file>
+	<file>verbose.png</file>
+	<file>fitness.png</file>
+	<file>fitnessall.png</file>
+	<file>lineage.png</file>
+	<file>evolve.png</file>
+	<file>save-network.png</file>
+	<file>load-network.png</file>
+	<file>txfabric.jpg</file>
+	<file>epuck3d2.png</file>
+	<file>epuckHead.png</file>
+	<file>icon3d.png</file>
+	<file>legohead.png</file>
+	<file>legorostro.png</file>
+	<file>robot-env2D.png</file>
+	<file>gainblock.png</file>
+	<file>test.png</file>
+	<file>adaptation.png</file>
+	<file>evolution.png</file>
+	<file>download.png</file>
+	<file>mix.png</file>
+</qresource>
+</RCC>

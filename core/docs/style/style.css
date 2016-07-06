@@ -1,0 +1,240 @@
+body {
+	background-color: #d8d8d8;
+	font: 90% Helvetica,serif;
+	margin: 0 0 0 0;
+}
+table, div, p, dl {
+	font: 100% Helvetica,serif;
+	margin: 0 0 0 0;
+}
+
+.leftContainer {
+	background: #d8d8d8 url(./leftBorder.png) repeat-y top left;
+	margin: 0 0 0 10px;
+	padding: 0 0 0 15px;
+}
+.rightContainer {
+	background: #d8d8d8 url(./rightBorder.png) repeat-y top right;
+	margin: 0 10px 0 0;
+	padding: 0 15px 0 0;
+}
+.mainContent {
+	background-color: white;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	border-bottom: 1px solid #525252;
+	border-top: 1px solid #525252;
+}
+.mainContent p {
+	text-align: justify;
+}
+.mainContent h1 {
+	clear: both;
+	font: bold 115%;
+	margin-left: 23px;
+	margin-top: 12px;
+	margin-bottom: 2px;
+}
+.mainContent h2 {
+	clear: both;
+	font: bold 105%;
+	margin-left: 23px;
+	margin-top: 12px;
+	margin-bottom: 2px;
+}
+.mainContent a {
+	color: #b85300;
+	text-decoration: none;
+}
+.mainContent a:hover {
+	color: #b85300;
+	text-decoration: underline;
+}
+.mainContent a:visited {
+	color: #823b00;
+}
+
+.docHead {
+	background: white url(./barra2.png) repeat-x bottom left;
+	margin: 0 -1px 0 -1px;
+	padding: 0 0 0 0;
+	height: 90px;
+}
+.docHead h1 {
+	color: navy;
+	font: bold 120%;
+	margin: 0 0 0 0;
+	padding: 12px 0px 2px 23px;
+}
+.docHead div.docLogos {
+	position: absolute;
+	top: 5px;
+	right: 40px;
+}
+.docHead div.libNavBar {
+	position: absolute;
+	top: 11px;
+	right: 300px;
+}
+div.libNavBar a {
+	display: inline-block;
+	text-align: center;
+	font-size: 105%;
+	letter-spacing: 0.12em;
+	width: 120px;
+	margin: 5px 5px 5px 5px;
+	background-color: #F9FAFC;
+	border: 1px solid #C4CFE5;
+}
+div.libNavBar a:hover {
+	text-decoration: none;
+	background-color: #c3d6fc;
+}
+#farsaLogo {
+	display: inline-block;
+	width: 100px;
+	height: 72px;
+	background: transparent url(../imgs/farsa-logo.png) no-repeat top left;
+}
+#laralLogo {
+	display: inline-block;
+	width: 72px;
+	height: 72px;
+	background: transparent url(../imgs/laral-logo.png) no-repeat top left;
+}
+#laralLogo:hover {
+	background: transparent url(../imgs/laral-logo-color.png) no-repeat top left;
+}
+#istcLogo {
+	display: inline-block;
+	width: 72px;
+	height: 72px;
+	background: transparent url(../imgs/istc-logo.png) no-repeat top left;
+}
+#istcLogo:hover {
+	background: transparent url(../imgs/istc-logo-color.png) no-repeat top left;
+}
+
+.videoEmbed {
+	width: 420px;
+	height: 214px;
+}
+
+div.articleTitle {
+	clear: both;
+	text-align: center;
+	color: navy;
+	font: bold 120%;
+	padding: 4px 4px 4px 4px;
+	margin: 3px 0 3px 0;
+}
+
+div.rightContent {
+	float: right;
+	border-top: 1px solid #CCCCCC;
+	border-right: 1px solid black;
+	border-left: 1px solid #888888;
+	border-bottom: 1px solid black;
+	margin: 3px 3px 3px 3px;
+	padding: 3px 3px 3px 3px;
+	width: 250px;
+}
+div.leftContent {
+	float: left;
+	border-top: 1px solid #CCCCCC;
+	border-right: 1px solid black;
+	border-left: 1px solid #888888;
+	border-bottom: 1px solid black;
+	margin: 3px 3px 3px 3px;
+	padding: 3px 3px 3px 3px;
+	width: 250px;
+}
+div.centreContent {
+	clear: both;
+	text-align: center;
+	border-top: 1px solid #CCCCCC;
+	border-right: 1px solid black;
+	border-left: 1px solid #888888;
+	border-bottom: 1px solid black;
+	margin: 8px 10% 8px 10%;
+	padding: 3px 3px 3px 3px;
+}
+p.caption {
+	font-size: 70%;
+	margin: 0 0 0 0;
+}
+div.centreContent p.caption {
+	margin-left: 12%;
+	margin-right: 12%;
+}
+table.docTable{
+	font-size: 100%;
+}
+
+#endSpacer {
+	clear: both;
+	display: block;
+	width: 100%;
+}
+
+/* **** FOLLOW CSS Style Override for Doxygen Generated Tags **** */
+#navrow1 {
+	font: bold 100%;
+	height: 20px;
+	margin: -50px 0 0 0;
+	padding: 0px 0px 30px 10px;
+}
+#navrow2 {
+	font: bold 100%;
+	height: 20px;
+	margin: -30px 0 0 0;
+	padding: 0px 0px 10px 10px;
+}
+.header {
+	background-color: white;
+}
+.headertitle h1 {
+	clear: both;
+	text-align: center;
+	color: navy;
+	font: bold 120%;
+	padding: 4px 4px 4px 4px;
+	margin: 3px 0 3px 0;
+}
+.contents {
+	background-color: white;
+}
+a.elRef {
+	font-weight: bold;
+}
+ul.tablist {
+	font-size: 90%;
+/*	background-image:url('tab_b.png');
+	background-repeat:repeat-x; */
+/*	height: 30px;
+	line-height: 30px; */
+	color: #8AA0CC;
+	/* border: solid 1px #C2CDE4; */
+	overflow: hidden;
+	margin: 0px 0 0 25px;
+	padding: 0 0 0 0;
+}
+.tablist li {
+	list-style-type: none;
+	display: inline;
+/*	float:left; */
+	padding-left: 10px;
+	padding-right: 15px;
+/*	background-image:url('bc_s.png');
+	background-repeat:no-repeat;
+	background-position:right; */
+	color:#364D7C;
+}
+div.header
+{
+/*	background-image:url('nav_h.png');
+	background-repeat:repeat-x; */
+	background-color: #F9FAFC;
+	margin:  0px;
+	border-bottom: 1px solid #C4CFE5;
+}

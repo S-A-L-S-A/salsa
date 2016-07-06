@@ -1,0 +1,88 @@
+/********************************************************************************
+ *  FARSA Genetic Algorithm Library                                             *
+ *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
+ *                                                                              *
+ *  This program is free software; you can redistribute it and/or modify        *
+ *  it under the terms of the GNU General Public License as published by        *
+ *  the Free Software Foundation; either version 2 of the License, or           *
+ *  (at your option) any later version.                                         *
+ *                                                                              *
+ *  This program is distributed in the hope that it will be useful,             *
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of              *
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               *
+ *  GNU General Public License for more details.                                *
+ *                                                                              *
+ *  You should have received a copy of the GNU General Public License           *
+ *  along with this program; if not, write to the Free Software                 *
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA  *
+ ********************************************************************************/
+
+/*!
+ * \mainpage Documentation of FARSA Genetic Algorithm
+ * \section ga_intro Introduction
+ * The LaralGA is based on 8 basic classes corresponding to the mains operators and functions of
+ * Genetic Algorithm theory. The documentation of these 8 core classes are into the corresponding
+ * module reachable by "module" tab above or by link below. <br>
+ * The 8 fundamental classes are:
+ * - <b>Genotype</b>: this represent a binary string where each bit is the basic element for encoding
+ *   genes. The Genotype class represent each gene as exactly one bit, but the subclasses could
+ *   change it and customize the encoding of each gene into binary string. For example, in the
+ *   RealGenotype a gene is a float number. The fitness is a property (attribute) of Genotype objects.
+ * - <b>Genome</b>: this represent a population of Genotypes
+ * - <b>Mutation</b>: is the mutation operator. It's an abstract class (i.e.: not usable as it is).
+ *   Hence, the subclasses implements concrete mutation strategy implementing the Mutate::mutate method
+ * - <b>Crossover</b>: is the crossover operator. As Mutation, the subclasses implements concrete
+ *   crossoving via Crossover::crossover method.
+ * - <b>Evaluation</b>: is the class delegated to calculate the fitness of Genotypes. Of course,
+ *   this is an abstract class, and it left to the user the implementation of subclass that represent
+ *   the target of evolution. Evaluation subclasses will use the Genotype::setFitness method to
+ *   set the value calculated for the Genotype setted by Evaluation::initialize
+ * - <b>Selection</b>: is the selection operator. The constraint of this class is that <em>it select
+ *   only one Genotype</em> returning it after calling Selection::select method implemented by
+ *   subclasses. The idea behind this is that this operator just Select one Genotype, and then
+ *   the Reproduction (see later) operator apply the Selection as many times it requires in order
+ *   to create the pool of selected Genotypes. This design allow to share the same Select operator
+ *   by sexual and asexual Reproduction strategies.
+ * - <b>Reproduction</b>: is the reproduction operator. It will generate a new Genome starting from
+ *   an old one containing the Genotype evaluated by an Evaluation object.
+ * - <b>GeneticAlgo</b>: and finally the Genetic Algorithm base class.
+ *
+ * Classes are divided into modules:
+ * - \ref ga_core : Basic classes, fondamental building blocks of all
+ * - \ref ga_genos
+ * - \ref ga_genomes
+ * - \ref ga_muta
+ * - \ref ga_cross
+ * - \ref ga_eval
+ * - \ref ga_sel
+ * - \ref ga_reprod
+ * - \ref ga_gas
+ *
+ * \section ga_ex Examples
+ * \ref ga_example1 shows how to use the genetic algorithm LaralGA and the basic usage of Mutation operators, Genotype types and MultiTrials fitness functions
+ *
+ * \ref ga_examples lists all examples present into this documentation
+ *
+ * \section ga_down Downloads
+ * The library is available through the SVN repository on Laral server. <br>
+ * Install an SVN client and use the following path for download the source code of Laral-GA:
+ * <pre>svn svn+ssh://accountName\@laral.istc.cnr.it/srv/svnrepos/laral/ga </pre>
+ * If you don't have a SVN account on server, ask to Gianluca.
+ */
+
+/*! \defgroup ga_core Core Classes of GA */
+/*! \defgroup ga_genos Genotypes */
+/*! \defgroup ga_genomes Genome variants */
+/*! \defgroup ga_muta Mutation operators */
+/*! \defgroup ga_cross Crossover operators */
+/*! \defgroup ga_eval Evaluation types */
+/*! \defgroup ga_sel Selection algorithms */
+/*! \defgroup ga_reprod Reproduction processes */
+/*! \defgroup ga_gas Genetic Algorithms */
+
+/*! \page ga_examples Examples of using this library
+ *  - \subpage ga_example1
+ *  - \subpage ga_example2
+ */
+
+

@@ -1,0 +1,482 @@
+================================================================================
+P005 - 26/07/2012 - ADDED TO SOURCEFORGE
+Bisogna controllare nel codice tutte le classi che mancano delle funzioni
+describe() e save(). La soluzione di questa problematica è postposta a dopo la
+stesura dell'articolo.
+
+================================================================================
+P013 - 26/07/2012
+"action" sulla riga di comando è il nome della funzione slot del Component, non
+il testo della action relativa (ritornata dal ComponentUI). Questa cosa non è
+il massimo, ma non si sa come risolverla al momento.
+
+================================================================================
+P036 - 24/09/2012
+Tomassino: credo che i NaN sul cluster siano dovuto a Newton ottimizzato su
+linux (un vecchio problema...). Mi sembra abbastanza urgente trovare una
+soluzione definitiva (provare a ricompilare Newton? tornare alla versione
+precompilata, che però era molto più lenta? passare al nuovo Newton?)
+
+================================================================================
+P051 - 25/10/2012
+Tomassino: rimuovere dal codice tutti i #warning (preferibilmente dopo aver
+corretto i problemi)
+
+================================================================================
+P058 - 09/11/2012
+Tomassino: l'implementazione di WorkerThread e roba collegata non è molto
+pulita: siamo costretti a mantenere tutte le eccezioni clonate perché non è
+chiaro quando è sicuro eliminarle e non funziona Qt::AutoConnection per gli slot
+perché la thread-affinity è sbagliata. Inoltre si possono accodare più
+operazioni ma non è possibile stopparle tutte o fermarsi dopo che una è stata
+eseguita.
+
+Possibile Soluzione: usare QtConcurrent::run(Function), in questo modo si sfrutta
+le QT per risolvere il problema delle eccezioni e (forse) anche quello dello slot
+ATTENZIONE al numero di thread nel QTThreadPool
+
+Infine l'utilizzo da parte di EvoRobotComponent non è corretto: la
+stop() delle ThreadOperations non è thread-safe come invece dovrebbe.
+
+================================================================================
+P059 - 09/11/2012
+Tomassino: probabilmente EvoGA dovrebbe essere completamente thread-safe visto
+che viene lanciato in un thread separato da quello della GUI.
+
+================================================================================
+P061 - 13/11/2012
+Tomassino: controllare l'implementazione degli oggetti compositi, sembra diano
+problemi...
+
+================================================================================
+P062 - 15/11/2012
+Gianluca: in worldsimconfig.h ci sono delle funzioni di utilità
+Andrebbero tutte spostate dentro mathutils.h di utilities
+Tomassino: cercare di usare in maniera consistente farsa::real (oppure decidere
+di usare uno fra double o float e rimuovere real). Inoltre le funzioni
+matematiche in worldsimconfig.h vanno spostate in mathutils.h e i doppioni
+eliminati
+
+================================================================================
+P063 - 30/11/2012
+Tomassino: controllare noffspring nel caso di steady state GA: dovrebbe essere
+completamente ignorato (anche nello stabilire la grandezza della popolazione).
+Aggiungere alla documentazione del parametro che ha senso solo per l'algoritmo
+generazionale.
+
+================================================================================
+P066 - 12/12/2012
+Tomassino: i file INSTALL e README nel repository farsa sono vuoti... Riempirli
+o eliminarli
+
+================================================================================
+P068 - 19/12/2012
+Tomassino: le classi relative alle risorse non sono exception-safe. In
+particolare il problema è con le notifiche: quando cambio ResourceCollection
+devo evitare di essere notificato ancora dalle vecchie risorse, ma potrebbe
+venir lanciata un'eccezione quando sto modificando un container QT e potrei
+finire in uno stato non-consistente (probabilmente le modifiche per rendere il
+codice exception safe dovrebbero partire da ResourceHandler in su...)
+
+================================================================================
+P069 - 09/01/2013
+Tomassino: dopo che una risorsa è stata dichiarata, l'oggetto ResourceHandler
+corrispondente non viene mai cancellato (a meno che il ResourceCollection che lo
+contiene non sia distrutto). Non dovrebbe essere un grosso problema, ma va
+tenuto a mente se un giorno si dovesse avere una situazione in cui molte risorse
+vengono create e cancellate di continuo. Questa cosa va probabilmente aggiunta
+nella documentazione
+
+================================================================================
+P071 - 14/01/2013
+Tomassino: pensare se è il caso avere funzioni di helper per le dipendenze tra
+risorse, in particolare per gli oggetti del mondo che devono avere lo stesso
+lock di world
+
+================================================================================
+P072 - 16/01/2013
+Tomassino: forse si potrebbe cercare di fare in modo che si possano lanciare
+evoluzioni con l'interfaccia grafica senza che i viewer vengano aggiornati (una
+specie di evoluzione in batch ma con l'interfaccia di total99 attiva). Al
+momento se l'interfaccia grafica viene lanciata, vengono automaticamente creati
+tutti i viewer.
+
+================================================================================
+P077 - 29/01/2013
+Tomassino: Controllare negli esperimenti che prima di fare recreateWorld() si
+segnali che eventuali risorse relative a oggetti del world vengano cancellate
+con deleteResource(). Forse si può pensare di automatizzare questa cosa: se non
+si automatizza bisogna quanto meno documentarla chiaramente
+
+================================================================================
+P078 - 30/01/2013
+Tomassino: controllare che funzioni si usano per generare numeri casuali (se
+rand() o quelle di farsa) e uniformare (usare sempre quelle di farsa)
+
+================================================================================
+P079 - 11/02/2013
+Tomassino: nella root del repository c'è una directory con documentazione sui
+sensori di contatto della mano che ho implementato io, non so dove va messa...
+
+================================================================================
+P082 - 12/02/2013
+Tomassino: problemi con GSL su windows: lo script CMake per cercare GSL ora
+funziona con GSL installate dal pacchetto YARP ma non con GSL installate
+esternamente perché cerca le librerie di debug in debug/ e non quelle che
+finiscono con "d". Inoltre le GSL vengono linkate due volte (sul computer di
+Stefano, Visual Studio 2008): viene linkata sia la versione debug che quella
+release quando si compila farsa in debug
+
+================================================================================
+P086 - 14/02/2013
+Problemi con i Runtime Parameters e il Logger:
+	- non funziona il cambiamento (non è implementato): se si prova a
+	  cambiare un runtime parameter dalla GUI a runtime non c'è nessun
+	  effetto
+	- la finestra dei runtime parameters è ancora un tool-box, non usa il
+	  wrapper scritto da Gianluca (che può andare in background). Lo stesso
+	  vale per la finestra del Logger
+Forse si potrebbero sostituire i Runtime Parameters (che non sono thread-safe
+e non ricevono notifiche se i puntatori cambiano) con le risorse (ad esempio
+stabilendo che tutte le risorse il cui nome inizia per @ siano modificabili a
+runtime tramite widget).
+Inoltre nella GUI forse sarebbe utile, quando un esperimento viene configurato,
+sostituire nella finestra principale, i widget per modificare i parametri (che
+non hanno effetto sull'esperimento in esecuzione) con i widget per i runtime
+parameters e il logger
+
+================================================================================
+P087 - 14/02/2013
+Tomassino: Armonizzare, parametrizzare e documentare le risorse usate dai
+sensori e dai motori
+
+================================================================================
+P089 - 15/02/2013
+Tomassino: forse una delle drawCylinder di RenderWObjectContainer non funziona,
+controllare. La funzione incriminata dovrebbe essere drawCylinder( wVector
+start, wVector end, float radius, QColor c = Qt::green )
+
+================================================================================
+P90 - 20/02/2013
+Tomassino: Controllare i fine-riga dei file e nei pacchetti distribuiti metterli
+windows-style (in genere gli editor di Linux e MacOSX sono meno "sensibili")
+
+================================================================================
+P092 - 22/02/2013
+Tomassino: in iKin hanno aggiunto la cinematica per le dita dell'iCub:
+modificare il simulatore in modo da utilizzarla
+
+================================================================================
+P094 - 22/02/2013
+Tomassino: controllare quando vengono chiamate Sensor::size() e Motor::size() e
+modificare di conseguenza il warning nella descrizione delle due funzioni.
+Inoltre decidere se rendere le due funzioni const (perché non lo sono?)
+
+================================================================================
+P095 - 04/03/2013
+Tomassino: nel PhyHinge forse provare a usare la matrice del parent invece di
+quella del child in PhyHinge::updateJoint.
+
+Ho provato, i giunti non funzionano più bene (ma non so se ho fatto le
+sostituzioni nei posti giusti)
+
+================================================================================
+P096 - 06/03/2013
+Tomassino: cercare di dare un warning più esplicito (eccezione?) se PhyiCub non
+riesce a caricare i file di configurazione del robot. Al momento c'è solo la
+stampa su terminale di YARP
+
+================================================================================
+P098 - 18/03/2013
+Tomassino: i sensori di tatto dell'iCub vanno spostati in worldsim, in modo da
+avere una situazione analoga ai sensori infrarossi dei robot wheeled
+
+================================================================================
+P100 - 29/03/2013
+Tomassino: nella camera lineare i colori sono combinati come in evorobot,
+facendo una media componente per componente. La cosa, però, non è fisicamente
+plausibile (l'ho messo in una nota nella documentazione della classe). Provare
+a usare un sistema più "corretto" o lasciare la cosa così come è adesso?
+
+================================================================================
+P101 - 04/04/2013
+Tomassino: Un paio di problemi con le risorse
+1) Il sistema delle risorse con i lock per il multithread forse è troppo
+complicato... Infatti, sebbene i lock siano semplici da acquisire, ci sono
+situazioni in cui è richiesta una certa cura per poter scrivere codice corretto.
+Ad esempio, se si reimplementa la funzione di notifica del cambiamento di una
+risorsa, è necessario aggiungere un lock nell'oggetto perché la funzione di
+notifica può venir chiamata da un thread diverso da quello in cui l'oggetto che
+riceve la notifica vive (si pensi a RenderWorld che vive nella GUI e riceve
+notifiche dal thread di simulazione). Al momento, però, l'unico caso in cui il
+lock sulle risorse è necessario è per la visualizzazione del mondo. RenderWorld,
+infatti, vive nel thread della GUI, mentre World vive nel thread di simulazione.
+Forse sarebbe il caso di eliminare i lock e modificare RenderWorld per
+funzionare in maniera diversa: invece di leggere direttamente i dati dai WObject
+(ad esempio le matrici di trasformazione), potrebbe tenerne una copia e
+aspettare che queste vengano aggiornate prima di ridisegnare. In questo modo
+l'unico momento critico è quello della copia delle matrici di trasformazione (ed
+eventualmente di altri dati necessari alla grafica) e tutto il resto potrebbe
+essere eseguito senza lock (ovviamente si dovrebbe rendere la copia delle
+matrici veloce - si potrebbero allocare in uno spazio di memoria contiguo in
+modo da poter usare memcpy). Se, al contempo, si mantiene la necessità di
+dichiarare quali risorse si usano, si può continuare a sfruttare il meccanismo
+delle notifiche (che è comodo) senza i problemi derivanti dal locking (ad
+esempio il fatto che nella notifica non è possibile ottenere risorse diverse da
+quella oggetto della notifica).
+2) Un altro problema del sistema attuale delle risorse è che non c'è collegamento
+esplicito tra quelle disponibili a tempo di configurazione (tramite l'oggetto
+ConfigurationParameter) e quelle disponibili invece a tempo di esecuzione.
+Questo crea problemi, ad esempio, nel caso della creazione dell'arena per le
+simulazioni con robot wheeled: se si volesse specificare nel file di
+configurazione come sono disposti i muri e gli oggetti, questo creerebbe qualche
+problemino perché questi vanno messi in una lista che poi deve diventare una
+risorsa, ma nella funzione configure() non siamo ancora associati al
+ResourceCollection dell'esperimento, quindi non possiamo definire la risorsa
+(e non è chiaro quando definirla). Forse si potrebbe associare un ResourcesUser
+ad un oggetto ConfigurationParameter e poi automaticamente condividere le
+risorse con tutti i ResourcesUser creati a partire da quel
+ConfigurationParameter. Così però c'è il problema che da un singolo
+ConfigurationParameter vengono generate più copie dell'esperimento (per il
+multithread) che dovrebbero invece avere set di risorse separati...
+
+Aggiornamento del 30/04/2013
+Una possibile soluzione al problema 2) di quelli sopra è quello di associare un
+pool di risorse al ConfigurationParameter e poi legare la creazione/distruzione
+di questo pool al meccanismo di startRememberingGroupObjectAssociations() e
+stopRememberingGroupObjectAssociations(). Ogni ResourceUser creato da un oggetto
+ConfigurationParameter vedrebbe automaticamente sharato il pool e potrebbe
+quindi usare e dichiarare risorse che sono quelle poi usate durante
+l'esecuzione. I due punti critici attuali sono:
+a) in EvoGA quando si creano le copie dell'esperimento per le evoluzioni
+   multithread
+b) in EvoRobotExperiment quando si ri-creano il robot, la rete neurale, il
+   mondo, ecc.
+Nel punto a) si deve creare un nuovo pool prima di iniziare a creare gli
+esperimenti, altrimenti tutti gli esperimenti condividerebbero lo stesso pool di
+risorse (cosa errata), mentre nel caso b) il pool deve essere lo stesso anche se
+la ri-creazione degli oggetti avviene dopo che tutto il resto è stato creato.
+Il problema nel punto a) sarebbe automaticamente risolto dall'implementazione
+proposta: infatti EvoGA crea una copia di ConfigurationParameter per poter
+creare altri esperimenti e poi chiama in sequenza getObjectFromGroup su questo
+ConfigurationParameter copiato. Tra chiamate diverse a getObjectFromGroup per
+creare i vari esperimenti le associazioni degli oggetti verrebbero dimenticate e
+con un nuovo pool di risorse verrebbe creato ogni volta. Per il problema nel
+punto b), invece, si potrebbe procedere come segue: nel configure di
+EvoRobotExperiment si deve copiare per prima cosa l'oggetto
+ConfigurationParameter, poi si chiama startRememberingGroupObjectAssociations()
+(senza mai chiamare stopRememberingGroupObjectAssociations()) e poi si usa il
+ConfigurationParameter copiato (e non quello passato alla funzione) per creare
+ogni altra cosa. In questo modo le associazioni degli oggetti non verrebbero
+dimenticate (che è meglio di quello che succede adesso) e il pool di risorse non
+verrebbe ricreato. L'unico altro punto delicato è che nella ri-creazione degli
+oggetti si deve forzare la ri-creazione (ultimo parametro di
+getObjectFromGroup()) in modo che getObjectFromGroup() rituroni una nuova
+instanza e non la vecchia
+
+================================================================================
+P103 - 10/04/2013
+Il nome del gruppo "Component" deve essere read-only!!!
+
+================================================================================
+P104 - 12/04/2013
+Tomassino: Problema: nella camera lineare, quando ordino per distanza, può
+succedere che oggetti più vicini siano in realtà dietro. Ad esempio un muro
+lungo con davanti un cilindro: posso essere più visino al muro, ma è il cilindro
+che sta avanti. O questa cosa si lascia così e si documenta, oppure di cerca di
+risolverla. Ad esempio, forse, si potrebbe dire che un oggetto A è < di B se e
+solo se si sovrappongono rispetto alla telecamera e il raggio dalla telecamera
+agli oggetti passa prima per A e poi per B. In questo modo il resto
+dell'algoritmo della telecamera dovrebbe continuare a funzionare.
+
+================================================================================
+P105 - 19/04/2013
+Tomassino: nella camera lineare, forse, per avere codice che funziona con
+qualsiasi solido in qualsiasi orientamento (seppure come approssimazione) si
+potrebbe scrivere algoritmo che usa OBB (oriented bounding box) nel calcolo
+del settore angolare visto dalla telecamera.
+
+================================================================================
+P106 - 19/04/2013
+Tomassino: per i sensori infrarossi si potrebbe pensare di avere dei sensori
+"misti", che usano cioè valori campionati o pura simulazione a seconda del tipo
+di oggetto che rilevano. Inoltre si potrebbe dare la possibilità agli utenti di
+fare dei campionamenti e usare quelli (in modo da poter campionare gli oggetti
+necessari per un particolare esperimento)
+
+DOPO AVER PARLATO CON STEFANO: implementare i sensori campionati come in
+Evorobot (così sono più veloci) e abilitare/disabilitare automaticamente i
+sensori se è presente il Sensor corrispondente
+
+================================================================================
+P107 - 30/04/2013
+Tomassino: Pensare se implementare una versione dei ground sensors che non usa
+il ray cast ma che invece accede direttamente all'arena e controlla se si trova
+sopra una target area o no (dovrebbe essere più veloce...)
+
+================================================================================
+P110 - 13/05/2013
+Tomassino: Nei vector e nelle matrici si devono togliere i membri pubblici e
+mettere delle funzioni di accesso, per evitare di poter scrivere cose tipo:
+
+	b->matrix().w_pos.y = -0.2;
+
+che sono sbagliate perché non aggiornano la matrice di Newton
+
+================================================================================
+P110 - 13/05/2013
+Tomassino: in RuntimeParameterEditor::onObjectCreation ho dovuto commentare
+tutta la funzione perché crash: quanto un robot viene ri-creato, quella funzione
+viene eseguita in un thread diverso da quello della GUI e questo causa un crash
+(perché la funzione crea dei widget)
+
+================================================================================
+P111 - 13/05/2013
+Tomassino: può essere utile ottenere la velocità lineare dei robot wheeled, ma
+al momento non è esportata. Aggiungere una funzione per ottenerla: nel caso
+dinamico si può prendere la velocità della base (da Newton), nel caso cinematico
+bisogna calcolarsela
+
+================================================================================
+P112 - 23/05/2013
+Tomassino: ho dovuto commentare RuntimeParameterEditor::recreateEditingWidgets
+perché altrimenti total99 crasha se la creazione dell'esperimento non va a buon
+fine. Da quel che ho potuto intuire (non sono completamente sicuro) succede la
+cosa seguente:
+	- quando un oggetto viene creato viene chiamata
+	  RuntimeParameterEditor::onObjectCreation;
+	- siccome siamo ancora in single-thread (stiamo creando l'intero
+	  esperimento), la chiamata a QMetaObject::invokeMethod alla fine della
+	  funzione RuntimeParameterEditor::onObjectCreation mette in coda
+	  l'esecuzione di RuntimeParameterEditor::recreateEditingWidgets;
+	- si continua con la creazione e, ad un certo punto, c'è un errore che
+	  causa il lancio di un'eccezione e la conseguente eliminazione di tutti
+	  gli oggetti in fase di creazione;
+	- dopo che l'eccezione è stata catturata, l'esecuzione torna al loop
+	  delle QT che lanciano RuntimeParameterEditor::recreateEditingWidgets
+	  (era rimasta in coda);
+	- a questo punto la funzione cerca di accere ad un oggetto che non
+	  esiste più e crasha.
+Il punto mi pare sia che un FactoryObserver viene notificato all'atto della
+creazione di un oggetto ma non quando l'oggetto viene distrutto. Sebbene non mi
+sembri possibile allo stato attuale notificare della distruzione di un oggetto
+creato dalla factory in qualsiasi momento, dovrebbe essere fattibile notificare
+della distruzione se questa avviene mentre siamo in fase di creazione. La cosa
+non è comunque di immediata implementazione (credo). Questo particolare problema
+forse si risolve anche semplicemente controllando se la chiamata a
+RuntimeParameterEditor::onObjectCreation avviene nello stesso thread della GUI
+e, in tal caso, chiamando direttamente
+RuntimeParameterEditor::recreateEditingWidgets invece di metterla in coda. In
+generale, però, il problema potrebbe in teoria ripresentarsi in multithread.
+Forse potrebbe anche succedere che si cerca di cambiare un parametro Runtime
+mentre l'oggetto sottostante sta in fase di distruzione e la notifica non è
+ancora arrivata, o perché non arriverà mai (non si viene notificati se un
+oggetto viene distrutto) o perché la notifica della creazione di un nuovo
+oggetto che sostituisce il vecchio è stata messa in coda ma ancora non eseguita.
+
+Aggiornamento: ho commentato anche RuntimeParameterEditor::onObjectCreation
+perché quando ri-creo un esperimento alle volte crasha (non ho indagato su cosa
+accade)
+
+================================================================================
+P114 - 28/05/2013
+Tomassino: controllare la corrispondenza degli indici dei sensori infrarossi fra
+quelli simulati e quelli campionati. Inoltre controllare i valori di distanza e
+apertura per i sensori infrarossi campionati
+
+================================================================================
+P115 - 30/05/2013
+Tomassino: il codice relativo all'arena e alle simulazioni con i robot wheeled
+mi sembra sia diventato troppo incasinato, sarebbe bene (...) ripensarlo
+
+================================================================================
+P116 - 31/05/2013
+Tomassino: c'è una differenza tra il doKinematicSimulation dell'iCub e dei robot
+wheeled: nel primo caso la chiamata setKinematic sugli oggetti ha parametri
+(true, false) (il secondo è quello di default), nel secondo caso ha parametri
+(true, true). Questo è dovuto al fatto che nel secondo caso se non facciamo così
+gli IR simulati non vedono i robot cinematici. Questa cosa forse va documentata
+
+================================================================================
+P117 - 31/05/2013
+Tomassino: c'è forse un bug in setKinematic: se setto la matrice di
+trasformazione di un robot nel costruttore e poi chiamo
+doKinematicSimulation(true) il robot viene messo nell'origine. Se invece chiamo
+setMatrix() dopo doKinematicSimulation il robot è nella posizione attesa...
+
+================================================================================
+P118 - 07/06/2013
+Tomassino: la funzione Arena::getRobotWrapper() non funziona se passo "robot",
+bisogna passare "agent[0]:robot" anche se c'è un solo robot. La cosa è
+abbastanza scomoda, forse si potrebbe pensare di eliminare la risorsa "robot"?
+
+================================================================================
+P121 - 09/07/2013
+Tomassino: abbiamo il multirobot ma non funziona granchè con le risorse: le
+risorse che dipendono dal robot rischiano di avere lo stesso nome per robot
+diversi e quindi di essere inaccessibili. Per risolvere questo problema al
+momento c'è un workaround in EvoRobotExperiment::EmbodiedAgent::configure(), ma
+si dovrebbe cercare un modo migliore. Probabilmente si deve trovare un modo per
+associare le risorse a dei gruppi dell'albero della configurazione. Il
+workaround ha anche un effetto collaterale. Quando si legge, ad esempio, il nome
+della risorsa del robot da usare, questo viene preceduto da un prefisso per
+distinguere i vari robot. Il problema è che il nome che si salva (nella funzione
+save()) è quello con il prefisso. Questo non è grave al momento perché save()
+non viene usata, ma è comunque un comportamento sbagliato.
+
+================================================================================
+P122 - 10/07/2013
+Tomassino: bisogna cercare di uniformare la grafica dei sensori. Ad esempio
+quella degl infrarossi dei wheeled è in worldsim, mentre quella del sensore di
+trazione del MarXbot è in experiment...
+
+================================================================================
+P124 - 01/08/2013
+Tomassino: (ok, dovrei aprire dei ticket...). Problemi/proposte di Luca:
+	- test random dovrebbe randomizzare "meglio" l'individuo (sembra testare
+	  sempre lo stesso);
+	- aggiungere shortcut per i vari comandi o per aprire dei widget.
+	  Inoltre sarebbe comodo salvare lo stato delle finestre tra una
+	  esecuzione e l'altra;
+	- il bordo della finestra di RenderWorld non si vede su Windows
+
+================================================================================
+P125 - 20/08/2013
+Tomassino: (sì, dovrei aprire un ticket ma vado di fretta...). Nei file .ini # e
+; sono usati per i commenti. Se un valore li contiene bisognerebbe farne
+l'escape in qualche modo. Per il momento ho tolto l'uso di # per i colori come
+workaround temporaneo
+
+================================================================================
+P126 - 27/09/2013
+Tomassino: Problemi Marco:
+	- la camera lineare non funziona bene con i muri (problema noto)
+	- la visualizzazione della camera lineare (quella sopra il robot) è
+	  indietro di uno step (l'attivazione visualizzata è quella dello step
+	  precedente)
+	- mettere attivazione neuroni in neuron monitor
+	- mettere QDoubleSpinBox invece di slider per modificare l'attivazione
+	  dei neuroni lesionati
+
+================================================================================
+P127 - 15/11/2013
+Tomassino: indagare: mi sembra che anche quando la simulazione è finita, total99
+si prenda un sacco di cicli di cpu...
+
+================================================================================
+P129 - 08/01/2014
+Tomassino: il formato del file .net è cambiato la scorsa estate, controllare gli
+esperimenti più vecchi
+
+================================================================================
+P130 - 07/02/2014
+Tomassino: Forse è meglio avere una singola risorsa per il vettore degli agenti
+invece di una risorsa per ogni agente?
+
+================================================================================
+P130 - 03/12/2014
+Tomassino: C'è un crash se si prova a cambiare un neurone da normale a leaky e
+poi a salvare il .phe (forse il bug c'è solo se si usano FakeSensors e
+FakeMotors)
+
+================================================================================

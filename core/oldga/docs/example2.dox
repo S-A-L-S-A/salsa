@@ -1,0 +1,186 @@
+/********************************************************************************
+ *  FARSA Genetic Algorithm Library                                             *
+ *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
+ *                                                                              *
+ *  This program is free software; you can redistribute it and/or modify        *
+ *  it under the terms of the GNU General Public License as published by        *
+ *  the Free Software Foundation; either version 2 of the License, or           *
+ *  (at your option) any later version.                                         *
+ *                                                                              *
+ *  This program is distributed in the hope that it will be useful,             *
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of              *
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               *
+ *  GNU General Public License for more details.                                *
+ *                                                                              *
+ *  You should have received a copy of the GNU General Public License           *
+ *  along with this program; if not, write to the Free Software                 *
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA  *
+ ********************************************************************************/
+
+/*! \page ga_example2 Example of SimpleGA
+ *  This example load a file called 'ga.conf' where it read the configurations.
+ *  A template for ga.conf is the following:
+ *  <pre>
+	[COMMON]
+	randomSeed = 25
+
+	[GA]
+	type = SimpleGA
+	numThreads = 2 ### number of threads to use
+	ngenerations = 200
+
+	[GA/EVALUATION]
+	type = FitnessFunction
+	### Custom settings of ga1 example
+	### Choose among: square, abs, mexhat
+	functionTarget = square
+
+	[GA/GENOME]
+	type = Genome
+	nindividuals = 100
+
+	[GA/GENOME/GENOTYPE]
+	### Choose between SignedRange and Real
+	type = SignedRange
+	ngenes = 2
+	### Parameters for SignedRange
+	nbits = 8
+	maxValue = 20
+	### Parameters for Real
+	# maxValue = +20
+	# minValue = -20
+
+	[GA/REPRODUCTION]
+	type = FixedSize
+	crossoverRate = 0
+	elitism = false
+	nelited = 10
+
+	[GA/REPRODUCTION/CROSSOVER]
+	type = OnePoint
+	## OnePoint crossover doesn't need any parameter
+
+	[GA/REPRODUCTION/MUTATION]
+	type = RandomFloat ### Choose between FlipBit and RandomFloat
+	mutation_rate = 0.015
+
+	[GA/REPRODUCTION/SELECTION]
+	type = DeterministicRank
+	### Parameters for DeterministicRank
+	nTruncation = 20
+ * </pre>
+ *
+ *  \code
+#include "gaconfig.h"
+#include "configuration/configurationparameters.h"
+#include "configuration/inifilesupport.h"
+#include "factory/factory.h"
+#include "core/randomgenerator.h"
+#include "core/evaluation.h"
+#include "genotypes/doublegenotype.h"
+#include "core/genome.h"
+#include "core/geneticalgo.h"
+#include <cmath>
+#include <QDebug>
+
+class FitnessFunction : public Evaluation {
+public:
+	FitnessFunction() : Evaluation() {
+		functype = square;
+	};
+	// custom configuration
+	// This fitness function can be customized by 'functionTarget' parameter of EVALUATOR group
+	// Possibile functionTarget value are:
+	// - square : compute the sum of square of genes as fitness
+	// - abs : compute the sum of the distances from the id of gene and gene value
+	// Example of use:
+	//
+	// [EVALUATOR]
+	// functionTarget = square
+	virtual void configure( const ConfigurationParameters& params, QString prefix ) {
+		QString ft = params.getValue( prefix + QString( "functionTarget" ) );
+		if ( ft == "square" ) functype = square;
+		if ( ft == "abs" ) functype = abs;
+		if ( ft == "mexhat" ) functype = mexhat;
+	};
+	virtual FitnessFunction* clone() const {
+		FitnessFunction* ret = new FitnessFunction();
+		ret->functype = functype;
+		return ret;
+	};
+protected:
+	void init() {
+	};
+	void step() {
+		double fit = 0.0;
+		//--- calculate the fitness function
+		DoubleGenotype* gen = (DoubleGenotype*)( genotype() );
+		for( unsigned int i=0; i<gen->numGenes(); i++ ) {
+			switch( functype ) {
+			case square:
+			case mexhat:
+				fit += gen->at(i)*gen->at(i);
+				break;
+			case abs:
+				fit += -fabs( gen->at(i) - i );
+				break;
+			default:
+				fit = 0;
+				break;
+			}
+		}
+		if ( functype == mexhat ) {
+			fit = cos( sqrt(fit) ) * exp( -fit/40.0 );
+		}
+		genotype()->setFitness( fit );
+		evaluationDone();
+	};
+	void fini() {
+	};
+private:
+	typedef enum { square, abs, mexhat } functionType;
+	functionType functype;
+};
+
+int main( int argc, char* argv[] ) {
+	Q_UNUSED( argc );
+	Q_UNUSED( argv );
+
+	//--- IMPORTANT !!! You Have To Register your fitness function
+	Factory::getInstance().registerClass<FitnessFunction>( "FitnessFunction" );
+
+	//--- Parameters Loaded from file ga.ini (case sensitive)
+	ConfigurationParameters params(true);
+	if (!params.loadParameters("ga.ini")) {
+		qWarning() << "Loading parameters from file ga.ini failed";
+
+		return 1;
+	}
+
+	//--- Initialize the globalRNG with seed
+	if ( params.getValue( "COMMON/randomSeed" ) == "random" ) {
+		globalRNG->setSeed( time(0) );
+		qDebug() << "Random Seed:" << globalRNG->seed();
+	} else {
+		globalRNG->setSeed( params.getValue( "COMMON/randomSeed" ).toInt() );
+	}
+
+	//--- create and configure the Genetic Algorithm
+	GeneticAlgo* ga = Factory::getInstance().createFromParameter<GeneticAlgo>( params, "GA" );
+	ga->initialize();
+
+	//--- Evolve for all Generations
+	ga->evolve();
+
+	//--- print out the best individuals
+	DoubleGenotype* best = (DoubleGenotype*)(ga->genome()->bestGenotype());
+	qDebug() << "Fitness:" << best->fitness();
+	qDebug() << best->toString();
+	for( unsigned int i=0; i<best->numGenes(); i++ ) {
+		qDebug() << "Gene:" << i << "Value:" << best->at(i);
+	}
+	return 0;
+}
+ *
+ *  \endcode
+ */

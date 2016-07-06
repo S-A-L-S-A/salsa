@@ -1,0 +1,34 @@
+/********************************************************************************
+ *  Neural Network Framework.                                                   *
+ *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
+ *                                                                              *
+ *  This program is free software; you can redistribute it and/or modify        *
+ *  it under the terms of the GNU General Public License as published by        *
+ *  the Free Software Foundation; either version 2 of the License, or           *
+ *  (at your option) any later version.                                         *
+ *                                                                              *
+ *  This program is distributed in the hope that it will be useful,             *
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of              *
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the               *
+ *  GNU General Public License for more details.                                *
+ *                                                                              *
+ *  You should have received a copy of the GNU General Public License           *
+ *  along with this program; if not, write to the Free Software                 *
+ *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA  *
+ ********************************************************************************/
+
+/*! \mainpage Documentation of Neural Network Framework (release 2.0.0)
+ *  \section nnfw_intro Introduction
+ *
+ *  This is a Neural Network Framework for creating, simulating and analyze any neural network you can image !!
+ *
+ * \todo
+ *  - Add resetInnerStatus function to both Updatable and OutputFunction classes 
+      (virtual function, implementation in base classes does nothing). When saving something
+      (cluster, linker or outputfunction), the whole status is saved.
+      This means that the resetInnerStatus should be called also after reloading the network
+      from file to have a resetted network
+ */
+
+/*! \defgroup nnfw_functions NNFW Functions */
+

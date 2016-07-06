@@ -1,0 +1,9 @@
+LIB  window: Newton 2.33
+     mac:    TODO! Need to compile version 2.33 from Newton sources
+     linux:  Newton 2.33 - only 64bit!. The libNewton_lnx64.a-old library is the non-optimized one, while the libNewton_lnx64.a library is the optimized one
+	 
+EXPERIMENTAL Compilation from Source
+Repository URL: http://newton-dynamics.googlecode.com/svn/trunk/coreLibrary_200
+Repository Revision: 2046
+--- Removed source files because not used:
+ - dgVehicleConstraint.cpp

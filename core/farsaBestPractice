@@ -1,0 +1,37 @@
+================================================================================
+BP001
+La politica per quanto riguarda i commenti è di metterli nei file .h (i file
+processati da Doxygen) in stile Doxygen in modo da avere un minimo di
+documentazione autogenerata. Ognuno è responsabile per l'aggiunta dei commenti
+nelle classi che ha creato.
+
+================================================================================
+BP002
+Non c'è nessuna politica sulla scrittura del codice (indendendo con ciò regole
+sull'indentazione, per i nomi di variabili/funzioni/classi...).
+
+================================================================================
+BP003
+Non è prevista nessuna gerarchia di sensori e motori (nel senso che tutti
+ereditano direttamente da Sensor o Motor) anche se esistono diversi gruppi che
+hanno almeno una serie di parametri in comune (ad esempio "icub" o "arm") o
+delle funzionalità comuni (tipo tutti quelli che convertono posizioni in
+velocità). Esiste però una specie di tacita convenzione per quanto riguarda i
+nomi delle classi di sensori e motori che permette di avere una specie di
+gerarchia implicita. Ad esempio i sensori/motori relativi all'iCub devono avere
+il nome che inizia per "iCub"
+
+================================================================================
+BP004
+Adesso che l'evoluzione gira in un thread separato la camera non funziona più.
+Mai utilizzare metodi che la riguardano e mai attivare le camere sul robot (la
+classe iCubRobot, infatti, non prevede parametri per attivare le camere).
+
+================================================================================
+BP005
+Gianluca: se il parametro seed non è presente o il suo valore è 'auto' genera
+un seed random tra 0 e 10000
+Questo è comodo per far partire svariati total99 contemporaneamente su uno
+stesso file di configurazione e avere seed iniziali diversi.
+Ora c'è una probabilit di 1/10000 che si generano due seed uguali durante
+l'esecuzione di più total99 contemporaneamente.

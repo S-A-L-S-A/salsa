@@ -1,0 +1,145 @@
+### CMake script for the worldsim library
+
+### Resetting variables
+SET( FARSA_USEFILE_WORLDSIM_DEFS )
+SET( FARSA_USEFILE_WORLDSIM_INCLUDES )
+SET( FARSA_USEFILE_WORLDSIM_LINKDIRS )
+SET( FARSA_USEFILE_WORLDSIM_LIBRARIES )
+SET( FARSA_USEFILE_WORLDSIM_CFLAGS )
+SET( FARSA_USEFILE_WORLDSIM_LFLAGS )
+
+### Find source and header files
+FILE( GLOB WORLDSIM_SRCS ./src/*.cpp ./3rdParts/qglviewer/*.cpp ./3rdParts/qglviewer/VRender/*.cpp )
+FILE( GLOB WORLDSIM_HDRS ./include/*.h ./include/private/*.h ./3rdParts/qglviewer/*.h ./3rdParts/qglviewer/VRender/*.h )
+FILE( GLOB WORLDSIM_OWN_HDRS ./include/*.h )
+FILE( GLOB WORLDSIM_QGLVIEWER_HDRS ./3rdParts/qglviewer/*.h ./3rdParts/qglviewer/VRender/*.h )
+### Qt stuffs have been added in the parent script, here adding resources and mocs (where needed)
+IF( FARSA_USE_QT5 )
+	QT5_ADD_RESOURCES( WORLDSIM_SRCS "./textures/textures.qrc" )
+	# We need to explicitly do this to use the Qt5Widgets_UIC_EXECUTABLE variable
+	FIND_PACKAGE(Qt5Widgets)
+ELSE( FARSA_USE_QT5 )
+	QT4_ADD_RESOURCES( WORLDSIM_SRCS "./textures/textures.qrc" )
+	QT4_WRAP_CPP( WORLDSIM_SRCS ${WORLDSIM_HDRS} OPTIONS "-nw" )
+	QT4_WRAP_CPP( WORLDSIM_SRCS ./include/private/renderwobjecthierarchy.h OPTIONS "-nw" )
+ENDIF( FARSA_USE_QT5 )
+
+### Configuration variables of the Library
+### TODO: make these user-configurable values
+SET( WORLDSIM_USE_NEWTON ON )
+
+IF( WORLDSIM_USE_NEWTON )
+	LIST( APPEND FARSA_WORLDSIM_DEFS -DWORLDSIM_USE_NEWTON )
+	INCLUDE_DIRECTORIES( "./3rdParts/newton" )
+	LINK_DIRECTORIES( "${CMAKE_CURRENT_SOURCE_DIR}/3rdParts/newton" )
+	### Defining variables with library names and other stuffs (architecture-dependant)
+	IF( UNIX )
+		INCLUDE( CheckTypeSize )
+		CHECK_TYPE_SIZE( void* SIZEPTR BUILTIN_TYPES_ONLY )
+		MATH( EXPR ARCHBITS "${SIZEPTR} * 8" )
+		IF ( APPLE )
+			SET( PHYSUF "mac${ARCHBITS}" )
+		ELSE ( APPLE )
+			SET( LINUX_NEWTON_OPTIMIZED_VERSION TRUE CACHE BOOL "Set to true use the experimental optimized Newton library on Linux" )
+			IF( LINUX_NEWTON_OPTIMIZED_VERSION )
+				SET( PHYSUF "lnx${ARCHBITS}_optimized" )
+			ELSE( LINUX_NEWTON_OPTIMIZED_VERSION )
+				SET( PHYSUF "lnx${ARCHBITS}_nonOptimized" )
+			ENDIF( LINUX_NEWTON_OPTIMIZED_VERSION )
+		ENDIF( APPLE )
+
+		SET( FARSA_WORLDSIM_PHYLIB "${CMAKE_CURRENT_SOURCE_DIR}/3rdParts/newton/libNewton_${PHYSUF}.a" )
+	ELSEIF( WIN32 )
+		LIST( APPEND FARSA_WORLDSIM_DEFS -D_NEWTON_USE_LIB )
+
+		SET( FARSA_WORLDSIM_PHYLIB "${CMAKE_CURRENT_SOURCE_DIR}/3rdParts/newton/libNewton_win32.lib" )
+		SET( FARSA_WORLDSIM_PHYLIB_WIN_BASENAME "${CMAKE_CURRENT_SOURCE_DIR}/3rdParts/newton/libNewton_win32" )
+	ENDIF( UNIX )
+ENDIF( WORLDSIM_USE_NEWTON )
+
+### Adding stuffs to compile QGLViewer
+INCLUDE_DIRECTORIES( ./include ./3rdParts "${CMAKE_CURRENT_BINARY_DIR}/3rdParts/qglviewer" "${CMAKE_CURRENT_BINARY_DIR}/3rdParts/qglviewer/VRender" )
+IF( FARSA_USE_QT5 )
+	QT5_WRAP_UI( WORLDSIM_SRCS ./3rdParts/qglviewer/ImageInterface.ui )
+	QT5_WRAP_UI( WORLDSIM_SRCS ./3rdParts/qglviewer/VRenderInterface.ui )
+ELSE( FARSA_USE_QT5 )
+	ADD_CUSTOM_COMMAND( OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/3rdParts/qglviewer/ui_ImageInterface.h COMMAND ${QT_UIC_EXECUTABLE} -o ${CMAKE_CURRENT_BINARY_DIR}/3rdParts/qglviewer/ui_ImageInterface.h ${CMAKE_CURRENT_SOURCE_DIR}/3rdParts/qglviewer/ImageInterface.ui MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/3rdParts/qglviewer/ImageInterface.ui )
+	ADD_CUSTOM_COMMAND( OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/3rdParts/qglviewer/ui_VRenderInterface.h COMMAND ${QT_UIC_EXECUTABLE} -o ${CMAKE_CURRENT_BINARY_DIR}/3rdParts/qglviewer/ui_VRenderInterface.h ${CMAKE_CURRENT_SOURCE_DIR}/3rdParts/qglviewer/VRenderInterface.ui MAIN_DEPENDENCY ${CMAKE_CURRENT_SOURCE_DIR}/3rdParts/qglviewer/VRenderInterface.ui )
+	LIST( APPEND WORLDSIM_SRCS "${CMAKE_CURRENT_BINARY_DIR}/3rdParts/qglviewer/ui_ImageInterface.h" )
+	LIST( APPEND WORLDSIM_SRCS "${CMAKE_CURRENT_BINARY_DIR}/3rdParts/qglviewer/ui_VRenderInterface.h" )
+ENDIF( FARSA_USE_QT5 )
+## This must not go into UseFARSA.cmake
+ADD_DEFINITIONS( -DFARSA_WSIM_BUILDING_DLL -DCREATE_QGLVIEWER_DLL )
+LIST( APPEND FARSA_WORLDSIM_DEFS -DNO_VECTORIAL_RENDER )
+### Adding OpenGL libraries (need by QGLViewer)
+FIND_PACKAGE( OpenGL REQUIRED )
+
+### Adding definitions (we don't have anything specific for the worldsim library)
+ADD_DEFINITIONS( ${FARSA_COMMON_DEFS} ${FARSA_WORLDSIM_DEFS} )
+
+### Setting directories with headers
+INCLUDE_DIRECTORIES( ${FARSA_COMMON_INCLUDES} ${OPENGL_INCLUDE_DIR} ./include ../utilities/include ../configuration/include )
+
+### Setting directories with libraries to link
+LINK_DIRECTORIES( ${FARSA_COMMON_LINKDIRS} )
+
+### Creating the target worldsim
+ADD_LIBRARY( farsaworldsim SHARED ${WORLDSIM_SRCS} ${WORLDSIM_HDRS} )
+SET_TARGET_PROPERTIES( farsaworldsim PROPERTIES VERSION ${VER_MAJ}.${VER_MIN}.${VER_PAT} SOVERSION ${VER_MAJ}.${VER_MIN}  INSTALL_NAME_DIR ${CMAKE_INSTALL_PREFIX}/lib INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/lib )
+ADD_DEPENDENCIES( farsaworldsim farsautilities farsaconfiguration )
+TARGET_LINK_LIBRARIES( farsaworldsim ${FARSA_COMMON_LIBRARIES} ${OPENGL_LIBRARIES} ${FARSA_WORLDSIM_PHYLIB} farsautilities farsaconfiguration )
+
+# Setting the Qt5 modules used by this executable (if using Qt5)
+IF( FARSA_USE_QT5 )
+	QT5_USE_MODULES(farsaworldsim Widgets OpenGL Xml Concurrent)
+ENDIF( FARSA_USE_QT5 )
+
+### Windows stuffs (suffix for debug libraries)
+IF( WIN32 )
+	SET_TARGET_PROPERTIES( farsaworldsim PROPERTIES DEBUG_POSTFIX "d" )
+ENDIF( WIN32 )
+
+### Install configuration
+INSTALL( TARGETS farsaworldsim ARCHIVE DESTINATION lib LIBRARY DESTINATION lib RUNTIME DESTINATION bin )
+IF( WIN32 )
+	## Install PDB files necessary for debugging
+	INSTALL( FILES ${CMAKE_BINARY_DIR}/worldsim/Debug/farsaworldsimd.pdb DESTINATION bin CONFIGURATIONS Debug )
+ENDIF( WIN32 )
+INSTALL( FILES ${WORLDSIM_OWN_HDRS} DESTINATION include/FARSA/worldsim )
+INSTALL( FILES ${WORLDSIM_QGLVIEWER_HDRS} DESTINATION include/FARSA/worldsim/qglviewer )
+### Also installing the newton library
+IF( WIN32 )
+	INSTALL( FILES "${FARSA_WORLDSIM_PHYLIB_WIN_BASENAME}.lib" DESTINATION lib RENAME newton.lib )
+	INSTALL( FILES "${FARSA_WORLDSIM_PHYLIB_WIN_BASENAME}.dll" DESTINATION bin RENAME newton.dll )
+	SET( FARSA_WORLDSIM_PHYLIB_USEFARSA "\${FARSA_BASEDIR}/lib/newton.lib" )
+ELSE( WIN32 )
+	INSTALL( FILES "${FARSA_WORLDSIM_PHYLIB}" DESTINATION lib RENAME libnewton.a )
+	SET( FARSA_WORLDSIM_PHYLIB_USEFARSA "\${FARSA_BASEDIR}/lib/libnewton.a" )
+ENDIF( WIN32 )
+IF( WIN32 )
+	SET( MISC_FILES_DESTINATION )
+ELSE( WIN32 )
+	SET( MISC_FILES_DESTINATION share/FARSA/ )
+ENDIF( WIN32 )
+INSTALL( DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/conf/ DESTINATION ${MISC_FILES_DESTINATION}conf/worldsim PATTERN ".*" EXCLUDE )
+
+### Setting the value of varibles needed to generate UseFARSA.cmake
+SET( FARSA_USEFILE_WORLDSIM_DEFS ${FARSA_WORLDSIM_DEFS} )
+SET( FARSA_USEFILE_WORLDSIM_INCLUDES ${OPENGL_INCLUDE_DIR} "\${FARSA_BASEDIR}/include/FARSA/worldsim" )
+SET( FARSA_USEFILE_WORLDSIM_LINKDIRS "\${FARSA_BASEDIR}/lib" )
+IF ( WIN32 )
+	SET( FARSA_USEFILE_WORLDSIM_LIBRARIES "optimized;farsaworldsim" "debug;farsaworldsimd" ${OPENGL_LIBRARIES} ${FARSA_WORLDSIM_PHYLIB_USEFARSA} )
+ELSE ( WIN32 )
+	SET( FARSA_USEFILE_WORLDSIM_LIBRARIES farsaworldsim ${OPENGL_LIBRARIES} ${FARSA_WORLDSIM_PHYLIB_USEFARSA} )
+ENDIF( WIN32 )
+SET( FARSA_USEFILE_WORLDSIM_CFLAGS "" )
+SET( FARSA_USEFILE_WORLDSIM_LFLAGS "" )
+
+### Export variables to parent scope. Here we simply set variables to their value and add the PARENT_SCOPE
+### directive.
+SET( FARSA_USEFILE_WORLDSIM_DEFS "${FARSA_USEFILE_WORLDSIM_DEFS}" PARENT_SCOPE )
+SET( FARSA_USEFILE_WORLDSIM_INCLUDES "${FARSA_USEFILE_WORLDSIM_INCLUDES}" PARENT_SCOPE )
+SET( FARSA_USEFILE_WORLDSIM_LINKDIRS "${FARSA_USEFILE_WORLDSIM_LINKDIRS}" PARENT_SCOPE )
+SET( FARSA_USEFILE_WORLDSIM_LIBRARIES "${FARSA_USEFILE_WORLDSIM_LIBRARIES}" PARENT_SCOPE )
+SET( FARSA_USEFILE_WORLDSIM_CFLAGS "${FARSA_USEFILE_WORLDSIM_CFLAGS}" PARENT_SCOPE )
+SET( FARSA_USEFILE_WORLDSIM_LFLAGS "${FARSA_USEFILE_WORLDSIM_LFLAGS}" PARENT_SCOPE )
