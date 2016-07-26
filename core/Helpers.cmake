@@ -1,5 +1,5 @@
-# A file with helper code for farsa tree building
+# A file with helper code for salsa tree building
 
-function(add_farsa_version targetName)
-	set_target_properties(${targetName} PROPERTIES VERSION ${FARSA_VER_MAJ}.${FARSA_VER_MIN}.${FARSA_VER_PAT} SOVERSION ${FARSA_VER_MAJ}.${FARSA_VER_MIN})
+function(add_salsa_version targetName)
+	set_target_properties(${targetName} PROPERTIES VERSION ${SALSA_VER_MAJ}.${SALSA_VER_MIN}.${SALSA_VER_PAT} SOVERSION ${SALSA_VER_MAJ}.${SALSA_VER_MIN})
 endfunction()

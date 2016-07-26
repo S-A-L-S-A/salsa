@@ -6,11 +6,11 @@ cmake_minimum_required(VERSION 2.8.12)
 cmake_policy(SET CMP0042 NEW)
 
 # Version Information
-set(FARSA_VER_MAJ 2)
-set(FARSA_VER_MIN 0)
-set(FARSA_VER_PAT 0)
+set(SALSA_VER_MAJ 1)
+set(SALSA_VER_MIN 0)
+set(SALSA_VER_PAT 0)
 
-project(farsa CXX)
+project(salsa CXX)
 set(CMAKE_COLOR_MAKEFILE ON)
 # We set this to be able to load our script (e.g. for GSL)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR})
@@ -62,22 +62,22 @@ set(CMAKE_SKIP_INSTALL_RPATH OFF)
 # ==============================================================================
 
 # General options
-set(FARSA_USE_GSL OFF CACHE BOOL "If ON will use the GNU Scientific Library" )
+set(SALSA_USE_GSL OFF CACHE BOOL "If ON will use the GNU Scientific Library" )
 
 # Checking if we have to use GSL
-if(FARSA_USE_GSL)
+if(SALSA_USE_GSL)
 	find_package(GSL REQUIRED)
 endif()
 
 # Definitions for platforms
 if(UNIX)
 	if(APPLE)
-		add_definitions(-DFARSA_MAC)
+		add_definitions(-DSALSA_MAC)
 	else()
-		add_definitions(-DFARSA_LINUX)
+		add_definitions(-DSALSA_LINUX)
 	endif()
 elseif(WIN32)
-	add_definitions(-DFARSA_WIN)
+	add_definitions(-DSALSA_WIN)
 endif()
 
 # The variable containing the path relative to CMAKE_INSTALL_PREFIX for
@@ -85,7 +85,7 @@ endif()
 if(WIN32)
 	set(MISC_FILES_DESTINATION .)
 else()
-	set(MISC_FILES_DESTINATION share/farsa)
+	set(MISC_FILES_DESTINATION share/salsa)
 endif()
 
 # Adding all subdirectories
@@ -99,20 +99,20 @@ add_subdirectory(pluginhelper)
 add_subdirectory(total99)
 
 # Setting installation directory of the export
-install(EXPORT farsa DESTINATION share/farsa FILE exportedFarsaTargets.cmake)
+install(EXPORT salsa DESTINATION share/salsa FILE exportedSalsaTargets.cmake)
 
-# Generating FARSAConfig.cmake
-set(FARSA_USEFILE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
-set(FARSA_USEFILE_INSTALL_MISC "${FARSA_USEFILE_INSTALL_PREFIX}/${MISC_FILES_DESTINATION}")
-set(FARSA_TEST_PLUGIN_SCRIPT_PATH "${FARSA_USEFILE_INSTALL_MISC}/testPlugin.py")
-set(FARSA_TOTAL99_EXECUTABLE_PATH "${FARSA_USEFILE_INSTALL_PREFIX}/bin/total99")
-configure_file("farsaConfig.cmake.in" "${CMAKE_BINARY_DIR}/farsaConfig.cmake" @ONLY)
+# Generating SALSAConfig.cmake
+set(SALSA_USEFILE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
+set(SALSA_USEFILE_INSTALL_MISC "${SALSA_USEFILE_INSTALL_PREFIX}/${MISC_FILES_DESTINATION}")
+set(SALSA_TEST_PLUGIN_SCRIPT_PATH "${SALSA_USEFILE_INSTALL_MISC}/testPlugin.py")
+set(SALSA_TOTAL99_EXECUTABLE_PATH "${SALSA_USEFILE_INSTALL_PREFIX}/bin/total99")
+configure_file("salsaConfig.cmake.in" "${CMAKE_BINARY_DIR}/salsaConfig.cmake" @ONLY)
 
 # Setting install destination for some files
 install(FILES "GPL.txt" DESTINATION "${MISC_FILES_DESTINATION}")
 install(FILES "COPYING" DESTINATION "${MISC_FILES_DESTINATION}")
 install(FILES "INSTALL" DESTINATION "${MISC_FILES_DESTINATION}")
 install(FILES "README" DESTINATION "${MISC_FILES_DESTINATION}")
-install(FILES "${CMAKE_BINARY_DIR}/farsaConfig.cmake" DESTINATION "${MISC_FILES_DESTINATION}")
+install(FILES "${CMAKE_BINARY_DIR}/salsaConfig.cmake" DESTINATION "${MISC_FILES_DESTINATION}")
 install(FILES "FindGSL.cmake" DESTINATION "${MISC_FILES_DESTINATION}")
 install(FILES "tests/testPlugin.py" DESTINATION "${MISC_FILES_DESTINATION}")
