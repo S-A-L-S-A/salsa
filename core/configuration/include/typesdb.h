@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -33,7 +33,7 @@
 #include <memory>
 #include <cstdlib>
 
-namespace farsa {
+namespace salsa {
 
 class ConfigurationWidget;
 class Component;
@@ -45,15 +45,15 @@ class RegisteredComponentDescriptor;
  * \brief A class storing information on a type
  *
  * A type can be:
- * 	- non-abstract subclass of farsa::Component. In this case canBeCreated
+ * 	- non-abstract subclass of salsa::Component. In this case canBeCreated
  * 	  is true;
- * 	- abstract subclass of farsa::Component. In this case canBeCreated is
+ * 	- abstract subclass of salsa::Component. In this case canBeCreated is
  * 	  false and isInterface is false;
- * 	- a class not inheriting from farsa::Component (neither directly nor
+ * 	- a class not inheriting from salsa::Component (neither directly nor
  * 	  indirectly), also known as an "interface". In this case canBeCreated
  * 	  is false and isInterface is true.
  */
-class FARSA_CONF_TEMPLATE RegisteredTypeInfo
+class SALSA_CONF_TEMPLATE RegisteredTypeInfo
 {
 public:
 	/**
@@ -62,12 +62,12 @@ public:
 	 * \param name the name of the type
 	 * \param parents the parent classes
 	 * \param canBeCreated whether this type can be created (i.e. is a
-	 *                     non-abstract subclass of farsa::Component) or not
+	 *                     non-abstract subclass of salsa::Component) or not
 	 * \param isInterface when this type cannot be created, whether it is an
 	 *                    interface or an abstract subclass of
-	 *                    farsa::Component
+	 *                    salsa::Component
 	 * \param configuresInConstructor when this is a subclass of
-	 *                                farsa::Component, whether this
+	 *                                salsa::Component, whether this
 	 *                                performs configuration in constructor
 	 *                                or not
 	 */
@@ -130,7 +130,7 @@ public:
  *
  * If you want to provide a custom creator for a type, create a subclass of this
  */
-class FARSA_CONF_TEMPLATE ComponentCreator
+class SALSA_CONF_TEMPLATE ComponentCreator
 {
 public:
 	/**
@@ -222,7 +222,7 @@ private:
  * \internal
  */
 template <class T>
-class FARSA_CONF_TEMPLATE ComponentCreatorT : public ComponentCreator
+class SALSA_CONF_TEMPLATE ComponentCreatorT : public ComponentCreator
 {
 public:
 	/**
@@ -242,7 +242,7 @@ private:
  *
  * \internal
  */
-class FARSA_CONF_TEMPLATE ConfigurationWidgetCreator
+class SALSA_CONF_TEMPLATE ConfigurationWidgetCreator
 {
 public:
 	/**
@@ -273,7 +273,7 @@ public:
  * \internal
  */
 template <class T>
-class FARSA_CONF_TEMPLATE ConfigurationWidgetCreatorT : public ConfigurationWidgetCreator
+class SALSA_CONF_TEMPLATE ConfigurationWidgetCreatorT : public ConfigurationWidgetCreator
 {
 public:
 	/**
@@ -297,19 +297,19 @@ public:
 };
 
 /**
- * \brief The class that registers various types used in FARSA
+ * \brief The class that registers various types used in SALSA
  *
  * This is only used to register types (Component and ConfigurationWidget
  * subclasses, plus interfaces) that can later be created using a
  * ConfigurationManager object. The difference between the a component and an
  * interface is that a component is always a subclass (direct or indirect) of
- * farsa::Component, while an interface can be any class. Interfaces cannot be
+ * salsa::Component, while an interface can be any class. Interfaces cannot be
  * instantiated, but can be used to constrain the type of a group (see
  * Component::describe() and ComponentDescriptor class). When registering a
  * type, all the component and interfaces from which it inherits must be already
  * registered. To register new types use one of the registerComponent functions,
  * they automatically distinguish between component and interfaces (interfaces
- * are simply classes that are not derived from farsa::Component)
+ * are simply classes that are not derived from salsa::Component)
  *
  * This class also has some methods to get meta-information on registered types
  * and their parameters.
@@ -330,7 +330,7 @@ public:
  *
  * \ingroup configuration_factory
  */
-class FARSA_CONF_API TypesDB
+class SALSA_CONF_API TypesDB
 {
 public:
 	/**
@@ -371,7 +371,7 @@ public:
 	 *                  creation
 	 * \param parents the list of the parent classes. All elements must
 	 *                already be registered (even if they are not
-	 *                farsa::Component subclasses), otherwise an exception
+	 *                salsa::Component subclasses), otherwise an exception
 	 *                is thrown
 	 *
 	 * \note It's IMPORTANT to register also all abstract classes and
@@ -392,7 +392,7 @@ public:
 	 *                  creation
 	 * \param parents the list of the parent classes. All elements must
 	 *                already be registered (even if they are not
-	 *                farsa::Component subclasses), otherwise an exception
+	 *                salsa::Component subclasses), otherwise an exception
 	 *                is thrown
 	 *
 	 * \note It's IMPORTANT to register also all abstract classes and
@@ -411,7 +411,7 @@ public:
 	 *                  creation
 	 * \param parents the list of the parent classes. All elements must
 	 *                already be registered (even if they are not
-	 *                farsa::Component subclasses), otherwise an exception
+	 *                salsa::Component subclasses), otherwise an exception
 	 *                is thrown
 	 * \param creator a pointer to the instance of the creator to use. You
 	 *                must pass a new-allocated object which is then managed
@@ -597,15 +597,15 @@ private:
 	QMap<QString, RegisteredComponentDescriptor*> m_typeDescriptors;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 // Implementation of template functions
 #include "configurationexceptions.h"
 #include "componentdescriptors.h"
 
-namespace farsa {
+namespace salsa {
 
-// This namespace contains helper code. We put it in an inner namespace to avoid polluting the farsa namespace
+// This namespace contains helper code. We put it in an inner namespace to avoid polluting the salsa namespace
 namespace __Factory_internal {
 	// this local template check if a class is Abstract
 	// it's is needed because to register a complete hierarchy it's necessary
@@ -626,11 +626,11 @@ namespace __Factory_internal {
 		static const bool canBeCreated = (sizeof(check_sig<T>(0)) == sizeof(char));
 	};
 
-	// Checks if the given class inherits from farsa::Component
+	// Checks if the given class inherits from salsa::Component
 	template<class T>
 	struct isComponent {
 		static char check_convert(...);
-		static short check_convert(farsa::Component*);
+		static short check_convert(salsa::Component*);
 		static const bool value = (sizeof(check_convert((T*) 0)) == sizeof(short));
 	};
 
@@ -650,7 +650,7 @@ namespace __Factory_internal {
 	}
 
 	template <class T>
-	bool callConfiguresInConstructorIfComponentSubclass(farsa::Component*)
+	bool callConfiguresInConstructorIfComponentSubclass(salsa::Component*)
 	{
 		return T::configuresInConstructor();
 	}
@@ -815,6 +815,6 @@ void TypesDB::callDescribeIfComponentSubclass(QString className, Component*)
 	T::describe(editableTypeDescriptor(className));
 }
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

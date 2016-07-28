@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -36,7 +36,7 @@
 #include "parametersfileloadersaver.h"
 #include "configurationnode.h"
 
-namespace farsa {
+namespace salsa {
 
 class Component;
 class ConfigurationObserver;
@@ -249,7 +249,7 @@ class ResourceChangeNotifee;
  *
  * \ingroup configuration_configuration
  */
-class FARSA_CONF_API ConfigurationManager
+class SALSA_CONF_API ConfigurationManager
 {
 public:
 	/**
@@ -947,7 +947,7 @@ private:
 	friend class ConfigurationObserver;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 // Implementation of template functions
 #include "typesdb.h"
@@ -955,7 +955,7 @@ private:
 #include "configurationobserver.h"
 #include <memory>
 
-namespace farsa {
+namespace salsa {
 
 template <class TypeToCreate>
 TypeToCreate* ConfigurationManager::getComponentFromGroup(QString group, bool configure)
@@ -1185,6 +1185,6 @@ TypeToCreate* ConfigurationManager::getComponentFromParameter(QString param, boo
 	return getComponentFromGroup<TypeToCreate>(componentGroup, configure);
 }
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

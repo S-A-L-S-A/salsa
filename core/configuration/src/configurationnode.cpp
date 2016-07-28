@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -27,7 +27,7 @@
 
 #warning USARE QRegularExpression INVECE DI QRegExp OVUNQUE
 
-namespace farsa {
+namespace salsa {
 
 ConfigurationNode::ElementAndPath ConfigurationNode::separateLastElement(QString path)
 {
@@ -519,4 +519,4 @@ void ConfigurationNode::throwIfParameterDoesNotExists(QString parameter) const
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa

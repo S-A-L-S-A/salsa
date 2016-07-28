@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -29,7 +29,7 @@
 #warning VEDI COMMENTO SOTTO
 // INOLTRE, FORSE, AGGIUNGERE UNA FUNZIONE VIRTUALE AL CREATOR CHE DISTRUGGE UN OGGETTO. L'IMPLEMENTAZIONE DI DEFAULT USA DELETE, MA IN QUESTO MODO SI POSSONO SUPPORTARE ANCHE CREAZIONI E DISTRUZIONI ALTERNATIVE
 
-namespace farsa {
+namespace salsa {
 
 Component* ComponentCreator::create(ConfigurationManager& settings, QString prefix, bool configure)
 {
@@ -296,4 +296,4 @@ RegisteredComponentDescriptor& TypesDB::editableTypeDescriptor(QString typeName)
 	return *ret;
 }
 
-} // end namespace farsa
+} // end namespace salsa

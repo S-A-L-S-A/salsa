@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2014                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -36,7 +36,7 @@
 	#pragma warning(disable:4996)
 #endif
 
-namespace farsa {
+namespace salsa {
 
 // NOTE: I don't use snprintf instead of sprintf because it seems not to be in
 // the current C++ standard (C++03, it is instead in the C99 standard). Note
@@ -47,7 +47,7 @@ namespace farsa {
  * \brief The exception thrown when trying to create or rename a group using an
  *        invalid name
  */
-class FARSA_CONF_TEMPLATE InvalidGroupNameException : public BaseException
+class SALSA_CONF_TEMPLATE InvalidGroupNameException : public BaseException
 {
 public:
 	/**
@@ -142,7 +142,7 @@ private:
  * \brief The exception thrown when trying to create or rename a group using a
  *        name that already exists
  */
-class FARSA_CONF_TEMPLATE AlreadyExistingGroupNameException : public BaseException
+class SALSA_CONF_TEMPLATE AlreadyExistingGroupNameException : public BaseException
 {
 public:
 	/**
@@ -236,7 +236,7 @@ private:
 /**
  * \brief The exception thrown when referring to a non-existent group
  */
-class FARSA_CONF_TEMPLATE NonExistentGroupNameException : public BaseException
+class SALSA_CONF_TEMPLATE NonExistentGroupNameException : public BaseException
 {
 public:
 	/**
@@ -330,7 +330,7 @@ private:
  * \brief The exception thrown when trying to create a parameter using an
  *        invalid name
  */
-class FARSA_CONF_TEMPLATE InvalidParameterNameException : public BaseException
+class SALSA_CONF_TEMPLATE InvalidParameterNameException : public BaseException
 {
 public:
 	/**
@@ -425,7 +425,7 @@ private:
  * \brief The exception thrown when trying to add a parameter that already
  *        exists
  */
-class FARSA_CONF_TEMPLATE AlreadyExistingParameterException : public BaseException
+class SALSA_CONF_TEMPLATE AlreadyExistingParameterException : public BaseException
 {
 public:
 	/**
@@ -519,7 +519,7 @@ private:
 /**
  * \brief The exception thrown when referring to a non-existent parameter
  */
-class FARSA_CONF_TEMPLATE NonExistentParameterException : public BaseException
+class SALSA_CONF_TEMPLATE NonExistentParameterException : public BaseException
 {
 public:
 	/**
@@ -614,7 +614,7 @@ private:
  * \brief The exception thrown when trying to obtain the lowest common ancestor
  *        of two nodes on separated trees
  */
-class FARSA_CONF_TEMPLATE NoCommonAncestorException : public BaseException
+class SALSA_CONF_TEMPLATE NoCommonAncestorException : public BaseException
 {
 public:
 	/**
@@ -688,7 +688,7 @@ private:
  * \brief The exception thrown when trying to register a class whose parent or
  *        other ancestor has not been registered yet
  */
-class FARSA_CONF_TEMPLATE AncestorNotRegisteredException : public BaseException
+class SALSA_CONF_TEMPLATE AncestorNotRegisteredException : public BaseException
 {
 public:
 	/**
@@ -804,7 +804,7 @@ private:
  * \brief The exception thrown when there are incompatible configuration
  *        strategies in a class hierachy at registration time
  */
-class FARSA_CONF_TEMPLATE IncompatibleConfigurationStrategiesException : public BaseException
+class SALSA_CONF_TEMPLATE IncompatibleConfigurationStrategiesException : public BaseException
 {
 public:
 	/**
@@ -948,7 +948,7 @@ private:
  * \brief The exception thrown when trying to register a component without any
  *        registered parent component
  */
-class FARSA_CONF_TEMPLATE ComponentHasNoParentComponentException : public BaseException
+class SALSA_CONF_TEMPLATE ComponentHasNoParentComponentException : public BaseException
 {
 public:
 	/**
@@ -1044,7 +1044,7 @@ private:
  * \brief The exception thrown when trying to re-register a class that is
  *        already registered and has different characteristics or parents
  */
-class FARSA_CONF_TEMPLATE CannotReRegisterType : public BaseException
+class SALSA_CONF_TEMPLATE CannotReRegisterType : public BaseException
 {
 public:
 	/**
@@ -1160,7 +1160,7 @@ private:
  * \brief The exception thrown when requested class name is not registered with
  *        the factory
  */
-class FARSA_CONF_TEMPLATE ClassNameNotRegisteredException : public BaseException
+class SALSA_CONF_TEMPLATE ClassNameNotRegisteredException : public BaseException
 {
 public:
 	/**
@@ -1255,7 +1255,7 @@ private:
  * \brief The exception thrown when requested class name is registered but
  *        cannot be created because it is abstract
  */
-class FARSA_CONF_TEMPLATE ClassNameIsAbstractException : public BaseException
+class SALSA_CONF_TEMPLATE ClassNameIsAbstractException : public BaseException
 {
 public:
 	/**
@@ -1350,7 +1350,7 @@ private:
  * \brief The exception thrown when casting a Component object to the
  *        requested type fails
  */
-class FARSA_CONF_TEMPLATE CannotConvertToTypeException : public BaseException
+class SALSA_CONF_TEMPLATE CannotConvertToTypeException : public BaseException
 {
 public:
 	/**
@@ -1465,7 +1465,7 @@ private:
  * \brief The exception thrown when requested to create an object from a group
  *        and the "type" parameter is not in the group
  */
-class FARSA_CONF_TEMPLATE CannotFindTypeParameterException : public BaseException
+class SALSA_CONF_TEMPLATE CannotFindTypeParameterException : public BaseException
 {
 public:
 	/**
@@ -1559,7 +1559,7 @@ private:
  * \brief The exception thrown when trying to create an object from a using a
  *        prefix that is not a group
  */
-class FARSA_CONF_TEMPLATE PrefixNotGroupException : public BaseException
+class SALSA_CONF_TEMPLATE PrefixNotGroupException : public BaseException
 {
 public:
 	/**
@@ -1652,7 +1652,7 @@ private:
  * \brief The exception thrown when a cyclic dependency is discovered during
  *        object creation using the ConfigurationManager facilities
  */
-class FARSA_CONF_TEMPLATE CyclicDependencyException : public BaseException
+class SALSA_CONF_TEMPLATE CyclicDependencyException : public BaseException
 {
 public:
 	/**
@@ -1752,7 +1752,7 @@ private:
  * convenient way of throwing an exception of this type (see function
  * description)
  */
-class FARSA_CONF_TEMPLATE UserDefinedCheckFailureException : public BaseException
+class SALSA_CONF_TEMPLATE UserDefinedCheckFailureException : public BaseException
 {
 public:
 	/**
@@ -1886,7 +1886,7 @@ private:
 /**
  * \brief The exception thrown when requesting a resource never declared
  */
-class FARSA_CONF_TEMPLATE ResourceNotDeclaredException : public BaseException
+class SALSA_CONF_TEMPLATE ResourceNotDeclaredException : public BaseException
 {
 public:
 	/**
@@ -1980,7 +1980,7 @@ private:
 /**
  * \brief The exception thrown when requesting a resource never declared
  */
-class FARSA_CONF_TEMPLATE ResourceCannotResolveAmbiguityException : public BaseException
+class SALSA_CONF_TEMPLATE ResourceCannotResolveAmbiguityException : public BaseException
 {
 public:
 	/**
@@ -2090,7 +2090,7 @@ private:
  * \brief The exception thrown when using the function
  *        ResourceChangeNotifee::getResource() improperly
  */
-class FARSA_CONF_TEMPLATE CannotCallNotifeeGetResourceException : public BaseException
+class SALSA_CONF_TEMPLATE CannotCallNotifeeGetResourceException : public BaseException
 {
 public:
 	/**
@@ -2169,7 +2169,7 @@ private:
  * convenient way of throwing an exception of this type (see function
  * description)
  */
-class FARSA_CONF_TEMPLATE UserRequiredResourceMissingException : public BaseException
+class SALSA_CONF_TEMPLATE UserRequiredResourceMissingException : public BaseException
 {
 public:
 	/**
@@ -2284,7 +2284,7 @@ private:
  * \brief The exception thrown when trying to obtain a parameter that has not
  *        been described using ConfigurationHelper facilities
  */
-class FARSA_CONF_TEMPLATE ParameterNotRegisteredOrWithoutDefaultException : public BaseException
+class SALSA_CONF_TEMPLATE ParameterNotRegisteredOrWithoutDefaultException : public BaseException
 {
 public:
 	/**
@@ -2379,7 +2379,7 @@ private:
  * \brief The exception to throw when using the ConfigurationHelper function
  *        with the wrong type
  */
-class FARSA_CONF_TEMPLATE WrongParameterTypeException : public BaseException
+class SALSA_CONF_TEMPLATE WrongParameterTypeException : public BaseException
 {
 public:
 	/**
@@ -2514,7 +2514,7 @@ private:
  * \brief The exception to throw when an enum parameter has a default value that
  *        is not among the enum values
  */
-class FARSA_CONF_TEMPLATE InvalidEnumParameterDefaultException : public BaseException
+class SALSA_CONF_TEMPLATE InvalidEnumParameterDefaultException : public BaseException
 {
 public:
 	/**
@@ -2629,7 +2629,7 @@ private:
  * \brief The exception to throw when an enum parameter has a value that is not
  *        among the enum values
  */
-class FARSA_CONF_TEMPLATE InvalidEnumValueException : public BaseException
+class SALSA_CONF_TEMPLATE InvalidEnumValueException : public BaseException
 {
 public:
 	/**
@@ -2743,7 +2743,7 @@ private:
  * \brief The exception to throw when the value of a parameter cannot be
  *        converted to the requested type
  */
-class FARSA_CONF_TEMPLATE CannotConvertParameterValueToTypeException : public BaseException
+class SALSA_CONF_TEMPLATE CannotConvertParameterValueToTypeException : public BaseException
 {
 public:
 	/**
@@ -2859,7 +2859,7 @@ private:
  * \brief The exception to throw when the value of a numeric parameter is
  *        outside the declared range
  */
-class FARSA_CONF_TEMPLATE ParameterValueOutOfRangeException : public BaseException
+class SALSA_CONF_TEMPLATE ParameterValueOutOfRangeException : public BaseException
 {
 public:
 	/**
@@ -2973,7 +2973,7 @@ private:
 /**
  * \brief The exception thrown when trying to decode a list failed
  */
-class FARSA_CONF_TEMPLATE ListDecodeFailedException : public BaseException
+class SALSA_CONF_TEMPLATE ListDecodeFailedException : public BaseException
 {
 public:
 	/**
@@ -3068,7 +3068,7 @@ private:
  * \brief The exception thrown when trying to obtain the descriptor of a
  *        parameter or subgroup that has not been described
  */
-class FARSA_CONF_TEMPLATE ParameterOrSubgroupNotDescribedException : public BaseException
+class SALSA_CONF_TEMPLATE ParameterOrSubgroupNotDescribedException : public BaseException
 {
 public:
 	/**
@@ -3160,7 +3160,7 @@ private:
 	char m_errorMessage[512];
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 // All the suff below is to restore the warning state on Windows
 #if defined(_MSC_VER)

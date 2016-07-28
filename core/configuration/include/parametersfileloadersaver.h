@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -27,7 +27,7 @@
 #include <QString>
 #include <QTextStream>
 
-namespace farsa {
+namespace salsa {
 
 class ConfigurationManager;
 
@@ -40,7 +40,7 @@ class ConfigurationManager;
  *
  * \ingroup configuration_configuration
  */
-class FARSA_CONF_API ParametersFileLoaderSaver
+class SALSA_CONF_API ParametersFileLoaderSaver
 {
 public:
 	/**
@@ -100,6 +100,6 @@ protected:
 	virtual bool saveParameters(QTextStream& stream, const ConfigurationManager& configParams) = 0;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

@@ -5,38 +5,38 @@
 # "ctest --output-on-failure" in the build directory (instead of "make test").
 
 # Creating a library with helpers for test code
-set(FARSACONFIGURATIONTESTLIBRARY_SRCS
+set(SALSACONFIGURATIONTESTLIBRARY_SRCS
 	testhierarchy.cpp
 	testutils.cpp)
-set(FARSACONFIGURATIONTESTLIBRARY_HDRS
+set(SALSACONFIGURATIONTESTLIBRARY_HDRS
 	testhierarchy.h
 	testutils.h)
 
-add_library(farsaconfigurationtest STATIC ${FARSACONFIGURATIONTESTLIBRARY_SRCS} ${FARSACONFIGURATIONTESTLIBRARY_HDRS})
-target_link_libraries(farsaconfigurationtest farsaconfiguration Qt5::Test)
+add_library(salsaconfigurationtest STATIC ${SALSACONFIGURATIONTESTLIBRARY_SRCS} ${SALSACONFIGURATIONTESTLIBRARY_HDRS})
+target_link_libraries(salsaconfigurationtest salsaconfiguration Qt5::Test)
 
 # A function to declare a test. The only argument is the name of the test. The
 # source file of the test must have the same name of the test with a "_test.cpp"
 # suffix. "_test" is appended also the the name of the test
-function(addFarsaConfigurationTest testName)
+function(addSalsaConfigurationTest testName)
 	set(mangledTestName "${testName}_test")
 	add_executable("${mangledTestName}" "${mangledTestName}.cpp")
-	target_link_libraries("${mangledTestName}" farsaconfiguration farsaconfigurationtest Qt5::Test)
+	target_link_libraries("${mangledTestName}" salsaconfiguration salsaconfigurationtest Qt5::Test)
 	add_test(NAME "${mangledTestName}" COMMAND "${mangledTestName}")
 endfunction()
 
 # Adding all tests
-addFarsaConfigurationTest(functioncallssequencerecorder)
-addFarsaConfigurationTest(configurationhelper)
-addFarsaConfigurationTest(configurationkey)
-addFarsaConfigurationTest(configurationnode)
-addFarsaConfigurationTest(configurationmanager)
-addFarsaConfigurationTest(parametersfileloadersaver)
-addFarsaConfigurationTest(inifilesupport)
-addFarsaConfigurationTest(typesdb)
-addFarsaConfigurationTest(componentcreation)
-addFarsaConfigurationTest(configurationobserver)
-addFarsaConfigurationTest(resources)
-addFarsaConfigurationTest(componentdescription)
-addFarsaConfigurationTest(typesdbwithinterfaces)
-addFarsaConfigurationTest(componentdescriptionwithdescriptors)
+addSalsaConfigurationTest(functioncallssequencerecorder)
+addSalsaConfigurationTest(configurationhelper)
+addSalsaConfigurationTest(configurationkey)
+addSalsaConfigurationTest(configurationnode)
+addSalsaConfigurationTest(configurationmanager)
+addSalsaConfigurationTest(parametersfileloadersaver)
+addSalsaConfigurationTest(inifilesupport)
+addSalsaConfigurationTest(typesdb)
+addSalsaConfigurationTest(componentcreation)
+addSalsaConfigurationTest(configurationobserver)
+addSalsaConfigurationTest(resources)
+addSalsaConfigurationTest(componentdescription)
+addSalsaConfigurationTest(typesdbwithinterfaces)
+addSalsaConfigurationTest(componentdescriptionwithdescriptors)

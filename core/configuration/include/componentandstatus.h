@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -25,7 +25,7 @@
 
 #include "configurationconfig.h"
 
-namespace farsa {
+namespace salsa {
 
 class Component;
 
@@ -47,7 +47,7 @@ enum ComponentCreationStatus {
 /**
  * \brief The structure with the object for a node and its status
  */
-struct FARSA_CONF_TEMPLATE ComponentAndStatus
+struct SALSA_CONF_TEMPLATE ComponentAndStatus
 {
 	/**
 	 * \brief Constructor
@@ -93,6 +93,6 @@ struct FARSA_CONF_TEMPLATE ComponentAndStatus
 	ComponentCreationStatus status;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

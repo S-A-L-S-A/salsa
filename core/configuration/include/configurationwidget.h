@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -26,7 +26,7 @@
 #include "configurationconfig.h"
 #include <QWidget>
 
-namespace farsa {
+namespace salsa {
 
 class ConfigurationManager;
 
@@ -49,7 +49,7 @@ class ConfigurationManager;
  * returns a boolean value depending on whether this class will take care of all
  * the subgroups of the group given by prefix or not.
  */
-class FARSA_CONF_API ConfigurationWidget : public QWidget
+class SALSA_CONF_API ConfigurationWidget : public QWidget
 {
 	Q_OBJECT
 
@@ -114,6 +114,6 @@ protected:
 	const QString m_prefix;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

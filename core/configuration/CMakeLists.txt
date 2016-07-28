@@ -1,6 +1,6 @@
-# Script to compile the farsa configuration library
+# Script to compile the salsa configuration library
 
-set(FARSACONFIGURATION_SRCS
+set(SALSACONFIGURATION_SRCS
 	src/component.cpp
 	src/componentdescriptors.cpp
 	src/componentresource.cpp
@@ -14,7 +14,7 @@ set(FARSACONFIGURATION_SRCS
 	src/parametersfileloadersaver.cpp
 	src/typesdb.cpp
 	src/xmlfilesupport.cpp)
-set(FARSACONFIGURATION_HDRS
+set(SALSACONFIGURATION_HDRS
 	include/private/inifilesupport.h
 	include/private/xmlfilesupport.h
 	include/baseexception.h
@@ -34,32 +34,32 @@ set(FARSACONFIGURATION_HDRS
 	include/parametersfileloadersaver.h
 	include/typesdb.h)
 
-add_library(farsaconfiguration SHARED ${FARSACONFIGURATION_SRCS} ${FARSACONFIGURATION_HDRS})
-add_farsa_version(farsaconfiguration)
+add_library(salsaconfiguration SHARED ${SALSACONFIGURATION_SRCS} ${SALSACONFIGURATION_HDRS})
+add_salsa_version(salsaconfiguration)
 
 # Specifying the the include directories: they are used both here and  exported
 # by this library (so that targets linking this one will automatically import
 # the include directories declared here)
-target_include_directories(farsaconfiguration PUBLIC
+target_include_directories(salsaconfiguration PUBLIC
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-                           $<INSTALL_INTERFACE:include/farsa/configuration>)
+                           $<INSTALL_INTERFACE:include/salsa/configuration>)
 
 # Adding dependencies (they are also exported, so targets linking this one will
 # automatically link libraries declared here)
-target_link_libraries(farsaconfiguration Qt5::Core Qt5::Xml Qt5::Concurrent Qt5::Widgets)
+target_link_libraries(salsaconfiguration Qt5::Core Qt5::Xml Qt5::Concurrent Qt5::Widgets)
 
 # Specifying the public headers of this target
-set_property(TARGET farsaconfiguration PROPERTY PUBLIC_HEADER ${FARSACONFIGURATION_HDRS})
+set_property(TARGET salsaconfiguration PROPERTY PUBLIC_HEADER ${SALSACONFIGURATION_HDRS})
 
 # Defines to use when compiling the library
-target_compile_definitions(farsaconfiguration PRIVATE FARSA_CONF_BUILDING_DLL)
+target_compile_definitions(salsaconfiguration PRIVATE SALSA_CONF_BUILDING_DLL)
 
 # Installation paths
-install(TARGETS farsaconfiguration
-        EXPORT farsa
+install(TARGETS salsaconfiguration
+        EXPORT salsa
         ARCHIVE DESTINATION lib/
         LIBRARY DESTINATION lib/
-        PUBLIC_HEADER DESTINATION include/farsa/configuration
+        PUBLIC_HEADER DESTINATION include/salsa/configuration
         RUNTIME DESTINATION bin/)
 
 # This directory contains unit tests for this library

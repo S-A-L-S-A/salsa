@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -30,7 +30,7 @@
 //
 // Do more tests...
 
-using namespace farsa;
+using namespace salsa;
 using namespace TypesDBWithInterfacesTestHierarchy;
 
 /**
@@ -45,7 +45,7 @@ class TypesDBWithInterfaces_Test : public QObject
 private slots:
 	void conversionToComponentTemplate()
 	{
-		QVERIFY(__Factory_internal::isComponent<farsa::Component>::value);
+		QVERIFY(__Factory_internal::isComponent<salsa::Component>::value);
 		QVERIFY(!__Factory_internal::isComponent<InterfaceDummy>::value);
 	}
 

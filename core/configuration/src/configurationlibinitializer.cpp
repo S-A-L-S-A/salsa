@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -26,9 +26,9 @@
 #include "configurationconfig.h"
 #include "typesdb.h"
 
-namespace farsa {
+namespace salsa {
 
-bool FARSA_CONF_API initConfigurationLib()
+bool SALSA_CONF_API initConfigurationLib()
 {
 	static bool alreadyCalled = false;
 	if (alreadyCalled) {
@@ -46,4 +46,4 @@ bool FARSA_CONF_API initConfigurationLib()
 const char* GroupSeparator = "/";
 const char* ParentGroup = "..";
 
-} // end namespace farsa
+} // end namespace salsa

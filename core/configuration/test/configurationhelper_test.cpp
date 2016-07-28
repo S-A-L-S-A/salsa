@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -39,7 +39,7 @@
 // Re-add functions to get lists directly from parameters (for the moment we
 // 	only have functions to encode/decode lists to/from string
 
-using namespace farsa;
+using namespace salsa;
 
 // The class with descriptions
 class TestComponentWithDescriptions : public Component

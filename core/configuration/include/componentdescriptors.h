@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -35,7 +35,7 @@
 class ComponentDescription_Test;
 class ConfigurationHelper_Test;
 
-namespace farsa {
+namespace salsa {
 
 class ConfigurationManager;
 
@@ -93,12 +93,12 @@ enum ParameterProperty
 };
 Q_DECLARE_FLAGS(ParameterProperties, ParameterProperty)
 
-} // end namesapce farsa
+} // end namesapce salsa
 
 // This macro works only outside namespaces
-Q_DECLARE_OPERATORS_FOR_FLAGS(farsa::ParameterProperties)
+Q_DECLARE_OPERATORS_FOR_FLAGS(salsa::ParameterProperties)
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief Constant indicating an infinity double number
@@ -121,7 +121,7 @@ extern const int MinInteger;
  * \param type the type for which a string representation is requested
  * \return the string representation of the descriptor
  */
-QString FARSA_CONF_API descriptorType2String(DescriptorType type);
+QString SALSA_CONF_API descriptorType2String(DescriptorType type);
 
 /**
  * \brief Returns the DescriptorType representing the given descriptor
@@ -131,7 +131,7 @@ QString FARSA_CONF_API descriptorType2String(DescriptorType type);
  * \return the DescriptorType representation of the parameter
  */
 template <class T>
-DescriptorType FARSA_CONF_TEMPLATE type2DescriptorType()
+DescriptorType SALSA_CONF_TEMPLATE type2DescriptorType()
 {
 	return UnknownDescriptorType;
 }
@@ -144,7 +144,7 @@ DescriptorType FARSA_CONF_TEMPLATE type2DescriptorType()
  * \return the DescriptorType representation of the parameter
  */
 template <>
-DescriptorType FARSA_CONF_API type2DescriptorType<StringDescriptor>();
+DescriptorType SALSA_CONF_API type2DescriptorType<StringDescriptor>();
 
 /**
  * \brief Returns the DescriptorType representing the given descriptor
@@ -154,7 +154,7 @@ DescriptorType FARSA_CONF_API type2DescriptorType<StringDescriptor>();
  * \return the DescriptorType representation of the parameter
  */
 template <>
-DescriptorType FARSA_CONF_API type2DescriptorType<IntDescriptor>();
+DescriptorType SALSA_CONF_API type2DescriptorType<IntDescriptor>();
 
 /**
  * \brief Returns the DescriptorType representing the given descriptor
@@ -164,7 +164,7 @@ DescriptorType FARSA_CONF_API type2DescriptorType<IntDescriptor>();
  * \return the DescriptorType representation of the parameter
  */
 template <>
-DescriptorType FARSA_CONF_API type2DescriptorType<RealDescriptor>();
+DescriptorType SALSA_CONF_API type2DescriptorType<RealDescriptor>();
 
 /**
  * \brief Returns the DescriptorType representing the given descriptor
@@ -174,7 +174,7 @@ DescriptorType FARSA_CONF_API type2DescriptorType<RealDescriptor>();
  * \return the DescriptorType representation of the parameter
  */
 template <>
-DescriptorType FARSA_CONF_API type2DescriptorType<BoolDescriptor>();
+DescriptorType SALSA_CONF_API type2DescriptorType<BoolDescriptor>();
 
 /**
  * \brief Returns the DescriptorType representing the given descriptor
@@ -184,7 +184,7 @@ DescriptorType FARSA_CONF_API type2DescriptorType<BoolDescriptor>();
  * \return the DescriptorType representation of the parameter
  */
 template <>
-DescriptorType FARSA_CONF_API type2DescriptorType<EnumDescriptor>();
+DescriptorType SALSA_CONF_API type2DescriptorType<EnumDescriptor>();
 
 /**
  * \brief Returns the DescriptorType representing the given descriptor
@@ -194,7 +194,7 @@ DescriptorType FARSA_CONF_API type2DescriptorType<EnumDescriptor>();
  * \return the DescriptorType representation of the parameter
  */
 template <>
-DescriptorType FARSA_CONF_API type2DescriptorType<ComponentDescriptor>();
+DescriptorType SALSA_CONF_API type2DescriptorType<ComponentDescriptor>();
 
 /**
  * \brief Returns the DescriptorType representing the given descriptor
@@ -204,7 +204,7 @@ DescriptorType FARSA_CONF_API type2DescriptorType<ComponentDescriptor>();
  * \return the DescriptorType representation of the parameter
  */
 template <>
-DescriptorType FARSA_CONF_API type2DescriptorType<SubgroupDescriptor>();
+DescriptorType SALSA_CONF_API type2DescriptorType<SubgroupDescriptor>();
 
 /**
  * \brief Returns the DescriptorType for the given string
@@ -213,7 +213,7 @@ DescriptorType FARSA_CONF_API type2DescriptorType<SubgroupDescriptor>();
  * \return the DescriptorType for the given string. If str does not represent
  *         any type, UnknownDescriptorType is returned
  */
-DescriptorType FARSA_CONF_API string2DescriptorType(const QString& str);
+DescriptorType SALSA_CONF_API string2DescriptorType(const QString& str);
 
 /**
  * \brief The abstract base of all descriptors
@@ -221,7 +221,7 @@ DescriptorType FARSA_CONF_API string2DescriptorType(const QString& str);
  * This has a protected costructor and removed copy costructor and operator.
  * Instances of this class and of its subclasses cannot be created directly
  */
-class FARSA_CONF_API AbstractDescriptor
+class SALSA_CONF_API AbstractDescriptor
 {
 protected:
 	AbstractDescriptor(ConfigurationManager* descr, const QString& path);
@@ -293,7 +293,7 @@ private:
  * \brief The abstract base class of all descriptors that contain other
  *        descriptors
  */
-class FARSA_CONF_API AbstractDescriptorContainer
+class SALSA_CONF_API AbstractDescriptorContainer
 {
 public:
 	/**
@@ -615,7 +615,7 @@ private:
 /**
  * \brief Utility class to customize the description of a String parameters
  */
-class FARSA_CONF_API StringDescriptor : public AbstractDescriptor
+class SALSA_CONF_API StringDescriptor : public AbstractDescriptor
 {
 private:
 	StringDescriptor(ConfigurationManager* descr, QString paramPath);
@@ -686,7 +686,7 @@ private:
 /**
  * \brief Utility class to customize the description of an Integer parameter
  */
-class FARSA_CONF_API IntDescriptor : public AbstractDescriptor
+class SALSA_CONF_API IntDescriptor : public AbstractDescriptor
 {
 private:
 	IntDescriptor(ConfigurationManager* descr, QString paramPath);
@@ -783,7 +783,7 @@ private:
 /**
  * \brief Utility class to customize the description of a Real parameter
  */
-class FARSA_CONF_API RealDescriptor : public AbstractDescriptor
+class SALSA_CONF_API RealDescriptor : public AbstractDescriptor
 {
 private:
 	RealDescriptor(ConfigurationManager* descr, QString paramPath);
@@ -880,7 +880,7 @@ private:
 /**
  * \brief Utility class to customize the description of a Bool parameter
  */
-class FARSA_CONF_API BoolDescriptor : public AbstractDescriptor
+class SALSA_CONF_API BoolDescriptor : public AbstractDescriptor
 {
 private:
 	BoolDescriptor(ConfigurationManager* descr, QString paramPath);
@@ -951,7 +951,7 @@ private:
 /**
  * \brief Utility class to customize the description of an Enum-like parameter
  */
-class FARSA_CONF_API EnumDescriptor : public AbstractDescriptor
+class SALSA_CONF_API EnumDescriptor : public AbstractDescriptor
 {
 private:
 	EnumDescriptor(ConfigurationManager* descr, QString paramPath);
@@ -1036,7 +1036,7 @@ private:
 /**
  * \brief Utility class to customize the description of a Component parameter
  */
-class FARSA_CONF_API ComponentDescriptor : public AbstractDescriptor
+class SALSA_CONF_API ComponentDescriptor : public AbstractDescriptor
 {
 private:
 	ComponentDescriptor(ConfigurationManager* descr, QString paramPath);
@@ -1101,7 +1101,7 @@ private:
 /**
  * \brief Utility class to customize the description of an subgroup
  */
-class FARSA_CONF_API SubgroupDescriptor : public AbstractDescriptor, public AbstractDescriptorContainer
+class SALSA_CONF_API SubgroupDescriptor : public AbstractDescriptor, public AbstractDescriptorContainer
 {
 private:
 	SubgroupDescriptor(ConfigurationManager* descr, QString subgroupPath);
@@ -1196,7 +1196,7 @@ private:
  * about a registered component) use the TypesDB::typeDescription(QString)
  * function, passing the name of the type.
  */
-class FARSA_CONF_API RegisteredComponentDescriptor : public AbstractDescriptorContainer
+class SALSA_CONF_API RegisteredComponentDescriptor : public AbstractDescriptorContainer
 {
 private:
 	RegisteredComponentDescriptor(ConfigurationManager* descr, QString type);
@@ -1252,6 +1252,6 @@ private:
 	friend class ::ConfigurationHelper_Test;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -31,13 +31,13 @@
 #include <QDomNode>
 #include "baseexception.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief Exception throw by loadParameters when a mandatory attribute is
  *        missing
  */
-class FARSA_CONF_TEMPLATE XMLFileMandatoryAttributeMissing : public BaseException
+class SALSA_CONF_TEMPLATE XMLFileMandatoryAttributeMissing : public BaseException
 {
 public:
 	/**
@@ -132,7 +132,7 @@ private:
  *
  * \ingroup configuration_configuration
  */
-class FARSA_CONF_API XMLFileLoaderSaver : public ParametersFileLoaderSaver
+class SALSA_CONF_API XMLFileLoaderSaver : public ParametersFileLoaderSaver
 {
 public:
 	/**
@@ -170,6 +170,6 @@ private:
 	void loadGroupFromXMLDoc( const QDomNode& xmlnode, QString groupPath, ConfigurationManager& configParams );
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

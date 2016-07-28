@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
  *                                                                         *
@@ -24,60 +24,60 @@
 #include "typesdb.h"
 
 namespace TypesDBTestHierarchy {
-	InstantiableComponentConfigInConstructor::InstantiableComponentConfigInConstructor(farsa::ConfigurationManager& params)
+	InstantiableComponentConfigInConstructor::InstantiableComponentConfigInConstructor(salsa::ConfigurationManager& params)
 		: Component(params)
 	{
 	}
 
-	InstantiableComponentConfigInFunction::InstantiableComponentConfigInFunction(farsa::ConfigurationManager& params)
+	InstantiableComponentConfigInFunction::InstantiableComponentConfigInFunction(salsa::ConfigurationManager& params)
 		: Component(params)
 	{
 	}
 
-	AbstractComponent::AbstractComponent(farsa::ConfigurationManager& params)
+	AbstractComponent::AbstractComponent(salsa::ConfigurationManager& params)
 		: Component(params)
 	{
 	}
 
-	ComponentWithCustomCreator::ComponentWithCustomCreator(farsa::ConfigurationManager& params, int)
+	ComponentWithCustomCreator::ComponentWithCustomCreator(salsa::ConfigurationManager& params, int)
 		: Component(params)
 	{
 	}
 
-	ComponentWithCustomCreator* ComponentCustomCreator::instantiate(farsa::ConfigurationManager& settings, QString, farsa::ResourceAccessor*)
+	ComponentWithCustomCreator* ComponentCustomCreator::instantiate(salsa::ConfigurationManager& settings, QString, salsa::ResourceAccessor*)
 	{
 		return new ComponentWithCustomCreator(settings, 17);
 	}
 
-	SampleHierarchyRoot::SampleHierarchyRoot(farsa::ConfigurationManager& params)
+	SampleHierarchyRoot::SampleHierarchyRoot(salsa::ConfigurationManager& params)
 		: Component(params)
 	{
 	}
 
-	SampleHierarchyChildOne::SampleHierarchyChildOne(farsa::ConfigurationManager& params)
+	SampleHierarchyChildOne::SampleHierarchyChildOne(salsa::ConfigurationManager& params)
 		: SampleHierarchyRoot(params)
 	{
 	}
 
-	SampleHierarchyGrandChild::SampleHierarchyGrandChild(farsa::ConfigurationManager& params)
+	SampleHierarchyGrandChild::SampleHierarchyGrandChild(salsa::ConfigurationManager& params)
 		: SampleHierarchyChildOne(params)
 	{
 	}
 
-	SampleHierarchyChildTwo::SampleHierarchyChildTwo(farsa::ConfigurationManager& params)
+	SampleHierarchyChildTwo::SampleHierarchyChildTwo(salsa::ConfigurationManager& params)
 		: SampleHierarchyRoot(params)
 	{
 	}
 
-	SampleHierarchyAbstractChild::SampleHierarchyAbstractChild(farsa::ConfigurationManager& params)
+	SampleHierarchyAbstractChild::SampleHierarchyAbstractChild(salsa::ConfigurationManager& params)
 		: SampleHierarchyRoot(params)
 	{
 	}
 }
 
 namespace TypesDBWithInterfacesTestHierarchy {
-	MultipleInterfacesComponent::MultipleInterfacesComponent(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	MultipleInterfacesComponent::MultipleInterfacesComponent(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, InterfaceA()
 		, InterfaceB()
 	{
@@ -89,7 +89,7 @@ namespace TypesDBWithInterfacesTestHierarchy {
 namespace ComponentInstantiationTestHierarchy {
 	void registerAllComponents()
 	{
-		using namespace farsa;
+		using namespace salsa;
 
 		TypesDB::instance().registerType<Standalone>("Standalone", QStringList() << "Component");
 		TypesDB::instance().registerType<StandaloneWithConfigure>("StandaloneWithConfigure", QStringList() << "Component");
@@ -121,23 +121,23 @@ namespace ComponentInstantiationTestHierarchy {
 		TypesDB::instance().registerType<DestructionAnother>("DestructionAnother", QStringList() << "DestructionAbstractAnother");
 	}
 
-	void throwExceptionIfThrowParameterExists(const farsa::Component* component)
+	void throwExceptionIfThrowParameterExists(const salsa::Component* component)
 	{
 		const QString p = component->confPath() + "throwException";
 		if (component->configurationManager().parameterExists(p)) {
-			farsa::ConfigurationHelper::throwUserConfigError(p, "", "We were forced to throw an exception");
+			salsa::ConfigurationHelper::throwUserConfigError(p, "", "We were forced to throw an exception");
 		}
 	}
 
-	void throwExceptionIfThrowInPostConfigureParameterExists(const farsa::Component* component)
+	void throwExceptionIfThrowInPostConfigureParameterExists(const salsa::Component* component)
 	{
 		const QString p = component->confPath() + "throwExceptionInPostConfigure";
 		if (component->configurationManager().parameterExists(p)) {
-			farsa::ConfigurationHelper::throwUserConfigError(p, "", "We were forced to throw an exception");
+			salsa::ConfigurationHelper::throwUserConfigError(p, "", "We were forced to throw an exception");
 		}
 	}
 
-	Standalone::Standalone(farsa::ConfigurationManager& params)
+	Standalone::Standalone(salsa::ConfigurationManager& params)
 		: Component(params)
 		, m_param(0)
 	{
@@ -164,7 +164,7 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	StandaloneWithConfigure::StandaloneWithConfigure(farsa::ConfigurationManager& params)
+	StandaloneWithConfigure::StandaloneWithConfigure(salsa::ConfigurationManager& params)
 		: Component(params)
 		, m_param(0)
 	{
@@ -191,8 +191,8 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	One::One(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	One::One(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_p1()
 		, m_p2()
 		, m_another()
@@ -254,8 +254,8 @@ namespace ComponentInstantiationTestHierarchy {
 		return m_two2.get();
 	}
 
-	Two::Two(farsa::ConfigurationManager& params, float f)
-		: farsa::Component(params)
+	Two::Two(salsa::ConfigurationManager& params, float f)
+		: salsa::Component(params)
 		, m_f(f)
 		, m_p1()
 		, m_three()
@@ -294,13 +294,13 @@ namespace ComponentInstantiationTestHierarchy {
 		return m_three.get();
 	}
 
-	Two* TwoCreator::instantiate(farsa::ConfigurationManager& settings, QString, farsa::ResourceAccessor*)
+	Two* TwoCreator::instantiate(salsa::ConfigurationManager& settings, QString, salsa::ResourceAccessor*)
 	{
 		return new Two(settings, 13.15);
 	}
 
-	AbstractThree::AbstractThree(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	AbstractThree::AbstractThree(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_pithree()
 	{
 		FC("AbstractThree::AbstractThree");
@@ -331,7 +331,7 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	Three::Three(farsa::ConfigurationManager& params)
+	Three::Three(salsa::ConfigurationManager& params)
 		: AbstractThree(params)
 		, m_pithreeAA()
 	{
@@ -368,8 +368,8 @@ namespace ComponentInstantiationTestHierarchy {
 		FC("Three::f");
 	}
 
-	AbstractAnother::AbstractAnother(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	AbstractAnother::AbstractAnother(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 	{
 		FC("AbstractAnother::AbstractAnother");
 
@@ -397,7 +397,7 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	Another::Another(farsa::ConfigurationManager& params)
+	Another::Another(salsa::ConfigurationManager& params)
 		: AbstractAnother(params)
 		, m_pa()
 		, m_three()
@@ -442,8 +442,8 @@ namespace ComponentInstantiationTestHierarchy {
 		return m_three.get();
 	}
 
-	CorrectCircularDependencyRoot::CorrectCircularDependencyRoot(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	CorrectCircularDependencyRoot::CorrectCircularDependencyRoot(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_a()
 	{
 		FC("CorrectCircularDependencyRoot::CorrectCircularDependencyRoot");
@@ -470,8 +470,8 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	CorrectCircularDependencyA::CorrectCircularDependencyA(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	CorrectCircularDependencyA::CorrectCircularDependencyA(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_b()
 	{
 		FC("CorrectCircularDependencyA::CorrectCircularDependencyA");
@@ -498,8 +498,8 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	CorrectCircularDependencyB::CorrectCircularDependencyB(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	CorrectCircularDependencyB::CorrectCircularDependencyB(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_a(NULL)
 	{
 		FC("CorrectCircularDependencyB::CorrectCircularDependencyB");
@@ -526,8 +526,8 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	ConstructorCircularDependencyRoot::ConstructorCircularDependencyRoot(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	ConstructorCircularDependencyRoot::ConstructorCircularDependencyRoot(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_a()
 	{
 		FC("ConstructorCircularDependencyRoot::ConstructorCircularDependencyRoot");
@@ -554,7 +554,7 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	ConstructorCircularDependencyA::ConstructorCircularDependencyA(farsa::ConfigurationManager& params)
+	ConstructorCircularDependencyA::ConstructorCircularDependencyA(salsa::ConfigurationManager& params)
 		: Component(params)
 		, m_b()
 	{
@@ -575,7 +575,7 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	ConstructorCircularDependencyB::ConstructorCircularDependencyB(farsa::ConfigurationManager& params)
+	ConstructorCircularDependencyB::ConstructorCircularDependencyB(salsa::ConfigurationManager& params)
 		: Component(params)
 		, m_a(NULL)
 	{
@@ -598,8 +598,8 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	WrongCircularDependencyRoot::WrongCircularDependencyRoot(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	WrongCircularDependencyRoot::WrongCircularDependencyRoot(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_a()
 	{
 		FC("WrongCircularDependencyRoot::WrongCircularDependencyRoot");
@@ -626,8 +626,8 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	WrongCircularDependencyA::WrongCircularDependencyA(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	WrongCircularDependencyA::WrongCircularDependencyA(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_b()
 	{
 		FC("WrongCircularDependencyA::WrongCircularDependencyA");
@@ -654,8 +654,8 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	WrongCircularDependencyB::WrongCircularDependencyB(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	WrongCircularDependencyB::WrongCircularDependencyB(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_a(NULL)
 	{
 		FC("WrongCircularDependencyB::WrongCircularDependencyB");
@@ -682,8 +682,8 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	DestructionOne::DestructionOne(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	DestructionOne::DestructionOne(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_p1()
 		, m_p2()
 		, m_another(NULL)
@@ -725,8 +725,8 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	DestructionTwo::DestructionTwo(farsa::ConfigurationManager& params, float f)
-		: farsa::Component(params)
+	DestructionTwo::DestructionTwo(salsa::ConfigurationManager& params, float f)
+		: salsa::Component(params)
 		, m_f(f)
 		, m_p1()
 		, m_three(NULL)
@@ -760,13 +760,13 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	DestructionTwo* DestructionTwoCreator::instantiate(farsa::ConfigurationManager& settings, QString, farsa::ResourceAccessor*)
+	DestructionTwo* DestructionTwoCreator::instantiate(salsa::ConfigurationManager& settings, QString, salsa::ResourceAccessor*)
 	{
 		return new DestructionTwo(settings, 13.15);
 	}
 
-	DestructionAbstractThree::DestructionAbstractThree(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	DestructionAbstractThree::DestructionAbstractThree(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_pithree()
 	{
 		FC("DestructionAbstractThree::DestructionAbstractThree");
@@ -797,7 +797,7 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	DestructionThree::DestructionThree(farsa::ConfigurationManager& params)
+	DestructionThree::DestructionThree(salsa::ConfigurationManager& params)
 		: DestructionAbstractThree(params)
 		, m_pithreeAA()
 	{
@@ -834,8 +834,8 @@ namespace ComponentInstantiationTestHierarchy {
 		FC("DestructionThree::f");
 	}
 
-	DestructionAbstractAnother::DestructionAbstractAnother(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	DestructionAbstractAnother::DestructionAbstractAnother(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 	{
 		FC("DestructionAbstractAnother::DestructionAbstractAnother");
 
@@ -863,7 +863,7 @@ namespace ComponentInstantiationTestHierarchy {
 		throwExceptionIfThrowInPostConfigureParameterExists(this);
 	}
 
-	DestructionAnother::DestructionAnother(farsa::ConfigurationManager& params)
+	DestructionAnother::DestructionAnother(salsa::ConfigurationManager& params)
 		: DestructionAbstractAnother(params)
 		, m_pa()
 		, m_three(NULL)
@@ -907,7 +907,7 @@ namespace ComponentInstantiationTestHierarchy {
 namespace ConfigurationObserverTestHierarchy {
 	void registerAllComponents()
 	{
-		using namespace farsa;
+		using namespace salsa;
 
 		TypesDB::instance().registerType<One>("One", QStringList() << "Component");
 		TypesDB::instance().registerType<Two>("Two", QStringList() << "Component");
@@ -915,8 +915,8 @@ namespace ConfigurationObserverTestHierarchy {
 		TypesDB::instance().registerType<Another>("Another", QStringList() << "Component");
 	}
 
-	One::One(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	One::One(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_another(NULL)
 		, m_two(NULL)
 	{
@@ -934,8 +934,8 @@ namespace ConfigurationObserverTestHierarchy {
 		return m_two;
 	}
 
-	Two::Two(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	Two::Two(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_three(NULL)
 	{
 		m_three = params.getComponentFromGroup<Three>(confPath() + "three");
@@ -946,8 +946,8 @@ namespace ConfigurationObserverTestHierarchy {
 		return m_three;
 	}
 
-	Three::Three(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	Three::Three(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 	{
 	}
 
@@ -956,8 +956,8 @@ namespace ConfigurationObserverTestHierarchy {
 		Component::configure();
 	}
 
-	Another::Another(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	Another::Another(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_three(NULL)
 	{
 		m_three = configurationManager().getComponentFromGroup<Three>(confPath() + "three");
@@ -971,9 +971,9 @@ namespace ConfigurationObserverTestHierarchy {
 
 namespace ResourcesTestHierarchy {
 	namespace {
-		void useGetResourceIfNameRecognized(farsa::ResourceChangeNotifee* notifee, QString name, farsa::ResourceChangeType changeType)
+		void useGetResourceIfNameRecognized(salsa::ResourceChangeNotifee* notifee, QString name, salsa::ResourceChangeType changeType)
 		{
-			if (changeType == farsa::ResourceDeleted) {
+			if (changeType == salsa::ResourceDeleted) {
 				return;
 			}
 
@@ -986,9 +986,9 @@ namespace ResourcesTestHierarchy {
 			} else if (name.startsWith("nb")) {
 				notifee->getResource<bool>();
 			} else if (name.startsWith("nr")) {
-				notifee->getResource<farsa::Resource>();
+				notifee->getResource<salsa::Resource>();
 			} else if (name.startsWith("nc")) {
-				notifee->getResource<farsa::Component>();
+				notifee->getResource<salsa::Component>();
 			} else if (name.startsWith("nq")) {
 				notifee->getResource<QObject>();
 			}
@@ -998,7 +998,7 @@ namespace ResourcesTestHierarchy {
 
 	void registerAllComponents()
 	{
-		using namespace farsa;
+		using namespace salsa;
 
 		TypesDB::instance().registerType<Standalone>("Standalone", QStringList() << "Component");
 		TypesDB::instance().registerType<One>("One", QStringList() << "Component");
@@ -1017,25 +1017,25 @@ namespace ResourcesTestHierarchy {
 		TypesDB::instance().registerType<RCCSecond, RCCSecondCreator>("RCCSecond", QStringList() << "Component");
 	}
 
-	Standalone::Standalone(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	Standalone::Standalone(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 	{
 	}
 
-	QString nameForNotifyResourceChangeWithParameters(QString className, QString name, farsa::Component* owner, farsa::ResourceChangeType changeType)
+	QString nameForNotifyResourceChangeWithParameters(QString className, QString name, salsa::Component* owner, salsa::ResourceChangeType changeType)
 	{
 		QString funcName = className + "::resourceChanged(" + name + ", " + owner->confPath() + ", ";
 		switch (changeType) {
-			case farsa::ResourceCreated:
+			case salsa::ResourceCreated:
 				funcName += "ResourceCreated";
 				break;
-			case farsa::ResourceModified:
+			case salsa::ResourceModified:
 				funcName += "ResourceModified";
 				break;
-			case farsa::ResourceDeclaredAsNull:
+			case salsa::ResourceDeclaredAsNull:
 				funcName += "ResourceDeclaredAsNull";
 				break;
-			case farsa::ResourceDeleted:
+			case salsa::ResourceDeleted:
 				funcName += "ResourceDeleted";
 				break;
 		}
@@ -1044,8 +1044,8 @@ namespace ResourcesTestHierarchy {
 		return funcName;
 	}
 
-	One::One(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	One::One(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 	{
 		FC("One::One");
 
@@ -1063,15 +1063,15 @@ namespace ResourcesTestHierarchy {
 		return m_two;
 	}
 
-	void One::resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType)
+	void One::resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType)
 	{
 		FC(nameForNotifyResourceChangeWithParameters("One", name, owner, changeType));
 
 		useGetResourceIfNameRecognized(this, name, changeType);
 	}
 
-	Two::Two(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	Two::Two(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 	{
 		FC("Two::Two");
 
@@ -1083,7 +1083,7 @@ namespace ResourcesTestHierarchy {
 		return m_three;
 	}
 
-	void Two::resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType)
+	void Two::resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType)
 	{
 		FC(nameForNotifyResourceChangeWithParameters("Two", name, owner, changeType));
 
@@ -1091,8 +1091,8 @@ namespace ResourcesTestHierarchy {
 		useGetResourceIfNameRecognized(this, name, changeType);
 	}
 
-	Three::Three(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	Three::Three(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 	{
 		FC("Three::Three");
 
@@ -1104,28 +1104,28 @@ namespace ResourcesTestHierarchy {
 		return m_subThree;
 	}
 
-	void Three::resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType)
+	void Three::resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType)
 	{
 		FC(nameForNotifyResourceChangeWithParameters("Three", name, owner, changeType));
 
 		useGetResourceIfNameRecognized(this, name, changeType);
 	}
 
-	SubThree::SubThree(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	SubThree::SubThree(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 	{
 		FC("SubThree::SubThree");
 	}
 
-	void SubThree::resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType)
+	void SubThree::resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType)
 	{
 		FC(nameForNotifyResourceChangeWithParameters("SubThree", name, owner, changeType));
 
 		useGetResourceIfNameRecognized(this, name, changeType);
 	}
 
-	Another::Another(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	Another::Another(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 	{
 		FC("Another::Another");
 
@@ -1143,28 +1143,28 @@ namespace ResourcesTestHierarchy {
 		return m_subAnother;
 	}
 
-	void Another::resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType)
+	void Another::resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType)
 	{
 		FC(nameForNotifyResourceChangeWithParameters("Another", name, owner, changeType));
 
 		useGetResourceIfNameRecognized(this, name, changeType);
 	}
 
-	SubAnother::SubAnother(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	SubAnother::SubAnother(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 	{
 		FC("SubAnother::SubAnother");
 	}
 
-	void SubAnother::resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType)
+	void SubAnother::resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType)
 	{
 		FC(nameForNotifyResourceChangeWithParameters("SubAnother", name, owner, changeType));
 
 		useGetResourceIfNameRecognized(this, name, changeType);
 	}
 
-	RCOne::RCOne(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	RCOne::RCOne(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 	{
 		FC("RCOne::RCOne");
 
@@ -1184,15 +1184,15 @@ namespace ResourcesTestHierarchy {
 		return m_two;
 	}
 
-	void RCOne::resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType)
+	void RCOne::resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType)
 	{
 		FC(nameForNotifyResourceChangeWithParameters("RCOne", name, owner, changeType));
 
 		useGetResourceIfNameRecognized(this, name, changeType);
 	}
 
-	RCTwo::RCTwo(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	RCTwo::RCTwo(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_bTwo(false)
 	{
 		FC("RCTwo::RCTwo");
@@ -1207,15 +1207,15 @@ namespace ResourcesTestHierarchy {
 		return m_three;
 	}
 
-	void RCTwo::resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType)
+	void RCTwo::resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType)
 	{
 		FC(nameForNotifyResourceChangeWithParameters("RCTwo", name, owner, changeType));
 
 		useGetResourceIfNameRecognized(this, name, changeType);
 	}
 
-	RCThree::RCThree(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	RCThree::RCThree(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_ambiguous(17)
 	{
 		FC("RCThree::RCThree");
@@ -1230,15 +1230,15 @@ namespace ResourcesTestHierarchy {
 		return m_subThree;
 	}
 
-	void RCThree::resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType)
+	void RCThree::resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType)
 	{
 		FC(nameForNotifyResourceChangeWithParameters("RCThree", name, owner, changeType));
 
 		useGetResourceIfNameRecognized(this, name, changeType);
 	}
 
-	RCSubThree::RCSubThree(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	RCSubThree::RCSubThree(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_sub(13.0)
 	{
 		FC("RCSubThree::RCSubThree");
@@ -1246,15 +1246,15 @@ namespace ResourcesTestHierarchy {
 		declareResource("sub", &m_sub);
 	}
 
-	void RCSubThree::resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType)
+	void RCSubThree::resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType)
 	{
 		FC(nameForNotifyResourceChangeWithParameters("RCSubThree", name, owner, changeType));
 
 		useGetResourceIfNameRecognized(this, name, changeType);
 	}
 
-	RCAnother::RCAnother(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	RCAnother::RCAnother(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 	{
 		FC("RCAnother::RCAnother");
 
@@ -1276,15 +1276,15 @@ namespace ResourcesTestHierarchy {
 		return m_subAnother;
 	}
 
-	void RCAnother::resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType)
+	void RCAnother::resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType)
 	{
 		FC(nameForNotifyResourceChangeWithParameters("RCAnother", name, owner, changeType));
 
 		useGetResourceIfNameRecognized(this, name, changeType);
 	}
 
-	RCSubAnother::RCSubAnother(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	RCSubAnother::RCSubAnother(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_ambiguous(1)
 	{
 		FC("RCSubAnother::RCSubAnother");
@@ -1294,15 +1294,15 @@ namespace ResourcesTestHierarchy {
 		getResource<Component>("one");
 	}
 
-	void RCSubAnother::resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType)
+	void RCSubAnother::resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType)
 	{
 		FC(nameForNotifyResourceChangeWithParameters("RCSubAnother", name, owner, changeType));
 
 		useGetResourceIfNameRecognized(this, name, changeType);
 	}
 
-	RCCFirst::RCCFirst(farsa::ConfigurationManager& params)
-		: farsa::Component(params)
+	RCCFirst::RCCFirst(salsa::ConfigurationManager& params)
+		: salsa::Component(params)
 		, m_resource(17)
 		, m_second(NULL)
 	{
@@ -1316,8 +1316,8 @@ namespace ResourcesTestHierarchy {
 		return m_second;
 	}
 
-	RCCSecond::RCCSecond(farsa::ConfigurationManager& params, int i)
-		: farsa::Component(params)
+	RCCSecond::RCCSecond(salsa::ConfigurationManager& params, int i)
+		: salsa::Component(params)
 		, m_i(i)
 	{
 	}
@@ -1327,7 +1327,7 @@ namespace ResourcesTestHierarchy {
 		return m_i;
 	}
 
-	farsa::Component* RCCSecondCreator::instantiate(farsa::ConfigurationManager& settings, QString, farsa::ResourceAccessor* accessorForResources)
+	salsa::Component* RCCSecondCreator::instantiate(salsa::ConfigurationManager& settings, QString, salsa::ResourceAccessor* accessorForResources)
 	{
 		int* i = accessorForResources->getResource<int>("resource");
 

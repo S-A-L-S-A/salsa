@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -36,7 +36,7 @@
 // 	moment most of the resource-related functions are non-const...
 // Move all resource notification code to ResourceChangeNotifee from Component
 
-using namespace farsa;
+using namespace salsa;
 using namespace ResourcesTestHierarchy;
 
 /**

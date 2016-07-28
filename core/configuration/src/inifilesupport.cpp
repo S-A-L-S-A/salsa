@@ -24,7 +24,7 @@
 #include <QFile>
 #include <QRegExp>
 
-namespace farsa {
+namespace salsa {
 
 IniFileStringMangler::IniFileStringMangler(QString original)
 	: m_original(original)
@@ -278,4 +278,4 @@ QPair<QString, QString> IniFileLoaderSaver::extractKeyAndValue(QString line) con
 	return keyAndValue;
 }
 
-} // end namespace farsa
+} // end namespace salsa

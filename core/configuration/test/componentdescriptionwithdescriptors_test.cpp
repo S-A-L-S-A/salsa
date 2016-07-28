@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -31,7 +31,7 @@
 // NOTES AND TODOS
 //
 
-using namespace farsa;
+using namespace salsa;
 
 // The class with descriptions
 class TestComponentWithDescriptions : public Component

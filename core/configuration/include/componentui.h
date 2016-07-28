@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -30,7 +30,7 @@ class QMenu;
 class QMenuBar;
 class QWidget;
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief Helper class for storing information about a viewer for a Component
@@ -41,7 +41,7 @@ namespace farsa {
  *
  * \ingroup configuration_factory
  */
-class FARSA_CONF_TEMPLATE ComponentUIViewer
+class SALSA_CONF_TEMPLATE ComponentUIViewer
 {
 public:
 	/**
@@ -99,7 +99,7 @@ public:
  * the Component
  * \ingroup configuration_factory
  */
-class FARSA_CONF_TEMPLATE ComponentUI
+class SALSA_CONF_TEMPLATE ComponentUI
 {
 public:
 	/**
@@ -154,6 +154,6 @@ public:
 	}
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

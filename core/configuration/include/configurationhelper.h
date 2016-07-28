@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -26,7 +26,7 @@
 #include "configurationconfig.h"
 #include <QVector>
 
-namespace farsa {
+namespace salsa {
 
 class ConfigurationManager;
 class AbstractDescriptor;
@@ -54,7 +54,7 @@ namespace ConfigurationHelper {
 	 *                  prefixPath() + "paramName".
 	 * \return the value of the parameter converted to int
 	 */
-	FARSA_CONF_API int getInt(const ConfigurationManager& params, QString paramPath);
+	SALSA_CONF_API int getInt(const ConfigurationManager& params, QString paramPath);
 
 	/**
 	 * \brief Returns the value of parameter as int
@@ -69,7 +69,7 @@ namespace ConfigurationHelper {
 	 *                     exists
 	 * \return the value of the parameter converted to int
 	 */
-	FARSA_CONF_API int getInt(const ConfigurationManager& params, QString paramPath, int defaultValue);
+	SALSA_CONF_API int getInt(const ConfigurationManager& params, QString paramPath, int defaultValue);
 
 	/**
 	 * \brief Returns the value of parameter as double
@@ -86,7 +86,7 @@ namespace ConfigurationHelper {
 	 *                  prefixPath() + "paramName".
 	 * \return the value of the parameter converted to double
 	 */
-	FARSA_CONF_API double getReal(const ConfigurationManager& params, QString paramPath);
+	SALSA_CONF_API double getReal(const ConfigurationManager& params, QString paramPath);
 
 	/**
 	 * \brief Returns the value of parameter as double
@@ -103,7 +103,7 @@ namespace ConfigurationHelper {
 	 *                     exists
 	 * \return the value of the parameter converted to double
 	 */
-	FARSA_CONF_API double getReal(const ConfigurationManager& params, QString paramPath, double defaultValue);
+	SALSA_CONF_API double getReal(const ConfigurationManager& params, QString paramPath, double defaultValue);
 
 	/**
 	 * \brief Returns the value of parameter as bool
@@ -123,7 +123,7 @@ namespace ConfigurationHelper {
 	 *                  prefixPath() + "paramName"
 	 * \return the value of the parameter converted to bool
 	 */
-	FARSA_CONF_API bool getBool(const ConfigurationManager& params, QString paramPath);
+	SALSA_CONF_API bool getBool(const ConfigurationManager& params, QString paramPath);
 
 	/**
 	 * \brief Returns the value of parameter as bool
@@ -141,7 +141,7 @@ namespace ConfigurationHelper {
 	 *                     exists
 	 * \return the value of the parameter converted to bool
 	 */
-	FARSA_CONF_API bool getBool(const ConfigurationManager& params, QString paramPath, bool defaultValue);
+	SALSA_CONF_API bool getBool(const ConfigurationManager& params, QString paramPath, bool defaultValue);
 
 	/**
 	 * \brief Returns the value of parameter as QString
@@ -157,7 +157,7 @@ namespace ConfigurationHelper {
 	 *                  prefixPath() + "paramName"
 	 * \return the value of the parameter
 	 */
-	FARSA_CONF_API QString getString(const ConfigurationManager& params, QString paramPath);
+	SALSA_CONF_API QString getString(const ConfigurationManager& params, QString paramPath);
 
 	/**
 	 * \brief Returns the value of parameter as QString
@@ -172,7 +172,7 @@ namespace ConfigurationHelper {
 	 *                     exists
 	 * \return the value of the parameter
 	 */
-	FARSA_CONF_API QString getString(const ConfigurationManager& params, QString paramPath, QString defaultValue);
+	SALSA_CONF_API QString getString(const ConfigurationManager& params, QString paramPath, QString defaultValue);
 
 	/**
 	 * \brief Returns the value of an enum parameter as QString
@@ -188,7 +188,7 @@ namespace ConfigurationHelper {
 	 *                  prefixPath() + "paramName"
 	 * \return the value of the parameter
 	 */
-	FARSA_CONF_API QString getEnum(const ConfigurationManager& params, QString paramPath);
+	SALSA_CONF_API QString getEnum(const ConfigurationManager& params, QString paramPath);
 
 	/**
 	 * \brief Returns the value of an enum parameter as QString
@@ -206,7 +206,7 @@ namespace ConfigurationHelper {
 	 *       parameter has not been declared we cannot know which are the
 	 *       valid enum values
 	 */
-	FARSA_CONF_API QString getEnum(const ConfigurationManager& params, QString paramPath, QString defaultValue);
+	SALSA_CONF_API QString getEnum(const ConfigurationManager& params, QString paramPath, QString defaultValue);
 
 	/**
 	 * \brief Encodes a list of ints as a single string
@@ -215,7 +215,7 @@ namespace ConfigurationHelper {
 	 * \param list the list to encode
 	 * \return the encoded list
 	 */
-	FARSA_CONF_API QString encodeListOfInts(const QVector<int>& list);
+	SALSA_CONF_API QString encodeListOfInts(const QVector<int>& list);
 
 	/**
 	 * \brief Decodes a string into a list of ints
@@ -225,7 +225,7 @@ namespace ConfigurationHelper {
 	 * \param encodedList the string containing the encoded list of ints
 	 * \return the list of ints
 	 */
-	FARSA_CONF_API QVector<int> decodeListOfInts(const QString& encodedList);
+	SALSA_CONF_API QVector<int> decodeListOfInts(const QString& encodedList);
 
 	/**
 	 * \brief Encodes a list of reals as a single string
@@ -234,7 +234,7 @@ namespace ConfigurationHelper {
 	 * \param list the list to encode
 	 * \return the encoded list
 	 */
-	FARSA_CONF_API QString encodeListOfReals(const QVector<double>& list);
+	SALSA_CONF_API QString encodeListOfReals(const QVector<double>& list);
 
 	/**
 	 * \brief Decodes a string into a list of reals
@@ -244,7 +244,7 @@ namespace ConfigurationHelper {
 	 * \param encodedList the string containing the encoded list of reals
 	 * \return the list of reals
 	 */
-	FARSA_CONF_API QVector<double> decodeListOfReals(const QString& encodedList);
+	SALSA_CONF_API QVector<double> decodeListOfReals(const QString& encodedList);
 
 	/**
 	 * \brief Encodes a list of bools as a single string
@@ -254,7 +254,7 @@ namespace ConfigurationHelper {
 	 * \param list the list to encode
 	 * \return the encoded list
 	 */
-	FARSA_CONF_API QString encodeListOfBools(const QVector<bool>& list);
+	SALSA_CONF_API QString encodeListOfBools(const QVector<bool>& list);
 
 	/**
 	 * \brief Decodes a string into a list of bools
@@ -264,7 +264,7 @@ namespace ConfigurationHelper {
 	 * \param encodedList the string containing the encoded list of bools
 	 * \return the list of bools
 	 */
-	FARSA_CONF_API QVector<bool> decodeListOfBools(const QString& encodedList);
+	SALSA_CONF_API QVector<bool> decodeListOfBools(const QString& encodedList);
 
 	/**
 	 * \brief Encodes a list of strings as a single string
@@ -274,7 +274,7 @@ namespace ConfigurationHelper {
 	 * \param list the list to encode
 	 * \return the encoded list
 	 */
-	FARSA_CONF_API QString encodeListOfStrings(const QStringList& list);
+	SALSA_CONF_API QString encodeListOfStrings(const QStringList& list);
 
 	/**
 	 * \brief Decodes a string into a list of strings
@@ -283,7 +283,7 @@ namespace ConfigurationHelper {
 	 * \param encodedList the string containing the encoded list of strings
 	 * \return the list of strings
 	 */
-	FARSA_CONF_API QStringList decodeListOfStrings(const QString& encodedList);
+	SALSA_CONF_API QStringList decodeListOfStrings(const QString& encodedList);
 
 	/**
 	 * \brief Helper function to compare a couple of group or property names
@@ -295,7 +295,7 @@ namespace ConfigurationHelper {
 	 * \param s2 the second string to compare
 	 * \return true if s1 is equal to s2
 	 */
-	FARSA_CONF_API bool configKeysEqual(const QString& s1, const QString& s2);
+	SALSA_CONF_API bool configKeysEqual(const QString& s1, const QString& s2);
 
 	/**
 	 * \brief Helper function to order a list of group or property names
@@ -308,7 +308,7 @@ namespace ConfigurationHelper {
 	 * \param s2 the second string to compare
 	 * \return true if s1 is less than (i.e. comes before) s2
 	 */
-	FARSA_CONF_API bool configKeysLessThan(const QString& s1, const QString& s2);
+	SALSA_CONF_API bool configKeysLessThan(const QString& s1, const QString& s2);
 
 	/**
 	 * \brief A utility function to ease throwing the exception
@@ -322,7 +322,7 @@ namespace ConfigurationHelper {
 	 *                   fail
 	 * \param description a description of the error
 	 */
-	FARSA_CONF_API void throwUserConfigError(QString paramName, QString paramValue, QString description);
+	SALSA_CONF_API void throwUserConfigError(QString paramName, QString paramValue, QString description);
 
 	/**
 	 * \brief Returns the descriptor for the given parameter
@@ -333,7 +333,7 @@ namespace ConfigurationHelper {
 	 * \param paramPath the full path to the parameter
 	 * \return the descriptor for the parameter
 	 */
-	const AbstractDescriptor& getDescriptorForParameter(const ConfigurationManager& params, QString paramPath);
+	SALSA_CONF_API const AbstractDescriptor& getDescriptorForParameter(const ConfigurationManager& params, QString paramPath);
 
 	/**
 	 * \brief Returns the descriptor for the given group
@@ -344,7 +344,7 @@ namespace ConfigurationHelper {
 	 * \param groupPath the full path to the group
 	 * \return the descriptor for the group
 	 */
-	const AbstractDescriptorContainer& getDescriptorForGroup(const ConfigurationManager& params, QString groupPath);
+	SALSA_CONF_API const AbstractDescriptorContainer& getDescriptorForGroup(const ConfigurationManager& params, QString groupPath);
 
 	/**
 	 * \brief Returns the default for the given descriptor as a string
@@ -354,9 +354,9 @@ namespace ConfigurationHelper {
 	 * \param d the descriptor for which a default is requested
 	 * \return the default as a string
 	 */
-	QString getDefaultForDescriptorAsString(const AbstractDescriptor& d);
+	SALSA_CONF_API QString getDefaultForDescriptorAsString(const AbstractDescriptor& d);
 }
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

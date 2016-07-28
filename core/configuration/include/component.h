@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -33,7 +33,7 @@
 #include <cstdlib>
 #include <memory>
 
-namespace farsa {
+namespace salsa {
 
 class ComponentUI;
 class ConfigurationNode;
@@ -370,7 +370,7 @@ class ResourceHandler;
  *
  * \ingroup configuration_factory
  */
-class FARSA_CONF_API Component : public ResourceAccessor, protected ResourceChangeNotifee
+class SALSA_CONF_API Component : public ResourceAccessor, protected ResourceChangeNotifee
 {
 public:
 	/**
@@ -648,7 +648,7 @@ private:
 // Implementation of template functions
 #include "configurationnode.h"
 
-namespace farsa {
+namespace salsa {
 
 template<class T>
 void Component::declareResource(QString name, T* resource)
@@ -663,6 +663,6 @@ void Component::declareResource(QString name, T* resource)
 	h->set(resource);
 }
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

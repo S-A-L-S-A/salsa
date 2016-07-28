@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -26,7 +26,7 @@
 #include "configurationconfig.h"
 #include <QString>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The class modelling the name of a group or property

@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -28,13 +28,13 @@
 #warning SEE THE COMMENTS BELOW
 // Aggiungere classe ResourceHolder che mantiene una risorsa (il puntatore) e lo aggiorna automaticamente. Per quanto riguarda la notifica ai ResourceHolder, usare un meccanismo parallelo a resourceChanged. Inoltre, forse, fare in modo che i ResourceHolder vengano creati e restituiti da una funzione di questa classe (servirebbe avere la move-semantic, ma non possiamo averla, quindi forse meglio condividerli). Inoltre deve essere possibile (ma non obbligatorio) aggiungere un lock sulla risorsa (vedi nota sul multithreading nella descrizione di questa classe)
 
-// USARE SEMPRE farsa::real INVECE DI double. IL PROBLEMA È CHE farsa::real È IN UTILITIES E NOI NON POSSIAMO DIPENDERE DA UTILITIES
+// USARE SEMPRE salsa::real INVECE DI double. IL PROBLEMA È CHE salsa::real È IN UTILITIES E NOI NON POSSIAMO DIPENDERE DA UTILITIES
 
 // NEL COMPONENT UI O QUI DENTRO FARE IN MODO DI DEFINIRE UNA SERIE DI AZIONI, CHE POI FINISCONO ANCHE NEL MENU - FORSE NO, FARLO AD UN LIVELLO PIÙ ALTO CON BaseExperiment
 
 #warning SEVERE PROBLEM: IF A PARENT CONFIGURES ITSELF IN THE CONSTRUCTOR AND A CHILD IN CONFIGURE, THE CHECK FOR DEPENDENCY CYCLES DOES NOT WORK, BECAUSE WE THINK THAT THE COMPONENT CONFIGURES ITSELF IN configure() BUT PART OF THE CONFIGURATION IS IN THE CONSTRUCTOR!!! WE SHOULD EITHER MAKE THE CHOICE IN THE FIRST Component SUBCLASS OR REMOVE THE CHIOCE ALTOGETHER AND ONLY ALLOW CONFIGURATION WITH CONFIGURE (PERHAPS THIS IS BETTER). PERHAPS WE CAN MAKE DEPENDENCIES BETWEEN COMPONENTS MORE EXPLICIT AND USE DependencySorter TO DECIDE THE ORDER OF CONFIGURATION...
 
-namespace farsa {
+namespace salsa {
 
 Component::Component(ConfigurationManager& params)
 	: ResourceAccessor(params, params.getConfigurationNodeForCurrentComponent())
@@ -265,4 +265,4 @@ void Component::removeAllOurRequestOfResourceChangeNotification()
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa

@@ -1,5 +1,5 @@
-/***************************************************************************
- *  FARSA Configuration Library                                            *
+// // // /***************************************************************************
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
  *                                                                         *
@@ -31,7 +31,7 @@
  * \brief A namespace with classes used in typesdb class registration tests
  */
 namespace TypesDBTestHierarchy {
-	class InstantiableComponentConfigInConstructor : public farsa::Component
+	class InstantiableComponentConfigInConstructor : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -40,10 +40,10 @@ namespace TypesDBTestHierarchy {
 		}
 
 	public:
-		InstantiableComponentConfigInConstructor(farsa::ConfigurationManager& params);
+		InstantiableComponentConfigInConstructor(salsa::ConfigurationManager& params);
 	};
 
-	class InstantiableComponentConfigInFunction : public farsa::Component
+	class InstantiableComponentConfigInFunction : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -52,57 +52,57 @@ namespace TypesDBTestHierarchy {
 		}
 
 	public:
-		InstantiableComponentConfigInFunction(farsa::ConfigurationManager& params);
+		InstantiableComponentConfigInFunction(salsa::ConfigurationManager& params);
 	};
 
-	class AbstractComponent : public farsa::Component
+	class AbstractComponent : public salsa::Component
 	{
 	public:
-		AbstractComponent(farsa::ConfigurationManager& params);
+		AbstractComponent(salsa::ConfigurationManager& params);
 
 		virtual void f() = 0;
 	};
 
-	class ComponentWithCustomCreator : public farsa::Component
+	class ComponentWithCustomCreator : public salsa::Component
 	{
 	public:
-		ComponentWithCustomCreator(farsa::ConfigurationManager& params, int i);
+		ComponentWithCustomCreator(salsa::ConfigurationManager& params, int i);
 	};
 
-	class ComponentCustomCreator : public farsa::ComponentCreator
+	class ComponentCustomCreator : public salsa::ComponentCreator
 	{
 	private:
-		ComponentWithCustomCreator* instantiate(farsa::ConfigurationManager& settings, QString prefix, farsa::ResourceAccessor* accessorForResources);
+		ComponentWithCustomCreator* instantiate(salsa::ConfigurationManager& settings, QString prefix, salsa::ResourceAccessor* accessorForResources);
 	};
 
-	class SampleHierarchyRoot : public farsa::Component
+	class SampleHierarchyRoot : public salsa::Component
 	{
 	public:
-		SampleHierarchyRoot(farsa::ConfigurationManager& params);
+		SampleHierarchyRoot(salsa::ConfigurationManager& params);
 	};
 
 	class SampleHierarchyChildOne : public SampleHierarchyRoot
 	{
 	public:
-		SampleHierarchyChildOne(farsa::ConfigurationManager& params);
+		SampleHierarchyChildOne(salsa::ConfigurationManager& params);
 	};
 
 	class SampleHierarchyGrandChild : public SampleHierarchyChildOne
 	{
 	public:
-		SampleHierarchyGrandChild(farsa::ConfigurationManager& params);
+		SampleHierarchyGrandChild(salsa::ConfigurationManager& params);
 	};
 
 	class SampleHierarchyChildTwo : public SampleHierarchyRoot
 	{
 	public:
-		SampleHierarchyChildTwo(farsa::ConfigurationManager& params);
+		SampleHierarchyChildTwo(salsa::ConfigurationManager& params);
 	};
 
 	class SampleHierarchyAbstractChild : public SampleHierarchyRoot
 	{
 	public:
-		SampleHierarchyAbstractChild(farsa::ConfigurationManager& params);
+		SampleHierarchyAbstractChild(salsa::ConfigurationManager& params);
 
 		virtual void g() = 0;
 	};
@@ -118,7 +118,7 @@ namespace TypesDBWithInterfacesTestHierarchy {
 
 	class InterfaceB {};
 
-	class MultipleInterfacesComponent : public farsa::Component, public InterfaceA, public InterfaceB
+	class MultipleInterfacesComponent : public salsa::Component, public InterfaceA, public InterfaceB
 	{
 	public:
 		static bool configuresInConstructor()
@@ -127,7 +127,7 @@ namespace TypesDBWithInterfacesTestHierarchy {
 		}
 
 	public:
-		MultipleInterfacesComponent(farsa::ConfigurationManager& params);
+		MultipleInterfacesComponent(salsa::ConfigurationManager& params);
 	};
 }
 
@@ -149,7 +149,7 @@ namespace ComponentInstantiationTestHierarchy {
 	 */
 	void registerAllComponents();
 
-	class Standalone : public farsa::Component
+	class Standalone : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -157,7 +157,7 @@ namespace ComponentInstantiationTestHierarchy {
 			return true;
 		}
 	public:
-		Standalone(farsa::ConfigurationManager& params);
+		Standalone(salsa::ConfigurationManager& params);
 		~Standalone();
 
 		// This should not be called
@@ -173,7 +173,7 @@ namespace ComponentInstantiationTestHierarchy {
 		int m_param;
 	};
 
-	class StandaloneWithConfigure : public farsa::Component
+	class StandaloneWithConfigure : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -181,7 +181,7 @@ namespace ComponentInstantiationTestHierarchy {
 			return false;
 		}
 	public:
-		StandaloneWithConfigure(farsa::ConfigurationManager& params);
+		StandaloneWithConfigure(salsa::ConfigurationManager& params);
 		~StandaloneWithConfigure();
 
 		void configure();
@@ -203,7 +203,7 @@ namespace ComponentInstantiationTestHierarchy {
 	class AbstractAnother;
 	class Another;
 
-	class One : public farsa::Component
+	class One : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -212,7 +212,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		One(farsa::ConfigurationManager& params);
+		One(salsa::ConfigurationManager& params);
 		~One();
 
 		void configure();
@@ -239,7 +239,7 @@ namespace ComponentInstantiationTestHierarchy {
 		std::auto_ptr<Two> m_two2;
 	};
 
-	class Two : public farsa::Component
+	class Two : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -248,7 +248,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		Two(farsa::ConfigurationManager& params, float f);
+		Two(salsa::ConfigurationManager& params, float f);
 		~Two();
 
 		void configure();
@@ -269,13 +269,13 @@ namespace ComponentInstantiationTestHierarchy {
 		std::auto_ptr<AbstractThree> m_three;
 	};
 
-	class TwoCreator : public farsa::ComponentCreator
+	class TwoCreator : public salsa::ComponentCreator
 	{
 	private:
-		Two* instantiate(farsa::ConfigurationManager& settings, QString prefix, farsa::ResourceAccessor* accessorForResources);
+		Two* instantiate(salsa::ConfigurationManager& settings, QString prefix, salsa::ResourceAccessor* accessorForResources);
 	};
 
-	class AbstractThree : public farsa::Component
+	class AbstractThree : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -284,7 +284,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		AbstractThree(farsa::ConfigurationManager& params);
+		AbstractThree(salsa::ConfigurationManager& params);
 		~AbstractThree();
 
 		void configure();
@@ -310,7 +310,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		Three(farsa::ConfigurationManager& params);
+		Three(salsa::ConfigurationManager& params);
 		~Three();
 
 		void configure();
@@ -327,7 +327,7 @@ namespace ComponentInstantiationTestHierarchy {
 		QString m_pithreeAA;
 	};
 
-	class AbstractAnother : public farsa::Component
+	class AbstractAnother : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -336,7 +336,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		AbstractAnother(farsa::ConfigurationManager& params);
+		AbstractAnother(salsa::ConfigurationManager& params);
 		~AbstractAnother();
 
 		void configure();
@@ -355,7 +355,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		Another(farsa::ConfigurationManager& params);
+		Another(salsa::ConfigurationManager& params);
 		~Another();
 
 		void configure();
@@ -378,7 +378,7 @@ namespace ComponentInstantiationTestHierarchy {
 	class CorrectCircularDependencyA;
 	class CorrectCircularDependencyB;
 
-	class CorrectCircularDependencyRoot : public farsa::Component
+	class CorrectCircularDependencyRoot : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -387,7 +387,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		CorrectCircularDependencyRoot(farsa::ConfigurationManager& params);
+		CorrectCircularDependencyRoot(salsa::ConfigurationManager& params);
 		~CorrectCircularDependencyRoot();
 
 		void configure();
@@ -397,7 +397,7 @@ namespace ComponentInstantiationTestHierarchy {
 		std::auto_ptr<CorrectCircularDependencyA> m_a;
 	};
 
-	class CorrectCircularDependencyA : public farsa::Component
+	class CorrectCircularDependencyA : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -406,7 +406,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		CorrectCircularDependencyA(farsa::ConfigurationManager& params);
+		CorrectCircularDependencyA(salsa::ConfigurationManager& params);
 		~CorrectCircularDependencyA();
 
 		void configure();
@@ -416,7 +416,7 @@ namespace ComponentInstantiationTestHierarchy {
 		std::auto_ptr<CorrectCircularDependencyB> m_b;
 	};
 
-	class CorrectCircularDependencyB : public farsa::Component
+	class CorrectCircularDependencyB : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -425,7 +425,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		CorrectCircularDependencyB(farsa::ConfigurationManager& params);
+		CorrectCircularDependencyB(salsa::ConfigurationManager& params);
 		~CorrectCircularDependencyB();
 
 		void configure();
@@ -440,7 +440,7 @@ namespace ComponentInstantiationTestHierarchy {
 	class ConstructorCircularDependencyA;
 	class ConstructorCircularDependencyB;
 
-	class ConstructorCircularDependencyRoot : public farsa::Component
+	class ConstructorCircularDependencyRoot : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -449,7 +449,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		ConstructorCircularDependencyRoot(farsa::ConfigurationManager& params);
+		ConstructorCircularDependencyRoot(salsa::ConfigurationManager& params);
 		~ConstructorCircularDependencyRoot();
 
 		void configure();
@@ -459,7 +459,7 @@ namespace ComponentInstantiationTestHierarchy {
 		std::auto_ptr<ConstructorCircularDependencyA> m_a;
 	};
 
-	class ConstructorCircularDependencyA : public farsa::Component
+	class ConstructorCircularDependencyA : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -468,7 +468,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		ConstructorCircularDependencyA(farsa::ConfigurationManager& params);
+		ConstructorCircularDependencyA(salsa::ConfigurationManager& params);
 		~ConstructorCircularDependencyA();
 
 		void postConfigureInitialization();
@@ -477,7 +477,7 @@ namespace ComponentInstantiationTestHierarchy {
 		std::auto_ptr<ConstructorCircularDependencyB> m_b;
 	};
 
-	class ConstructorCircularDependencyB : public farsa::Component
+	class ConstructorCircularDependencyB : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -486,7 +486,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		ConstructorCircularDependencyB(farsa::ConfigurationManager& params);
+		ConstructorCircularDependencyB(salsa::ConfigurationManager& params);
 		~ConstructorCircularDependencyB();
 
 		void postConfigureInitialization();
@@ -500,7 +500,7 @@ namespace ComponentInstantiationTestHierarchy {
 	class WrongCircularDependencyA;
 	class WrongCircularDependencyB;
 
-	class WrongCircularDependencyRoot : public farsa::Component
+	class WrongCircularDependencyRoot : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -509,7 +509,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		WrongCircularDependencyRoot(farsa::ConfigurationManager& params);
+		WrongCircularDependencyRoot(salsa::ConfigurationManager& params);
 		~WrongCircularDependencyRoot();
 
 		void configure();
@@ -519,7 +519,7 @@ namespace ComponentInstantiationTestHierarchy {
 		std::auto_ptr<WrongCircularDependencyA> m_a;
 	};
 
-	class WrongCircularDependencyA : public farsa::Component
+	class WrongCircularDependencyA : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -528,7 +528,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		WrongCircularDependencyA(farsa::ConfigurationManager& params);
+		WrongCircularDependencyA(salsa::ConfigurationManager& params);
 		~WrongCircularDependencyA();
 
 		void configure();
@@ -538,7 +538,7 @@ namespace ComponentInstantiationTestHierarchy {
 		std::auto_ptr<WrongCircularDependencyB> m_b;
 	};
 
-	class WrongCircularDependencyB : public farsa::Component
+	class WrongCircularDependencyB : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -547,7 +547,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		WrongCircularDependencyB(farsa::ConfigurationManager& params);
+		WrongCircularDependencyB(salsa::ConfigurationManager& params);
 		~WrongCircularDependencyB();
 
 		void configure();
@@ -565,7 +565,7 @@ namespace ComponentInstantiationTestHierarchy {
 	class DestructionAbstractAnother;
 	class DestructionAnother;
 
-	class DestructionOne : public farsa::Component
+	class DestructionOne : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -574,7 +574,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		DestructionOne(farsa::ConfigurationManager& params);
+		DestructionOne(salsa::ConfigurationManager& params);
 		~DestructionOne();
 
 		void configure();
@@ -597,7 +597,7 @@ namespace ComponentInstantiationTestHierarchy {
 		DestructionTwo* m_two2;
 	};
 
-	class DestructionTwo : public farsa::Component
+	class DestructionTwo : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -606,7 +606,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		DestructionTwo(farsa::ConfigurationManager& params, float f);
+		DestructionTwo(salsa::ConfigurationManager& params, float f);
 		~DestructionTwo();
 
 		void configure();
@@ -626,13 +626,13 @@ namespace ComponentInstantiationTestHierarchy {
 		DestructionAbstractThree* m_three;
 	};
 
-	class DestructionTwoCreator : public farsa::ComponentCreator
+	class DestructionTwoCreator : public salsa::ComponentCreator
 	{
 	private:
-		DestructionTwo* instantiate(farsa::ConfigurationManager& settings, QString prefix, farsa::ResourceAccessor* accessorForResources);
+		DestructionTwo* instantiate(salsa::ConfigurationManager& settings, QString prefix, salsa::ResourceAccessor* accessorForResources);
 	};
 
-	class DestructionAbstractThree : public farsa::Component
+	class DestructionAbstractThree : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -641,7 +641,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		DestructionAbstractThree(farsa::ConfigurationManager& params);
+		DestructionAbstractThree(salsa::ConfigurationManager& params);
 		~DestructionAbstractThree();
 
 		void configure();
@@ -667,7 +667,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		DestructionThree(farsa::ConfigurationManager& params);
+		DestructionThree(salsa::ConfigurationManager& params);
 		~DestructionThree();
 
 		void configure();
@@ -684,7 +684,7 @@ namespace ComponentInstantiationTestHierarchy {
 		QString m_pithreeAA;
 	};
 
-	class DestructionAbstractAnother : public farsa::Component
+	class DestructionAbstractAnother : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -693,7 +693,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		DestructionAbstractAnother(farsa::ConfigurationManager& params);
+		DestructionAbstractAnother(salsa::ConfigurationManager& params);
 		~DestructionAbstractAnother();
 
 		void configure();
@@ -711,7 +711,7 @@ namespace ComponentInstantiationTestHierarchy {
 		}
 
 	public:
-		DestructionAnother(farsa::ConfigurationManager& params);
+		DestructionAnother(salsa::ConfigurationManager& params);
 		~DestructionAnother();
 
 		void configure();
@@ -744,7 +744,7 @@ namespace ConfigurationObserverTestHierarchy {
 	class Three;
 	class Another;
 
-	class One : public farsa::Component
+	class One : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -753,7 +753,7 @@ namespace ConfigurationObserverTestHierarchy {
 		}
 
 	public:
-		One(farsa::ConfigurationManager& params);
+		One(salsa::ConfigurationManager& params);
 
 		Another* another();
 		Two* two();
@@ -762,7 +762,7 @@ namespace ConfigurationObserverTestHierarchy {
 		Two* m_two;
 	};
 
-	class Two : public farsa::Component
+	class Two : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -771,14 +771,14 @@ namespace ConfigurationObserverTestHierarchy {
 		}
 
 	public:
-		Two(farsa::ConfigurationManager& params);
+		Two(salsa::ConfigurationManager& params);
 
 		Three* three();
 	private:
 		Three* m_three;
 	};
 
-	class Three : public farsa::Component
+	class Three : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -787,12 +787,12 @@ namespace ConfigurationObserverTestHierarchy {
 		}
 
 	public:
-		Three(farsa::ConfigurationManager& params);
+		Three(salsa::ConfigurationManager& params);
 
 		void configure();
 	};
 
-	class Another : public farsa::Component
+	class Another : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -801,7 +801,7 @@ namespace ConfigurationObserverTestHierarchy {
 		}
 
 	public:
-		Another(farsa::ConfigurationManager& params);
+		Another(salsa::ConfigurationManager& params);
 
 		Three* three();
 
@@ -820,7 +820,7 @@ namespace ResourcesTestHierarchy {
 	void registerAllComponents();
 
 	// Empty class, for basic tests on resources
-	class Standalone : public farsa::Component
+	class Standalone : public salsa::Component
 	{
 	public:
 		static bool configuresInConstructor()
@@ -828,10 +828,10 @@ namespace ResourcesTestHierarchy {
 			return true;
 		}
 	public:
-		Standalone(farsa::ConfigurationManager& params);
+		Standalone(salsa::ConfigurationManager& params);
 	};
 
-	QString nameForNotifyResourceChangeWithParameters(QString className, QString name, farsa::Component* owner, farsa::ResourceChangeType changeType);
+	QString nameForNotifyResourceChangeWithParameters(QString className, QString name, salsa::Component* owner, salsa::ResourceChangeType changeType);
 
 	class One;
 	class Two;
@@ -840,82 +840,82 @@ namespace ResourcesTestHierarchy {
 	class Another;
 	class SubAnother;
 
-	class One : public farsa::Component
+	class One : public salsa::Component
 	{
 	public:
-		One(farsa::ConfigurationManager& params);
+		One(salsa::ConfigurationManager& params);
 
 		Another* another();
 		Two* two();
 
 	protected:
-		void resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType);
+		void resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType);
 
 	private:
 		Another* m_another;
 		Two* m_two;
 	};
 
-	class Two : public farsa::Component
+	class Two : public salsa::Component
 	{
 	public:
-		Two(farsa::ConfigurationManager& params);
+		Two(salsa::ConfigurationManager& params);
 
 		Three* three();
 
 	protected:
-		void resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType);
+		void resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType);
 
 	private:
 		Three* m_three;
 	};
 
-	class Three : public farsa::Component
+	class Three : public salsa::Component
 	{
 	public:
-		Three(farsa::ConfigurationManager& params);
+		Three(salsa::ConfigurationManager& params);
 
 		SubThree* subThree();
 
 	protected:
-		void resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType);
+		void resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType);
 
 	private:
 		SubThree* m_subThree;
 	};
 
-	class SubThree : public farsa::Component
+	class SubThree : public salsa::Component
 	{
 	public:
-		SubThree(farsa::ConfigurationManager& params);
+		SubThree(salsa::ConfigurationManager& params);
 
 	protected:
-		void resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType);
+		void resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType);
 	};
 
-	class Another : public farsa::Component
+	class Another : public salsa::Component
 	{
 	public:
-		Another(farsa::ConfigurationManager& params);
+		Another(salsa::ConfigurationManager& params);
 
 		Three* three();
 		SubAnother* subAnother();
 
 	protected:
-		void resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType);
+		void resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType);
 
 	private:
 		Three* m_three;
 		SubAnother* m_subAnother;
 	};
 
-	class SubAnother : public farsa::Component
+	class SubAnother : public salsa::Component
 	{
 	public:
-		SubAnother(farsa::ConfigurationManager& params);
+		SubAnother(salsa::ConfigurationManager& params);
 
 	protected:
-		void resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType);
+		void resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType);
 	};
 
 	// RC stands for "Resource notification requested during Configuration
@@ -929,31 +929,31 @@ namespace ResourcesTestHierarchy {
 	class RCAnother;
 	class RCSubAnother;
 
-	class RCOne : public farsa::Component
+	class RCOne : public salsa::Component
 	{
 	public:
-		RCOne(farsa::ConfigurationManager& params);
+		RCOne(salsa::ConfigurationManager& params);
 
 		RCAnother* another();
 		RCTwo* two();
 
 	protected:
-		void resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType);
+		void resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType);
 
 	private:
 		RCAnother* m_another;
 		RCTwo* m_two;
 	};
 
-	class RCTwo : public farsa::Component
+	class RCTwo : public salsa::Component
 	{
 	public:
-		RCTwo(farsa::ConfigurationManager& params);
+		RCTwo(salsa::ConfigurationManager& params);
 
 		RCThree* three();
 
 	protected:
-		void resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType);
+		void resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType);
 
 	private:
 		RCThree* m_three;
@@ -961,56 +961,56 @@ namespace ResourcesTestHierarchy {
 		bool m_bTwo;
 	};
 
-	class RCThree : public farsa::Component
+	class RCThree : public salsa::Component
 	{
 	public:
-		RCThree(farsa::ConfigurationManager& params);
+		RCThree(salsa::ConfigurationManager& params);
 
 		RCSubThree* subThree();
 
 	protected:
-		void resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType);
+		void resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType);
 
 	private:
 		RCSubThree* m_subThree;
 		int m_ambiguous;
 	};
 
-	class RCSubThree : public farsa::Component
+	class RCSubThree : public salsa::Component
 	{
 	public:
-		RCSubThree(farsa::ConfigurationManager& params);
+		RCSubThree(salsa::ConfigurationManager& params);
 
 	protected:
-		void resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType);
+		void resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType);
 
 	private:
 		float m_sub;
 	};
 
-	class RCAnother : public farsa::Component
+	class RCAnother : public salsa::Component
 	{
 	public:
-		RCAnother(farsa::ConfigurationManager& params);
+		RCAnother(salsa::ConfigurationManager& params);
 
 		RCThree* three();
 		RCSubAnother* subAnother();
 
 	protected:
-		void resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType);
+		void resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType);
 
 	private:
 		RCThree* m_three;
 		RCSubAnother* m_subAnother;
 	};
 
-	class RCSubAnother : public farsa::Component
+	class RCSubAnother : public salsa::Component
 	{
 	public:
-		RCSubAnother(farsa::ConfigurationManager& params);
+		RCSubAnother(salsa::ConfigurationManager& params);
 
 	protected:
-		void resourceChanged(QString name, farsa::Component* owner, farsa::ResourceChangeType changeType);
+		void resourceChanged(QString name, salsa::Component* owner, salsa::ResourceChangeType changeType);
 
 	private:
 		int m_ambiguous;
@@ -1022,10 +1022,10 @@ namespace ResourcesTestHierarchy {
 	class RCCFirst;
 	class RCCSecond;
 
-	class RCCFirst : public farsa::Component
+	class RCCFirst : public salsa::Component
 	{
 	public:
-		RCCFirst(farsa::ConfigurationManager& params);
+		RCCFirst(salsa::ConfigurationManager& params);
 
 		RCCSecond* second();
 
@@ -1034,10 +1034,10 @@ namespace ResourcesTestHierarchy {
 		RCCSecond* m_second;
 	};
 
-	class RCCSecond : public farsa::Component
+	class RCCSecond : public salsa::Component
 	{
 	public:
-		RCCSecond(farsa::ConfigurationManager& params, int i);
+		RCCSecond(salsa::ConfigurationManager& params, int i);
 
 		int i() const;
 
@@ -1045,10 +1045,10 @@ namespace ResourcesTestHierarchy {
 		int m_i;
 	};
 
-	class RCCSecondCreator : public farsa::ComponentCreator
+	class RCCSecondCreator : public salsa::ComponentCreator
 	{
 	private:
-		farsa::Component* instantiate(farsa::ConfigurationManager& settings, QString prefix, farsa::ResourceAccessor* accessorForResources);
+		salsa::Component* instantiate(salsa::ConfigurationManager& settings, QString prefix, salsa::ResourceAccessor* accessorForResources);
 	};
 }
 

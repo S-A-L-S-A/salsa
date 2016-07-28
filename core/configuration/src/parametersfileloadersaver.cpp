@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -25,7 +25,7 @@
 #include <QtDebug>
 #include <QFile>
 
-namespace farsa {
+namespace salsa {
 
 ParametersFileLoaderSaver::ParametersFileLoaderSaver()
 {
@@ -98,4 +98,4 @@ bool ParametersFileLoaderSaver::save(QString filename, const ConfigurationManage
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa

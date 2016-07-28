@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -31,7 +31,7 @@
 //
 //
 
-using namespace farsa;
+using namespace salsa;
 using namespace ConfigurationObserverTestHierarchy;
 
 // Configuration files used in the test are declared here in ini format
@@ -67,7 +67,7 @@ class ConfigurationObserver_Test : public QObject
 		return QString::number(reinterpret_cast<unsigned long>(component));
 	}
 
-	class TestObserver : public farsa::ConfigurationObserver
+	class TestObserver : public salsa::ConfigurationObserver
 	{
 	public:
 		virtual void onComponentCreation(Component* component)

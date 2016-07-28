@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -26,7 +26,7 @@
 #include <limits>
 
 #warning FORSE SAREBBE IL CASO DI AVERE NELLE DESCRIZIONI DEI TIPI UN RIFERIMENTO ALLE SUPERCLASSI: IN QUESTO MODO NON SI DEVE CHIAMARE LA PARENT describe IN describe E SI RISPARMIA MEMORIA (ANCHE SE LA RICERCA DI UN PARAMETRO SAREBBE PIÙ COMPLESSA E LENTA)
-namespace farsa {
+namespace salsa {
 
 namespace {
 #warning MOLTE DI QUESTE FUNZIONI POTREBBERO ESSERE UTILI DA METTERE IN ConfigurationManager O IN ConfigurationHelper
@@ -162,43 +162,43 @@ QString descriptorType2String(DescriptorType type)
 }
 
 template <>
-DescriptorType FARSA_CONF_API type2DescriptorType<StringDescriptor>()
+DescriptorType type2DescriptorType<StringDescriptor>()
 {
 	return StringDescriptorType;
 }
 
 template <>
-DescriptorType FARSA_CONF_API type2DescriptorType<IntDescriptor>()
+DescriptorType type2DescriptorType<IntDescriptor>()
 {
 	return IntDescriptorType;
 }
 
 template <>
-DescriptorType FARSA_CONF_API type2DescriptorType<RealDescriptor>()
+DescriptorType type2DescriptorType<RealDescriptor>()
 {
 	return RealDescriptorType;
 }
 
 template <>
-DescriptorType FARSA_CONF_API type2DescriptorType<BoolDescriptor>()
+DescriptorType type2DescriptorType<BoolDescriptor>()
 {
 	return BoolDescriptorType;
 }
 
 template <>
-DescriptorType FARSA_CONF_API type2DescriptorType<EnumDescriptor>()
+DescriptorType type2DescriptorType<EnumDescriptor>()
 {
 	return EnumDescriptorType;
 }
 
 template <>
-DescriptorType FARSA_CONF_API type2DescriptorType<ComponentDescriptor>()
+DescriptorType type2DescriptorType<ComponentDescriptor>()
 {
 	return ComponentDescriptorType;
 }
 
 template <>
-DescriptorType FARSA_CONF_API type2DescriptorType<SubgroupDescriptor>()
+DescriptorType type2DescriptorType<SubgroupDescriptor>()
 {
 	return SubgroupDescriptorType;
 }
@@ -979,4 +979,4 @@ const QString& RegisteredComponentDescriptor::path() const
 	return m_type;
 }
 
-} // end namespace farsa
+} // end namespace salsa

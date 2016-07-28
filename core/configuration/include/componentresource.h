@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -28,7 +28,7 @@
 #include <QObject>
 #include <memory>
 
-namespace farsa {
+namespace salsa {
 
 class Component;
 class ResourceHandler;
@@ -57,7 +57,7 @@ enum ResourceChangeType {
  * 	- Component
  * 	- QObject
  */
-class FARSA_CONF_TEMPLATE Resource
+class SALSA_CONF_TEMPLATE Resource
 {
 public:
 	/*! \brief Destructor */
@@ -73,7 +73,7 @@ public:
  * created. Refer to the documentation of the Component class for more
  * informtion on resources.
  */
-class FARSA_CONF_API ResourceAccessor
+class SALSA_CONF_API ResourceAccessor
 {
 public:
 	/**
@@ -320,7 +320,7 @@ private:
  * See the description of the Component class for more information on resource
  * change notifications
  */
-class FARSA_CONF_TEMPLATE ResourceChangeNotifee
+class SALSA_CONF_TEMPLATE ResourceChangeNotifee
 {
 public:
 	/**
@@ -374,7 +374,7 @@ private:
  *
  * \internal
  */
-class FARSA_CONF_API ResourceHandler
+class SALSA_CONF_API ResourceHandler
 {
 public:
 	/**
@@ -632,7 +632,7 @@ private:
 // Implementation of template functions
 #include "configurationnode.h"
 
-namespace farsa {
+namespace salsa {
 
 template <class T>
 T* ResourceAccessor::getResource(QString name)
@@ -882,6 +882,6 @@ inline bool ResourceHandler::isType<bool>() const
 	return (m_type == t_bool) || (m_type == t_declaredNull);
 }
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

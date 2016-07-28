@@ -27,10 +27,10 @@
 #include <cstdio>
 #include <QtCore>
 
-namespace farsa {
+namespace salsa {
 
 /**
- * \brief The base class for all exceptions in farsa
+ * \brief The base class for all exceptions in salsa
  *
  * We simply use QException as the base exception, this typedef is here in case
  * we need to change the base class in the future. We use this class as the base
@@ -57,6 +57,6 @@ typedef QException BaseException;
                                                       throw e;\
                                               }
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

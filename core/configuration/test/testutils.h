@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
  *                                                                         *
@@ -489,6 +489,6 @@ public:
  * \param content the content to use to fill the file
  * \return the ConfigurationManger object that has loaded the file
  */
-farsa::ConfigurationManager fillTemporaryConfigurationFileAndLoadParameters(const char* content);
+salsa::ConfigurationManager fillTemporaryConfigurationFileAndLoadParameters(const char* content);
 
 #endif

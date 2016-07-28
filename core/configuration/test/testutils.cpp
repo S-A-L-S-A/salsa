@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
  *                                                                         *
@@ -141,7 +141,7 @@ FunctionCall::~FunctionCall()
 	}
 }
 
-farsa::ConfigurationManager fillTemporaryConfigurationFileAndLoadParameters(const char* content)
+salsa::ConfigurationManager fillTemporaryConfigurationFileAndLoadParameters(const char* content)
 {
 	// This is thrown in case of problems because we cannot use
 	// QVERIFY and similar macros (they cause compiler errors)
@@ -166,7 +166,7 @@ farsa::ConfigurationManager fillTemporaryConfigurationFileAndLoadParameters(cons
 		throw InitializationProblemException();
 	}
 
-	farsa::ConfigurationManager manager;
+	salsa::ConfigurationManager manager;
 	if (!manager.loadParameters(tmpFile.fileName())) {
 		throw InitializationProblemException();
 	}

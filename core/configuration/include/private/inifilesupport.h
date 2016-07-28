@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -30,7 +30,7 @@
 #include <QList>
 #include <QPair>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief A class to escape a string that has to be saved as a value or key in
@@ -104,7 +104,7 @@ private:
  *
  * \ingroup configuration_configuration
  */
-class FARSA_CONF_API IniFileLoaderSaver : public ParametersFileLoaderSaver
+class SALSA_CONF_API IniFileLoaderSaver : public ParametersFileLoaderSaver
 {
 public:
 	/**
@@ -154,6 +154,6 @@ private:
 	QString m_currentGroup;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif
