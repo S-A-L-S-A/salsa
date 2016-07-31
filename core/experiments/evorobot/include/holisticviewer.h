@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA Experiments Library                                                   *
+//  *  SALSA Experiments Library                                                   *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
 //  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -36,9 +36,9 @@
 // #include "evodataviewer.h"
 // #include "evorobotexperiment.h"
 //
-// namespace farsa {
+// namespace salsa {
 //
-// class FARSA_EXPERIMENTS_API HolisticViewer : public QWidget
+// class SALSA_EXPERIMENTS_API HolisticViewer : public QWidget
 // {
 //     Q_OBJECT
 // private:
@@ -58,6 +58,6 @@
 // 	void setNet(Evonet* n);
 // };
 //
-// } //end namespace farsa
+// } //end namespace salsa
 //
 // #endif

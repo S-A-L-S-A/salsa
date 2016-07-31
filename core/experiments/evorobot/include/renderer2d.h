@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -28,12 +28,12 @@
 #include "dataexchange.h"
 #include "experimentsconfig.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The structure to send the image to display to the GUI
  */
-struct FARSA_EXPERIMENTS_TEMPLATE Rendering2DDataToGui
+struct SALSA_EXPERIMENTS_TEMPLATE Rendering2DDataToGui
 {
 	/**
 	 * \brief The image to display
@@ -44,7 +44,7 @@ struct FARSA_EXPERIMENTS_TEMPLATE Rendering2DDataToGui
 /**
  * \brief The structure with information the gui sends to the 2D rendered
  */
-struct FARSA_EXPERIMENTS_TEMPLATE Rendering2DDataFromGui
+struct SALSA_EXPERIMENTS_TEMPLATE Rendering2DDataFromGui
 {
 	/**
 	 * \brief The current width of the area displaying the image
@@ -78,7 +78,7 @@ struct FARSA_EXPERIMENTS_TEMPLATE Rendering2DDataFromGui
  * often, then, it may be advisable to always send it regardless of whether the
  * GUI is visible or not
  */
-class FARSA_EXPERIMENTS_API Renderer2D : public DataUploaderDownloader<Rendering2DDataToGui, Rendering2DDataFromGui>
+class SALSA_EXPERIMENTS_API Renderer2D : public DataUploaderDownloader<Rendering2DDataToGui, Rendering2DDataFromGui>
 {
 public:
 	/**
@@ -133,7 +133,7 @@ private:
 	bool m_curVisibility;
 };
 
-} //end namespace farsa
+} //end namespace salsa
 
 #endif
 

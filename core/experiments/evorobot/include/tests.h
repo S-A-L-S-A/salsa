@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Piero Savastano <piero.savastano@istc.cnr.it>                               *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                         *
@@ -27,11 +27,11 @@
 
 #include "abstracttest.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief Test a robot using a random genotype
  */
-class FARSA_EXPERIMENTS_API TestRandom : public AbstractTest
+class SALSA_EXPERIMENTS_API TestRandom : public AbstractTest
 {
 public:
 	/*! Constructor
@@ -47,7 +47,7 @@ public:
 
 /*! \brief Test a specific individual taken from evolutionary data
  */
-class FARSA_EXPERIMENTS_API TestIndividual : public AbstractTest
+class SALSA_EXPERIMENTS_API TestIndividual : public AbstractTest
 {
 public:
 	/*! Constructor
@@ -81,7 +81,7 @@ private:
 /*! \brief Tests the current individual, i.e. doesn't load nor randomize the
  *         genome
  */
-class FARSA_EXPERIMENTS_API TestCurrent : public AbstractTest
+class SALSA_EXPERIMENTS_API TestCurrent : public AbstractTest
 {
 public:
 	/*! Constructor
@@ -93,6 +93,6 @@ public:
 	virtual void runTest();
 };
 
-} //end namespace farsa
+} //end namespace salsa
 
 #endif

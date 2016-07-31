@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experimentes Library                                                  *
+ *  SALSA Experimentes Library                                                  *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -21,12 +21,12 @@
  ********************************************************************************/
 
 /*!
- * \mainpage Documentation of FARSA Experiments Library
+ * \mainpage Documentation of SALSA Experiments Library
  * \section experiments_intro Introduction
  *
  * This library is a collection of classes and function for different scopes derived from the
  * EvoRobot application developed by Stefano Nolfi with additions and adaptations for working
- * inside the FARSA framework
+ * inside the SALSA framework
  */
 
 /*! \defgroup experiments_evonet Neural Networks */

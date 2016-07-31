@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                         *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -44,7 +44,7 @@
 // directly instantiate them from EvorobotComponent. This means that new tests
 // cannot be added at runtime
 
-namespace farsa {
+namespace salsa {
 
 class EvoRobotComponent;
 
@@ -59,7 +59,7 @@ class EvoRobotComponent;
  * writing subclasses, ALWAYS remember to register the class with the factory,
  * so that it can be instantiated when needed.
  */
-class FARSA_EXPERIMENTS_TEMPLATE AbstractTest
+class SALSA_EXPERIMENTS_TEMPLATE AbstractTest
 {
 public:
 	/**
@@ -158,7 +158,7 @@ private:
 //  * current execution depends on the content of the configuration file (see the
 //  * main() function for details)
 //  */
-// class FARSA_EXPERIMENTS_API AvailableTestList
+// class SALSA_EXPERIMENTS_API AvailableTestList
 // {
 // public:
 // 	/**
@@ -191,6 +191,6 @@ private:
 // 	static QMap<QString, AbstractTest*> m_map;
 // };
 
-} //end namespace farsa
+} //end namespace salsa
 
 #endif

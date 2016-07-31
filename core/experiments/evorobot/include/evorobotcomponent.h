@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -30,14 +30,14 @@
 #include "tests.h"
 #include <QMutex>
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief This class setup an evolutionary experiment
  *
  *
  *  \ingroup experiments_utils
  */
-class FARSA_EXPERIMENTS_API EvoRobotComponent : public QObject, public Component
+class SALSA_EXPERIMENTS_API EvoRobotComponent : public QObject, public Component
 {
 	Q_OBJECT
 
@@ -82,7 +82,7 @@ public slots:
 	void runTestFromQAction();
 	/*! Warns the user about the exception thrown by evolution or tests
 	 *  (only if not in batch running) */
-	void exceptionDuringOperation(farsa::BaseException *e);
+	void exceptionDuringOperation(salsa::BaseException *e);
 	/*! executed when the current thread operation finish
 	 *  \param message is the message about the operation done
 	 */
@@ -115,6 +115,6 @@ private:
 	TestIndividual* testIndividual;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

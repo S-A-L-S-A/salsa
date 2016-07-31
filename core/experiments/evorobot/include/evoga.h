@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -39,7 +39,7 @@
 
 #include <Eigen/Core>
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief Genetic algorithm from evorobot more or less (spare parts)
  *
@@ -48,7 +48,7 @@ namespace farsa {
  *  Optional Resources that the EvoRobotExperiment may declare:
  *  - "evonet": a pointer to the EvoNet
  */
-class FARSA_EXPERIMENTS_API Evoga : public QObject, public Component
+class SALSA_EXPERIMENTS_API Evoga : public QObject, public Component
 {
     Q_OBJECT
 public:
@@ -648,7 +648,7 @@ protected:
 
         int* operator[](int i)
         {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
             if (i > m_pop.size()) {
                 abort();
             }
@@ -658,7 +658,7 @@ protected:
 
         const int* operator[](int i) const
         {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
             if (i > m_pop.size()) {
                 abort();
             }
@@ -802,6 +802,6 @@ protected:
     double limitationFactor;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

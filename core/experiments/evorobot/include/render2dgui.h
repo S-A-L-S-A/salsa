@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -28,7 +28,7 @@
 #include "renderer2d.h"
 #include "experimentsconfig.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The widget rendering an image from a Renderer2D
@@ -36,7 +36,7 @@ namespace farsa {
  * This can be associated to a Renderer2D object to obtain an image to render.
  * This also communicates its own current size an visibility to the Renderer2D
  */
-class FARSA_EXPERIMENTS_API Render2DGui : public QLabel, public DataUploaderDownloader<Rendering2DDataFromGui, Rendering2DDataToGui>
+class SALSA_EXPERIMENTS_API Render2DGui : public QLabel, public DataUploaderDownloader<Rendering2DDataFromGui, Rendering2DDataToGui>
 {
 	Q_OBJECT
 
@@ -63,7 +63,7 @@ private:
 	int m_timerID;
 };
 
-} //end namespace farsa
+} //end namespace salsa
 
 #endif
 

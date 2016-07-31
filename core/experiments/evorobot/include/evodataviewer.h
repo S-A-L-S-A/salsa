@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -34,11 +34,11 @@
 #include <QFile>
 #include <QTextStream>
 
-namespace farsa {
+namespace salsa {
 
 
 //DataChunk class
-class FARSA_EXPERIMENTS_API DataChunk
+class SALSA_EXPERIMENTS_API DataChunk
 {
 
 
@@ -99,7 +99,7 @@ public:
 
 };
 //listwindow triggered by right mouse click ---------------------------------------------------------------------------------------
-class FARSA_EXPERIMENTS_API EvoListViewer : public QWidget
+class SALSA_EXPERIMENTS_API EvoListViewer : public QWidget
 {
 	Q_OBJECT
 public:
@@ -129,7 +129,7 @@ private:
 
 // EvodataViewer ----------------------------------------------------------------------------------------------------------------
 
-class FARSA_EXPERIMENTS_API EvoDataViewer : public QWidget
+class SALSA_EXPERIMENTS_API EvoDataViewer : public QWidget
 {
 	Q_OBJECT
 public:
@@ -185,7 +185,7 @@ private:
 };
 
 // Fitviewer
-class FARSA_EXPERIMENTS_API FitViewer : public QWidget
+class SALSA_EXPERIMENTS_API FitViewer : public QWidget
 {
 
 private:
@@ -233,6 +233,6 @@ public:
 
 };
 
-} //end namespace farsa
+} //end namespace salsa
 
 #endif

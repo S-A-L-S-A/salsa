@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA Experiments Library                                                   *
+//  *  SALSA Experiments Library                                                   *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
 //  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -40,7 +40,7 @@
 // #include <QComboBox>
 // #include "evonet.h"
 //
-// namespace farsa {
+// namespace salsa {
 //
 // class MixerDialog;
 // class RendNetwork;
@@ -48,7 +48,7 @@
 // /*
 //  * The dialog used to show the network widget and the associated menu bar
 //  */
-// class FARSA_EXPERIMENTS_API NetworkDialog : public QWidget
+// class SALSA_EXPERIMENTS_API NetworkDialog : public QWidget
 // {
 // 	Q_OBJECT
 //
@@ -242,7 +242,7 @@
 // /*
 //  * The network widget use to show the network architecture and parameters
 //  */
-// class FARSA_EXPERIMENTS_API RendNetwork : public QWidget
+// class SALSA_EXPERIMENTS_API RendNetwork : public QWidget
 // {
 //     Q_OBJECT
 //
@@ -295,7 +295,7 @@
 // /*
 //  * Slider use to visualize/modify parameters
 //  */
-// class FARSA_EXPERIMENTS_API EvoSlider : public QDoubleSpinBox
+// class SALSA_EXPERIMENTS_API EvoSlider : public QDoubleSpinBox
 // {
 // 	Q_OBJECT
 // public:
@@ -315,7 +315,7 @@
 // /*
 //  * Mixer containing sliders used to visualize/modify selected parameters of the neural network
 //  */
-// class FARSA_EXPERIMENTS_API MixerDialog : public QWidget
+// class SALSA_EXPERIMENTS_API MixerDialog : public QWidget
 // {
 // 	Q_OBJECT
 //
@@ -335,6 +335,6 @@
 // 	double trialRef;
 // };
 //
-// } //end namespace farsa
+// } //end namespace salsa
 //
 // #endif

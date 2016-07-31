@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -17,14 +17,14 @@
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA  *
  ********************************************************************************/
 
-/*! \mainpage FARSA - a Framework for Autonomous Robotics Simulation and Analysis
+/*! \mainpage SALSA - a Framework for Autonomous Robotics Simulation and Analysis
  *
- * \section farsa_intro Introduction
+ * \section salsa_intro Introduction
  *
  * This framework is a collection of different libraries and tools:
- * - \ref utilities_intro "Utilities" : 
+ * - \ref utilities_intro "Utilities" :
  * - \ref configuration_intro "Configuration" :
- * - \ref ga_intro "GA (Genetic Algoritms)" : 
+ * - \ref ga_intro "GA (Genetic Algoritms)" :
  * - \ref nnfw_intro "Neural Network Framework" :
  * - \ref wsim_intro "WorldSim" :
  *

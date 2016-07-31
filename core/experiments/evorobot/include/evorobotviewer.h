@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -46,7 +46,7 @@
 
 #warning QUI NON HO AGGIUNTO Render2DGUI, MA TENERLO IN CONSIDERAZIONE (PUÒ ESSERE UTILE)
 
-namespace farsa {
+namespace salsa {
 
 class PhyiCub;
 // class VisionMapSensorGui;
@@ -54,7 +54,7 @@ class EvoRobotExperiment;
 class TestIndividual;
 class RenderWorldWrapperWidget;
 
-class FARSA_EXPERIMENTS_API EvoRobotViewer : public QObject, public ComponentUI
+class SALSA_EXPERIMENTS_API EvoRobotViewer : public QObject, public ComponentUI
 {
 	Q_OBJECT
 public:
@@ -151,7 +151,7 @@ private slots:
 //  * This keeps the current image and adds marks on it. If you set a new image
 //  * all previous marks are lost
 //  */
-// class FARSA_EXPERIMENTS_API VisionMapSensorGui : public QWidget
+// class SALSA_EXPERIMENTS_API VisionMapSensorGui : public QWidget
 // {
 // 	Q_OBJECT
 //
@@ -207,7 +207,7 @@ private slots:
  * \brief This widget allows the user to select a seed and test individual agents
  */
 #warning THIS DHOULD USE UPLOADERS/DOWNLOADERS. AT THE MOMENT IT IS NOT THREAD SAFE AT ALL
-class FARSA_EXPERIMENTS_API TestIndividualGUI : public QWidget
+class SALSA_EXPERIMENTS_API TestIndividualGUI : public QWidget
 {
 	Q_OBJECT
 private:
@@ -223,7 +223,7 @@ private slots:
 	void seedWasChosen();
 };
 
-} //end namespace farsa
+} //end namespace salsa
 
 #endif
 

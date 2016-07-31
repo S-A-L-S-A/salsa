@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -48,7 +48,7 @@
 #include <QString>
 #include <memory>
 
-namespace farsa {
+namespace salsa {
 
 class Evoga;
 
@@ -59,7 +59,7 @@ class Evoga;
  * resource directly as a QVector\<WObject*\> (so to avoid including this file).
  * All the constructors here directly call the corresponding ones in QVector
  */
-class FARSA_EXPERIMENTS_TEMPLATE WObjectsList : public QVector<WObject*>, public Resource
+class SALSA_EXPERIMENTS_TEMPLATE WObjectsList : public QVector<WObject*>, public Resource
 {
 public:
 	/**
@@ -155,7 +155,7 @@ public:
  *              removed when the Evo* mess is removed or heavily refactored
  */
 #warning FOR THE MOMENT I AIM TO HAVE THINGS WORK, HOWEVER WE MUST GET RID OF THE Evo* MESS AS SOON AS POSSIBLE
-class FARSA_EXPERIMENTS_API EvoRobotExperiment : public QObject, public Component, public Renderer2D
+class SALSA_EXPERIMENTS_API EvoRobotExperiment : public QObject, public Component, public Renderer2D
 {
 	Q_OBJECT
 
@@ -457,7 +457,7 @@ protected:
 	void recreateArena();
 	/*! \brief Returns the random generator
 	 *
-	 *  You should use this function in experiments instead of using farsa::globalRNG because this
+	 *  You should use this function in experiments instead of using salsa::globalRNG because this
 	 *  returns the correct generator depending on whether the same random sequence should be generated
 	 *  for all individuals of the same generation or not. The actual seed for each individual in a given
 	 *  generation depends on the seed of the genetic algorithm, the current generation and the total number
@@ -519,13 +519,13 @@ private:
 	bool sameRandomSequence;
 	/*! The pointer to the random that getRNG returns
 	 *
-	 *  This points either to farsa::globalRNG or to localRNG
+	 *  This points either to salsa::globalRNG or to localRNG
 	 */
 	RandomGenerator* randomGeneratorInUse;
 	/*! A local random generator used if sameRandomSequence is true */
 	RandomGenerator localRNG;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

@@ -90,11 +90,11 @@ div.libNavBar a:hover {
 	text-decoration: none;
 	background-color: #c3d6fc;
 }
-#farsaLogo {
+#salsaLogo {
 	display: inline-block;
 	width: 100px;
 	height: 72px;
-	background: transparent url(../imgs/farsa-logo.png) no-repeat top left;
+	background: transparent url(../imgs/salsa-logo.png) no-repeat top left;
 }
 #laralLogo {
 	display: inline-block;

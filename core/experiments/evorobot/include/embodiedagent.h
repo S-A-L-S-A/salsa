@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -29,7 +29,7 @@
 #include "robots.h"
 #include <memory>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The class modelling an embodied agent
@@ -58,7 +58,7 @@ namespace farsa {
  * 	- "robot", the robotic body
  * 	- "controller", the controller
  */
-class EmbodiedAgent : public Component, public ControllerInputsList, public ControllerOutputsList
+class SALSA_EXPERIMENTS_API EmbodiedAgent : public Component, public ControllerInputsList, public ControllerOutputsList
 {
 public:
 	/**
@@ -219,6 +219,6 @@ private:
 	QVector<AbstractControllerOutput*> m_outputs;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif
