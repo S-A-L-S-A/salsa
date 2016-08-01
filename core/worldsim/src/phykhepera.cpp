@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -30,7 +30,7 @@
 #include "graphicalmarkers.h"
 #include <cmath>
 
-namespace farsa {
+namespace salsa {
 
 // Lengths are in meters, weights in kilograms.
 const real PhyKhepera::bodydistancefromground = 0.0015f;
@@ -366,4 +366,4 @@ void PhyKhepera::changedMatrix()
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa

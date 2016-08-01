@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -44,7 +44,7 @@
 #include "factory.h"
 #include "logger.h"
 
-namespace farsa {
+namespace salsa {
 
 bool initNewGALib() {
 	static bool dummy = false;
@@ -76,4 +76,4 @@ bool initNewGALib() {
 	return true;
 }
 
-} // end namespace farsa
+} // end namespace salsa

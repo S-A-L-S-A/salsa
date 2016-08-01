@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -46,7 +46,7 @@
 	#pragma warning(disable:4996)
 #endif
 
-namespace farsa {
+namespace salsa {
 
 #warning QUANDO SI RISCRIVE QUESTA ROBA, CONTROLLARE ANCHE BaseExperiment E FlowControl
 
@@ -71,7 +71,7 @@ EvoRobotExperiment::EvoRobotExperiment(ConfigurationManager& params)
 	, arena(NULL)
 	, stepDelay(timestep*1000)
 	, sameRandomSequence(false)
-	, randomGeneratorInUse(farsa::globalRNG)
+	, randomGeneratorInUse(salsa::globalRNG)
 	, localRNG(1)
 {
 }
@@ -118,7 +118,7 @@ void EvoRobotExperiment::configure()
 	if (sameRandomSequence) {
 		randomGeneratorInUse = &localRNG;
 	} else {
-		randomGeneratorInUse = farsa::globalRNG;
+		randomGeneratorInUse = salsa::globalRNG;
 	}
 
 	// create a World by default in order to exit from here with all configured properly
@@ -361,12 +361,12 @@ void EvoRobotExperiment::doAllTrialsForIndividual(int individual)
 	endIndividual(individual);
 	ga->commitStep();
 
-#ifdef FARSA_MAC
+#ifdef SALSA_MAC
 	// If the GUI is active, adding a small delay to let the GUI catch up (this is only done on MacOSX
 	// which seems the most troublesome system)
 	if (!batchRunning) {
 		// Using also the namespace to avoid name clashes
-		farsa::msleep(50);
+		salsa::msleep(50);
 	}
 #endif
 }
@@ -546,7 +546,7 @@ void EvoRobotExperiment::createArena()
 	declareResource("arena", arena);
 }
 
-} // end namespace farsa
+} // end namespace salsa
 
 // All the suff below is to restore the warning state on Windows
 #if defined(_MSC_VER)

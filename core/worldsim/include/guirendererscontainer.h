@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -41,13 +41,13 @@
 #include "dataexchange.h"
 #include "updatetrigger.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The class with rendering data sent from simulation thread to GUI
  *        thread
  */
-class FARSA_WSIM_API RenderingDataToGUI
+class SALSA_WSIM_API RenderingDataToGUI
 {
 public:
 	/**
@@ -134,7 +134,7 @@ public:
  * \brief The class with rendering data sent from GUI thread to simulation
  *        thread
  */
-class FARSA_WSIM_TEMPLATE RenderingDataFromGUI
+class SALSA_WSIM_TEMPLATE RenderingDataFromGUI
 {
 public:
 	/**
@@ -164,7 +164,7 @@ typedef DataUploaderDownloader<RenderingDataFromGUI, RenderingDataToGUI> WorldDa
  * it to the widgets doing the actual rendering. Renderers are deleted here
  * after "permission" from the GUI (if it exists)
  */
-class FARSA_WSIM_API GUIRenderersContainer : public AbstractRendererContainer, public WorldDataUploadeDownloaderSimSide
+class SALSA_WSIM_API GUIRenderersContainer : public AbstractRendererContainer, public WorldDataUploadeDownloaderSimSide
 {
 protected:
 	/**
@@ -320,7 +320,7 @@ private:
  * dispatches to widgets doing the actual rendering.
  * \note All widgets share the same set of renderers!
  */
-class FARSA_WSIM_API GUIRenderersContainerDataExchange : public QObject, public WorldDataUploadeDownloaderGUISide
+class SALSA_WSIM_API GUIRenderersContainerDataExchange : public QObject, public WorldDataUploadeDownloaderGUISide
 {
 	Q_OBJECT
 
@@ -483,6 +483,6 @@ private:
 	UpdateCheckerLong m_worldGraphicalInfoChanged;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

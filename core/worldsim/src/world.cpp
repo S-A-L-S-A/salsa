@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -29,7 +29,7 @@
 #include "logger.h"
 #include <QPair>
 
-namespace farsa {
+namespace salsa {
 
 World::World(QString worldname)
 	: m_name(worldname)
@@ -403,7 +403,7 @@ void World::deleteEntity(WEntity* entity)
 	} else if (m_shadowEntitiesMap.contains(entity)) {
 		isShadowEntity = true;
 	} else {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 		qDebug( "Trying to delete an entity not in the map" );
 #endif
 		return;
@@ -658,7 +658,7 @@ void World::destroyWorld()
 		}
 	}
 
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 	// Safety check, m_entities should now be empty
 	if (Q_UNLIKELY(!m_entities.isEmpty())) {
 		qFatal("List of entities not empty in destroyWorld");
@@ -743,4 +743,4 @@ void World::notifyRendererContainerOfAllEntitiesAndTextures(AbstractRendererCont
 	rendererContainer->setWorldGraphicalInfo(info);
 }
 
-} // end namespace farsa
+} // end namespace salsa

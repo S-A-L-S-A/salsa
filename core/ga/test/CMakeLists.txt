@@ -7,14 +7,14 @@
 # A function to declare a test. The only argument is the name of the test. The
 # source file of the test must have the same name of the test with a "_test.cpp"
 # suffix. "_test" is appended also the the name of the test
-function(addFarsaGaTest testName)
+function(addSalsaGaTest testName)
 	set(mangledTestName "${testName}_test")
 	add_executable("${mangledTestName}" "${mangledTestName}.cpp")
-	target_link_libraries("${mangledTestName}" farsaga Qt5::Test)
+	target_link_libraries("${mangledTestName}" salsaga Qt5::Test)
 	add_test(NAME "${mangledTestName}" COMMAND "${mangledTestName}")
 endfunction()
 
 # Adding all tests
-addFarsaGaTest(evorobotintgenotype)
-addFarsaGaTest(evorobotgastatistics)
+addSalsaGaTest(evorobotintgenotype)
+addSalsaGaTest(evorobotgastatistics)
 

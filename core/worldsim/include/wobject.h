@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -32,7 +32,7 @@
 #include <QColor>
 #include <QGLContext>
 
-namespace farsa {
+namespace salsa {
 
 class World;
 class GLContextAndData;
@@ -41,7 +41,7 @@ class RenderWObject;
 /**
  * \brief The shared data for the WObject
  */
-class FARSA_WSIM_TEMPLATE WObjectShared : public WEntityShared
+class SALSA_WSIM_TEMPLATE WObjectShared : public WEntityShared
 {
 public:
 	/**
@@ -104,7 +104,7 @@ public:
  *        calculateMBBSize() function (see WObject description for more
  *        information)
  */
-#define FARSA_IMPLEMENT_VIRTUAL_BB virtual void calculateAABB(wVector& minPoint, wVector& maxPoint, const wMatrix& tm) const\
+#define SALSA_IMPLEMENT_VIRTUAL_BB virtual void calculateAABB(wVector& minPoint, wVector& maxPoint, const wMatrix& tm) const\
                                    {\
                                    	calculateAABB(static_cast<const Shared*>(getShared()), minPoint, maxPoint, tm);\
                                    }\
@@ -151,11 +151,11 @@ public:
  * };
  * \endcode
  *
- * The FARSA_IMPLEMENT_VIRTUAL_BB convenience macro implements the virtual
+ * The SALSA_IMPLEMENT_VIRTUAL_BB convenience macro implements the virtual
  * functions inline as in the above example. You simply have to put it inside
  * the class declaration
  */
-class FARSA_WSIM_API WObject : public WEntity
+class SALSA_WSIM_API WObject : public WEntity
 {
 public:
 	/**
@@ -436,7 +436,7 @@ private:
  *        calculateMBBSize() function in RenderWObject subclasses (see
  *        RenderWObject description for more information)
  */
-#define FARSA_IMPLEMENT_VIRTUAL_RENDERER_BB(ClassName) virtual void calculateAABB(const ClassName::Shared* sharedData, wVector& minPoint, wVector& maxPoint, const wMatrix& tm) const\
+#define SALSA_IMPLEMENT_VIRTUAL_RENDERER_BB(ClassName) virtual void calculateAABB(const ClassName::Shared* sharedData, wVector& minPoint, wVector& maxPoint, const wMatrix& tm) const\
                                                        {\
                                                        	ClassName::calculateAABB(sharedData, minPoint, maxPoint, tm);\
                                                        }\
@@ -476,15 +476,15 @@ private:
  * };
  * \endcode
  *
- * The FARSA_IMPLEMENT_VIRTUAL_RENDERER_BB convenience macro implements the
+ * The SALSA_IMPLEMENT_VIRTUAL_RENDERER_BB convenience macro implements the
  * virtual functions inline as in the above example. The only parameter is the
  * name of the class that is rendered. To use the macro, however, the rendered
  * class must have been already defined (you can use a forward declaration of
  * the renderer class to add the typedefs in the rendered object). In the
  * example above you could have used the macro like this:
- * FARSA_IMPLEMENT_VIRTUAL_RENDERER_BB(WObjectSubclass)
+ * SALSA_IMPLEMENT_VIRTUAL_RENDERER_BB(WObjectSubclass)
  */
-class FARSA_WSIM_API RenderWObject : public RenderWEntity
+class SALSA_WSIM_API RenderWObject : public RenderWEntity
 {
 public:
 	/**
@@ -574,6 +574,6 @@ public:
 	void drawAxes(const WObjectShared* sharedData, GLContextAndData* contextAndData);
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

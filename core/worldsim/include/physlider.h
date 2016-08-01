@@ -28,7 +28,7 @@
 #include "wquaternion.h"
 #include "phyjoint.h"
 
-namespace farsa {
+namespace salsa {
 
 
 class RenderPhySlider;
@@ -36,7 +36,7 @@ class RenderPhySlider;
 /**
  * \brief The shared data for a PhySlider
  */
-class FARSA_WSIM_TEMPLATE PhySliderShared : public PhyJointShared
+class SALSA_WSIM_TEMPLATE PhySliderShared : public PhyJointShared
 {
 public:
 	/**
@@ -99,7 +99,7 @@ public:
  *
  * This models an slider (prismatic) joint
  */
-class FARSA_WSIM_API PhySlider : public PhyJoint
+class SALSA_WSIM_API PhySlider : public PhyJoint
 {
 public:
 	/**
@@ -190,7 +190,7 @@ protected:
 /**
  * \brief The class rendering the PhySlider
  */
-class FARSA_WSIM_API RenderPhySlider : public RenderPhyJoint
+class SALSA_WSIM_API RenderPhySlider : public RenderPhyJoint
 {
 public:
 	/**
@@ -221,6 +221,6 @@ public:
 	void render(const PhySliderShared* sharedData, GLContextAndData* contextAndData);
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

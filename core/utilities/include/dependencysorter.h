@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Utilities Library                                                     *
+ *  SALSA Utilities Library                                                     *
  *  Copyright (C) 2007-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                         *
@@ -29,7 +29,7 @@
 #include <QList>
 #include <QVector>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief A class to return data sorted by dependency
@@ -274,6 +274,6 @@ private:
 	QMap<ElementType, QSet<ElementType> > m_elements;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

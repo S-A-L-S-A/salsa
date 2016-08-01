@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -31,7 +31,7 @@
 #include <QAtomicInt>
 #include <QExplicitlySharedDataPointer>
 
-namespace farsa {
+namespace salsa {
 
 class AbstractPhyObjectComponent;
 class PhyCompoundObject;
@@ -82,7 +82,7 @@ struct PhyCompoundComponentAndAbstractComponent
  * Moreover, you can only use a list for one compound object
  * \note A PhyCompoundObject cannot be a component of another PhyCompoundObject
  */
-class FARSA_WSIM_API PhyCompoundComponentsList : private OwnershipChangesListener
+class SALSA_WSIM_API PhyCompoundComponentsList : private OwnershipChangesListener
 {
 public:
 	/**
@@ -360,7 +360,7 @@ private:
  * \brief The abstract base class to call the functions to compute the AABB and
  *        OBB of a component and to copy its shared data
  */
-class FARSA_WSIM_TEMPLATE AbstractPhyObjectComponent
+class SALSA_WSIM_TEMPLATE AbstractPhyObjectComponent
 {
 public:
 	/**
@@ -447,7 +447,7 @@ public:
  * counting and share instances of this class
  */
 template <class ComponentType_t>
-class FARSA_WSIM_TEMPLATE PhyObjectComponent : public AbstractPhyObjectComponent
+class SALSA_WSIM_TEMPLATE PhyObjectComponent : public AbstractPhyObjectComponent
 {
 public:
 	/**
@@ -536,7 +536,7 @@ public:
  * PhyCompoundObject as a component of another object
  */
 template <>
-class FARSA_WSIM_TEMPLATE PhyObjectComponent<PhyCompoundObject>
+class SALSA_WSIM_TEMPLATE PhyObjectComponent<PhyCompoundObject>
 {
 private:
 	/**
@@ -565,7 +565,7 @@ private:
  * PhyCompoundObject. If you attempt to copy instances from different
  * PhyCompoundObjects the program is terminated
  */
-class FARSA_WSIM_API PhyCompoundObjectShared : public PhyObjectShared
+class SALSA_WSIM_API PhyCompoundObjectShared : public PhyObjectShared
 {
 public:
 	/**
@@ -667,7 +667,7 @@ private:
  * \note In Newton compound collision shapes cannot have a collision shape
  *       offset matrix
  */
-class FARSA_WSIM_API PhyCompoundObject : public PhyObject, private OwnershipChangesListener
+class SALSA_WSIM_API PhyCompoundObject : public PhyObject, private OwnershipChangesListener
 {
 public:
 	/**
@@ -751,7 +751,7 @@ public:
 	}
 
 	// Adding code for virtual bounding box functions
-	FARSA_IMPLEMENT_VIRTUAL_BB
+	SALSA_IMPLEMENT_VIRTUAL_BB
 
 protected:
 	/**
@@ -830,7 +830,7 @@ private:
 /**
  * \brief The class rendering the PhyCompoundObject
  */
-class FARSA_WSIM_API RenderPhyCompoundObject : public RenderPhyObject
+class SALSA_WSIM_API RenderPhyCompoundObject : public RenderPhyObject
 {
 public:
 	/**
@@ -861,7 +861,7 @@ public:
 	void render(const PhyCompoundObjectShared* sharedData, GLContextAndData* contextAndData);
 
 	// Adding code for virtual bounding box functions
-	FARSA_IMPLEMENT_VIRTUAL_RENDERER_BB(PhyCompoundObject)
+	SALSA_IMPLEMENT_VIRTUAL_RENDERER_BB(PhyCompoundObject)
 
 private:
 	/**
@@ -886,20 +886,20 @@ private:
 	QList<ComponentAndRenderer> m_componentsRenderers;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 // Implementation of template functions
-namespace farsa {
+namespace salsa {
 
 template <class T>
 T* PhyCompoundComponentsList::createComponent(TypeToCreate<T> type, const wMatrix& offset)
 {
-#define __FARSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT WEntityCreationCustomizer<T> customizer;\
+#define __SALSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT WEntityCreationCustomizer<T> customizer;\
                                                               customizer.setAddToWorldLists(false);\
                                                               customizer.setOnlyCreateCollisionShape(true);\
                                                               customizer.setCustomCollisionShapeOffset(offset);
 
-#define __FARSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT obj->registerOwnertshipChangesListener(this);\
+#define __SALSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT obj->registerOwnertshipChangesListener(this);\
                                                                PhyCompoundComponentAndAbstractComponent c;\
                                                                c.object = obj;\
                                                                c.abstractComponent = new PhyObjectComponent<T>();\
@@ -908,92 +908,92 @@ T* PhyCompoundComponentsList::createComponent(TypeToCreate<T> type, const wMatri
                                                                m_shared->components.append(c);\
                                                                return obj;
 
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
 
 	T* obj = m_world->createEntity(customizer, type);
 
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
 
 }
 
 template <class T, class P0>
 T* PhyCompoundComponentsList::createComponent(TypeToCreate<T> type, const wMatrix& offset, P0 p0)
 {
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
 
 	T* obj = m_world->createEntity(customizer, type, p0);
 
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
 }
 
 template <class T, class P0, class P1>
 T* PhyCompoundComponentsList::createComponent(TypeToCreate<T> type, const wMatrix& offset, P0 p0, P1 p1)
 {
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
 
 	T* obj = m_world->createEntity(customizer, type, p0, p1);
 
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
 }
 
 template <class T, class P0, class P1, class P2>
 T* PhyCompoundComponentsList::createComponent(TypeToCreate<T> type, const wMatrix& offset, P0 p0, P1 p1, P2 p2)
 {
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
 
 	T* obj = m_world->createEntity(customizer, type, p0, p1, p2);
 
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
 }
 
 template <class T, class P0, class P1, class P2, class P3>
 T* PhyCompoundComponentsList::createComponent(TypeToCreate<T> type, const wMatrix& offset, P0 p0, P1 p1, P2 p2, P3 p3)
 {
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
 
 	T* obj = m_world->createEntity(customizer, type, p0, p1, p2, p3);
 
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
 }
 
 template <class T, class P0, class P1, class P2, class P3, class P4>
 T* PhyCompoundComponentsList::createComponent(TypeToCreate<T> type, const wMatrix& offset, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4)
 {
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
 
 	T* obj = m_world->createEntity(customizer, type, p0, p1, p2, p3, p4);
 
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
 }
 
 template <class T, class P0, class P1, class P2, class P3, class P4, class P5>
 T* PhyCompoundComponentsList::createComponent(TypeToCreate<T> type, const wMatrix& offset, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5)
 {
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
 
 	T* obj = m_world->createEntity(customizer, type, p0, p1, p2, p3, p4, p5);
 
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
 }
 
 template <class T, class P0, class P1, class P2, class P3, class P4, class P5, class P6>
 T* PhyCompoundComponentsList::createComponent(TypeToCreate<T> type, const wMatrix& offset, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6)
 {
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
 
 	T* obj = m_world->createEntity(customizer, type, p0, p1, p2, p3, p4, p5, p6);
 
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
 }
 
 template <class T, class P0, class P1, class P2, class P3, class P4, class P5, class P6, class P7>
 T* PhyCompoundComponentsList::createComponent(TypeToCreate<T> type, const wMatrix& offset, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7)
 {
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_PRE_CREATE_COMPONENT
 
 	T* obj = m_world->createEntity(customizer, type, p0, p1, p2, p3, p4, p5, p6, p7);
 
-	__FARSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
+	__SALSA_PHYCOMPOUNDCOMPONENTLIST_POST_CREATE_COMPONENT
 }
 
 }

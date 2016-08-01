@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -29,7 +29,7 @@
 #include "utilitiesexceptions.h"
 #include "randomgenerator.h"
 
-namespace farsa {
+namespace salsa {
 
 // This anonymous namespace contains some constants used throughout the code
 namespace {
@@ -286,7 +286,7 @@ bool Arena::delete2DObject(PhyObject2DWrapper* obj)
 {
 	int index = m_objects2DList.indexOf(obj);
 
-	if ((index == -1) || (dynamic_cast<farsa::WheeledRobot2DWrapper*>(obj) != NULL)) {
+	if ((index == -1) || (dynamic_cast<salsa::WheeledRobot2DWrapper*>(obj) != NULL)) {
 		return false;
 	}
 
@@ -815,4 +815,4 @@ Box2DWrapper* Arena::createPlane(real z)
 	return ret;
 }
 
-} // end namespace farsa
+} // end namespace salsa

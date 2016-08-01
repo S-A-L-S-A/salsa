@@ -1,5 +1,5 @@
 /*
- * My own idea about the structure of FARSA (GAs/Evolutionary Algorithms, evaluator, mapping gen2phe, experiment, controller and other stuff)
+ * My own idea about the structure of SALSA (GAs/Evolutionary Algorithms, evaluator, mapping gen2phe, experiment, controller and other stuff)
  */
  
 // Experiment (world, arena and so on)
@@ -83,7 +83,7 @@ class NeuralNetwork
 
 // Personal considerations on the basis on my own knowledge of the NES (and of the SteadyState)
 
-class SteadyState : public EvoAlgo, public farsa::component
+class SteadyState : public EvoAlgo, public salsa::component
 {
 	public:
 		SteadyState()
@@ -130,7 +130,7 @@ class SteadyState : public EvoAlgo, public farsa::component
 		Evaluator* m_evaluator;
 }
 
-class xNES : public EvoAlgo, public farsa::component
+class xNES : public EvoAlgo, public salsa::component
 {
 	public:
 		xNES()

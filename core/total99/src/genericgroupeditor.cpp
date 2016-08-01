@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -34,7 +34,7 @@
 #include <QIcon>
 #include <limits>
 
-using namespace farsa;
+using namespace salsa;
 
 GenericGroupEditor::GenericGroupEditor( QWidget* parent, Qt::WindowFlags f )
 	:	QWidget(parent, f),
@@ -124,7 +124,7 @@ GenericGroupEditor::GenericGroupEditor( QWidget* parent, Qt::WindowFlags f )
 GenericGroupEditor::~GenericGroupEditor() {
 }
 
-void GenericGroupEditor::setGroup( GroupInfo group, farsa::ConfigurationManager* confParams ) {
+void GenericGroupEditor::setGroup( GroupInfo group, salsa::ConfigurationManager* confParams ) {
 	this->confParams = confParams;
 	this->groupInfo = group;
 	//--- extract the path of the parent

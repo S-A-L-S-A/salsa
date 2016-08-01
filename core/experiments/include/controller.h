@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experimentes Library                                                  *
+ *  SALSA Experimentes Library                                                  *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -35,7 +35,7 @@
 #include <QPair>
 #include <memory>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The interface to obtain the list of inputs
@@ -43,7 +43,7 @@ namespace farsa {
  * The controller uses the list to set the iterator and the block index in the
  * inputs. See the description of Controller for more information
  */
-class FARSA_EXPERIMENTS_TEMPLATE ControllerInputsList
+class SALSA_EXPERIMENTS_TEMPLATE ControllerInputsList
 {
 public:
 	/**
@@ -75,7 +75,7 @@ public:
  * The controller uses the list to set the iterator and the block index in the
  * outputs. See the description of Controller for more information
  */
-class FARSA_EXPERIMENTS_TEMPLATE ControllerOutputsList
+class SALSA_EXPERIMENTS_TEMPLATE ControllerOutputsList
 {
 public:
 	/**
@@ -163,7 +163,7 @@ public:
  *       the virtual inheritance in AbstractControllerInputIterator and
  *       AbstractControllerOutputIterator)
  */
-class FARSA_EXPERIMENTS_API Controller : public Component
+class SALSA_EXPERIMENTS_API Controller : public Component
 {
 public:
 	/**
@@ -309,6 +309,6 @@ private:
 	ControllerOutputsList* m_outputsList;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

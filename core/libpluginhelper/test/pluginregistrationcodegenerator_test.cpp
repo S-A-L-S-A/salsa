@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -29,19 +29,19 @@
 
 #warning PERMETTERE DI SPECIFCARE IL CREATOR DEI COMPONENTI NEI PLUGIN: AGGIUNGERE UN TYPEDEF A COMPONENT (AD ESEMPIO Component::Creator) CHE SE PRESENTE È IL TIPO DEL CREATORE E/O UNA MACRO CON LA QUALE SPECIFICARE IL CREATOR E UNA CON LA QUALE SPECIFICARE UNA FUNZIONE CHE RITORNA IL CREATOR (PER LE REGISTRAZIONI CON UNA ISTANZA DEL CREATOR INVECE CHE SEMPLICEMENTE CON IL TIPO DEL CREATOR)
 
-using namespace farsa;
-using namespace farsa::pluginHelper;
+using namespace salsa;
+using namespace salsa::pluginHelper;
 
 ////////////////////////////////////////////////////////////////////////////////
 
 const char* noClassToRegister_0 = "\
-class FARSA_PLUGIN_API Dummy1\n\
+class SALSA_PLUGIN_API Dummy1\n\
 {\n\
 };\n\
 ";
 
 const char* noClassToRegister_1 = "\
-class FARSA_PLUGIN_API Dummy2\n\
+class SALSA_PLUGIN_API Dummy2\n\
 {\n\
 };\n\
 ";
@@ -51,13 +51,13 @@ const char* noClassToRegisterButDeps_h = "\
 #define PLUGIN_MAIN_H\n\
 \n\
 #include <QObject>\n\
-#include \"farsaplugin.h\"\n\
+#include \"salsaplugin.h\"\n\
 \n\
-class DummyPlugin : public QObject, public FarsaPlugin\n\
+class DummyPlugin : public QObject, public SalsaPlugin\n\
 {\n\
 	Q_OBJECT\n\
-	FARSA_PLUGIN_METADATA(IID FarsaPlugin_IID)\n\
-	Q_INTERFACES(FarsaPlugin)\n\
+	SALSA_PLUGIN_METADATA(IID SalsaPlugin_IID)\n\
+	Q_INTERFACES(SalsaPlugin)\n\
 \n\
 public:\n\
 	virtual void registerTypes();\n\
@@ -90,21 +90,21 @@ QStringList DummyPlugin::getDependencies()\n\
 ////////////////////////////////////////////////////////////////////////////////
 
 const char* noClassToRegisterButPrePostFnc_0 = "\
-class FARSA_PLUGIN_API Dummy1\n\
+class SALSA_PLUGIN_API Dummy1\n\
 {\n\
 };\n\
-FARSA_PRE_REGISTRATION_FUNCTION(pre00)\n\
-FARSA_PRE_REGISTRATION_FUNCTION(pre01)\n\
-FARSA_POST_REGISTRATION_FUNCTION(post00)\n\
+SALSA_PRE_REGISTRATION_FUNCTION(pre00)\n\
+SALSA_PRE_REGISTRATION_FUNCTION(pre01)\n\
+SALSA_POST_REGISTRATION_FUNCTION(post00)\n\
 ";
 
 const char* noClassToRegisterButPrePostFnc_1 = "\
-class FARSA_PLUGIN_API Dummy2\n\
+class SALSA_PLUGIN_API Dummy2\n\
 {\n\
 };\n\
-FARSA_PRE_REGISTRATION_FUNCTION(pre10)\n\
-FARSA_POST_REGISTRATION_FUNCTION(post10)\n\
-FARSA_POST_REGISTRATION_FUNCTION(post11)\n\
+SALSA_PRE_REGISTRATION_FUNCTION(pre10)\n\
+SALSA_POST_REGISTRATION_FUNCTION(post10)\n\
+SALSA_POST_REGISTRATION_FUNCTION(post11)\n\
 ";
 
 const char* noClassToRegisterButPrePostFnc_h = "\
@@ -112,13 +112,13 @@ const char* noClassToRegisterButPrePostFnc_h = "\
 #define PLUGIN_MAIN_H\n\
 \n\
 #include <QObject>\n\
-#include \"farsaplugin.h\"\n\
+#include \"salsaplugin.h\"\n\
 \n\
-class DummyPlugin : public QObject, public FarsaPlugin\n\
+class DummyPlugin : public QObject, public SalsaPlugin\n\
 {\n\
 	Q_OBJECT\n\
-	FARSA_PLUGIN_METADATA(IID FarsaPlugin_IID)\n\
-	Q_INTERFACES(FarsaPlugin)\n\
+	SALSA_PLUGIN_METADATA(IID SalsaPlugin_IID)\n\
+	Q_INTERFACES(SalsaPlugin)\n\
 \n\
 public:\n\
 	virtual void registerTypes();\n\
@@ -156,9 +156,9 @@ QStringList DummyPlugin::getDependencies()\n\
 ////////////////////////////////////////////////////////////////////////////////
 
 const char* singleClassToRegister = "\
-class FARSA_PLUGIN_API Dummy\n\
+class SALSA_PLUGIN_API Dummy\n\
 {\n\
-FARSA_REGISTER_CLASS\n\
+SALSA_REGISTER_CLASS\n\
 };\n\
 ";
 
@@ -167,13 +167,13 @@ const char* singleClassToRegister_h = "\
 #define PLUGIN_MAIN_H\n\
 \n\
 #include <QObject>\n\
-#include \"farsaplugin.h\"\n\
+#include \"salsaplugin.h\"\n\
 \n\
-class DummyPlugin : public QObject, public FarsaPlugin\n\
+class DummyPlugin : public QObject, public SalsaPlugin\n\
 {\n\
 	Q_OBJECT\n\
-	FARSA_PLUGIN_METADATA(IID FarsaPlugin_IID)\n\
-	Q_INTERFACES(FarsaPlugin)\n\
+	SALSA_PLUGIN_METADATA(IID SalsaPlugin_IID)\n\
+	Q_INTERFACES(SalsaPlugin)\n\
 \n\
 public:\n\
 	virtual void registerTypes();\n\
@@ -192,7 +192,7 @@ const char* singleClassToRegister_cpp = "\
 \n\
 void DummyPlugin::registerTypes()\n\
 {\n\
-\tfarsa::TypesDB::instance().registerType<Dummy>(\"Dummy\", QStringList());\n\
+\tsalsa::TypesDB::instance().registerType<Dummy>(\"Dummy\", QStringList());\n\
 }\n\
 \n\
 QStringList DummyPlugin::getDependencies()\n\
@@ -205,9 +205,9 @@ QStringList DummyPlugin::getDependencies()\n\
 ////////////////////////////////////////////////////////////////////////////////
 
 const char* singleClassToRegisterWithParents = "\
-class FARSA_PLUGIN_API Dummy : public Parent1, public Parent2, privare NoReg\n\
+class SALSA_PLUGIN_API Dummy : public Parent1, public Parent2, privare NoReg\n\
 {\n\
-FARSA_REGISTER_CLASS\n\
+SALSA_REGISTER_CLASS\n\
 };\n\
 ";
 
@@ -216,13 +216,13 @@ const char* singleClassToRegisterWithParents_h = "\
 #define PLUGIN_MAIN_H\n\
 \n\
 #include <QObject>\n\
-#include \"farsaplugin.h\"\n\
+#include \"salsaplugin.h\"\n\
 \n\
-class DummyPlugin : public QObject, public FarsaPlugin\n\
+class DummyPlugin : public QObject, public SalsaPlugin\n\
 {\n\
 	Q_OBJECT\n\
-	FARSA_PLUGIN_METADATA(IID FarsaPlugin_IID)\n\
-	Q_INTERFACES(FarsaPlugin)\n\
+	SALSA_PLUGIN_METADATA(IID SalsaPlugin_IID)\n\
+	Q_INTERFACES(SalsaPlugin)\n\
 \n\
 public:\n\
 	virtual void registerTypes();\n\
@@ -241,7 +241,7 @@ const char* singleClassToRegisterWithParents_cpp0 = "\
 \n\
 void DummyPlugin::registerTypes()\n\
 {\n\
-\tfarsa::TypesDB::instance().registerType<Dummy>(\"Dummy\", QStringList() << \"Parent1\" << \"Parent2\");\n\
+\tsalsa::TypesDB::instance().registerType<Dummy>(\"Dummy\", QStringList() << \"Parent1\" << \"Parent2\");\n\
 }\n\
 \n\
 QStringList DummyPlugin::getDependencies()\n\
@@ -259,7 +259,7 @@ const char* singleClassToRegisterWithParents_cpp1 = "\
 \n\
 void DummyPlugin::registerTypes()\n\
 {\n\
-\tfarsa::TypesDB::instance().registerType<Dummy>(\"Dummy\", QStringList() << \"Parent2\" << \"Parent1\");\n\
+\tsalsa::TypesDB::instance().registerType<Dummy>(\"Dummy\", QStringList() << \"Parent2\" << \"Parent1\");\n\
 }\n\
 \n\
 QStringList DummyPlugin::getDependencies()\n\
@@ -272,16 +272,16 @@ QStringList DummyPlugin::getDependencies()\n\
 ////////////////////////////////////////////////////////////////////////////////
 
 const char* classesToRegisterWithDependencies_0 = "\
-class FARSA_PLUGIN_API Dummy : public Parent1, public Parent2, privare NoReg\n\
+class SALSA_PLUGIN_API Dummy : public Parent1, public Parent2, privare NoReg\n\
 {\n\
-FARSA_REGISTER_CLASS\n\
+SALSA_REGISTER_CLASS\n\
 };\n\
 ";
 
 const char* classesToRegisterWithDependencies_1 = "\
-class FARSA_PLUGIN_API Parent1 : public Timmy\n\
+class SALSA_PLUGIN_API Parent1 : public Timmy\n\
 {\n\
-FARSA_REGISTER_CLASS\n\
+SALSA_REGISTER_CLASS\n\
 };\n\
 ";
 
@@ -290,13 +290,13 @@ const char* classesToRegisterWithDependencies_h = "\
 #define PLUGIN_MAIN_H\n\
 \n\
 #include <QObject>\n\
-#include \"farsaplugin.h\"\n\
+#include \"salsaplugin.h\"\n\
 \n\
-class DummyPlugin : public QObject, public FarsaPlugin\n\
+class DummyPlugin : public QObject, public SalsaPlugin\n\
 {\n\
 	Q_OBJECT\n\
-	FARSA_PLUGIN_METADATA(IID FarsaPlugin_IID)\n\
-	Q_INTERFACES(FarsaPlugin)\n\
+	SALSA_PLUGIN_METADATA(IID SalsaPlugin_IID)\n\
+	Q_INTERFACES(SalsaPlugin)\n\
 \n\
 public:\n\
 	virtual void registerTypes();\n\
@@ -317,8 +317,8 @@ const char* classesToRegisterWithDependencies_cpp0 = "\
 \n\
 void DummyPlugin::registerTypes()\n\
 {\n\
-\tfarsa::TypesDB::instance().registerType<Parent1>(\"Parent1\", QStringList() << \"Timmy\");\n\
-\tfarsa::TypesDB::instance().registerType<Dummy>(\"Dummy\", QStringList() << \"Parent1\" << \"Parent2\");\n\
+\tsalsa::TypesDB::instance().registerType<Parent1>(\"Parent1\", QStringList() << \"Timmy\");\n\
+\tsalsa::TypesDB::instance().registerType<Dummy>(\"Dummy\", QStringList() << \"Parent1\" << \"Parent2\");\n\
 }\n\
 \n\
 QStringList DummyPlugin::getDependencies()\n\
@@ -337,8 +337,8 @@ const char* classesToRegisterWithDependencies_cpp1 = "\
 \n\
 void DummyPlugin::registerTypes()\n\
 {\n\
-\tfarsa::TypesDB::instance().registerType<Parent1>(\"Parent1\", QStringList() << \"Timmy\");\n\
-\tfarsa::TypesDB::instance().registerType<Dummy>(\"Dummy\", QStringList() << \"Parent2\" << \"Parent1\");\n\
+\tsalsa::TypesDB::instance().registerType<Parent1>(\"Parent1\", QStringList() << \"Timmy\");\n\
+\tsalsa::TypesDB::instance().registerType<Dummy>(\"Dummy\", QStringList() << \"Parent2\" << \"Parent1\");\n\
 }\n\
 \n\
 QStringList DummyPlugin::getDependencies()\n\

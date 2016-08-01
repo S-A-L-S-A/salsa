@@ -46,7 +46,7 @@ class dgMatrix
 	dgMatrix ();
 	dgMatrix (const dgVector &front, const dgVector &up, const dgVector &right, const dgVector &posit);
 	dgMatrix (const dgQuaternion &rotation, const dgVector &position);
-	// FARSA addition
+	// SALSA addition
 	dgMatrix (const dgMatrix &other);
 
 	// create a orthonormal normal vector basis
@@ -121,7 +121,7 @@ DG_INLINE dgMatrix::dgMatrix (const dgVector &front, const dgVector &up, const d
 {
 }
 
-// FARSA addition
+// SALSA addition
 DG_INLINE dgMatrix::dgMatrix (const dgMatrix &other)
 	:m_front(other.m_front), m_up(other.m_up), m_right(other.m_right), m_posit(other.m_posit)
 {

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2005-2014 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -20,36 +20,36 @@
 #ifndef GACONFIG_H
 #define GACONFIG_H
 
-// FARSA_GA_TEMPLATE is also for classes that are completely inline
+// SALSA_GA_TEMPLATE is also for classes that are completely inline
 #ifdef WIN32
 	#define _CRT_SECURE_NO_DEPRECATE
-	#ifdef FARSA_GA_BUILDING_DLL
-		#define FARSA_GA_API __declspec(dllexport)
-		#define FARSA_GA_TEMPLATE __declspec(dllexport)
+	#ifdef SALSA_GA_BUILDING_DLL
+		#define SALSA_GA_API __declspec(dllexport)
+		#define SALSA_GA_TEMPLATE __declspec(dllexport)
 	#else
-		#define FARSA_GA_API __declspec(dllimport)
-		#define FARSA_GA_TEMPLATE
+		#define SALSA_GA_API __declspec(dllimport)
+		#define SALSA_GA_TEMPLATE
 	#endif
-	#define FARSA_GA_INTERNAL
+	#define SALSA_GA_INTERNAL
 #else
-	#define FARSA_GA_API
-	#define FARSA_GA_TEMPLATE
-	#define FARSA_GA_INTERNAL __attribute__ ((visibility ("hidden")))
+	#define SALSA_GA_API
+	#define SALSA_GA_TEMPLATE
+	#define SALSA_GA_INTERNAL __attribute__ ((visibility ("hidden")))
 #endif
 
-namespace farsa {
+namespace salsa {
 
-extern bool FARSA_GA_API initGALib();
+extern bool SALSA_GA_API initGALib();
 static const bool GALibInitializer = initGALib();
 
-} // end namespace farsa
+} // end namespace salsa
 
 //--- read it as: xx.yy.zz where
 //---  xx  is major version
 //---  yy  is minor version
 //---  zz  is patch version
 //--- Example: version 2.4.6 is 0x020406
-#define FARSA_VERSION 0x020000
+#define SALSA_VERSION 0x020000
 
 #include <QtDebug>
 

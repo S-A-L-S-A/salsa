@@ -19,7 +19,7 @@
 
 #include "dotlinker.h"
 
-namespace farsa {
+namespace salsa {
 
 DotLinker::DotLinker( ConfigurationManager& params, QString prefix, Component* parent )
 	: MatrixLinker( params, prefix, parent ) {

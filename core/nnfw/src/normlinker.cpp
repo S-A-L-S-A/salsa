@@ -19,7 +19,7 @@
 
 #include "normlinker.h"
 
-namespace farsa {
+namespace salsa {
 
 NormLinker::NormLinker( ConfigurationManager& params, QString prefix, Component* parent )
 	: MatrixLinker( params, prefix, parent ) {

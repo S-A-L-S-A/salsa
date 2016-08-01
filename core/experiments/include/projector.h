@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA Experiments Library                                                   *
+//  *  SALSA Experiments Library                                                   *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                         *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -28,12 +28,12 @@
 // #include "wmatrix.h"
 // #include "mathutils.h"
 //
-// namespace farsa {
+// namespace salsa {
 //
 // /**
 //  * \brief The structure modelling a single point on a 2D image
 //  */
-// class FARSA_EXPERIMENTS_TEMPLATE ImagePoint {
+// class SALSA_EXPERIMENTS_TEMPLATE ImagePoint {
 // public:
 // 	/**
 // 	 * \brief Constructor
@@ -94,7 +94,7 @@
 //  * the center of the image is in <0, 0>. Both the vertical and horizontal
 //  * aperture are in degrees.
 //  */
-// class FARSA_EXPERIMENTS_TEMPLATE Projector
+// class SALSA_EXPERIMENTS_TEMPLATE Projector
 // {
 // public:
 // 	/**
@@ -245,6 +245,6 @@
 // 	ImagePoint m_imagePoint;
 // };
 //
-// } //end namespace farsa
+// } //end namespace salsa
 //
 // #endif

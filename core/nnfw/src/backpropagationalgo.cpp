@@ -22,7 +22,7 @@
 #include "biasedcluster.h"
 #include "backpropagationalgo.h"
 
-namespace farsa {
+namespace salsa {
 
 BackPropagationAlgo::BackPropagationAlgo(ConfigurationManager& params, QString prefix, Component* parent)
 	: LearningAlgorithm(params,prefix,parent), learn_rate(0.0) {

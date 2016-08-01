@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -23,7 +23,7 @@
 #include "genotypes/doublegenotype.h"
 #include "configurationparameters.h"
 
-namespace farsa {
+namespace salsa {
 
 GaussianFloat::GaussianFloat()
 	: Mutation() {
@@ -72,4 +72,4 @@ void GaussianFloat::save( ConfigurationParameters& params, QString prefix ) {
 	params.createParameter( prefix, QString("variance"), QString("%1").arg(varg) );
 }
 
-} // end namespace farsa
+} // end namespace salsa

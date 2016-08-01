@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA Experiments Library                                                   *
+//  *  SALSA Experiments Library                                                   *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Gianluca Massera <emmegian@yahoo.it>                                        *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -31,7 +31,7 @@
 // #include <QMutex>
 // #include <limits>
 //
-// namespace farsa {
+// namespace salsa {
 //
 // MarXbotSensor::MarXbotSensor(ConfigurationParameters& params, QString prefix) :
 // 	Sensor(params, prefix),

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -29,7 +29,7 @@
 #include "logger.h"
 #include <QPair>
 
-namespace farsa {
+namespace salsa {
 
 MaterialDB::MaterialDB( World* w ) : mats(), pmap() {
 	this->worldv = w;
@@ -147,4 +147,4 @@ QString MaterialDB::createKey( QString mat1, QString mat2 ) {
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa

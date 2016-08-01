@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experimentes Library                                                  *
+ *  SALSA Experimentes Library                                                  *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -31,7 +31,7 @@
 #include "phycylinder.h"
 #include "sensors.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The base abstract class for khepera sensors
@@ -50,7 +50,7 @@ namespace farsa {
  * The resources required by this Sensor are:
  * - name defined by the khepera parameter: the simulated physical khepera robot
  */
-class FARSA_EXPERIMENTS_API KheperaSensor : public AbstractControllerInput
+class SALSA_EXPERIMENTS_API KheperaSensor : public AbstractControllerInput
 {
 public:
 	/**
@@ -96,7 +96,7 @@ protected:
 //  * The resources required by this Sensor are the same as those of the parent
 //  * class
 //  */
-// class FARSA_EXPERIMENTS_API KheperaProximityIRSensor : public KheperaSensor
+// class SALSA_EXPERIMENTS_API KheperaProximityIRSensor : public KheperaSensor
 // {
 // public:
 // 	/**
@@ -188,7 +188,7 @@ protected:
  * class plus:
  * - arena: the instance of the Arena object where the robot lives
  */
-class FARSA_EXPERIMENTS_API KheperaSampledProximityIRSensor : public KheperaSensor
+class SALSA_EXPERIMENTS_API KheperaSampledProximityIRSensor : public KheperaSensor
 {
 public:
 	/**
@@ -257,7 +257,7 @@ private:
 //  * class plus:
 //  * - arena: the instance of the Arena object where the robot lives
 //  */
-// class FARSA_EXPERIMENTS_API KheperaSampledLightSensor : public KheperaSensor
+// class SALSA_EXPERIMENTS_API KheperaSampledLightSensor : public KheperaSensor
 // {
 // public:
 // 	/**
@@ -360,7 +360,7 @@ private:
 //  * class plus:
 //  * - arena: the instance of the Arena object where the robot lives
 //  */
-// class FARSA_EXPERIMENTS_API KheperaGroundSensor : public KheperaSensor
+// class SALSA_EXPERIMENTS_API KheperaGroundSensor : public KheperaSensor
 // {
 // public:
 // 	/**
@@ -453,7 +453,7 @@ private:
 //  * The resources required by this Sensor are the same as those of the parent
 //  * class
 //  */
-// class FARSA_EXPERIMENTS_API KheperaWheelSpeedsSensor : public KheperaSensor
+// class SALSA_EXPERIMENTS_API KheperaWheelSpeedsSensor : public KheperaSensor
 // {
 // public:
 // 	/**

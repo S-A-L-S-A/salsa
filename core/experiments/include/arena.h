@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experimentes Library                                                  *
+ *  SALSA Experimentes Library                                                  *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -28,13 +28,13 @@
 #include "world.h"
 #include "wheeledexperimenthelper.h"
 #include "baseexception.h"
-#include "farsamiscutilities.h"
+#include "salsamiscutilities.h"
 #include <QVector>
 #include <QMap>
 #include <QString>
 #include <QSet>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The class modelling an arena
@@ -46,7 +46,7 @@ namespace farsa {
  * axis. The dimension of the main plane and its Z position can only be set via
  * configuration parameters and are fixed.
  */
-class FARSA_EXPERIMENTS_API Arena : public Component
+class SALSA_EXPERIMENTS_API Arena : public Component
 {
 public:
 	/**
@@ -499,7 +499,7 @@ private:
 /**
  * \brief The exception thrown at runtime by the arena
  */
-class FARSA_EXPERIMENTS_TEMPLATE ArenaException : public BaseException
+class SALSA_EXPERIMENTS_TEMPLATE ArenaException : public BaseException
 {
 public:
 	/**
@@ -602,6 +602,6 @@ private:
 	#pragma warning(pop)
 #endif
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

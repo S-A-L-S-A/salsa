@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -30,9 +30,9 @@
 #ifdef WORLDSIM_USE_NEWTON
 #include "Newton.h"
 
-namespace farsa {
+namespace salsa {
 
-class FARSA_WSIM_INTERNAL PhyObjectPrivate {
+class SALSA_WSIM_INTERNAL PhyObjectPrivate {
 public:
 	PhyObjectPrivate()
 		: body(NULL)
@@ -82,7 +82,7 @@ public:
 	}
 };
 
-} // use namespace farsa
+} // use namespace salsa
 
 #endif
 

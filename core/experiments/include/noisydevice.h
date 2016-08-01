@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experimentes Library                                                  *
+ *  SALSA Experimentes Library                                                  *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -32,7 +32,7 @@
 #include "motors.h"
 #include <memory>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The base class for inputs and outputs that add noise
@@ -55,7 +55,7 @@ namespace farsa {
  *
  * \note In subclasses, use Component as the first subclass, then this one
  */
-class FARSA_EXPERIMENTS_API NoisyDevice
+class SALSA_EXPERIMENTS_API NoisyDevice
 {
 public:
 	/**
@@ -118,7 +118,7 @@ private:
  * This component is a controller input that takes input from another controller
  * input (in the subgroup Input) and adds noise
  */
-class FARSA_EXPERIMENTS_API NoisyInput : public AbstractControllerInput, public NoisyDevice, protected AbstractControllerInputIterator
+class SALSA_EXPERIMENTS_API NoisyInput : public AbstractControllerInput, public NoisyDevice, protected AbstractControllerInputIterator
 {
 public:
 	/**
@@ -187,7 +187,7 @@ private:
  * This component is a controller output that takes output from the controller
  * and feeds it to another controller output (in the subgroup Output)
  */
-class FARSA_EXPERIMENTS_API NoisyOutput : public AbstractControllerOutput, public NoisyDevice, protected AbstractControllerOutputIterator
+class SALSA_EXPERIMENTS_API NoisyOutput : public AbstractControllerOutput, public NoisyDevice, protected AbstractControllerOutputIterator
 {
 public:
 	/**
@@ -250,6 +250,6 @@ private:
 	std::auto_ptr<AbstractControllerOutput> m_output;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

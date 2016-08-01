@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                         *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -24,7 +24,7 @@
 #include "evoalgotestcurrent.h"
 #include "configurationhelper.h"
 
-namespace farsa {
+namespace salsa {
 
 EvoAlgoTestCurrent::EvoAlgoTestCurrent()
 	: EvoAlgoTest()
@@ -49,4 +49,4 @@ void EvoAlgoTestCurrent::runTest()
 	Logger::info("End test");
 }
 
-} //end namespace farsa
+} //end namespace salsa

@@ -34,7 +34,7 @@
 #include "phycylinder.h"
 #include <QVector>
 
-namespace farsa {
+namespace salsa {
 
 class PhyObject;
 class PhyJoint;
@@ -45,7 +45,7 @@ class PhyHinge;
 /**
  * \brief The shared data for the PhyMarXbot
  */
-class FARSA_WSIM_TEMPLATE PhyMarXbotShared : public WObjectShared
+class SALSA_WSIM_TEMPLATE PhyMarXbotShared : public WObjectShared
 {
 public:
 	/**
@@ -102,7 +102,7 @@ public:
  * allows to have slightly faster simulations when the traction sensor is used
  * but the possibility to attach two robots is not allowed
  */
-class FARSA_WSIM_API PhyMarXbot : public QObject, public WObject
+class SALSA_WSIM_API PhyMarXbot : public QObject, public WObject
 {
 	Q_OBJECT
 
@@ -650,6 +650,6 @@ private:
 	friend class World;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

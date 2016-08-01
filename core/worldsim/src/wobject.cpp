@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -22,10 +22,10 @@
 
 #include "wobject.h"
 #include "world.h"
-#include "farsaglutils.h"
+#include "salsaglutils.h"
 #include <QStack>
 
-namespace farsa {
+namespace salsa {
 
 void WObject::calculateAABB(const Shared*, wVector& minPoint, wVector& maxPoint, const wMatrix& tm)
 {
@@ -265,4 +265,4 @@ void RenderWObject::drawAxes(const WObjectShared* sharedData, GLContextAndData*)
 	glPopMatrix();
 }
 
-} // end namespace farsa
+} // end namespace salsa

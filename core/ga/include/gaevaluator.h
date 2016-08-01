@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -22,7 +22,7 @@
 
 #include "gaconfig.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The interface of evaluators
@@ -35,7 +35,7 @@ namespace farsa {
  * evaluated genotype, a single fitness value for a set of genotypes, multiple
  * fitness values for each genotype...).
  */
-class FARSA_GA_TEMPLATE GAEvaluator
+class SALSA_GA_TEMPLATE GAEvaluator
 {
 public:
 	/**
@@ -54,6 +54,6 @@ public:
 	virtual void evaluate() = 0;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

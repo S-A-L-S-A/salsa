@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -29,7 +29,7 @@
 #include <cmath>
 #include <cstdlib>
 
-namespace farsa {
+namespace salsa {
 
 GenotypeFloat::GenotypeFloat(ConfigurationParameters& params, QString prefix)
 	: Genotype(params, prefix)
@@ -247,4 +247,4 @@ void GenotypeInt::initRandom(const int min, const int max)
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa

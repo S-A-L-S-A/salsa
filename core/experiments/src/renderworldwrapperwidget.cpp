@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2014                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -36,7 +36,7 @@ using namespace qglviewer;
 	#pragma warning(disable:4996)
 #endif
 
-namespace farsa {
+namespace salsa {
 
 #warning THE HARDCODED 40 BELOW SHOULD BE CHECKED
 RenderWorldWrapperWidget::RenderWorldWrapperWidget(WorldDataUploadeDownloaderSimSide* otherEnd, QWidget* parent, Qt::WindowFlags flags)
@@ -67,7 +67,7 @@ void RenderWorldWrapperWidget::lookAtRobot()
 	m_renderWorld->camera()->lookAt(Vec(m_robotTm.w_pos[0], m_robotTm.w_pos[1], m_robotTm.w_pos[2]));
 }
 
-} //end namespace farsa
+} //end namespace salsa
 
 // All the suff below is to restore the warning state on Windows
 #if defined(_MSC_VER)

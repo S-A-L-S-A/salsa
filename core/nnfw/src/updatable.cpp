@@ -20,7 +20,7 @@
 #include "updatable.h"
 #include "configurationhelper.h"
 
-namespace farsa {
+namespace salsa {
 
 Updatable::Updatable( ConfigurationManager& params, QString prefix, Component* parent ) :
 	Component(params, prefix, parent)

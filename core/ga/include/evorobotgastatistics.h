@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -28,7 +28,7 @@
 #include <QVector>
 #include <QTextStream>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief A class storing statistics of an evolution
@@ -36,7 +36,7 @@ namespace farsa {
  * This stores for each generation the worst, mean and best fitness. This is
  * compatible with evorobot fit files
  */
-class FARSA_GA_API EvorobotGAStatistics
+class SALSA_GA_API EvorobotGAStatistics
 {
 public:
 	/**
@@ -191,7 +191,7 @@ private:
 	QVector<GenerationStatistics> m_statistics;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif
 

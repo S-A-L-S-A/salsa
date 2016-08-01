@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -28,7 +28,7 @@
 #include <QtAlgorithms>
 #include "utilitiesexceptions.h"
 
-namespace farsa {
+namespace salsa {
 
 namespace pluginHelper {
 
@@ -180,12 +180,12 @@ void HeaderParser::parse()
 
 QVector<int> HeaderParser::findRegistrationMacroPositions() const
 {
-	const QRegularExpression farsaRegisterClassRE("FARSA_REGISTER_CLASS");
+	const QRegularExpression salsaRegisterClassRE("SALSA_REGISTER_CLASS");
 
 	int curIndexOfMacro = -1;
 	QVector<int> registrationMacroStartPos;
 	do {
-		curIndexOfMacro = m_header.indexOf(farsaRegisterClassRE, curIndexOfMacro + 1);
+		curIndexOfMacro = m_header.indexOf(salsaRegisterClassRE, curIndexOfMacro + 1);
 
 		if ((curIndexOfMacro != -1) &&
 		    !positionInsideCommentOrString(curIndexOfMacro)) {
@@ -198,7 +198,7 @@ QVector<int> HeaderParser::findRegistrationMacroPositions() const
 
 QVector<HeaderParser::ClassInfo> HeaderParser::findAllClassesCandidateForRegistration() const
 {
-	const QRegularExpression classNameRE("class\\s*FARSA_PLUGIN_(?:API|TEMPLATE|INTERNAL)\\s*(\\w+)\\s*");
+	const QRegularExpression classNameRE("class\\s*SALSA_PLUGIN_(?:API|TEMPLATE|INTERNAL)\\s*(\\w+)\\s*");
 
 	QRegularExpressionMatchIterator it = classNameRE.globalMatch(m_header);
 	QVector<ClassInfo> classes;
@@ -281,19 +281,19 @@ void HeaderParser::extractListOfClassesToRegister(const QVector<int>& registrati
 		const int curMacroPos = registrationMacroPos[i];
 		while (true) {
 			if (m_classes.size() <= i) {
-				farsa::throwUserRuntimeError(QString("Error parsing the header, no class matching the registration macro with index %1").arg(i));
+				salsa::throwUserRuntimeError(QString("Error parsing the header, no class matching the registration macro with index %1").arg(i));
 			} else if ((m_classes.length() != (i + 1)) && (m_classes[i + 1].classPos < curMacroPos)) {
 				// The current class does not correspond to the current macro (i.e. we don't register
 				// the class)
 				m_classes.removeAt(i);
 			} else if (m_classes[i].classPos >= curMacroPos) {
-				farsa::throwUserRuntimeError(QString("Error parsing the header, no class matching the registration macro with index %1 (class after the macro)").arg(i));
+				salsa::throwUserRuntimeError(QString("Error parsing the header, no class matching the registration macro with index %1 (class after the macro)").arg(i));
 			} else {
 				// To check that we are associating the right class, we check that between the position of the
 				// class keyword and the macro there is exactly one "{" and no ";" or "}". This is only an heuristic,
 				// but should work well
 				if (!checkNoSemicolonNoClosedCurlyBracketAndOnlyOneOpenCurlyBracket(m_classes[i].classPos, curMacroPos)) {
-					farsa::throwUserRuntimeError(QString("Error parsing the header, no class matching the registration macro with index %1 (invalid characters between class and macro)").arg(i));
+					salsa::throwUserRuntimeError(QString("Error parsing the header, no class matching the registration macro with index %1 (invalid characters between class and macro)").arg(i));
 				}
 
 				m_classes[i].macroPos = curMacroPos;
@@ -332,8 +332,8 @@ void HeaderParser::extractClassesParents()
 
 void HeaderParser::generateMangledHeader()
 {
-	const QStringList patternsToSubstitute = QStringList() << "FARSA_PLUGIN_API" << "FARSA_PLUGIN_TEMPLATE" << "FARSA_PLUGIN_INTERNAL";
-	const QStringList replacements = QStringList() <<"FARSA_PLUGIN_API_IMPORT" << "FARSA_PLUGIN_TEMPLATE_IMPORT" << "FARSA_PLUGIN_INTERNAL_IMPORT";
+	const QStringList patternsToSubstitute = QStringList() << "SALSA_PLUGIN_API" << "SALSA_PLUGIN_TEMPLATE" << "SALSA_PLUGIN_INTERNAL";
+	const QStringList replacements = QStringList() <<"SALSA_PLUGIN_API_IMPORT" << "SALSA_PLUGIN_TEMPLATE_IMPORT" << "SALSA_PLUGIN_INTERNAL_IMPORT";
 
 	QVector<FoundPattern> foundPatterns = findAllPatterns(patternsToSubstitute);
 
@@ -344,12 +344,12 @@ void HeaderParser::generateMangledHeader()
 
 void HeaderParser::extractPreRegistrationFunctions()
 {
-	m_preRegistrationFunctions = extractRegistrationFunctions("FARSA_PRE_REGISTRATION_FUNCTION");
+	m_preRegistrationFunctions = extractRegistrationFunctions("SALSA_PRE_REGISTRATION_FUNCTION");
 }
 
 void HeaderParser::extractPostRegistrationFunctions()
 {
-	m_postRegistrationFunctions = extractRegistrationFunctions("FARSA_POST_REGISTRATION_FUNCTION");
+	m_postRegistrationFunctions = extractRegistrationFunctions("SALSA_POST_REGISTRATION_FUNCTION");
 }
 
 QStringList HeaderParser::extractClassParents(const ClassInfo& info) const
@@ -364,7 +364,7 @@ QStringList HeaderParser::extractClassParents(const ClassInfo& info) const
 		const QRegularExpressionMatch m = it.next();
 
 		const QString parent = m.captured(1);
-		if (parent != "FARSA_NR") {
+		if (parent != "SALSA_NR") {
 			parents.append(parent);
 		}
 	}
@@ -491,13 +491,13 @@ const QString PluginRegistrationCodeGenerator::registrationHeaderTemplate = "\
 #define %1\n\
 \n\
 #include <QObject>\n\
-#include \"farsaplugin.h\"\n\
+#include \"salsaplugin.h\"\n\
 \n\
-class %2 : public QObject, public FarsaPlugin\n\
+class %2 : public QObject, public SalsaPlugin\n\
 {\n\
 	Q_OBJECT\n\
-	FARSA_PLUGIN_METADATA(IID FarsaPlugin_IID)\n\
-	Q_INTERFACES(FarsaPlugin)\n\
+	SALSA_PLUGIN_METADATA(IID SalsaPlugin_IID)\n\
+	Q_INTERFACES(SalsaPlugin)\n\
 \n\
 public:\n\
 	virtual void registerTypes();\n\
@@ -528,7 +528,7 @@ QStringList %3::getDependencies()\n\
 
 const QString PluginRegistrationCodeGenerator::registrationSourceIncludedHeadersTemplate = "#include \"%1\"\n";
 
-const QString PluginRegistrationCodeGenerator::registrationCommandTemplate = "\tfarsa::TypesDB::instance().registerType<%1>(\"%2\", QStringList()%3);\n";
+const QString PluginRegistrationCodeGenerator::registrationCommandTemplate = "\tsalsa::TypesDB::instance().registerType<%1>(\"%2\", QStringList()%3);\n";
 
 PluginRegistrationCodeGenerator::PluginRegistrationCodeGenerator(const QString& generatedFilename, const QString& pluginName, const QList<FilenameAndParsedHeader>& headers, const QStringList& dependencies)
 	: m_generatedFilename(generatedFilename)
@@ -686,7 +686,7 @@ void doParse(const QString& pluginName, const QString& destDir, const QString& h
 		const QString headerFilename = QFileInfo(h).fileName();
 
 		if (headerFilename == genSourceHeader) {
-			farsa::throwUserRuntimeError("One of the header to parse has the same filename of the header to generate: \"" + h + "\"");
+			salsa::throwUserRuntimeError("One of the header to parse has the same filename of the header to generate: \"" + h + "\"");
 		}
 
 		headersFilenames.append(headerFilename);
@@ -698,13 +698,13 @@ void doParse(const QString& pluginName, const QString& destDir, const QString& h
 		// Reading the whole content of the header into a QString
 		QFile origHeader(headers[i]);
 		if (!origHeader.open(QIODevice::ReadOnly | QIODevice::Text)) {
-			farsa::throwUserRuntimeError("Error when trying to open original header \"" + headers[i] + "\"");
+			salsa::throwUserRuntimeError("Error when trying to open original header \"" + headers[i] + "\"");
 		}
 
 		QString headerString = origHeader.readAll();
 
 		if (origHeader.error() != QFile::NoError) {
-			farsa::throwUserRuntimeError("Error when trying to read original header \"" + headers[i] + "\"");
+			salsa::throwUserRuntimeError("Error when trying to read original header \"" + headers[i] + "\"");
 		}
 
 		const HeaderParser& parser(headerString);
@@ -714,26 +714,26 @@ void doParse(const QString& pluginName, const QString& destDir, const QString& h
 		const QString parsedHeaderFilename = headersDestDir + "/" + headersFilenames[i];
 		QFile parsedHeader(parsedHeaderFilename);
 		if (!parsedHeader.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text)) {
-			farsa::throwUserRuntimeError("Error when trying to open parsed header \"" + parsedHeaderFilename + "\" for writing");
+			salsa::throwUserRuntimeError("Error when trying to open parsed header \"" + parsedHeaderFilename + "\" for writing");
 		}
 
 		const qint64 writeErr = parsedHeader.write(parser.mangledHeader().toLatin1().data());
 
 		if ((writeErr == -1) || (parsedHeader.error() != QFile::NoError)) {
-			farsa::throwUserRuntimeError("Error when trying to write parsed header \"" + parsedHeaderFilename + "\"");
+			salsa::throwUserRuntimeError("Error when trying to write parsed header \"" + parsedHeaderFilename + "\"");
 		}
 	}
 
 	// Reading dependencies
 	QFile depFile(dependenciesFile);
 	if (!depFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-		farsa::throwUserRuntimeError("Error when trying to open the file with dependencies \"" + dependenciesFile + "\"");
+		salsa::throwUserRuntimeError("Error when trying to open the file with dependencies \"" + dependenciesFile + "\"");
 	}
 
 	QStringList dependencies = QString(depFile.readAll()).split(";", QString::SkipEmptyParts);
 
 	if (depFile.error() != QFile::NoError) {
-		farsa::throwUserRuntimeError("Error when trying to read the file with dependencies \"" + dependenciesFile + "\"");
+		salsa::throwUserRuntimeError("Error when trying to read the file with dependencies \"" + dependenciesFile + "\"");
 	}
 
 	// Generating registration code
@@ -745,26 +745,26 @@ void doParse(const QString& pluginName, const QString& destDir, const QString& h
 	const QString genSourceHeaderPath = destDir + "/" + genSourceHeader;
 	QFile registrationHeader(genSourceHeaderPath);
 	if (!registrationHeader.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text)) {
-		farsa::throwUserRuntimeError("Error when trying to open generated header \"" + genSourceHeaderPath + "\"");
+		salsa::throwUserRuntimeError("Error when trying to open generated header \"" + genSourceHeaderPath + "\"");
 	}
 
 	const qint64 writeErrHeader = registrationHeader.write(generator.registrationHeader().toLatin1().data());
 
 	if ((writeErrHeader == -1) || (registrationHeader.error() != QFile::NoError)) {
-		farsa::throwUserRuntimeError("Error when trying to write generated header \"" + genSourceHeaderPath + "\"");
+		salsa::throwUserRuntimeError("Error when trying to write generated header \"" + genSourceHeaderPath + "\"");
 	}
 
 	// Finally writing the source
 	const QString genSourceImplPath = destDir + "/" + genSourceImpl;
 	QFile registrationSource(genSourceImplPath);
 	if (!registrationSource.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text)) {
-		farsa::throwUserRuntimeError("Error when trying to open generated source \"" + genSourceImplPath + "\"");
+		salsa::throwUserRuntimeError("Error when trying to open generated source \"" + genSourceImplPath + "\"");
 	}
 
 	const qint64 writeErrSource = registrationSource.write(generator.registrationSource().toLatin1().data());
 
 	if ((writeErrSource == -1) || (registrationSource.error() != QFile::NoError)) {
-		farsa::throwUserRuntimeError("Error when trying to write generated source \"" + genSourceImplPath + "\"");
+		salsa::throwUserRuntimeError("Error when trying to write generated source \"" + genSourceImplPath + "\"");
 	}
 }
 

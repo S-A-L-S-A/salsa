@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA Experiments Library                                                   *
+//  *  SALSA Experiments Library                                                   *
 //  *  Copyright (C) 2007-2013                                                     *
 //  *  Gianluca Massera <emmegian@yahoo.it>                                        *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -23,7 +23,7 @@
 // #include "neuralnetiterator.h"
 // #include "logger.h"
 //
-// namespace farsa {
+// namespace salsa {
 //
 // NeuralNetIterator::NeuralNetIterator() :
 // 	neuralnet(NULL),
@@ -96,4 +96,4 @@
 // 	}
 // }
 //
-// } // end namespace farsa
+// } // end namespace salsa

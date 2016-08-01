@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA                                                                       *
+//  *  SALSA                                                                       *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Gianluca Massera <emmegian@yahoo.it>                                        *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -23,7 +23,7 @@
 // #include "baseexperiment.h"
 // #include "baseexperimentgui.h"
 //
-// namespace farsa {
+// namespace salsa {
 //
 // namespace __BaseExperiment_internal {
 // 	/**
@@ -185,7 +185,7 @@
 //
 // 	// Connecting the mapped signal of m_actionSignalsMapper to our slot
 // 	connect(m_actionSignalsMapper.get(), SIGNAL(mapped(int)), this, SLOT(runOperation(int)));
-// 	connect(m_workerThread.get(), SIGNAL(exceptionDuringOperation(farsa::BaseException*)), this, SLOT(exceptionDuringOperation(farsa::BaseException*)), Qt::BlockingQueuedConnection);
+// 	connect(m_workerThread.get(), SIGNAL(exceptionDuringOperation(salsa::BaseException*)), this, SLOT(exceptionDuringOperation(salsa::BaseException*)), Qt::BlockingQueuedConnection);
 // }
 //
 // BaseExperiment::~BaseExperiment()
@@ -243,10 +243,10 @@
 // QList<ParameterSettableUIViewer> BaseExperiment::getViewers(QWidget* parent, Qt::WindowFlags flags)
 // {
 // 	// The default implementation only adds the BaseExperimentGUI widget
-// 	QList<farsa::ParameterSettableUIViewer> viewers;
+// 	QList<salsa::ParameterSettableUIViewer> viewers;
 //
 // 	BaseExperimentGUI* gui = new BaseExperimentGUI(this, parent, flags);
-// 	viewers.append(farsa::ParameterSettableUIViewer(gui, "Experiment Control"));
+// 	viewers.append(salsa::ParameterSettableUIViewer(gui, "Experiment Control"));
 //
 // 	return viewers;
 // }
@@ -471,5 +471,5 @@
 // 	}
 // }
 //
-// } // End namespace farsa
+// } // End namespace salsa
 //

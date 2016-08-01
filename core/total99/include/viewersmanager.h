@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -166,7 +166,7 @@ public:
 	 * \param params the configuration parameters object
 	 * \param prefix the prefix under which the ViewersManager group is
 	 */
-	ViewersManager(ProjectManager* project, farsa::ConfigurationManager& params, QString prefix);
+	ViewersManager(ProjectManager* project, salsa::ConfigurationManager& params, QString prefix);
 
 	/**
 	 * \brief Destructor
@@ -202,7 +202,7 @@ public:
 	 * \param params the configuration parameters object
 	 * \param prefix the prefix under which the ViewersManager group is
 	 */
-	void save(farsa::ConfigurationManager& params, QString prefix);
+	void save(salsa::ConfigurationManager& params, QString prefix);
 
 private:
 	/**
@@ -258,7 +258,7 @@ private:
 	/**
 	 * \brief The configuration parameters object with the status of widgets
 	 */
-	farsa::ConfigurationManager m_currentViewersState;
+	salsa::ConfigurationManager m_currentViewersState;
 };
 
 #endif

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -24,7 +24,7 @@
 #include "parametersettable.h"
 #include <QMutex>
 
-namespace farsa {
+namespace salsa {
 
 class Genotype;
 class Genome;
@@ -44,7 +44,7 @@ class GeneticAlgo;
  *
  * \ingroup ga_core
  */
-class FARSA_GA_API Mutation : public ParameterSettableWithConfigureFunction {
+class SALSA_GA_API Mutation : public ParameterSettableWithConfigureFunction {
 public:
 	/*! Constructor */
 	Mutation();
@@ -204,6 +204,6 @@ private:
 	unsigned int lastGenMutaRatesChange;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

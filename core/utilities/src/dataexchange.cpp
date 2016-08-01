@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Utilities Library                                                     *
+ *  SALSA Utilities Library                                                     *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -22,7 +22,7 @@
 
 #include "dataexchange.h"
 
-namespace farsa {
+namespace salsa {
 
 	void GlobalUploaderDownloader::stopAllDataExchanges()
 	{
@@ -74,4 +74,4 @@ namespace farsa {
 		m_queueHolders.remove(queueHolder);
 	}
 
-} // end namespace farsa
+} // end namespace salsa

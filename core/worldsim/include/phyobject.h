@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -29,7 +29,7 @@
 #include "wquaternion.h"
 #include "wobject.h"
 
-namespace farsa {
+namespace salsa {
 
 class World;
 class PhyJoint;
@@ -41,7 +41,7 @@ class RenderPhyObject;
 /**
  * \brief The shared data for the PhyObject
  */
-class FARSA_WSIM_TEMPLATE PhyObjectShared : public WObjectShared
+class SALSA_WSIM_TEMPLATE PhyObjectShared : public WObjectShared
 {
 public:
 	/**
@@ -127,7 +127,7 @@ public:
 /**
  * \brief The base class for physical objects in the World
  */
-class FARSA_WSIM_API PhyObject : public WObject
+class SALSA_WSIM_API PhyObject : public WObject
 {
 public:
 	/**
@@ -477,7 +477,7 @@ protected:
  * this class to add utility functions for drawing forces. The AABB and MBBSize
  * are empty
  */
-class FARSA_WSIM_API RenderPhyObject : public RenderWObject
+class SALSA_WSIM_API RenderPhyObject : public RenderWObject
 {
 public:
 	/**
@@ -520,6 +520,6 @@ protected:
 	wMatrix collisionShapeMatrix(const PhyObjectShared* sharedData) const;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

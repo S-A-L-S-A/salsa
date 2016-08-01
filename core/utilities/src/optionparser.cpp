@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Utilities                                                           *
+ *  SALSA - Utilities                                                           *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -28,7 +28,7 @@
 #include <cstdlib>
 #include <cassert>
 
-namespace farsa {
+namespace salsa {
 
 OptionParser::OptionParser() {
     QCoreApplication* qApp1 = QCoreApplication::instance();
@@ -374,5 +374,5 @@ bool OptionParser::isSet( const QString &name ) const {
     return setOptions.find( name ) != setOptions.end();
 }
 
-} // end namespace farsa
+} // end namespace salsa
 

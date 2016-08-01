@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -22,7 +22,7 @@
 
 #include "guirendererscontainer.h"
 
-namespace farsa {
+namespace salsa {
 
 RenderingDataToGUI::~RenderingDataToGUI()
 {
@@ -186,7 +186,7 @@ void GUIRenderersContainer::deleteRenderers()
 		const RenderingDataFromGUI* d;
 
 		while ((d = downloadDatum()) != NULL) {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 			// Safety check: the renderers the GUI tells us to delete should also be in our set of renderers to delete
 			if (!m_renderersToDelete.contains(d->renderersToDelete)) {
 				abort();
@@ -337,4 +337,4 @@ void GUIRenderersContainerDataExchange::checkUpdates()
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa

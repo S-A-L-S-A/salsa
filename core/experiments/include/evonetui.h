@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2013                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -40,13 +40,13 @@
 #include <QVBoxLayout>
 #include <QObject>
 
-namespace farsa {
+namespace salsa {
 
 class EvoDataViewer;
 class NetworkDialog;
 class HolisticViewer;
 
-class FARSA_EXPERIMENTS_API EvonetUI : public QObject, public ComponentUI
+class SALSA_EXPERIMENTS_API EvonetUI : public QObject, public ComponentUI
 {
 	Q_OBJECT
 
@@ -102,7 +102,7 @@ private slots:
 	void onEvonetUpdated();
 };
 
-} //end namespace farsa
+} //end namespace salsa
 
 #endif
 

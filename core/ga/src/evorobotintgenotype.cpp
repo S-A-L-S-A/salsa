@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -23,7 +23,7 @@
 
 #include "evorobotintgenotype.h"
 
-namespace farsa {
+namespace salsa {
 
 EvorobotIntGenotype::EvorobotIntGenotype()
 	: m_genotype()
@@ -122,5 +122,5 @@ bool EvorobotIntGenotype::operator<(const EvorobotIntGenotype& other) const
 	return m_fitness < other.m_fitness;
 }
 
-} // end namespace farsa
+} // end namespace salsa
 

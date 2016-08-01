@@ -37,7 +37,7 @@
 	#pragma warning(disable:4996)
 #endif
 
-namespace farsa {
+namespace salsa {
 
 // NOTE: I don't use snprintf instead of sprintf because it seems not to be in
 // the current C++ standard (C++03, it is instead in the C99 standard). Note
@@ -48,7 +48,7 @@ namespace farsa {
  * \brief Thrown when a user attempt to call the operator= on a DoubleVector
  *        with isinternal flag on
  */
-class FARSA_NNFW_TEMPLATE VectorAssignmentNotAllowed : public BaseException
+class SALSA_NNFW_TEMPLATE VectorAssignmentNotAllowed : public BaseException
 {
 public:
 	/**
@@ -113,7 +113,7 @@ public:
  * \brief Thrown when a user attempt to resize a DoubleVector with isinternal
  *        flag on
  */
-class FARSA_NNFW_TEMPLATE VectorResizeNotAllowed : public BaseException
+class SALSA_NNFW_TEMPLATE VectorResizeNotAllowed : public BaseException
 {
 public:
 	/**
@@ -178,7 +178,7 @@ public:
  * \brief Thrown when a user attempt to do calculations with incompatible
  *        DoubleVectors
  */
-class FARSA_NNFW_TEMPLATE IncompatibleVectors : public BaseException
+class SALSA_NNFW_TEMPLATE IncompatibleVectors : public BaseException
 {
 public:
 	/**
@@ -269,7 +269,7 @@ private:
  * \brief Thrown when a user attempt to access outside boundary of a
  *        DoubleVector
  */
-class FARSA_NNFW_TEMPLATE OutsideVectorBoundaries : public BaseException
+class SALSA_NNFW_TEMPLATE OutsideVectorBoundaries : public BaseException
 {
 public:
 	/**
@@ -360,7 +360,7 @@ private:
  * \brief Thrown when a user attempt to create a Linker without specify the
  *        "from" or "to"
  */
-class FARSA_NNFW_TEMPLATE ClusterFromOrToMissing : public BaseException
+class SALSA_NNFW_TEMPLATE ClusterFromOrToMissing : public BaseException
 {
 public:
 	/**
@@ -425,7 +425,7 @@ public:
  * \brief Thrown when a user attempt to call the operator= on a DoubleMatrix
  *        with isinternal flag on
  */
-class FARSA_NNFW_TEMPLATE MatrixAssignmentNotAllowed : public BaseException
+class SALSA_NNFW_TEMPLATE MatrixAssignmentNotAllowed : public BaseException
 {
 public:
 	/**
@@ -490,7 +490,7 @@ public:
  * \brief Thrown when a user attempt to resize a DoubleMatrix with isinternal
  *        flag on
  */
-class FARSA_NNFW_TEMPLATE MatrixResizeNotAllowed : public BaseException
+class SALSA_NNFW_TEMPLATE MatrixResizeNotAllowed : public BaseException
 {
 public:
 	/**
@@ -555,7 +555,7 @@ public:
  * \brief Thrown when a user attempt to do calculations with incompatible
  *        DoubleMatrix
  */
-class FARSA_NNFW_TEMPLATE IncompatibleMatrices : public BaseException
+class SALSA_NNFW_TEMPLATE IncompatibleMatrices : public BaseException
 {
 public:
 	/**
@@ -646,7 +646,7 @@ private:
  * \brief Thrown when a user attempt to access outside boundary of a
  *        DoubleMatrix
  */
-class FARSA_NNFW_TEMPLATE OutsideMatrixBoundaries : public BaseException
+class SALSA_NNFW_TEMPLATE OutsideMatrixBoundaries : public BaseException
 {
 public:
 	/**
@@ -737,7 +737,7 @@ private:
  * \brief Thrown when a user attempt to call setCluster on an OutputFunction
  *        already inserted into a Cluster
  */
-class FARSA_NNFW_TEMPLATE OutputFunctionSetClusterException : public BaseException
+class SALSA_NNFW_TEMPLATE OutputFunctionSetClusterException : public BaseException
 {
 public:
 	/**
@@ -802,7 +802,7 @@ public:
  * \brief Thrown when a user attempt to get a delegate for a state vector that
  *        does not exists
  */
-class FARSA_NNFW_TEMPLATE ClusterStateVectorNotPresent : public BaseException
+class SALSA_NNFW_TEMPLATE ClusterStateVectorNotPresent : public BaseException
 {
 public:
 	/**

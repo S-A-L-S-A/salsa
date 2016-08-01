@@ -1,5 +1,5 @@
  /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -23,7 +23,7 @@
 
 #include "renderer2d.h"
 
-namespace farsa {
+namespace salsa {
 
 Renderer2D::Renderer2D()
 	: DataUploaderDownloader<Rendering2DDataToGui, Rendering2DDataFromGui>(1, OverrideOlder, NoNotification)
@@ -80,5 +80,5 @@ void Renderer2D::updateGuiInfo()
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa
 

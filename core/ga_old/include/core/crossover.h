@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -23,7 +23,7 @@
 #include "gaconfig.h"
 #include "parametersettable.h"
 
-namespace farsa {
+namespace salsa {
 
 class Genotype;
 class Genome;
@@ -37,7 +37,7 @@ class GeneticAlgo;
  *
  * \ingroup ga_core
  */
-class FARSA_GA_TEMPLATE Crossover : public ParameterSettableWithConfigureFunction {
+class SALSA_GA_TEMPLATE Crossover : public ParameterSettableWithConfigureFunction {
 public:
 	/*! Constructor */
 	Crossover() {
@@ -76,6 +76,6 @@ protected:
 	GeneticAlgo* ga;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

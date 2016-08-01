@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -29,7 +29,7 @@
 #include <cmath>
 #include "mathutils.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! Internal data for wVectorT
  *
@@ -39,7 +39,7 @@ namespace farsa {
  *   used when Shared is false, so this contains the actual vector of 4 real
  */
 template <bool Shared>
-struct FARSA_WSIM_TEMPLATE InternalData
+struct SALSA_WSIM_TEMPLATE InternalData
 {
 	real data[4];
 };
@@ -52,7 +52,7 @@ struct FARSA_WSIM_TEMPLATE InternalData
  *   data
  */
 template <>
-struct FARSA_WSIM_TEMPLATE InternalData<true>
+struct SALSA_WSIM_TEMPLATE InternalData<true>
 {
 };
 
@@ -71,7 +71,7 @@ struct FARSA_WSIM_TEMPLATE InternalData<true>
  *    When it is used as 3-dimensional vector the fourth value is set to 1.0
  */
 template <bool Shared = false>
-class FARSA_WSIM_TEMPLATE wVectorT : protected InternalData<Shared> {
+class SALSA_WSIM_TEMPLATE wVectorT : protected InternalData<Shared> {
 public:
 	/*! Constructor */
 	wVectorT();
@@ -465,6 +465,6 @@ inline wVectorT<Shared>& wVectorT<Shared>::rotateAround( wVectorT<false> axis, r
 	z = q.z;
 	return (*this);
 }
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

@@ -23,13 +23,13 @@
 #include "nnfwconfig.h"
 #include "configurationmanager.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief OutputFunction Class
  *
  *  Details...
  */
-class FARSA_NNFW_TEMPLATE OutputFunction : public Component {
+class SALSA_NNFW_TEMPLATE OutputFunction : public Component {
 public:
 	/*! Constructor */
 	OutputFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL )

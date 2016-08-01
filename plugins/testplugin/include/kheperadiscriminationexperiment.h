@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2012-2013 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -20,15 +20,15 @@
 #ifndef KHEPERADISCRIMINATIONEXPERIMENT_H
 #define KHEPERADISCRIMINATIONEXPERIMENT_H
 
-#include "farsaplugin.h"
+#include "salsaplugin.h"
 #include "evorobotexperiment.h"
 #include "wvector.h"
 #include <QVector>
 
-#warning =====> This is a test plugin that is compiled directly in the FARSA tree. We will remove it as soon as the compilation and installation process for FARSA works again <=====
+#warning =====> This is a test plugin that is compiled directly in the SALSA tree. We will remove it as soon as the compilation and installation process for SALSA works again <=====
 
-#warning FIX THE farsapluginhelper PREPROCESSOR TO AT LEAST EXTRACT CLASS NAMES OF INHERITED CLASSES REMOVING THE NAMESPACE
-using farsa::EvoRobotExperiment;
+#warning FIX THE salsapluginhelper PREPROCESSOR TO AT LEAST EXTRACT CLASS NAMES OF INHERITED CLASSES REMOVING THE NAMESPACE
+using salsa::EvoRobotExperiment;
 
 /**
  * \brief An experiment in which a khepera robot has to discriminate between an
@@ -57,16 +57,16 @@ using farsa::EvoRobotExperiment;
  * 	                                   at which the robot is initialized.
  * 	                                   The default is 0.1
  */
-class FARSA_PLUGIN_API KheperaDiscriminationExperiment : public EvoRobotExperiment
+class SALSA_PLUGIN_API KheperaDiscriminationExperiment : public EvoRobotExperiment
 {
 	Q_OBJECT
-	FARSA_REGISTER_CLASS
+	SALSA_REGISTER_CLASS
 
 public:
 	/**
 	 * \brief Constructor
 	 */
-	KheperaDiscriminationExperiment(farsa::ConfigurationManager& params);
+	KheperaDiscriminationExperiment(salsa::ConfigurationManager& params);
 
 	/**
 	 * \brief Destructor
@@ -90,7 +90,7 @@ public:
 	 *          not store any reference because the object si destroyed by
 	 *          the caller
 	 */
-	static void describe(farsa::RegisteredComponentDescriptor& d);
+	static void describe(salsa::RegisteredComponentDescriptor& d);
 
 	/**
 	 * \brief This function is called after all linked objects have been
@@ -198,19 +198,19 @@ private:
 	 *              use resources inside this function)
 	 * \return the distance between the robot and the object
 	 */
-	farsa::real robotObjectDistance(farsa::RobotOnPlane* robot) const;
+	salsa::real robotObjectDistance(salsa::RobotOnPlane* robot) const;
 
 	/**
 	 * \brief The thickness of arena walls
 	 */
-	const farsa::real m_wallThickness;
+	const salsa::real m_wallThickness;
 
 	/**
 	 * \brief The height of objects
 	 *
 	 * This only has graphical consequences
 	 */
-	const farsa::real m_objectHeights;
+	const salsa::real m_objectHeights;
 
 	/**
 	 * \brief The maximum number of attemps of placing the robot
@@ -225,14 +225,14 @@ private:
 	 *
 	 * The playground is the area where the robot can move
 	 */
-	farsa::real m_playgroundWidth;
+	salsa::real m_playgroundWidth;
 
 	/**
 	 * \brief The height of the part of the arena surrounded by walls
 	 *
 	 * The playground is the area where the robot can move
 	 */
-	farsa::real m_playgroundHeight;
+	salsa::real m_playgroundHeight;
 
 	/**
 	 * \brief The distance from the object below which the robot is rewarded
@@ -240,35 +240,35 @@ private:
 	 * This is the distance of the nearest points of the robot and the
 	 * object
 	 */
-	farsa::real m_distanceThreshold;
+	salsa::real m_distanceThreshold;
 
 	/**
 	 * \brief The minimum allowed distance of the object from the wall
 	 */
-	farsa::real m_minObjectDistanceFromWall;
+	salsa::real m_minObjectDistanceFromWall;
 
 	/**
 	 * \brief The minimum allowed initial distance of the robot from the
 	 *        object
 	 */
-	farsa::real m_minInitialRobotDistanceFromObject;
+	salsa::real m_minInitialRobotDistanceFromObject;
 
 	/**
 	 * \brief The minimum allowed initial distance of the robot from the
 	 *        walls
 	 */
-	farsa::real m_minInitialRobotDistanceFromWall;
+	salsa::real m_minInitialRobotDistanceFromWall;
 
 	/**
 	 * \brief The object placed inside the arena
 	 */
-	farsa::Cylinder2DWrapper* m_object;
+	salsa::Cylinder2DWrapper* m_object;
 
 	/**
 	 * \brief A round circular target area to show where the robot is
 	 *        rewarded
 	 */
-	farsa::Cylinder2DWrapper* m_rewardArea;
+	salsa::Cylinder2DWrapper* m_rewardArea;
 
 	/**
 	 * \brief If true re-creates the world at the beginning of the next

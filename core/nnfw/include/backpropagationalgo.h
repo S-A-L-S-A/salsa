@@ -27,12 +27,12 @@
 #include <QMap>
 #include <QVector>
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief Back-Propagation Algorithm implementation
  *
  */
-class FARSA_NNFW_API BackPropagationAlgo : public LearningAlgorithm {
+class SALSA_NNFW_API BackPropagationAlgo : public LearningAlgorithm {
 public:
 	/*! Default Constructor */
 	BackPropagationAlgo(ConfigurationManager& params, QString prefix, Component* parent = NULL);
@@ -171,7 +171,7 @@ private:
 	UpdatableList update_order;
 
 	//! The struct of Clusters and Deltas
-	class FARSA_NNFW_API cluster_deltas {
+	class SALSA_NNFW_API cluster_deltas {
 	public:
 		BiasedCluster* cluster;
 		bool isOutput;

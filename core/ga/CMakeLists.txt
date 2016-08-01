@@ -1,12 +1,12 @@
-# Script to compile the farsa experiments library
+# Script to compile the salsa experiments library
 
-set(FARSAGA_SRCS
+set(SALSAGA_SRCS
 	src/evoalgo.cpp
 	src/evorobotga.cpp
 	src/evorobotgastatistics.cpp
 	src/evorobotintgenotype.cpp
 	src/galibinitializer.cpp)
-set(FARSAGA_HDRS
+set(SALSAGA_HDRS
 	include/evoalgo.h
 	include/evorobotga.h
 	include/evorobotgastatistics.h
@@ -16,32 +16,32 @@ set(FARSAGA_HDRS
 	include/gaexceptions.h
 	include/genotypetophenotype.h)
 
-add_library(farsaga SHARED ${FARSAGA_SRCS} ${FARSAGA_HDRS})
-add_farsa_version(farsaga)
+add_library(salsaga SHARED ${SALSAGA_SRCS} ${SALSAGA_HDRS})
+add_salsa_version(salsaga)
 
 # Specifying the the include directories: they are used both here and  exported
 # by this library (so that targets linking this one will automatically import
 # the include directories declared here)
-target_include_directories(farsaga PUBLIC
+target_include_directories(salsaga PUBLIC
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-                           $<INSTALL_INTERFACE:include/farsa/ga>)
+                           $<INSTALL_INTERFACE:include/salsa/ga>)
 
 # Adding dependencies (they are also exported, so targets linking this one will
 # automatically link libraries declared here)
-target_link_libraries(farsaga farsautilities farsaconfiguration Qt5::Core Qt5::Concurrent Qt5::Widgets)
+target_link_libraries(salsaga salsautilities salsaconfiguration Qt5::Core Qt5::Concurrent Qt5::Widgets)
 
 # Specifying the public headers of this target
-set_property(TARGET farsaga PROPERTY PUBLIC_HEADER ${FARSAGA_HDRS})
+set_property(TARGET salsaga PROPERTY PUBLIC_HEADER ${SALSAGA_HDRS})
 
 # This definition is used only when building
-target_compile_definitions(farsaga PRIVATE FARSA_GA_BUILDING_DLL)
+target_compile_definitions(salsaga PRIVATE SALSA_GA_BUILDING_DLL)
 
 # Installation paths
-install(TARGETS farsaga
-        EXPORT farsa
+install(TARGETS salsaga
+        EXPORT salsa
         ARCHIVE DESTINATION lib/
         LIBRARY DESTINATION lib/
-        PUBLIC_HEADER DESTINATION include/farsa/ga
+        PUBLIC_HEADER DESTINATION include/salsa/ga
         RUNTIME DESTINATION bin/)
 
 # This directory contains unit tests for this library

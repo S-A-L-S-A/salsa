@@ -1,9 +1,9 @@
-# Script to compile the farsa version of QGLViewer
+# Script to compile the salsa version of QGLViewer
 
 # Adding OpenGL
 find_package(OpenGL REQUIRED)
 
-set(FARSAQGLVIEWER_SRCS
+set(SALSAQGLVIEWER_SRCS
 	camera.cpp
 	constraint.cpp
 	frame.cpp
@@ -30,7 +30,7 @@ set(FARSAQGLVIEWER_SRCS
 	VRender/Vector3.cpp
 	VRender/VisibilityOptimizer.cpp
 	VRender/VRender.cpp)
-set(FARSAQGLVIEWER_HDRS
+set(SALSAQGLVIEWER_HDRS
 	camera.h
 	config.h
 	constraint.h
@@ -58,37 +58,37 @@ set(FARSAQGLVIEWER_HDRS
 	VRender/VRender.h)
 
 # Adding resources and ui files
-qt5_wrap_ui(FARSAQGLVIEWER_SRCS ImageInterface.ui)
-qt5_wrap_ui(FARSAQGLVIEWER_SRCS VRenderInterface.ui)
+qt5_wrap_ui(SALSAQGLVIEWER_SRCS ImageInterface.ui)
+qt5_wrap_ui(SALSAQGLVIEWER_SRCS VRenderInterface.ui)
 
-add_library(farsaqglviewer SHARED ${FARSAQGLVIEWER_SRCS} ${FARSAQGLVIEWER_HDRS})
-add_farsa_version(farsaqglviewer)
+add_library(salsaqglviewer SHARED ${SALSAQGLVIEWER_SRCS} ${SALSAQGLVIEWER_HDRS})
+add_salsa_version(salsaqglviewer)
 
 # Specifying the the include directories: they are used both here and  exported
 # by this library (so that targets linking this one will automatically import
 # the include directories declared here)
-target_include_directories(farsaqglviewer PUBLIC
+target_include_directories(salsaqglviewer PUBLIC
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/VRender>
-                           $<INSTALL_INTERFACE:include/farsa/worldsim/qglviewer>)
+                           $<INSTALL_INTERFACE:include/salsa/worldsim/qglviewer>)
 
 # Adding dependencies (they are also exported, so targets linking this one will
 # automatically link libraries declared here)
-target_link_libraries(farsaqglviewer Qt5::Core Qt5::Xml Qt5::Concurrent Qt5::Widgets Qt5::OpenGL ${OPENGL_LIBRARIES})
+target_link_libraries(salsaqglviewer Qt5::Core Qt5::Xml Qt5::Concurrent Qt5::Widgets Qt5::OpenGL ${OPENGL_LIBRARIES})
 
 # Defines to use. The first ones are used only when compiling the library, the
 # second one both when compiling the library and targets using the library
-target_compile_definitions(farsaqglviewer PRIVATE CREATE_QGLVIEWER_DLL)
-target_compile_definitions(farsaqglviewer PUBLIC NO_VECTORIAL_RENDER)
+target_compile_definitions(salsaqglviewer PRIVATE CREATE_QGLVIEWER_DLL)
+target_compile_definitions(salsaqglviewer PUBLIC NO_VECTORIAL_RENDER)
 
 # Specifying the public headers of this target
-set_property(TARGET farsaqglviewer PROPERTY PUBLIC_HEADER ${FARSAQGLVIEWER_HDRS})
+set_property(TARGET salsaqglviewer PROPERTY PUBLIC_HEADER ${SALSAQGLVIEWER_HDRS})
 
 # Installation paths
-install(TARGETS farsaqglviewer
-        EXPORT farsa
+install(TARGETS salsaqglviewer
+        EXPORT salsa
         ARCHIVE DESTINATION lib/
         LIBRARY DESTINATION lib/
-        PUBLIC_HEADER DESTINATION include/farsa/worldsim/qglviewer
+        PUBLIC_HEADER DESTINATION include/salsa/worldsim/qglviewer
         RUNTIME DESTINATION bin/)
 

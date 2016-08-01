@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA GeneticAlgo UI                                                        *
+ *  SALSA GeneticAlgo UI                                                        *
  *  Copyright (C) 2012-2013                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *                                                                              *
@@ -24,11 +24,11 @@
 #include "parametersettableui.h"
 #include "geneticalgo.h"
 
-namespace farsa {
+namespace salsa {
 
 class DataStreamsWidget;
 
-class GeneticAlgoUI : public QObject, public farsa::GeneticAlgoObserver, public farsa::ParameterSettableUI {
+class GeneticAlgoUI : public QObject, public salsa::GeneticAlgoObserver, public salsa::ParameterSettableUI {
 	Q_OBJECT
 public:
 	/*! \brief Construct the GUI manager for GeneticAlgo
@@ -42,19 +42,19 @@ public:
 	 *  \param parent is the parent widget for all viewers created by ParameterSettableUI
 	 *  \param flags are the necessary flags to specify when constructing the viewers
 	 */
-	QList<farsa::ParameterSettableUIViewer> getViewers( QWidget* parent, Qt::WindowFlags flags );
+	QList<salsa::ParameterSettableUIViewer> getViewers( QWidget* parent, Qt::WindowFlags flags );
 	/*! called after a step of the neural network */
 	void onEndGeneration();
 private slots:
 	/*! update the plots to fits the number of components of the genotype */
 	void fitPlotsToGenotype();
 private:
-	farsa::ParameterSettableUIViewer fitnessView( QWidget* parent, Qt::WindowFlags flags );
+	salsa::ParameterSettableUIViewer fitnessView( QWidget* parent, Qt::WindowFlags flags );
 
 	GeneticAlgo* ga;
 	DataStreamsWidget* fitnessPlot;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

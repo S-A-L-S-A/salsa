@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Utilities Library                                                     *
+ *  SALSA Utilities Library                                                     *
  *  Copyright (C) 2007-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -30,7 +30,7 @@
 #include <QMutexLocker>
 #include <QMessageBox>
 
-namespace farsa {
+namespace salsa {
 
 namespace {
 	//--- This and the following are utilities class for updating textEdit into the GUI Thread
@@ -330,4 +330,4 @@ Logger::LogLevel Logger::stringToLogLevel(QString level)
 	return l;
 }
 
-} // end namespace farsa
+} // end namespace salsa

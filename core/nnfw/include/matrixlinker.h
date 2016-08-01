@@ -23,7 +23,7 @@
 #include "nnfwconfig.h"
 #include "linker.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief MatrixLinker Class define a full connection between two cluster.
  *
@@ -36,7 +36,7 @@ namespace farsa {
  *
  * Every connection is weighted, and the weight is memorized into a weight-matrix.
  */
-class FARSA_NNFW_API MatrixLinker : public Linker {
+class SALSA_NNFW_API MatrixLinker : public Linker {
 public:
 	/*! Constructor */
 	MatrixLinker( ConfigurationManager& params, QString prefix, Component* parent = NULL );

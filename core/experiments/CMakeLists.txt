@@ -1,6 +1,6 @@
-# Script to compile the farsa experiments library
+# Script to compile the salsa experiments library
 
-set(FARSAEXPERIMENTS_SRCS
+set(SALSAEXPERIMENTS_SRCS
 	evorobot/src/abstracttest.cpp
 	evorobot/src/displaycontroller.cpp
 	evorobot/src/embodiedagent.cpp
@@ -37,7 +37,7 @@ set(FARSAEXPERIMENTS_SRCS
 	src/sensors.cpp
 	src/total99resources.cpp
 	src/wheeledexperimenthelper.cpp)
-set(FARSAEXPERIMENTS_HDRS
+set(SALSAEXPERIMENTS_HDRS
 	evorobot/include/abstracttest.h
 	evorobot/include/displaycontroller.h
 	evorobot/include/embodiedagent.h
@@ -62,7 +62,7 @@ set(FARSAEXPERIMENTS_HDRS
 	include/evonetiterator.h
 	include/evonetui.h
 	include/experimentsconfig.h
-	include/farsaplugin.h
+	include/salsaplugin.h
 	include/kheperamotors.h
 	include/kheperasensors.h
 	include/marxbotmotors.h
@@ -77,38 +77,38 @@ set(FARSAEXPERIMENTS_HDRS
 	include/sensors.h
 	include/total99resources.h
 	include/wheeledexperimenthelper.h)
-set(FARSAEXPERIMENTS_QRCS
+set(SALSAEXPERIMENTS_QRCS
 	evorobot/images/images.qrc)
 
-qt5_add_resources(FARSAEXPERIMENTS_SRCS ${FARSAEXPERIMENTS_QRCS})
+qt5_add_resources(SALSAEXPERIMENTS_SRCS ${SALSAEXPERIMENTS_QRCS})
 
-add_library(farsaexperiments SHARED ${FARSAEXPERIMENTS_SRCS} ${FARSAEXPERIMENTS_HDRS})
-add_farsa_version(farsaexperiments)
+add_library(salsaexperiments SHARED ${SALSAEXPERIMENTS_SRCS} ${SALSAEXPERIMENTS_HDRS})
+add_salsa_version(salsaexperiments)
 
 # Specifying the the include directories: they are used both here and  exported
 # by this library (so that targets linking this one will automatically import
 # the include directories declared here)
-target_include_directories(farsaexperiments PUBLIC
+target_include_directories(salsaexperiments PUBLIC
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/evorobot/include>
-                           $<INSTALL_INTERFACE:include/farsa/experiments>)
+                           $<INSTALL_INTERFACE:include/salsa/experiments>)
 
 # Adding dependencies (they are also exported, so targets linking this one will
 # automatically link libraries declared here)
-target_link_libraries(farsaexperiments farsaworldsim farsaga farsautilities farsaconfiguration Qt5::Core Qt5::Xml Qt5::Concurrent Qt5::Widgets Qt5::OpenGL)
+target_link_libraries(salsaexperiments salsaworldsim salsaga salsautilities salsaconfiguration Qt5::Core Qt5::Xml Qt5::Concurrent Qt5::Widgets Qt5::OpenGL)
 
 # Specifying the public headers of this target
-set_property(TARGET farsaexperiments PROPERTY PUBLIC_HEADER ${FARSAEXPERIMENTS_HDRS})
+set_property(TARGET salsaexperiments PROPERTY PUBLIC_HEADER ${SALSAEXPERIMENTS_HDRS})
 
 # Defines to use when compiling the library
-target_compile_definitions(farsaexperiments PRIVATE FARSA_EXPERIMENTS_BUILDING_DLL)
+target_compile_definitions(salsaexperiments PRIVATE SALSA_EXPERIMENTS_BUILDING_DLL)
 
 # Installation paths
-install(TARGETS farsaexperiments
-        EXPORT farsa
+install(TARGETS salsaexperiments
+        EXPORT salsa
         ARCHIVE DESTINATION lib/
         LIBRARY DESTINATION lib/
-        PUBLIC_HEADER DESTINATION include/farsa/experiments
+        PUBLIC_HEADER DESTINATION include/salsa/experiments
         RUNTIME DESTINATION bin/)
 
 # This directory contains unit tests for this library

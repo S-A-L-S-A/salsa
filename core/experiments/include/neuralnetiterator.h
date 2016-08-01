@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA Experimentes Library                                                  *
+//  *  SALSA Experimentes Library                                                  *
 //  *  Copyright (C) 2007-2013                                                     *
 //  *  Gianluca Massera <emmegian@yahoo.it>                                        *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -28,20 +28,20 @@
 // #include <QString>
 // #include <QColor>
 //
-// namespace farsa {
+// namespace salsa {
 //
 // /*! \brief This class iterate over the neurons of a NNFW neural network
 //  *
 //  *  The blocks are identified by the name of the Cluster
 //  */
-// class FARSA_EXPERIMENTS_API NeuralNetIterator : public NeuronsIterator {
+// class SALSA_EXPERIMENTS_API NeuralNetIterator : public NeuronsIterator {
 // public:
 // 	/*! Constructor */
 // 	NeuralNetIterator();
 // 	/*! Destructor */
 // 	virtual ~NeuralNetIterator();
 // 	/*! Set the NeuralNet on which iterate */
-// 	void setNeuralNet( farsa::NeuralNet* neuralnet );
+// 	void setNeuralNet( salsa::NeuralNet* neuralnet );
 // 	/*! Set the current blocks (Cluster) of neurons to iterate
 // 	 *
 // 	 *  You need to first call this method for iterate over neurons.
@@ -76,13 +76,13 @@
 // 	 */
 // 	void checkCurrentStatus( const QString& funcName = QString() ) const;
 // 	/*! the NeuralNet */
-// 	farsa::NeuralNet* neuralnet;
+// 	salsa::NeuralNet* neuralnet;
 // 	/*! the current Cluster selected */
-// 	farsa::Cluster* cluster;
+// 	salsa::Cluster* cluster;
 // 	/*! the current index while iterating */
 // 	int currIndex;
 // };
 //
-// } // end namespace farsa
+// } // end namespace salsa
 //
 // #endif

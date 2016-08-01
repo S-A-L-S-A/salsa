@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -25,14 +25,14 @@
 
 #include "phyobject.h"
 
-namespace farsa {
+namespace salsa {
 
 class RenderPhySphere;
 
 /**
  * \brief The shared data for the PhyBox
  */
-class FARSA_WSIM_TEMPLATE PhySphereShared : public PhyObjectShared
+class SALSA_WSIM_TEMPLATE PhySphereShared : public PhyObjectShared
 {
 public:
 	/**
@@ -55,7 +55,7 @@ public:
 /**
  * \brief The class modelling a physical sphere
  */
-class FARSA_WSIM_API PhySphere : public PhyObject
+class SALSA_WSIM_API PhySphere : public PhyObject
 {
 public:
 	/**
@@ -126,7 +126,7 @@ public:
 	}
 
 	// Adding code for virtual bounding box functions
-	FARSA_IMPLEMENT_VIRTUAL_BB
+	SALSA_IMPLEMENT_VIRTUAL_BB
 
 protected:
 	/**
@@ -158,7 +158,7 @@ private:
 /**
  * \brief The class rendering the PhySphere
  */
-class FARSA_WSIM_API RenderPhySphere : public RenderPhyObject
+class SALSA_WSIM_API RenderPhySphere : public RenderPhyObject
 {
 public:
 	/**
@@ -189,9 +189,9 @@ public:
 	void render(const PhySphereShared* sharedData, GLContextAndData* contextAndData);
 
 	// Adding code for virtual bounding box functions
-	FARSA_IMPLEMENT_VIRTUAL_RENDERER_BB(PhySphere)
+	SALSA_IMPLEMENT_VIRTUAL_RENDERER_BB(PhySphere)
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

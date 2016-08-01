@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2012-2013 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -28,7 +28,7 @@
 #include <QComboBox>
 #include <QToolButton>
 
-using namespace farsa;
+using namespace salsa;
 
 QWidget* createParameterEditorWidget(QWidget* parent, ConfigurationManager* confParams, QString paramPath, QString displayName, const QObject* receiver, const char* onChangeParamValueSlot, bool editable)
 {

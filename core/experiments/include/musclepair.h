@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA Experimentes Library                                                  *
+//  *  SALSA Experimentes Library                                                  *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Gianluca Massera <emmegian@yahoo.it>                                        *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -26,7 +26,7 @@
 //
 // #include "experimentsconfig.h"
 //
-// namespace farsa {
+// namespace salsa {
 //
 // class PhyDOF;
 //
@@ -38,7 +38,7 @@
 //  *  \par Warnings
 //  *    Warnings
 //  */
-// class FARSA_EXPERIMENTS_API MusclePair {
+// class SALSA_EXPERIMENTS_API MusclePair {
 // public:
 // 	/*! construct a MusclePair
 // 	 *  The two muscles are identical and they generate opposite torques
@@ -135,7 +135,7 @@
 // 	float tal1, tal2;
 // };
 //
-// } //end namespace farsa
+// } //end namespace salsa
 //
 // #endif
 //

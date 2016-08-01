@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -23,7 +23,7 @@
 #include "gaconfig.h"
 #include "core/evaluation.h"
 
-namespace farsa {
+namespace salsa {
 
 /*!  \brief MultiTrials is a class that evaluate in more than one trial
  *
@@ -34,7 +34,7 @@ namespace farsa {
  *
  * \ingroup ga_eval
  */
-class FARSA_GA_API MultiTrials : public Evaluation {
+class SALSA_GA_API MultiTrials : public Evaluation {
 public:
 	/*! Default Constructor */
 	MultiTrials( int steps = 1, int trials = 1 );
@@ -136,6 +136,6 @@ private:
 	bool trialInited;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

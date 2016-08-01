@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Utilities Library                                                     *
+ *  SALSA Utilities Library                                                     *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -35,7 +35,7 @@
 	#include <float.h>
 #endif
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief Abstraction on the type of real numbers
@@ -57,7 +57,7 @@ typedef float real;
  * \return the angle in radians
  * \ingroup math_utils
  */
-inline FARSA_UTIL_TEMPLATE real toRad(real x)
+inline SALSA_UTIL_TEMPLATE real toRad(real x)
 {
 	return x * PI_GRECO / 180.0f;
 }
@@ -69,7 +69,7 @@ inline FARSA_UTIL_TEMPLATE real toRad(real x)
  * \return the angle restricted between 0.0 and 2.0 * PI_GRECO
  * \ingroup math_utils
  */
-inline FARSA_UTIL_TEMPLATE real normalizeRad02pi(real x)
+inline SALSA_UTIL_TEMPLATE real normalizeRad02pi(real x)
 {
 	return x - (floor(x / (2.0 * PI_GRECO)) * 2.0 * PI_GRECO);
 }
@@ -81,7 +81,7 @@ inline FARSA_UTIL_TEMPLATE real normalizeRad02pi(real x)
  * \return the angle restricted between -PI_GRECO and PI_GRECO
  * \ingroup math_utils
  */
-inline FARSA_UTIL_TEMPLATE real normalizeRad(real x)
+inline SALSA_UTIL_TEMPLATE real normalizeRad(real x)
 {
 	const real n = normalizeRad02pi(x);
 	return (n > PI_GRECO) ? (n - 2.0 * PI_GRECO) : n;
@@ -94,7 +94,7 @@ inline FARSA_UTIL_TEMPLATE real normalizeRad(real x)
  * \return the angle in degrees
  * \ingroup math_utils
  */
-inline FARSA_UTIL_TEMPLATE real toDegree(real x)
+inline SALSA_UTIL_TEMPLATE real toDegree(real x)
 {
 	return  x * 180.0f / PI_GRECO;
 }
@@ -106,7 +106,7 @@ inline FARSA_UTIL_TEMPLATE real toDegree(real x)
  * \return the angle restricted between 0.0° and 360°
  * \ingroup math_utils
  */
-inline FARSA_UTIL_TEMPLATE real normalizeDegree0360(real x)
+inline SALSA_UTIL_TEMPLATE real normalizeDegree0360(real x)
 {
 	return x - (floor(x / 360.0) * 360.0);
 }
@@ -118,7 +118,7 @@ inline FARSA_UTIL_TEMPLATE real normalizeDegree0360(real x)
  * \return the angle restricted between -180° and 180°
  * \ingroup math_utils
  */
-inline FARSA_UTIL_TEMPLATE real normalizeDegree(real x)
+inline SALSA_UTIL_TEMPLATE real normalizeDegree(real x)
 {
 	const real n = normalizeDegree0360(x);
 	return (n > 180.0) ? (n - 360.0) : n;
@@ -133,7 +133,7 @@ inline FARSA_UTIL_TEMPLATE real normalizeDegree(real x)
  * \ingroup math_utils
  */
 template<class T, class U>
-FARSA_UTIL_TEMPLATE const T min(const T& t1, const U& t2)
+SALSA_UTIL_TEMPLATE const T min(const T& t1, const U& t2)
 {
 	if (t1 < t2) {
 		return t1;
@@ -151,7 +151,7 @@ FARSA_UTIL_TEMPLATE const T min(const T& t1, const U& t2)
  * \ingroup math_utils
  */
 template<class T, class U>
-FARSA_UTIL_TEMPLATE const T max(const T& t1, const U& t2)
+SALSA_UTIL_TEMPLATE const T max(const T& t1, const U& t2)
 {
 	if (t1 > t2) {
 		return t1;
@@ -170,7 +170,7 @@ FARSA_UTIL_TEMPLATE const T max(const T& t1, const U& t2)
  *         than minv, returns minv, otherwise returns value
  *  \ingroup math_utils
  */
-inline FARSA_UTIL_TEMPLATE real ramp(real minv, real maxv, real value)
+inline SALSA_UTIL_TEMPLATE real ramp(real minv, real maxv, real value)
 {
 	if (value > maxv) {
 		return maxv;
@@ -198,7 +198,7 @@ inline FARSA_UTIL_TEMPLATE real ramp(real minv, real maxv, real value)
  * \return the mapped value
  * \ingroup math_utils
  */
-inline FARSA_UTIL_TEMPLATE float linearMap(float x, float min = -10, float max = 10, float outMin = -1, float outMax = 1)
+inline SALSA_UTIL_TEMPLATE float linearMap(float x, float min = -10, float max = 10, float outMin = -1, float outMax = 1)
 {
 	float m = ( outMax-outMin )/( max-min );
 	float q = outMin - m*min;
@@ -229,7 +229,7 @@ inline FARSA_UTIL_TEMPLATE float linearMap(float x, float min = -10, float max =
  * \return the mapped value
  * \ingroup math_utils
  */
-inline FARSA_UTIL_TEMPLATE float invLinearMap(float x, float min = -10, float max = 10, float outMin = -1, float outMax = 1)
+inline SALSA_UTIL_TEMPLATE float invLinearMap(float x, float min = -10, float max = 10, float outMin = -1, float outMax = 1)
 {
 	double m = -( outMax-outMin )/( max-min );
 	double q = outMax - m*min;
@@ -262,7 +262,7 @@ inline FARSA_UTIL_TEMPLATE float invLinearMap(float x, float min = -10, float ma
  * This will call qFatal if the value is NaN (abort execution if no message
  * handler has been installed)
  */
-#define FARSA_TEST_NAN(__V__) if (isnan(__V__)) { qFatal("Variable " #__V__ " has and invalid value: NaN in %s at line %d", __FILE__, __LINE__); }
+#define SALSA_TEST_NAN(__V__) if (isnan(__V__)) { qFatal("Variable " #__V__ " has and invalid value: NaN in %s at line %d", __FILE__, __LINE__); }
 
 /**
  * \brief A macro to test whether a variable is Inf
@@ -270,7 +270,7 @@ inline FARSA_UTIL_TEMPLATE float invLinearMap(float x, float min = -10, float ma
  * This will call qFatal if the value is Inf (abort execution if no message
  * handler has been installed)
  */
-#define FARSA_TEST_INF(__V__) if (isinf(__V__)) { qFatal("Variable " #__V__ " has and invalid value: Infinite in %s at line %d", __FILE__, __LINE__); }
+#define SALSA_TEST_INF(__V__) if (isinf(__V__)) { qFatal("Variable " #__V__ " has and invalid value: Infinite in %s at line %d", __FILE__, __LINE__); }
 
 /**
  * \brief A macro to test whether a variable is NaN or Inf
@@ -278,41 +278,41 @@ inline FARSA_UTIL_TEMPLATE float invLinearMap(float x, float min = -10, float ma
  * This will call qFatal if the value is NaN or Inf (abort execution if no
  * message handler has been installed)
  */
-#define FARSA_TEST_INVALID(__V__) if (isnan(__V__)) { qFatal("Variable " #__V__ " has and invalid value: NaN in %s at line %d", __FILE__, __LINE__); } else if (isinf(__V__)) { qFatal("Variable " #__V__ " has and invalid value: Infinite in %s at line %d", __FILE__, __LINE__); }
+#define SALSA_TEST_INVALID(__V__) if (isnan(__V__)) { qFatal("Variable " #__V__ " has and invalid value: NaN in %s at line %d", __FILE__, __LINE__); } else if (isinf(__V__)) { qFatal("Variable " #__V__ " has and invalid value: Infinite in %s at line %d", __FILE__, __LINE__); }
 
 /**
  * \brief A macro to test whether a variable is NaN in DEBUG builds
  *
- * This is like FARSA_TEST_NAN if building in DEBUG, empty otherwise
+ * This is like SALSA_TEST_NAN if building in DEBUG, empty otherwise
  */
-#ifdef FARSA_DEBUG
-	#define FARSA_DEBUG_TEST_NAN(__V__) FARSA_TEST_NAN(__V__)
+#ifdef SALSA_DEBUG
+	#define SALSA_DEBUG_TEST_NAN(__V__) SALSA_TEST_NAN(__V__)
 #else
-	#define FARSA_DEBUG_TEST_NAN(__V__)
+	#define SALSA_DEBUG_TEST_NAN(__V__)
 #endif
 
 /**
  * \brief A macro to test whether a variable is Inf in DEBUG builds
  *
- * This is like FARSA_TEST_INF if building in DEBUG, empty otherwise
+ * This is like SALSA_TEST_INF if building in DEBUG, empty otherwise
  */
-#ifdef FARSA_DEBUG
-	#define FARSA_DEBUG_TEST_INF(__V__) FARSA_TEST_INF(__V__)
+#ifdef SALSA_DEBUG
+	#define SALSA_DEBUG_TEST_INF(__V__) SALSA_TEST_INF(__V__)
 #else
-	#define FARSA_DEBUG_TEST_INF(__V__)
+	#define SALSA_DEBUG_TEST_INF(__V__)
 #endif
 
 /**
  * \brief A macro to test whether a variable is NaN or Inf in DEBUG builds
  *
- * This is like FARSA_TEST_VALID if building in DEBUG, empty otherwise
+ * This is like SALSA_TEST_VALID if building in DEBUG, empty otherwise
  */
-#ifdef FARSA_DEBUG
-	#define FARSA_DEBUG_TEST_INVALID(__V__) FARSA_TEST_INVALID(__V__)
+#ifdef SALSA_DEBUG
+	#define SALSA_DEBUG_TEST_INVALID(__V__) SALSA_TEST_INVALID(__V__)
 #else
-	#define FARSA_DEBUG_TEST_INVALID(__V__)
+	#define SALSA_DEBUG_TEST_INVALID(__V__)
 #endif
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

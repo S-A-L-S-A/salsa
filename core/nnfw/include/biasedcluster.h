@@ -30,12 +30,12 @@
 #include "cluster.h"
 #include "outputfunction.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief In a BiasedCluster each neuron has an input, an output and a bias value.
  *
  */
-class FARSA_NNFW_API BiasedCluster : public Cluster {
+class SALSA_NNFW_API BiasedCluster : public Cluster {
 public:
 	/*! Constructor */
 	BiasedCluster( ConfigurationManager& params, QString prefix, Component* parent = NULL );

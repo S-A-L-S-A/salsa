@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                         *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -24,7 +24,7 @@
 #include "evoalgotest.h"
 #include "configurationhelper.h"
 
-namespace farsa {
+namespace salsa {
 
 NewAbstractTest::NewAbstractTest()
 	: ParameterSettableWithConfigureFunction()
@@ -78,4 +78,4 @@ void EvoAlgoTest::describe( QString type )
 	d.describeObject("GAEvaluator").type("RobotExperiment").help("The evaluator");
 }
 
-} //end namespace farsa
+} //end namespace salsa

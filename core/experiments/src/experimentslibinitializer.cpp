@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experimentes Library                                                  *
+ *  SALSA Experimentes Library                                                  *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -46,9 +46,9 @@
 #include "tests.h"
 #include "typesdb.h"
 
-namespace farsa {
+namespace salsa {
 
-bool FARSA_EXPERIMENTS_API initExperimentsLib()
+bool SALSA_EXPERIMENTS_API initExperimentsLib()
 {
 	static bool calledOnce = false;
 
@@ -173,4 +173,4 @@ bool FARSA_EXPERIMENTS_API initExperimentsLib()
 	return true;
 }
 
-} // end namespace farsa
+} // end namespace salsa

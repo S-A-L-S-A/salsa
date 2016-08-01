@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2009 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -28,7 +28,7 @@
 #include <QtConcurrentMap>
 using namespace QtConcurrent;
 
-namespace farsa {
+namespace salsa {
 
 StefanoSteadyStateGA::StefanoSteadyStateGA() :
 	GeneticAlgo(),
@@ -252,4 +252,4 @@ void StefanoSteadyStateGA::finalize() {
 	qSort( genome()->begin(), genome()->end(), Genotype::rankGreaterThanComparator );
 }
 
-} // end namespace farsa
+} // end namespace salsa

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -28,7 +28,7 @@
 #include "wentity.h"
 #include <QVector>
 
-namespace farsa {
+namespace salsa {
 
 class World;
 class PhyDOF;
@@ -39,7 +39,7 @@ class PhyDOF;
  *  this class provide an implementation of PID algorithm.
  *  \note this is a C++ adaptation of pidloop example at http://jk-technology.com/C_Unleashed/code_list.html
  */
-class FARSA_WSIM_API wPID {
+class SALSA_WSIM_API wPID {
 public:
 	/*! Constructor */
 	wPID();
@@ -88,7 +88,7 @@ private:
  * A common interface among MotorController hierachy. This has no renderer nor
  * shared data
  */
-class FARSA_WSIM_API MotorController : public WEntity
+class SALSA_WSIM_API MotorController : public WEntity
 {
 protected:
 	/**
@@ -163,7 +163,7 @@ private:
  * \param axletrack the distance between the two wheels
  * \param timestep the world timestep
  */
-void FARSA_WSIM_API wheeledRobotsComputeKinematicMovement(wMatrix &mtr, real leftWheelVelocity, real rightWheelVelocity, real wheelr, real axletrack, real timestep);
+void SALSA_WSIM_API wheeledRobotsComputeKinematicMovement(wMatrix &mtr, real leftWheelVelocity, real rightWheelVelocity, real wheelr, real axletrack, real timestep);
 
 /**
  * \brief An helper function to compute the speed of the wheels of wheeled
@@ -186,12 +186,12 @@ void FARSA_WSIM_API wheeledRobotsComputeKinematicMovement(wMatrix &mtr, real lef
  * \param rightWheelVelocity the computed angular velocity of the right wheel
  * \return true if the computed velocities are correct
  */
-bool FARSA_WSIM_API wheeledRobotsComputeWheelsSpeed(const wMatrix& start, const wMatrix& end, real wheelr, real axletrack, real timestep, real& leftWheelVelocity, real& rightWheelVelocity);
+bool SALSA_WSIM_API wheeledRobotsComputeWheelsSpeed(const wMatrix& start, const wMatrix& end, real wheelr, real axletrack, real timestep, real& leftWheelVelocity, real& rightWheelVelocity);
 
 /**
  * \brief The controller of wheels for wheeled robots
  */
-class FARSA_WSIM_API WheelMotorController : public MotorController
+class SALSA_WSIM_API WheelMotorController : public MotorController
 {
 protected:
 	/**
@@ -409,7 +409,7 @@ class PhyFixed;
  * enabled. If the robot attachment device is not enabled, changes to the device
  * status are not applied
  */
-class FARSA_WSIM_API MarXbotAttachmentDeviceMotorController : public MotorController
+class SALSA_WSIM_API MarXbotAttachmentDeviceMotorController : public MotorController
 {
 public:
 	/**
@@ -683,6 +683,6 @@ private:
 	friend class World;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

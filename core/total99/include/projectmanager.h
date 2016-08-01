@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -66,8 +66,8 @@ class ViewersManager;
  *
  *  \section Resources How resources are stored and retrieved
  *  \subsection globalResources Global Resources
- *  The global resources are stored in the 'conf' directory where FARSA has been installed. On linux/mac, the 'conf'
- *  directory is under 'share/FARSA' directory. The content of the 'conf' directory is the following:
+ *  The global resources are stored in the 'conf' directory where SALSA has been installed. On linux/mac, the 'conf'
+ *  directory is under 'share/SALSA' directory. The content of the 'conf' directory is the following:
  *  - <em>total99.ini</em>: contains the global preferences of the application. They are considered the default settings.
  *  - <em>templates</em>: is a directory containing the graphical templates for the UI. Each template is a directory
  *                        containing icons, fonts and stylesheet for the user interface.
@@ -76,12 +76,12 @@ class ViewersManager;
  *  configuration directory with the same exactly structure of the 'conf' directory. All the parameters setted into the
  *  total99.ini inside the user configuration directory will take priority respect to the global configuration
  *  The user configuration directory is located on OS-ware basis:
- *  - on Windows: %APPDATA%/FARSA/Total99
- *  - on Linux: ~/.FARSA/total99
- *  - on Mac OS: ~/Library/Application Support/FARSA/Total99
+ *  - on Windows: %APPDATA%/SALSA/Total99
+ *  - on Linux: ~/.SALSA/total99
+ *  - on Mac OS: ~/Library/Application Support/SALSA/Total99
  *
  */
-class ProjectManager : public QWidget, public farsa::ConfigurationObserver {
+class ProjectManager : public QWidget, public salsa::ConfigurationObserver {
 	Q_OBJECT
 public:
 	/*! Constructor */
@@ -89,9 +89,9 @@ public:
 	/*! Destructor */
 	~ProjectManager();
 	/*! when an object is created it look for associated "Actions" and "Viewers" */
-	void onComponentCreation(farsa::Component* component);
+	void onComponentCreation(salsa::Component* component);
 	// This is not used
-	void onComponentDestruction(farsa::Component* component);
+	void onComponentDestruction(salsa::Component* component);
 public slots:
 	/*! Save the state of the windows opened, and clean up memory */
 	void onQuit();
@@ -151,13 +151,13 @@ private slots:
 	 *  For now only the special parameter 'type' is handled, and it trigger the check of configuration parameters
 	 *  for the mandatory parameters and groups
 	 */
-	void checkOnParameterChanges( QString parameter, QString value, QString prefix, farsa::ConfigurationManager* confParams );
+	void checkOnParameterChanges( QString parameter, QString value, QString prefix, salsa::ConfigurationManager* confParams );
 	/*! checks and update all things when a group will be added
 	 *  \param SubgroupName is the name of the subgroup added
 	 *  \param prefix is the full path of the group containing SubgroupName
 	 *  \param confParams is the ConfigurationManager where parameter belongs to
 	 */
-	void checkOnGroupAdding( QString SubgroupName, QString prefix, farsa::ConfigurationManager* confParams );
+	void checkOnGroupAdding( QString SubgroupName, QString prefix, salsa::ConfigurationManager* confParams );
 	/*! Update the component and configuration status labels */
 	void updateStatusLabels();
 	/*! Handle the trigger of a QAction associated with Viewer */
@@ -189,7 +189,7 @@ private:
 	 */
 	void addRecentProjectToList( QStringList aRecentProject, bool onTop = true );
 	/*! load the project ; return true on success */
-	bool loadProjectConfiguration( farsa::ConfigurationManager& newProjectConfiguration );
+	bool loadProjectConfiguration( salsa::ConfigurationManager& newProjectConfiguration );
 	/*! update the recent Projects loaded */
 	void updateRecentProjects();
 	/*! clean and remove all the UI stuff created for the component */
@@ -263,7 +263,7 @@ private:
 	/*! the status bar on which showing information */
 	QStatusBar* statusBar;
 	/*! The ConfigurationManager loaded and currently managed */
-	farsa::ConfigurationManager project;
+	salsa::ConfigurationManager project;
 	/*! The file where the project is */
 	QFileInfo projectFile;
 	/*! it's true if a valid project has been loaded, false otherwise */
@@ -273,15 +273,15 @@ private:
 	/*! it's true when some parameters has been changed, but these changes has not been applied to the component */
 	bool componentOutdated;
 	/*! the instance of the component loaded from the project */
-	farsa::Component* component;
+	salsa::Component* component;
 	/*! This ConfigurationManager regards to the global preferences and configurations merged with
 	 *  the user preferences and configurations
 	 */
-	farsa::ConfigurationManager allprefs;
+	salsa::ConfigurationManager allprefs;
 	/*! This ConfigurationManager regards only the user preferences and configurations
 	 *  It's only used to save on the file only things different from the default ones
 	 */
-	farsa::ConfigurationManager userprefs;
+	salsa::ConfigurationManager userprefs;
 	/*! the list of last loaded projects
 	 *  Each element of this QVector contains a list of informations about the project:
 	 *  0 -> name as reported in the project file
@@ -302,14 +302,14 @@ private:
 	QTextEdit* logViewer;
 
 	/*! the UI managers created that manage the viewers */
-	QList<farsa::ComponentUI*> uimanagers;
+	QList<salsa::ComponentUI*> uimanagers;
 	/*! information about the viewers created for the component created */
 	QMap<QAction*, QWidget*> viewersMap;
 	/*! The ViewersManager */
 	ViewersManager* viewersManager;
 	/*! the list of objects created and their path into the configuration file */
 #warning WE CAN REMOVE THE PAIR, EACH COMPONENT ALSO KNOWS ITS PATH
-	QList< QPair<farsa::Component*, QString> > objsCreated;
+	QList< QPair<salsa::Component*, QString> > objsCreated;
 	/*! The geometry of the main window to be saved */
 	QByteArray geometryToSave;
 

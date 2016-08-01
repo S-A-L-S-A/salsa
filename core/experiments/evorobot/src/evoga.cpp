@@ -1,5 +1,5 @@
  /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -49,7 +49,7 @@
 	#pragma warning(disable:4996)
 #endif
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief this is an helper class for implementing multithread in Evoga */
 class EvaluatorThreadForEvoga
@@ -1358,7 +1358,7 @@ unsigned int generateRandomSeed() {
 	// is on the stack of the process
 	unsigned long int stackMem = (unsigned long int)( generateRandomSeed );
 	// time on which the process has been started
-#ifdef FARSA_WIN
+#ifdef SALSA_WIN
 	unsigned long int startTime = GetTickCount();
 #else
 	unsigned long int startTime = time(NULL);
@@ -1700,7 +1700,7 @@ int Evoga::rouletteWheel(QVector<double> candidates){
     return i-1;
 }
 
-} // end namespace farsa
+} // end namespace salsa
 
 // All the suff below is to restore the warning state on Windows
 #if defined(_MSC_VER)

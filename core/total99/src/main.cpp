@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -32,14 +32,14 @@
 #include <QMetaMethod>
 #include <QDebug>
 
-using namespace farsa;
+using namespace salsa;
 
-#ifdef FARSA_WIN
+#ifdef SALSA_WIN
 //--- the directory where the .DLL will be installed is added to the search paths
 //#include <windows.h>
 // TODO: da testare la creazione del path e decidere come passare CMAKE_INSTALL_PREFIX qui !!
 //SetDllDirectory( PATH_TO_LIB );
-//SetDllDirectory( getenv( FARSA_DIR )/lib... )
+//SetDllDirectory( getenv( SALSA_DIR )/lib... )
 
 //--- to insert inside the .exe the icon and other resource add to the source of Total99 target
 //    also the resource file .rc
@@ -75,16 +75,16 @@ int main( int argc, char* argv[] ) {
 
 	if ( !batch ) {
 		QApplication a( argc, argv );
-		a.setOrganizationName( "FARSA" );
+		a.setOrganizationName( "SALSA" );
 		a.setApplicationName( "Total99" );
 		Total99Resources::initialize();
 		ProjectManager* manager = new ProjectManager();
-		manager->setWindowTitle( QString( "Total99 - a FARSA application" ) );
+		manager->setWindowTitle( QString( "Total99 - a SALSA application" ) );
 		manager->show();
 		QObject::connect( &a, SIGNAL(aboutToQuit()), manager, SLOT(onQuit()) );
 		return a.exec();
 	} else {
-		farsa::Logger::error("BATCH EXECUTION NOT IMPLEMENTED FOR THE MOMENT");
+		salsa::Logger::error("BATCH EXECUTION NOT IMPLEMENTED FOR THE MOMENT");
 #warning BISOGNA PRIMA FARE DEI CAMBIAMENTI A ComponentUI, VEDI WARNING IN baseexperiment.h
 // 		try {
 // 			//--- check the command line parameters passed in batch modality
@@ -103,7 +103,7 @@ int main( int argc, char* argv[] ) {
 // 			QDir::setCurrent( projectFile.absolutePath() );
 // 			// Here we instantiate a QCoreApplication without GUI
 // 			QCoreApplication a( argc, argv );
-// 			a.setOrganizationName( "FARSA" );
+// 			a.setOrganizationName( "SALSA" );
 // 			a.setApplicationName( "Total99" );
 // 			Total99Resources::initialize();
 // 			ConfigurationManager projectConf;

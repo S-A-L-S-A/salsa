@@ -7,14 +7,14 @@
 # A function to declare a test. The only argument is the name of the test. The
 # source file of the test must have the same name of the test with a "_test.cpp"
 # suffix. "_test" is appended also the the name of the test
-function(addFarsaLibPluginHelperTest testName)
+function(addSalsaLibPluginHelperTest testName)
 	set(mangledTestName "${testName}_test")
 	add_executable("${mangledTestName}" "${mangledTestName}.cpp")
-	target_link_libraries("${mangledTestName}" farsalibpluginhelper Qt5::Test)
+	target_link_libraries("${mangledTestName}" salsalibpluginhelper Qt5::Test)
 	add_test(NAME "${mangledTestName}" COMMAND "${mangledTestName}")
 endfunction()
 
 # Adding all tests
-addFarsaLibPluginHelperTest(commandlineparser)
-addFarsaLibPluginHelperTest(headerparser)
-addFarsaLibPluginHelperTest(pluginregistrationcodegenerator)
+addSalsaLibPluginHelperTest(commandlineparser)
+addSalsaLibPluginHelperTest(headerparser)
+addSalsaLibPluginHelperTest(pluginregistrationcodegenerator)

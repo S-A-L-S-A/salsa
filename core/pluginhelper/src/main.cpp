@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -23,8 +23,8 @@
 #include "commandlineparser.h"
 #include "pluginhelper.h"
 
-using namespace farsa;
-using namespace farsa::pluginHelper;
+using namespace salsa;
+using namespace salsa::pluginHelper;
 
 int main(int argc, char* argv[])
 {
@@ -46,10 +46,10 @@ int main(int argc, char* argv[])
 		} else {
 			doParse(parser.pluginName(), parser.destDir(), parser.headersDestDir(), parser.genSource(), parser.dependenciesFile(), parser.headers());
 		}
-	} catch (farsa::RuntimeUserException& e) {
+	} catch (salsa::RuntimeUserException& e) {
 		std::cerr << "Execution exception: " << e.what() << std::endl;
 		ok = false;
-	} catch (farsa::CircularDependencyException& e) {
+	} catch (salsa::CircularDependencyException& e) {
 		std::cerr << "Circular dependency: " << e.what() << std::endl;
 		ok = false;
 	} catch (std::exception& e) {

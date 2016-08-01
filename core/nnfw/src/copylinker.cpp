@@ -19,7 +19,7 @@
 
 #include "copylinker.h"
 
-namespace farsa {
+namespace salsa {
 
 CopyLinker::CopyLinker( ConfigurationManager& params, QString prefix, Component* parent )
 	: Linker( params, prefix, parent ) {

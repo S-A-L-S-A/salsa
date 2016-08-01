@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -38,7 +38,7 @@
 #include <QImage>
 #include <QMap>
 
-namespace farsa {
+namespace salsa {
 
 class World;
 class WorldPrivate;
@@ -58,7 +58,7 @@ class AbstractRenderWEntityCreator;
  * \param pair the pair of PhyObjects
  * \return an hash for the pair
  */
-inline uint FARSA_WSIM_TEMPLATE qHash( const QPair<PhyObject*, PhyObject*>& pair )
+inline uint SALSA_WSIM_TEMPLATE qHash( const QPair<PhyObject*, PhyObject*>& pair )
 {
 #ifdef _LP64
 	return ( ::qHash( (long int)(pair.first) ) );
@@ -75,7 +75,7 @@ inline uint FARSA_WSIM_TEMPLATE qHash( const QPair<PhyObject*, PhyObject*>& pair
  *  # <b>Default:</b> with default properties of physic engine used
  *  # <b>nonCollidable:</b> a material that doesn't collide with anything
  */
-class FARSA_WSIM_API MaterialDB {
+class SALSA_WSIM_API MaterialDB {
 public:
 	/*! return the world associate with these materials */
 	World* world() {
@@ -176,7 +176,7 @@ private:
  *  generated: one for registering data from the A point of view and the other respect to object B.<br>
  *  This simplify the contact look-up based on the object pointer.
  */
-class FARSA_WSIM_TEMPLATE Contact {
+class SALSA_WSIM_TEMPLATE Contact {
 public:
 	/*! Reference Object */
 	PhyObject* object;
@@ -209,7 +209,7 @@ typedef QHashIterator<PhyObject*, ContactVec> ContactMapIterator;
  *  0 and 1), the actual point at which the ray hits the object and the normal
  *  at contact point
  */
-class FARSA_WSIM_TEMPLATE RayCastHit {
+class SALSA_WSIM_TEMPLATE RayCastHit {
 public:
 	/*! Object intersected by the ray */
 	PhyObject* object;
@@ -236,7 +236,7 @@ typedef QVector<RayCastHit> RayCastHitVector;
  * all parameters of constructors. See World description for more information
  */
 template <class Type_t>
-class FARSA_WSIM_TEMPLATE TypeToCreate
+class SALSA_WSIM_TEMPLATE TypeToCreate
 {
 public:
 	/**
@@ -253,7 +253,7 @@ public:
  * entities. It is needed because shared data are not virtual classes,
  * so we should delete the correct pointer type
  */
-class FARSA_WSIM_TEMPLATE AbstractSharedDataHolder
+class SALSA_WSIM_TEMPLATE AbstractSharedDataHolder
 {
 public:
 	/**
@@ -284,7 +284,7 @@ public:
  * Type is the type of the shared data instance to delete
  */
 template <class Type>
-class FARSA_WSIM_TEMPLATE SharedDataHolder : public AbstractSharedDataHolder
+class SALSA_WSIM_TEMPLATE SharedDataHolder : public AbstractSharedDataHolder
 {
 public:
 	/**
@@ -341,7 +341,7 @@ private:
  * This structure contains an entity, the shared data holder and the
  * factory for renderers and renderproxies for the entity
  */
-struct FARSA_WSIM_TEMPLATE WEntityAndBuddies
+struct SALSA_WSIM_TEMPLATE WEntityAndBuddies
 {
 	/**
 	 * \brief The entity
@@ -394,7 +394,7 @@ struct FARSA_WSIM_TEMPLATE WEntityAndBuddies
  * object!)
  */
 template <class Type_t>
-class FARSA_WSIM_TEMPLATE WEntityCreationCustomizer
+class SALSA_WSIM_TEMPLATE WEntityCreationCustomizer
 {
 public:
 	/**
@@ -626,7 +626,7 @@ private:
  *
  * For the moment this only contains the world size
  */
-class FARSA_WSIM_TEMPLATE WorldGraphicalInfo
+class SALSA_WSIM_TEMPLATE WorldGraphicalInfo
 {
 public:
 	/**
@@ -640,6 +640,6 @@ public:
 	wVector maxP;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

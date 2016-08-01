@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -30,7 +30,7 @@
 
 #warning NoisyDevice AL MOMENTO USA globalRNG PER IL RUMORE, BISOGNEREBBE USARE RNG PRIVATI (PENSARE A COME FARE)
 
-namespace farsa {
+namespace salsa {
 
 NoisyDevice::NoisyDevice(ConfigurationManager& params, QString prefix)
 	: m_noiseType(NoNoise)
@@ -272,4 +272,4 @@ real NoisyOutput::applyNoise(real v) const
 	return NoisyDevice::applyNoise(v, minValue(), maxValue());
 }
 
-} // end namespace farsa
+} // end namespace salsa

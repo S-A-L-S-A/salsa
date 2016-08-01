@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -29,7 +29,7 @@
 #include "arena.h"
 #include "intervals.h"
 
-namespace farsa {
+namespace salsa {
 
 // This anonymous namespace contains helper functions used in this file
 namespace {
@@ -84,20 +84,20 @@ namespace {
 	 */
 	double getAngleWithXAxis(const wMatrix& mtr, const wVector& v)
 	{
-		FARSA_DEBUG_TEST_INVALID(mtr.x_ax.x) FARSA_DEBUG_TEST_INVALID(mtr.x_ax.y) FARSA_DEBUG_TEST_INVALID(mtr.x_ax.z)
-		FARSA_DEBUG_TEST_INVALID(v.x) FARSA_DEBUG_TEST_INVALID(v.y) FARSA_DEBUG_TEST_INVALID(v.z)
+		SALSA_DEBUG_TEST_INVALID(mtr.x_ax.x) SALSA_DEBUG_TEST_INVALID(mtr.x_ax.y) SALSA_DEBUG_TEST_INVALID(mtr.x_ax.z)
+		SALSA_DEBUG_TEST_INVALID(v.x) SALSA_DEBUG_TEST_INVALID(v.y) SALSA_DEBUG_TEST_INVALID(v.z)
 
 		// Normalizing v
-		const wVector vdir = v.scale(1.0 / v.norm()); FARSA_DEBUG_TEST_INVALID(vdir.x) FARSA_DEBUG_TEST_INVALID(vdir.y) FARSA_DEBUG_TEST_INVALID(vdir.z)
+		const wVector vdir = v.scale(1.0 / v.norm()); SALSA_DEBUG_TEST_INVALID(vdir.x) SALSA_DEBUG_TEST_INVALID(vdir.y) SALSA_DEBUG_TEST_INVALID(vdir.z)
 
 		// To get the angle (unsigned), computing the acos of the dot product of the two vectors. We have to
 		// constrain the cross product between -1 and 1 because sometimes it can have values outside the range
-		const double crossProduct = min(1.0, max(-1.0, mtr.x_ax % vdir)); FARSA_DEBUG_TEST_INVALID(crossProduct)
-		const double unsignedAngle = acos(crossProduct); FARSA_DEBUG_TEST_INVALID(unsignedAngle)
+		const double crossProduct = min(1.0, max(-1.0, mtr.x_ax % vdir)); SALSA_DEBUG_TEST_INVALID(crossProduct)
+		const double unsignedAngle = acos(crossProduct); SALSA_DEBUG_TEST_INVALID(unsignedAngle)
 
 		// Now choosing the right sign. To do this we first compute the cross product of the x axis and
 		// the vector direction, then we see if it has the same direction of Z or not
-		const double s = mtr.z_ax % (mtr.x_ax * vdir); FARSA_DEBUG_TEST_INVALID(s)
+		const double s = mtr.z_ax % (mtr.x_ax * vdir); SALSA_DEBUG_TEST_INVALID(s)
 
 		return (s < 0.0) ? -unsignedAngle : unsignedAngle;
 	}
@@ -158,7 +158,7 @@ namespace {
 			distance = -1.0;
 			return;
 		}
-		mtr.w_pos = mtr.w_pos + mtr.z_ax.scale((objMtr.w_pos.z - mtr.w_pos.z) / mtr.z_ax.z);  FARSA_DEBUG_TEST_INVALID(mtr.w_pos.x) FARSA_DEBUG_TEST_INVALID(mtr.w_pos.y) FARSA_DEBUG_TEST_INVALID(mtr.w_pos.z) FARSA_DEBUG_TEST_INVALID(mtr.z_ax.x) FARSA_DEBUG_TEST_INVALID(mtr.z_ax.y) FARSA_DEBUG_TEST_INVALID(mtr.z_ax.z) FARSA_DEBUG_TEST_INVALID(objMtr.w_pos.x) FARSA_DEBUG_TEST_INVALID(objMtr.w_pos.y) FARSA_DEBUG_TEST_INVALID(objMtr.w_pos.z)
+		mtr.w_pos = mtr.w_pos + mtr.z_ax.scale((objMtr.w_pos.z - mtr.w_pos.z) / mtr.z_ax.z);  SALSA_DEBUG_TEST_INVALID(mtr.w_pos.x) SALSA_DEBUG_TEST_INVALID(mtr.w_pos.y) SALSA_DEBUG_TEST_INVALID(mtr.w_pos.z) SALSA_DEBUG_TEST_INVALID(mtr.z_ax.x) SALSA_DEBUG_TEST_INVALID(mtr.z_ax.y) SALSA_DEBUG_TEST_INVALID(mtr.z_ax.z) SALSA_DEBUG_TEST_INVALID(objMtr.w_pos.x) SALSA_DEBUG_TEST_INVALID(objMtr.w_pos.y) SALSA_DEBUG_TEST_INVALID(objMtr.w_pos.z)
 
 		// First of all we have to calculate the distance between the center of the camera and the center of the
 		// cylinder. Here we also check that the camera is not inside the cylinder. The vector from the camera
@@ -176,7 +176,7 @@ namespace {
 		// various colors. The angles are relative to the cylinder center. The first thing we need
 		// is the angle between the vector from the camera to center of the cylinder and the radius
 		// perpendicular to the tangent
-		const double halfSectorAngle = acos(radius / centerDistance); FARSA_DEBUG_TEST_INVALID(halfSectorAngle)
+		const double halfSectorAngle = acos(radius / centerDistance); SALSA_DEBUG_TEST_INVALID(halfSectorAngle)
 		// Now computing the starting and ending angle in the cylinder frame of reference. We need
 		// the angle of the centerDir vector, then we only have to subtract halfSectorAngle to get
 		// starting angle. The end angle is easy to obtain, then
@@ -215,21 +215,21 @@ namespace {
 		for (int i = 0; i < rangesAndColors.size(); i++) {
 			// Getting the points corresponding to the angles in the current range in the frame of reference
 			// of the cylinder
-			const wVector startPointCylinder(0.0, radius * cos(rangesAndColors[i].minAngle), radius * sin(rangesAndColors[i].minAngle)); FARSA_DEBUG_TEST_INVALID(startPointCylinder.x) FARSA_DEBUG_TEST_INVALID(startPointCylinder.y) FARSA_DEBUG_TEST_INVALID(startPointCylinder.z)
-			const wVector endPointCylinder(0.0, radius * cos(rangesAndColors[i].maxAngle), radius * sin(rangesAndColors[i].maxAngle)); FARSA_DEBUG_TEST_INVALID(endPointCylinder.x) FARSA_DEBUG_TEST_INVALID(endPointCylinder.y) FARSA_DEBUG_TEST_INVALID(endPointCylinder.z)
+			const wVector startPointCylinder(0.0, radius * cos(rangesAndColors[i].minAngle), radius * sin(rangesAndColors[i].minAngle)); SALSA_DEBUG_TEST_INVALID(startPointCylinder.x) SALSA_DEBUG_TEST_INVALID(startPointCylinder.y) SALSA_DEBUG_TEST_INVALID(startPointCylinder.z)
+			const wVector endPointCylinder(0.0, radius * cos(rangesAndColors[i].maxAngle), radius * sin(rangesAndColors[i].maxAngle)); SALSA_DEBUG_TEST_INVALID(endPointCylinder.x) SALSA_DEBUG_TEST_INVALID(endPointCylinder.y) SALSA_DEBUG_TEST_INVALID(endPointCylinder.z)
 
 			// Now computing the points in the global frame of reference
-			const wVector startPoint = objMtr.transformVector(startPointCylinder); FARSA_DEBUG_TEST_INVALID(startPoint.x) FARSA_DEBUG_TEST_INVALID(startPoint.y) FARSA_DEBUG_TEST_INVALID(startPoint.z)
-			const wVector endPoint = objMtr.transformVector(endPointCylinder); FARSA_DEBUG_TEST_INVALID(endPoint.x) FARSA_DEBUG_TEST_INVALID(endPoint.y) FARSA_DEBUG_TEST_INVALID(endPoint.z)
+			const wVector startPoint = objMtr.transformVector(startPointCylinder); SALSA_DEBUG_TEST_INVALID(startPoint.x) SALSA_DEBUG_TEST_INVALID(startPoint.y) SALSA_DEBUG_TEST_INVALID(startPoint.z)
+			const wVector endPoint = objMtr.transformVector(endPointCylinder); SALSA_DEBUG_TEST_INVALID(endPoint.x) SALSA_DEBUG_TEST_INVALID(endPoint.y) SALSA_DEBUG_TEST_INVALID(endPoint.z)
 
 			// Now computing the angles in the linear camera. As we don't know which is the start angle and which
 			// the end angle, we rely on the fact that for cylinders the camera cannot see a portion greater than
 			// PI_GRECO. We also check that the vectors to start and end point are not zero; if they are the angle is
 			// computed with respect to the center of the other cylinder
 			const wVector firstAngleVector = startPoint - mtr.w_pos;
-			const double firstAngleCamera = (fabs(firstAngleVector.norm()) < epsilon) ? getAngleWithXAxis(mtr, objMtr.w_pos - mtr.w_pos) : getAngleWithXAxis(mtr, firstAngleVector); FARSA_DEBUG_TEST_INVALID(firstAngleCamera)
+			const double firstAngleCamera = (fabs(firstAngleVector.norm()) < epsilon) ? getAngleWithXAxis(mtr, objMtr.w_pos - mtr.w_pos) : getAngleWithXAxis(mtr, firstAngleVector); SALSA_DEBUG_TEST_INVALID(firstAngleCamera)
 			const wVector secondAngleVector = endPoint - mtr.w_pos;
-			const double secondAngleCamera = (fabs(secondAngleVector.norm()) < epsilon) ? getAngleWithXAxis(mtr, objMtr.w_pos - mtr.w_pos) : getAngleWithXAxis(mtr, secondAngleVector); FARSA_DEBUG_TEST_INVALID(secondAngleCamera)
+			const double secondAngleCamera = (fabs(secondAngleVector.norm()) < epsilon) ? getAngleWithXAxis(mtr, objMtr.w_pos - mtr.w_pos) : getAngleWithXAxis(mtr, secondAngleVector); SALSA_DEBUG_TEST_INVALID(secondAngleCamera)
 			if (firstAngleCamera > secondAngleCamera) {
 				// Checking if they are on different sides of the -PI_GRECO/PI_GRECO boundary or on the same side. Here we exploit
 				// the fact that the camera cannot see more than PI_GRECO of the cylinder
@@ -1008,4 +1008,4 @@ real angleBetweenXAxes(const wMatrix& mtr1, const wMatrix& mtr2)
 	return (s < 0.0) ? -unsignedAngle : unsignedAngle;
 }
 
-} // end namespace farsa
+} // end namespace salsa

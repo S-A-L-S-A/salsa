@@ -32,7 +32,7 @@
 #include "graphicalmarkers.h"
 #include <cmath>
 
-namespace farsa {
+namespace salsa {
 
 // All measures have been taken on the LARAL e-puck or the official specifications. Lengths are in
 // meters, weights in kilograms.
@@ -447,4 +447,4 @@ void PhyEpuck::changedMatrix()
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa

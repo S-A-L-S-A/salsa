@@ -23,12 +23,12 @@
 #include "nnfwconfig.h"
 #include "cluster.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief SimpleCluster Class
  *
  */
-class FARSA_NNFW_API SimpleCluster : public Cluster {
+class SALSA_NNFW_API SimpleCluster : public Cluster {
 public:
 	/*! Constructor */
 	SimpleCluster( ConfigurationManager& params, QString prefix, Component* parent = NULL );

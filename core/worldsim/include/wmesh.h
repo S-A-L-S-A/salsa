@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -28,14 +28,14 @@
 #include "ownerfollower.h"
 #include <QVector>
 
-namespace farsa {
+namespace salsa {
 
 class RenderWMesh;
 
 /**
  * \brief The shared data for the WMesh
  */
-class FARSA_WSIM_TEMPLATE WMeshShared : public OwnerFollowerShared
+class SALSA_WSIM_TEMPLATE WMeshShared : public OwnerFollowerShared
 {
 public:
 	/**
@@ -117,7 +117,7 @@ public:
  * World to share it amongs WCameras and to attach it to other object (like
  * iCub's cover)
  */
-class FARSA_WSIM_API WMesh : public OwnerFollower
+class SALSA_WSIM_API WMesh : public OwnerFollower
 {
 public:
 	/**
@@ -176,7 +176,7 @@ private:
  * We only implement the render function, we don't provide the rendering of the
  * AABB
  */
-class FARSA_WSIM_API RenderWMesh : public RenderOwnerFollower
+class SALSA_WSIM_API RenderWMesh : public RenderOwnerFollower
 {
 public:
 	/**
@@ -207,6 +207,6 @@ public:
 	void render(const WMeshShared* sharedData, GLContextAndData* contextAndData);
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

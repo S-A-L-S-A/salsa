@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -24,13 +24,13 @@
 #include "private/phyjointprivate.h"
 #include "private/phyobjectprivate.h"
 #include "private/worldprivate.h"
-#include "farsaglutils.h"
+#include "salsaglutils.h"
 
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 	#include <QDebug>
 #endif
 
-namespace farsa {
+namespace salsa {
 
 PhyJoint::PhyJoint(World* world, SharedDataWrapper<Shared> shared, PhyObject* parent, PhyObject* child, QString name)
 	: WEntity(world, shared, name)
@@ -130,8 +130,8 @@ void RenderPhyJoint::drawJoint(const PhyJointShared* sharedData, GLContextAndDat
 	// Now drawing all DOFs
 	for (int k = 0; k < sharedData->dofs.size(); ++k) {
 		const PhyDOFShared& dof = sharedData->dofs[k];
-		const farsa::real len = sharedData->length;
-		const farsa::real rad = sharedData->radius;
+		const salsa::real len = sharedData->length;
+		const salsa::real rad = sharedData->radius;
 
 		//--- FIX ME: this method handles only rotational joints :-(
 		if (dof.isTranslate) {
@@ -177,4 +177,4 @@ void RenderPhyJoint::drawJoint(const PhyJointShared* sharedData, GLContextAndDat
 	glPopAttrib();
 }
 
-} // end namespace farsa
+} // end namespace salsa

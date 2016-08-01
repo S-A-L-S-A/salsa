@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -24,7 +24,7 @@
 #include "world.h"
 #include "worldsimexceptions.h"
 
-namespace farsa {
+namespace salsa {
 
 AbstractRendererContainer::AbstractRendererContainer(World* world)
 	: m_world(world)
@@ -139,4 +139,4 @@ void AbstractRendererContainer::setWorldGraphicalInfo(const WorldGraphicalInfo& 
 	worldGraphicalInfoChanged(info);
 }
 
-} // end namespace farsa
+} // end namespace salsa

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experimentes Library                                                  *
+ *  SALSA Experimentes Library                                                  *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -32,7 +32,7 @@
 #include "physphere.h"
 #include <QVector>
 
-namespace farsa {
+namespace salsa {
 
 class Arena;
 class RobotOnPlane;
@@ -46,7 +46,7 @@ class WheeledRobot2DWrapper;
  * wheeled robots simulations to ensure everything works well. Objects cannot be
  * instantiated directly, they are returned by functions of the Arena class
  */
-class FARSA_EXPERIMENTS_API PhyObject2DWrapper
+class SALSA_EXPERIMENTS_API PhyObject2DWrapper
 {
 public:
 	/**
@@ -385,7 +385,7 @@ private:
 /**
  * \brief The subclass of PhyObject2DWrapper wrapping a box
  */
-class FARSA_EXPERIMENTS_API Box2DWrapper : public PhyObject2DWrapper
+class SALSA_EXPERIMENTS_API Box2DWrapper : public PhyObject2DWrapper
 {
 public:
 	/**
@@ -587,7 +587,7 @@ private:
 /**
  * \brief The subclass of PhyObject2DWrapper wrapping a cylinder
  */
-class FARSA_EXPERIMENTS_API Cylinder2DWrapper : public PhyObject2DWrapper
+class SALSA_EXPERIMENTS_API Cylinder2DWrapper : public PhyObject2DWrapper
 {
 public:
 	/**
@@ -744,7 +744,7 @@ private:
  * always kinematic (it doesn't collide with anything). Moreover LightBulbs are
  * not seen by the linear camera
  */
-class FARSA_EXPERIMENTS_API Sphere2DWrapper : public PhyObject2DWrapper
+class SALSA_EXPERIMENTS_API Sphere2DWrapper : public PhyObject2DWrapper
 {
 public:
 	/**
@@ -891,7 +891,7 @@ private:
 /**
  * \brief The subclass of PhyObject2DWrapper wrapping a wheeled robot
  */
-class FARSA_EXPERIMENTS_API WheeledRobot2DWrapper : public PhyObject2DWrapper
+class SALSA_EXPERIMENTS_API WheeledRobot2DWrapper : public PhyObject2DWrapper
 {
 public:
 
@@ -1074,7 +1074,7 @@ private:
  * \param y the y position on the plane
  * \return the 3D point on the plane corresponding to the given 2D coordinates
  */
-wVector FARSA_EXPERIMENTS_API positionOnPlane(const Box2DWrapper* plane, real x, real y);
+wVector SALSA_EXPERIMENTS_API positionOnPlane(const Box2DWrapper* plane, real x, real y);
 
 /**
  * \brief Returns a transformation matrix with the given orientation on the
@@ -1091,7 +1091,7 @@ wVector FARSA_EXPERIMENTS_API positionOnPlane(const Box2DWrapper* plane, real x,
  * \param mtr the initial transformation that is changed by the function so that
  *            it has the new orientation
  */
-void FARSA_EXPERIMENTS_API orientationOnPlane(const Box2DWrapper* plane, real angle, wMatrix& mtr);
+void SALSA_EXPERIMENTS_API orientationOnPlane(const Box2DWrapper* plane, real angle, wMatrix& mtr);
 
 /**
  * \brief Returns the angle between the two x axis of the two given matrices
@@ -1104,8 +1104,8 @@ void FARSA_EXPERIMENTS_API orientationOnPlane(const Box2DWrapper* plane, real an
  * \param mtr2 the second matrix
  * \return the angle between the two x axes
  */
-real FARSA_EXPERIMENTS_API angleBetweenXAxes(const wMatrix& mtr1, const wMatrix& mtr2);
+real SALSA_EXPERIMENTS_API angleBetweenXAxes(const wMatrix& mtr1, const wMatrix& mtr2);
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -23,7 +23,7 @@
 
 #include "embodiedagent.h"
 
-namespace farsa {
+namespace salsa {
 
 EmbodiedAgent::EmbodiedAgent(ConfigurationManager& params)
 	: Component(params)
@@ -227,4 +227,4 @@ void EmbodiedAgent::resourceChanged(QString name, Component* owner, ResourceChan
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa

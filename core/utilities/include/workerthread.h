@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -31,7 +31,7 @@
 #include <QList>
 #include "baseexception.h"
 
-namespace farsa {
+namespace salsa {
 
 /*!
  * \brief The exception stored when an unknown exception is thrown by a
@@ -41,7 +41,7 @@ namespace farsa {
  * exception thrown by ThreadOperation is not a subclass of BaseException (and
  * so cannot be cloned). This only contains a fixed error message
  */
-class FARSA_UTIL_TEMPLATE UnknownException : public BaseException
+class SALSA_UTIL_TEMPLATE UnknownException : public BaseException
 {
 public:
 	/**
@@ -105,7 +105,7 @@ public:
 /*! interface for describing an operation to do for the WorkerThread
  *  \ingroup utilities_misc
  */
-class FARSA_UTIL_TEMPLATE ThreadOperation {
+class SALSA_UTIL_TEMPLATE ThreadOperation {
 public:
 	virtual ~ThreadOperation() { };
 	/*! stop the operation
@@ -123,7 +123,7 @@ public:
 /*! the supporting thread in order to run operations
  *  on a different thread instead of the GUI thread
  */
-class FARSA_UTIL_API WorkerThread : public QThread {
+class SALSA_UTIL_API WorkerThread : public QThread {
 	Q_OBJECT
 
 public:
@@ -165,7 +165,7 @@ signals:
 	 *       the signal is emitted from another thread. This should be fixed
 	 *       (use a QObject with the correct thread affinity)
 	 */
-	void exceptionDuringOperation(farsa::BaseException *e);
+	void exceptionDuringOperation(salsa::BaseException *e);
 
 private:
 	/*! The structure with an operation and the flag for automatic delete */
@@ -205,6 +205,6 @@ private:
 	QList<BaseException *> exceptions;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

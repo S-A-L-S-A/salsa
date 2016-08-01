@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -177,7 +177,7 @@ int main( int argc, char* argv[] ) {
 		globalRNG->setSeed( params.getValue( "COMMON/randomSeed" ).toInt() );
 	}
 
-	//--- create and configure the Common FARSA Genetic Algorithm
+	//--- create and configure the Common SALSA Genetic Algorithm
 	LaralGA* ga = Factory::getInstance().createFromParameter<LaralGA>( params, "GA" );
 	ga->initialize();
 

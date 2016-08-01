@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -32,29 +32,29 @@
  *
  */
 
-// FARSA_NEWGA_TEMPLATE is also for classes that are completely inline
+// SALSA_NEWGA_TEMPLATE is also for classes that are completely inline
 #ifdef WIN32
 	#define _CRT_SECURE_NO_DEPRECATE
-	#ifdef FARSA_NEWGA_BUILDING_DLL
-		#define FARSA_NEWGA_API __declspec(dllexport)
-		#define FARSA_NEWGA_TEMPLATE __declspec(dllexport)
+	#ifdef SALSA_NEWGA_BUILDING_DLL
+		#define SALSA_NEWGA_API __declspec(dllexport)
+		#define SALSA_NEWGA_TEMPLATE __declspec(dllexport)
 	#else
-		#define FARSA_NEWGA_API __declspec(dllimport)
-		#define FARSA_NEWGA_TEMPLATE
+		#define SALSA_NEWGA_API __declspec(dllimport)
+		#define SALSA_NEWGA_TEMPLATE
 	#endif
-	#define FARSA_NEWGA_INTERNAL
+	#define SALSA_NEWGA_INTERNAL
 #else
-	#define FARSA_NEWGA_API
-	#define FARSA_NEWGA_TEMPLATE
-	#define FARSA_NEWGA_INTERNAL __attribute__ ((visibility ("hidden")))
+	#define SALSA_NEWGA_API
+	#define SALSA_NEWGA_TEMPLATE
+	#define SALSA_NEWGA_INTERNAL __attribute__ ((visibility ("hidden")))
 #endif
 
-namespace farsa {
+namespace salsa {
 
-extern bool FARSA_NEWGA_API initNewGALib();
+extern bool SALSA_NEWGA_API initNewGALib();
 static const bool NewGALibInitializer = initNewGALib();
 
-} // end namespace farsa
+} // end namespace salsa
 
 //--- read it as: x.yy.zz where
 //---  x  is major version
@@ -62,7 +62,7 @@ static const bool NewGALibInitializer = initNewGALib();
 //---  zz is patch version
 //--- Example: version 2.4.6 is 20406
 //--- Actual Version: 0.1.0
-#define FARSA_NEWGA_VERSION 10405
+#define SALSA_NEWGA_VERSION 10405
 
 #include <QtDebug>
 

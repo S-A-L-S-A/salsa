@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -28,7 +28,7 @@
 #include "dataexchange.h"
 #include <QMap>
 
-namespace farsa {
+namespace salsa {
 
 class RenderPhyCylinder;
 
@@ -38,7 +38,7 @@ class RenderPhyCylinder;
  * Intervals angles are in radians. See the description of setSegmentsColor()
  * for more information
  */
-struct FARSA_WSIM_TEMPLATE PhyCylinderSegmentColor {
+struct SALSA_WSIM_TEMPLATE PhyCylinderSegmentColor {
 	/**
 	 * \brief Constructor
 	 *
@@ -76,7 +76,7 @@ struct FARSA_WSIM_TEMPLATE PhyCylinderSegmentColor {
 /**
  * \brief The shared data for the PhyCylinder
  */
-class FARSA_WSIM_TEMPLATE PhyCylinderShared : public PhyObjectShared
+class SALSA_WSIM_TEMPLATE PhyCylinderShared : public PhyObjectShared
 {
 public:
 	/**
@@ -149,7 +149,7 @@ public:
  * of the cylinder are set to WObject::color before making it invalid); if you
  * explicitly use WObject::setColor, the cylinder is drawn with a single color
  */
-class FARSA_WSIM_API PhyCylinder : public PhyObject
+class SALSA_WSIM_API PhyCylinder : public PhyObject
 {
 public:
 	/**
@@ -310,7 +310,7 @@ public:
 	}
 
 	// Adding code for virtual bounding box functions
-	FARSA_IMPLEMENT_VIRTUAL_BB
+	SALSA_IMPLEMENT_VIRTUAL_BB
 
 protected:
 	/**
@@ -349,7 +349,7 @@ private:
 /**
  * \brief The class rendering the PhyCylinder
  */
-class FARSA_WSIM_API RenderPhyCylinder : public RenderPhyObject
+class SALSA_WSIM_API RenderPhyCylinder : public RenderPhyObject
 {
 public:
 	/**
@@ -380,7 +380,7 @@ public:
 	void render(const PhyCylinderShared* sharedData, GLContextAndData* contextAndData);
 
 	// Adding code for virtual bounding box functions
-	FARSA_IMPLEMENT_VIRTUAL_RENDERER_BB(PhyCylinder)
+	SALSA_IMPLEMENT_VIRTUAL_RENDERER_BB(PhyCylinder)
 
 private:
 	/**
@@ -510,6 +510,6 @@ private:
 	QVector<unsigned int> m_lowerBaseSegmentsLength;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

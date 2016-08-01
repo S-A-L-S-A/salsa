@@ -23,7 +23,7 @@
 #include "private/phyobjectprivate.h"
 #include "private/worldprivate.h"
 
-namespace farsa {
+namespace salsa {
 
 PhySlider::PhySlider(World* world, SharedDataWrapper<Shared> shared, PhyObject* parent, PhyObject* child, const wVector& axis, QString name)
 	: PhyJoint(world, shared, parent, child, name)
@@ -307,4 +307,4 @@ void RenderPhySlider::render(const PhySliderShared* sharedData, GLContextAndData
 	drawJoint(sharedData, contextAndData, sharedData->globalMatrixParent.w_pos, end1, end2);
 }
 
-} // end namespace farsa
+} // end namespace salsa

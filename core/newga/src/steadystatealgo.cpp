@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -28,7 +28,7 @@
 #include <QTextStream>
 #include <QFile>
 
-namespace farsa {
+namespace salsa {
 
 SteadyStateAlgo::SteadyStateAlgo(ConfigurationParameters& params, QString prefix)
 	: EvoAlgo(params, prefix)
@@ -483,4 +483,4 @@ QVector<int> SteadyStateAlgo::sortFit(QVector<float> fit)
 	return indices;
 }
 
-} // end namespace farsa
+} // end namespace salsa

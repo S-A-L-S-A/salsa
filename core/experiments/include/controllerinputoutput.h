@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experimentes Library                                                  *
+ *  SALSA Experimentes Library                                                  *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -32,7 +32,7 @@
 #include <QColor>
 #include <QMap>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The base class for sensors and other objects that can set the input of
@@ -40,7 +40,7 @@ namespace farsa {
  *
  * See the description of the Controller class for more information
  */
-class FARSA_EXPERIMENTS_API AbstractControllerInput : public Component
+class SALSA_EXPERIMENTS_API AbstractControllerInput : public Component
 {
 public:
 	/**
@@ -181,7 +181,7 @@ private:
  *
  * See the description of the Controller class for more information
  */
-class FARSA_EXPERIMENTS_TEMPLATE AbstractControllerOutput : public Component
+class SALSA_EXPERIMENTS_TEMPLATE AbstractControllerOutput : public Component
 {
 public:
 	/**
@@ -316,6 +316,6 @@ private:
 	AbstractControllerOutputIterator* m_it;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

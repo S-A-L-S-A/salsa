@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -83,7 +83,7 @@ class GroupsTreeEditor : public QWidget {
 	Q_OBJECT
 public:
 	/*! Constructor */
-	GroupsTreeEditor( farsa::ConfigurationManager* confParams, QWidget* parent = 0, Qt::WindowFlags f = 0 );
+	GroupsTreeEditor( salsa::ConfigurationManager* confParams, QWidget* parent = 0, Qt::WindowFlags f = 0 );
 	/*! Destructor */
 	~GroupsTreeEditor();
 	/*! set the ConfigurationManager to show/edit
@@ -92,7 +92,7 @@ public:
 	 *  \warning the ConfigurationManager object pointer need to be always valid otherwise GroupsTreeEditor
 	 *    will crash
 	 */
-	void setConfigurationManager( farsa::ConfigurationManager* confParams );
+	void setConfigurationManager( salsa::ConfigurationManager* confParams );
 	/*! return the group informations corresponding to the full path specified
 	 *  \return if the fullPath correspond to a group it will return the GroupInfo associated, otherwise
 	 *  it will return an invalid GroupInfo
@@ -100,7 +100,7 @@ public:
 	GroupInfo findGroupInfo( QString fullPath );
 public slots:
 	/*! it change the name of the group on the tree */
-	void groupRenamed( QString newGroupName, QString oldGroupName, QString prefix, farsa::ConfigurationManager* confParams );
+	void groupRenamed( QString newGroupName, QString oldGroupName, QString prefix, salsa::ConfigurationManager* confParams );
 	/*! it add a group and its all subgroups */
 	void addNewGroup( QString groupName, QString parentPath );
 	/*! remove a Group, and all its subgroups */
@@ -113,7 +113,7 @@ public slots:
 	void updateGroupsInformation();
 signals:
 	/*! emitted when the current group changed */
-	void currentGroupChanged( GroupInfo group, farsa::ConfigurationManager* confParams );
+	void currentGroupChanged( GroupInfo group, salsa::ConfigurationManager* confParams );
 protected:
 	/*! populate and show the context menu */
 	void contextMenuEvent( QContextMenuEvent* event );
@@ -151,7 +151,7 @@ private:
 	GroupInfo& getGroupInfo( QTreeWidgetItem* item );
 
 	/*! ConfigurationManager in view/editing */
-	farsa::ConfigurationManager* confParams;
+	salsa::ConfigurationManager* confParams;
 	/*! Tree widget for show the hierarchy of the groups */
 	QTreeWidget* confTree;
 	/*! Map from full path of the group to additional informations */

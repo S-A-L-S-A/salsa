@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -27,15 +27,15 @@
 #include <QStringList>
 #include <QDebug>
 
-namespace farsa {
+namespace salsa {
 
 namespace pluginHelper {
 
 /**
- * \brief The command line parser for the farsapluginhelper application
+ * \brief The command line parser for the salsapluginhelper application
  *
  * This command line parser is extremely specific, the command line options are
- * hard coded. The parser throws a farsa::RuntimeUserException exception in
+ * hard coded. The parser throws a salsa::RuntimeUserException exception in
  * case of parsing errors
  */
 class CommandLineParser
@@ -131,7 +131,7 @@ private:
 	/**
 	 * \brief The function doing the actual parsing
 	 *
-	 * This throws a farsa::RuntimeUserException exception in case of errors
+	 * This throws a salsa::RuntimeUserException exception in case of errors
 	 */
 	void parse();
 

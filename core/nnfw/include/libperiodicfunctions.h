@@ -24,12 +24,12 @@
 
 #include "outputfunction.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief PeriodicFunction
  *
  */
-class FARSA_NNFW_API PeriodicFunction : public OutputFunction {
+class SALSA_NNFW_API PeriodicFunction : public OutputFunction {
 public:
 	/*! Construct */
 	PeriodicFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
@@ -65,7 +65,7 @@ protected:
 /*! \brief SawtoothFunction
  *
  */
-class FARSA_NNFW_API SawtoothFunction : public PeriodicFunction {
+class SALSA_NNFW_API SawtoothFunction : public PeriodicFunction {
 public:
 	/*! Construct */
 	SawtoothFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
@@ -78,7 +78,7 @@ public:
 /*! \brief TriangleFunction
  *
  */
-class FARSA_NNFW_API TriangleFunction : public PeriodicFunction {
+class SALSA_NNFW_API TriangleFunction : public PeriodicFunction {
 public:
 	/*! Construct */
 	TriangleFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
@@ -91,7 +91,7 @@ public:
 /*! \brief SinFunction
  *
  */
-class FARSA_NNFW_API SinFunction : public PeriodicFunction {
+class SALSA_NNFW_API SinFunction : public PeriodicFunction {
 public:
 	/*! Construct */
 	SinFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
@@ -108,7 +108,7 @@ public:
 /*! \brief PseudoGaussFunction
  *
  */
-class FARSA_NNFW_API PseudoGaussFunction : public PeriodicFunction {
+class SALSA_NNFW_API PseudoGaussFunction : public PeriodicFunction {
 public:
 	/*! Construct */
 	PseudoGaussFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );

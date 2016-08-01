@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Piero Savastano <piero.savastano@istc.cnr.it>                               *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                         *
@@ -29,7 +29,7 @@
 
 #include <iostream>
 
-namespace farsa {
+namespace salsa {
 
 TestRandom::TestRandom() :
 	AbstractTest()
@@ -163,4 +163,4 @@ void TestCurrent::runTest()
 	Logger::info( QString("TestCurrent - End of the Test of Current Individual") );
 }
 
-} //end namespace farsa
+} //end namespace salsa

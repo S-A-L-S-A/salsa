@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                         *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -24,7 +24,7 @@
 #include "evoalgotestrandom.h"
 #include "configurationhelper.h"
 
-namespace farsa {
+namespace salsa {
 
 EvoAlgoTestRandom::EvoAlgoTestRandom()
 	: EvoAlgoTest()
@@ -62,7 +62,7 @@ void EvoAlgoTestRandom::runTest()
 	}
 	else
 	{
-		farsa::Logger::error("Invalid genotype type");
+		salsa::Logger::error("Invalid genotype type");
 		return;
 	}
 	getGenotypeTester()->setGenotype(g);
@@ -70,4 +70,4 @@ void EvoAlgoTestRandom::runTest()
 	Logger::info("End test");
 }
 
-} //end namespace farsa
+} //end namespace salsa

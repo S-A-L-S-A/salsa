@@ -20,7 +20,7 @@
 #include "libradialfunctions.h"
 #include "configurationhelper.h"
 
-namespace farsa {
+namespace salsa {
 
 GaussFunction::GaussFunction( ConfigurationManager& params, QString prefix, Component* parent )
 	: OutputFunction(params,prefix,parent),

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -25,7 +25,7 @@
 #include "configurationhelper.h"
 #include "renderworldwrapperwidget.h"
 
-namespace farsa {
+namespace salsa {
 
 EvoAlgoComponent::EvoAlgoComponent() :
 	BaseExperiment(),
@@ -100,4 +100,4 @@ void EvoAlgoComponent::runTest(int idTest)
 	m_tests[idTest]->runTest();
 }
 
-} // end namespace farsa
+} // end namespace salsa

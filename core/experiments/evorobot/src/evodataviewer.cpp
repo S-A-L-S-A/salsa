@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -34,7 +34,7 @@
 #include <QtAlgorithms>
 #include "logger.h"
 
-namespace farsa {
+namespace salsa {
 
 //! EvodaViewer constructor
 EvoDataViewer::EvoDataViewer(int nchunks, int chunksize, int style, QWidget* parent, Qt::WindowFlags flags) :
@@ -606,7 +606,7 @@ bool DataChunk::loadRawData(const QString &filename, int column)
 		return false;
 
 // 		// Trying to load using ConfigurationParameters
-// 		farsa::ConfigurationParameters params(true);
+// 		salsa::ConfigurationParameters params(true);
 //
 // 		if (!params.loadParameters(filename)) {
 // 			return false;
@@ -635,7 +635,7 @@ bool DataChunk::loadRawData(const QString &filename, int column)
 // 		qSort(genotypes.begin(), genotypes.end(), __DataChunk_loadRawData_helpers::orderByNumberAfterColon);
 // 		index = 0;
 // 		for (int i = 0; i < genotypes.size(); i++) {
-// 			setDataRaw(index, params.getValue(genotypes[i] + farsa::ConfigurationParameters::GroupSeparator() + paramName).toDouble());
+// 			setDataRaw(index, params.getValue(genotypes[i] + salsa::ConfigurationParameters::GroupSeparator() + paramName).toDouble());
 // 			index++;
 // 		}
 //
@@ -1054,4 +1054,4 @@ void FitViewer::sortchunks()
 	}
 }
 
-} //end namespace farsa
+} //end namespace salsa

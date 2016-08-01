@@ -24,12 +24,12 @@
 
 #include "outputfunction.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief WinnerTakeAllFunction
  *
  */
-class FARSA_NNFW_API WinnerTakeAllFunction : public OutputFunction {
+class SALSA_NNFW_API WinnerTakeAllFunction : public OutputFunction {
 public:
 	/*! Construct */
 	WinnerTakeAllFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );

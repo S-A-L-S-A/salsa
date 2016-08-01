@@ -32,7 +32,7 @@
 #include "phycylinder.h"
 #include <QVector>
 
-namespace farsa {
+namespace salsa {
 
 class PhyObject;
 class PhyJoint;
@@ -41,7 +41,7 @@ class PhyCylinder;
 /**
  * \brief The shared data for the PhyEpuck
  */
-class FARSA_WSIM_TEMPLATE PhyEpuckShared : public WObjectShared
+class SALSA_WSIM_TEMPLATE PhyEpuckShared : public WObjectShared
 {
 public:
 	/**
@@ -92,7 +92,7 @@ public:
  * This class models an e-puck robot. For more information about the robot go to
  * http://mobots.epfl.ch/e-puck.html
  */
-class FARSA_WSIM_API PhyEpuck : public QObject, public WObject
+class SALSA_WSIM_API PhyEpuck : public QObject, public WObject
 {
 	Q_OBJECT
 
@@ -436,6 +436,6 @@ private:
 	friend class World;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

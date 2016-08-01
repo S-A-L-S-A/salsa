@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                         *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -32,7 +32,7 @@
 #include "wheeledexperimenthelper.h"
 #include "configurationmanager.h"
 
-namespace farsa {
+namespace salsa {
 
 class Box2DWrapper;
 
@@ -42,7 +42,7 @@ class Box2DWrapper;
  * This only reads two parameters, the robot name and the initial transformation
  * matrix
  */
-class FARSA_EXPERIMENTS_API Robot : public Component
+class SALSA_EXPERIMENTS_API Robot : public Component
 {
 public:
 	/**
@@ -81,7 +81,7 @@ protected:
  * re-implementing in subclasses. The only parameter of this class is the color
  * of the robot (white by default)
  */
-class FARSA_EXPERIMENTS_API RobotOnPlane : public Robot
+class SALSA_EXPERIMENTS_API RobotOnPlane : public Robot
 {
 public:
 	/**
@@ -224,7 +224,7 @@ private:
  * must exist
  */
 template <class RobotType>
-class FARSA_CONF_TEMPLATE RobotCreator : public ComponentCreator
+class SALSA_CONF_TEMPLATE RobotCreator : public ComponentCreator
 {
 private:
 	// This uses the World instance provided by the "world" resource to
@@ -242,7 +242,7 @@ private:
 //  *
 //  * This inherits from PhyMarXbot, so you can use all its methods
 //  */
-// class FARSA_EXPERIMENTS_API MarXbot : public RobotOnPlane, public PhyMarXbot
+// class SALSA_EXPERIMENTS_API MarXbot : public RobotOnPlane, public PhyMarXbot
 // {
 // public:
 //
@@ -371,7 +371,7 @@ private:
 //  *
 //  * This inherits from PhyEpuck, so you can use all its methods
 //  */
-// class FARSA_EXPERIMENTS_API Epuck : public RobotOnPlane, public PhyEpuck
+// class SALSA_EXPERIMENTS_API Epuck : public RobotOnPlane, public PhyEpuck
 // {
 // public:
 //
@@ -500,7 +500,7 @@ private:
  *
  * This inherits from PhyKhepera, so you can use all its methods
  */
-class FARSA_EXPERIMENTS_API Khepera : public RobotOnPlane, public PhyKhepera
+class SALSA_EXPERIMENTS_API Khepera : public RobotOnPlane, public PhyKhepera
 {
 public:
 	/**
@@ -618,6 +618,6 @@ public:
 	virtual QColor robotColor() const;
 };
 
-} //end namespace farsa
+} //end namespace salsa
 
 #endif

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -22,7 +22,7 @@
 
 #include "utilitiesconfig.h"
 
-namespace farsa {
+namespace salsa {
 
 class RandomGenerator;
 class RandomGeneratorPrivate;
@@ -31,7 +31,7 @@ class RandomGeneratorPrivate;
  *  \warning this may be not-thread safe
  * \ingroup utilities_rng
  */
-extern FARSA_UTIL_API RandomGenerator* globalRNG;
+extern SALSA_UTIL_API RandomGenerator* globalRNG;
 
 /**
  * \brief Random number generator
@@ -40,7 +40,7 @@ extern FARSA_UTIL_API RandomGenerator* globalRNG;
  *
  * \ingroup utilities_rng
  */
-class FARSA_UTIL_API RandomGenerator
+class SALSA_UTIL_API RandomGenerator
 {
 public:
 	/**
@@ -114,6 +114,6 @@ private:
 	unsigned int m_seed;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

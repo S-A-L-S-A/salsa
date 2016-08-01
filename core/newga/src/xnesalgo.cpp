@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -29,7 +29,7 @@
 #include <Eigen/Dense>
 #include <unsupported/Eigen/MatrixFunctions>
 
-namespace farsa {
+namespace salsa {
 
 XnesAlgo::XnesAlgo(ConfigurationParameters& params, QString prefix)
 	: EvoAlgo(params, prefix)
@@ -592,4 +592,4 @@ void XnesAlgo::update(Genotype* dInd, const Eigen::MatrixXf dCovMat)
 	m_covMat += dCovMat;
 }
 
-} // end namespace farsa
+} // end namespace salsa

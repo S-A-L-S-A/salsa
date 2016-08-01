@@ -25,7 +25,7 @@
 #include "cluster.h"
 #include "linker.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief An observer interface called during NeuralNet operations
  *
@@ -115,7 +115,7 @@ public:
  * Because even if in the last example the input1 is not specified in any of the NeuralNet parameters,
  * it will be created because [CLUSTER:0] is a subgroup of the main group where the NeuralNet parameters are present.
  */
-class FARSA_NNFW_API NeuralNet : public Component {
+class SALSA_NNFW_API NeuralNet : public Component {
 public:
 	/*! Construct an empty neural network */
 	NeuralNet( ConfigurationManager& params, QString prefix, Component* parent = NULL );

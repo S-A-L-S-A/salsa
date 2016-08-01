@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA                                                                       *
+//  *  SALSA                                                                       *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Gianluca Massera <emmegian@yahoo.it>                                        *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -33,7 +33,7 @@
 // #include <QPushButton>
 // #include <QSlider>
 //
-// namespace farsa {
+// namespace salsa {
 //
 // /**
 //  * \brief The GUI to control a BaseExperiment subclass
@@ -44,7 +44,7 @@
 //  * steppable), allows to start/stop them and gives control over steppable
 //  * threaded operations (pause, step, delay between steps)
 //  */
-// class FARSA_EXPERIMENTS_API BaseExperimentGUI : public QWidget, public DataUploaderDownloader<__BaseExperiment_internal::OperationControl, __BaseExperiment_internal::OperationStatus>
+// class SALSA_EXPERIMENTS_API BaseExperimentGUI : public QWidget, public DataUploaderDownloader<__BaseExperiment_internal::OperationControl, __BaseExperiment_internal::OperationStatus>
 // {
 // 	Q_OBJECT
 //
@@ -234,6 +234,6 @@
 // 	int m_runningOperationID;
 // };
 //
-// } // End namespace farsa
+// } // End namespace salsa
 //
 // #endif

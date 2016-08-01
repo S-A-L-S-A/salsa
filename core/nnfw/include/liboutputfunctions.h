@@ -23,13 +23,13 @@
 #include "nnfwconfig.h"
 #include "outputfunction.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief IdentityFunction
  *
  * IdentityFunction copyies the inputs to the outputs
  */
-class FARSA_NNFW_API IdentityFunction : public OutputFunction {
+class SALSA_NNFW_API IdentityFunction : public OutputFunction {
 public:
 	/*! Construct */
 	IdentityFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
@@ -49,7 +49,7 @@ public:
  *
  * ScaleFunction scales the inputs vector to the outputs
  */
-class FARSA_NNFW_API ScaleFunction : public OutputFunction {
+class SALSA_NNFW_API ScaleFunction : public OutputFunction {
 public:
 	/*! Construct */
 	ScaleFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
@@ -78,7 +78,7 @@ private:
  *
  * GainFunction add a constan value to inputs
  */
-class FARSA_NNFW_API GainFunction : public OutputFunction {
+class SALSA_NNFW_API GainFunction : public OutputFunction {
 public:
 	/*! Construct */
 	GainFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
@@ -106,7 +106,7 @@ private:
  *
  * Details..
  */
-class FARSA_NNFW_API SigmoidFunction : public OutputFunction {
+class SALSA_NNFW_API SigmoidFunction : public OutputFunction {
 public:
 	/*! Construct a sigmoid updater with parameter l */
 	SigmoidFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
@@ -134,7 +134,7 @@ private:
 /*! \brief Fake Sigmoid Function !! Is a linear approximation of sigmoid function
  *
  */
-class FARSA_NNFW_API FakeSigmoidFunction : public OutputFunction {
+class SALSA_NNFW_API FakeSigmoidFunction : public OutputFunction {
 public:
 	/*! Construct a sigmoid updater with parameter l */
 	FakeSigmoidFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
@@ -167,7 +167,7 @@ private:
  * (max-min) is the y value when x == 0
  *
  */
-class FARSA_NNFW_API ScaledSigmoidFunction : public OutputFunction {
+class SALSA_NNFW_API ScaledSigmoidFunction : public OutputFunction {
 public:
 	/*! Construct a scaled sigmoid updater with parameter l */
 	ScaledSigmoidFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
@@ -215,7 +215,7 @@ private:
  * </pre>
  *
  */
-class FARSA_NNFW_API RampFunction : public OutputFunction {
+class SALSA_NNFW_API RampFunction : public OutputFunction {
 public:
 	/*! Default constructor*/
 	RampFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
@@ -265,7 +265,7 @@ private:
  *  Implements a linear equation y = m*x + b
  *
  */
-class FARSA_NNFW_API LinearFunction : public OutputFunction {
+class SALSA_NNFW_API LinearFunction : public OutputFunction {
 public:
 	/*! Default constructor */
 	LinearFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
@@ -299,7 +299,7 @@ private:
  * Further Details coming soon ;-)
  *
  */
-class FARSA_NNFW_API StepFunction : public OutputFunction {
+class SALSA_NNFW_API StepFunction : public OutputFunction {
 public:
 	/*! Construct a step updater */
 	StepFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
@@ -335,7 +335,7 @@ private:
 /*! \brief LeakyIntegrator Function !! 
  *
  */
-class FARSA_NNFW_API LeakyIntegratorFunction : public OutputFunction {
+class SALSA_NNFW_API LeakyIntegratorFunction : public OutputFunction {
 public:
 	/*! Default constructor */
 	LeakyIntegratorFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
@@ -374,7 +374,7 @@ private:
  *  \f]
  *
  */
-class FARSA_NNFW_API LogLikeFunction : public OutputFunction {
+class SALSA_NNFW_API LogLikeFunction : public OutputFunction {
 public:
 	/*! Construct a LogLike with deltas specified */
 	LogLikeFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
@@ -406,7 +406,7 @@ private:
  * \note Component OutputFunction objects are destroyed by the CompositeFunction
  *       object to which they belong.
  */
-class FARSA_NNFW_API CompositeFunction : public OutputFunction {
+class SALSA_NNFW_API CompositeFunction : public OutputFunction {
 public:
 	/*! Default constructor */
 	CompositeFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
@@ -451,7 +451,7 @@ private:
  *       LinearComboFunction object to which they belong.
  *
  */
-class FARSA_NNFW_API LinearComboFunction : public OutputFunction {
+class SALSA_NNFW_API LinearComboFunction : public OutputFunction {
 public:
 	/*! Standard constructor */
 	LinearComboFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );

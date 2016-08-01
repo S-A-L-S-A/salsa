@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -23,27 +23,27 @@
 #ifndef WORLDSIMCONFIG_H
 #define WORLDSIMCONFIG_H
 
-// FARSA_WSIM_TEMPLATE is also for classes that are completely inline
+// SALSA_WSIM_TEMPLATE is also for classes that are completely inline
 #ifdef WIN32
 	#ifndef NOMINMAX
 		//--- the min and max macros defined by window will conflicts with functions defined in YARP_math
 		#define NOMINMAX
 	#endif
-	#ifdef FARSA_WSIM_BUILDING_DLL
-		#define FARSA_WSIM_API __declspec(dllexport)
-		#define FARSA_WSIM_TEMPLATE __declspec(dllexport)
+	#ifdef SALSA_WSIM_BUILDING_DLL
+		#define SALSA_WSIM_API __declspec(dllexport)
+		#define SALSA_WSIM_TEMPLATE __declspec(dllexport)
 	#else
-		#define FARSA_WSIM_API __declspec(dllimport)
-		#define FARSA_WSIM_TEMPLATE
+		#define SALSA_WSIM_API __declspec(dllimport)
+		#define SALSA_WSIM_TEMPLATE
 	#endif
-	#define FARSA_WSIM_INTERNAL
+	#define SALSA_WSIM_INTERNAL
 #else
-	#define FARSA_WSIM_API
-	#define FARSA_WSIM_TEMPLATE
-	#define FARSA_WSIM_INTERNAL __attribute__ ((visibility ("hidden")))
+	#define SALSA_WSIM_API
+	#define SALSA_WSIM_TEMPLATE
+	#define SALSA_WSIM_INTERNAL __attribute__ ((visibility ("hidden")))
 #endif
 
-extern bool FARSA_WSIM_API initWorldSimLib();
+extern bool SALSA_WSIM_API initWorldSimLib();
 static const bool worldSimInitializer = initWorldSimLib();
 
 //--- read it as: x.yy.zz where
@@ -51,6 +51,6 @@ static const bool worldSimInitializer = initWorldSimLib();
 //---  yy is minor version
 //---  zz is patch version
 //--- Example: version 2.4.6 is 20406
-#define FARSA_WSIM_VERSION 0x020000
+#define SALSA_WSIM_VERSION 0x020000
 
 #endif

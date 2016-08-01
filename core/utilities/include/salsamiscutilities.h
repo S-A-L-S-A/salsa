@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Utilities Library                                                     *
+ *  SALSA Utilities Library                                                     *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -20,8 +20,8 @@
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA  *
  ********************************************************************************/
 
-#ifndef FARSAMISCUTILITIES_H
-#define FARSAMISCUTILITIES_H
+#ifndef SALSAMISCUTILITIES_H
+#define SALSAMISCUTILITIES_H
 
 #include "utilitiesconfig.h"
 #include <QString>
@@ -29,7 +29,7 @@
 #include <QPair>
 
 /**
- * \file farsamiscutilities.h
+ * \file salsamiscutilities.h
  *
  * \brief a file with miscellaneous functions
  */
@@ -38,19 +38,19 @@
  * \brief A macro to deprecate functions
  */
 #if defined(__GNUC__) || defined(__clang__)
-	#define FARSA_DEPRECATED __attribute__((deprecated))
+	#define SALSA_DEPRECATED __attribute__((deprecated))
 #elif defined(_MSC_VER)
-	#define FARSA_DEPRECATED __declspec(deprecated)
+	#define SALSA_DEPRECATED __declspec(deprecated)
 #endif
 
-namespace farsa {
+namespace salsa {
 	/**
 	 * \brief A structure keeping the position of C/C++ comments in a string
 	 *
 	 * This structure is used by the removeComments() function to return the
 	 * position of comments both in the original and parsed program
 	 */
-	struct FARSA_UTIL_TEMPLATE CommentPosition
+	struct SALSA_UTIL_TEMPLATE CommentPosition
 	{
 		/**
 		 * \brief The possible types of comments (C or C++ style)
@@ -127,7 +127,7 @@ namespace farsa {
 	 * position of strings and characters in a program, both in the original
 	 * program and in the parsed one
 	 */
-	struct FARSA_UTIL_TEMPLATE StringPosition
+	struct SALSA_UTIL_TEMPLATE StringPosition
 	{
 		/**
 		 * \brief String or character
@@ -227,7 +227,7 @@ namespace farsa {
 	 * \return true if pos is inside any comment or string in the list
 	 */
 	template <class BlockType>
-	bool FARSA_UTIL_TEMPLATE positionInsideBlock(unsigned int pos, const QList<BlockType>& blocks)
+	bool SALSA_UTIL_TEMPLATE positionInsideBlock(unsigned int pos, const QList<BlockType>& blocks)
 	{
 		foreach (BlockType b, blocks) {
 			if ((pos >= b.originalStart) && (pos <= b.originalEnd)) {

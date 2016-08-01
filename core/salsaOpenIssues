@@ -54,7 +54,7 @@ problemi...
 P062 - 15/11/2012
 Gianluca: in worldsimconfig.h ci sono delle funzioni di utilità
 Andrebbero tutte spostate dentro mathutils.h di utilities
-Tomassino: cercare di usare in maniera consistente farsa::real (oppure decidere
+Tomassino: cercare di usare in maniera consistente salsa::real (oppure decidere
 di usare uno fra double o float e rimuovere real). Inoltre le funzioni
 matematiche in worldsimconfig.h vanno spostate in mathutils.h e i doppioni
 eliminati
@@ -68,7 +68,7 @@ generazionale.
 
 ================================================================================
 P066 - 12/12/2012
-Tomassino: i file INSTALL e README nel repository farsa sono vuoti... Riempirli
+Tomassino: i file INSTALL e README nel repository salsa sono vuoti... Riempirli
 o eliminarli
 
 ================================================================================
@@ -113,7 +113,7 @@ si automatizza bisogna quanto meno documentarla chiaramente
 ================================================================================
 P078 - 30/01/2013
 Tomassino: controllare che funzioni si usano per generare numeri casuali (se
-rand() o quelle di farsa) e uniformare (usare sempre quelle di farsa)
+rand() o quelle di salsa) e uniformare (usare sempre quelle di salsa)
 
 ================================================================================
 P079 - 11/02/2013
@@ -127,7 +127,7 @@ funziona con GSL installate dal pacchetto YARP ma non con GSL installate
 esternamente perché cerca le librerie di debug in debug/ e non quelle che
 finiscono con "d". Inoltre le GSL vengono linkate due volte (sul computer di
 Stefano, Visual Studio 2008): viene linkata sia la versione debug che quella
-release quando si compila farsa in debug
+release quando si compila salsa in debug
 
 ================================================================================
 P086 - 14/02/2013

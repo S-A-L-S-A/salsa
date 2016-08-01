@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -175,7 +175,7 @@ public:
 	 * \param parent the parent widget
 	 * \param flags the window flags
 	 */
-	BatchInstancesManager(farsa::ConfigurationManager& params, QWidget* parent = NULL, Qt::WindowFlags flags = 0);
+	BatchInstancesManager(salsa::ConfigurationManager& params, QWidget* parent = NULL, Qt::WindowFlags flags = 0);
 
 	/**
 	 * \brief Destructor
@@ -213,7 +213,7 @@ private:
 	 * \brief The configuration parameter object we use to restore and save
 	 *        the status of the widget
 	 */
-	farsa::ConfigurationManager& m_configurationParameters;
+	salsa::ConfigurationManager& m_configurationParameters;
 
 	/**
 	 * \brief The lineedit with the name of the instance

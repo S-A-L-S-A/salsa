@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA Experimentes Library                                                  *
+//  *  SALSA Experimentes Library                                                  *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Gianluca Massera <emmegian@yahoo.it>                                        *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -31,7 +31,7 @@
 //
 // */
 //
-// namespace farsa {
+// namespace salsa {
 //
 // MusclePair::MusclePair( PhyDOF* dof, float ksh, float tmax, float rl, float lmax ) {
 // 	//vedere parametri di Gianluca
@@ -151,4 +151,4 @@
 // 	return -(ta1+tp1+tv1) + (ta2+tp2+tv2);
 // }
 //
-// } // end namespace farsa
+// } // end namespace salsa

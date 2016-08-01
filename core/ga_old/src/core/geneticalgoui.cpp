@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA GeneticAlgo UI                                                        *
+ *  SALSA GeneticAlgo UI                                                        *
  *  Copyright (C) 2012-2013                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *                                                                              *
@@ -27,7 +27,7 @@
 #include <QScrollArea>
 #include <QMetaObject>
 
-namespace farsa {
+namespace salsa {
 
 GeneticAlgoUI::GeneticAlgoUI( GeneticAlgo* component )
 	: QObject(), ParameterSettableUI() {
@@ -91,4 +91,4 @@ void GeneticAlgoUI::fitPlotsToGenotype() {
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa

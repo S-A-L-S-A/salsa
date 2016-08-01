@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -22,10 +22,10 @@
 
 #include "singleir.h"
 #include "mathutils.h"
-#include "farsaglutils.h"
+#include "salsaglutils.h"
 #include "world.h"
 
-namespace farsa {
+namespace salsa {
 
 namespace {
 	// The side of the cube representing the sensor
@@ -277,4 +277,4 @@ void RenderSingleIR::render(const SingleIRShared* sharedData, GLContextAndData* 
 	glPopMatrix();
 }
 
-} // end namespace farsa
+} // end namespace salsa

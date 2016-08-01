@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -22,11 +22,11 @@
 
 #include "phyobject.h"
 #include "world.h"
-#include "farsaglutils.h"
+#include "salsaglutils.h"
 #include "private/phyobjectprivate.h"
 #include "private/worldprivate.h"
 
-namespace farsa {
+namespace salsa {
 
 PhyObject::PhyObject(World* world, SharedDataWrapper<Shared> shared, QString name, const wMatrix& tm)
 	: WObject(world, shared, name, tm)
@@ -490,4 +490,4 @@ wMatrix RenderPhyObject::collisionShapeMatrix(const PhyObjectShared* sharedData)
 	return sharedData->collisionShapeOffset * sharedData->tm;
 }
 
-} // end namespace farsa
+} // end namespace salsa

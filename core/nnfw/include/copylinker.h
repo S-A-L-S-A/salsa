@@ -23,7 +23,7 @@
 #include "nnfwconfig.h"
 #include "linker.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief CopyLinker Class. This linker copies the outputs of a cluster to inputs of another cluster
  *
@@ -47,7 +47,7 @@ namespace farsa {
  *   'from' cluster (all of the source data) are copied into the first 5
  *   inputs of the 'to' Cluster (with 3 neurons receiving no input).
  */
-class FARSA_NNFW_API CopyLinker : public Linker {
+class SALSA_NNFW_API CopyLinker : public Linker {
 public:
 	/*! Constructor */
 	CopyLinker( ConfigurationManager& params, QString prefix, Component* parent = NULL );

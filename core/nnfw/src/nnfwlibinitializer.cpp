@@ -35,9 +35,9 @@
 #include <QStringList>
 #include <QDebug>
 
-namespace farsa {
+namespace salsa {
 
-bool FARSA_NNFW_API initNNFWLib() {
+bool SALSA_NNFW_API initNNFWLib() {
 	static bool dummy = false;
 	if ( dummy ) return true;
 	// Registering all types to factory

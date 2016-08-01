@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -50,7 +50,7 @@ public slots:
 	 *  \warning the ConfigurationManager object pointer need to be always valid otherwise GenericGroupEditor
 	 *    will crash
 	 */
-	void setGroup( GroupInfo group, farsa::ConfigurationManager* confParams );
+	void setGroup( GroupInfo group, salsa::ConfigurationManager* confParams );
 	/*! unset the group, and it will display nothing */
 	void unsetGroup();
 	/*! reload the group; useful if something change about the current group */
@@ -62,14 +62,14 @@ signals:
 	 *  \param prefix is the full path of the group containing the parameter
 	 *  \param confParams is the ConfigurationManager where parameter belongs to
 	 */
-	void parameterChanged( QString parameter, QString value, QString prefix, farsa::ConfigurationManager* confParams );
+	void parameterChanged( QString parameter, QString value, QString prefix, salsa::ConfigurationManager* confParams );
 	/*! emitted when the corresponding parameter of the group has been added
 	 *  \param parameter is the name of the parameter
 	 *  \param value is the value of the parameter
 	 *  \param prefix is the full path of the group containing the parameter
 	 *  \param confParams is the ConfigurationManager where parameter belongs to
 	 */
-	void parameterAdded( QString parameter, QString value, QString prefix, farsa::ConfigurationManager* confParams );
+	void parameterAdded( QString parameter, QString value, QString prefix, salsa::ConfigurationManager* confParams );
 	/*! emitted when the corresponding parameter of the group has been deleted
 	 *  \param parameter is the name of the parameter
 	 *  \param value is the value of the parameter
@@ -77,20 +77,20 @@ signals:
 	 *  \param confParams is the ConfigurationManager where parameter belongs to
 	 *  \note The values of parameter, value and prefix was valid before the parameter removing
 	 */
-	void parameterRemoved( QString parameter, QString value, QString prefix, farsa::ConfigurationManager* confParams );
+	void parameterRemoved( QString parameter, QString value, QString prefix, salsa::ConfigurationManager* confParams );
 	/*! emitted when the name of the group has been changed
 	 *  \param newGroupName is the new name of the group
 	 *  \param oldGroupName is the previous name of the group
 	 *  \param prefix is the full path of the group containing groupName
 	 *  \param confParams is the ConfigurationManager where parameter belongs to
 	 */
-	void groupRenamed( QString newGroupName, QString oldGroupName, QString prefix, farsa::ConfigurationManager* confParams );
+	void groupRenamed( QString newGroupName, QString oldGroupName, QString prefix, salsa::ConfigurationManager* confParams );
 	/*! emitted when a new subgroup has been added
 	 *  \param SubgroupName is the name of the subgroup added
 	 *  \param prefix is the full path of the group containing SubgroupName
 	 *  \param confParams is the ConfigurationManager where parameter belongs to
 	 */
-	void groupAdded( QString SubgroupName, QString prefix, farsa::ConfigurationManager* confParams );
+	void groupAdded( QString SubgroupName, QString prefix, salsa::ConfigurationManager* confParams );
 private slots:
 	/*! change the name of the group */
 	void renameGroup();
@@ -120,7 +120,7 @@ private:
 	/*! the full path to the parent of the group */
 	QString groupParent;
 	/*! ConfigurationManager where groupName belongs to */
-	farsa::ConfigurationManager* confParams;
+	salsa::ConfigurationManager* confParams;
 	/*! GroupBox for editing the group's parameters */
 	QGroupBox* groupBox;
 	/*! layout of groupBox */

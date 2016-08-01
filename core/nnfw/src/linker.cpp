@@ -21,7 +21,7 @@
 #include "neuralnet.h"
 #include "configurationhelper.h"
 
-namespace farsa {
+namespace salsa {
 
 Linker::Linker( ConfigurationManager& params, QString prefix, Component* parent )
 	: Updatable( params, prefix, parent ) {

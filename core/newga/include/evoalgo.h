@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -32,7 +32,7 @@
 #include <QVector>
 #include <cstdlib>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The interface for evolutionary algorithms
@@ -41,7 +41,7 @@ namespace farsa {
  * stopFlow and pauseFlow functions to allow their execution flow to be
  * controlled
  */
-class FARSA_NEWGA_TEMPLATE EvoAlgo : public ParameterSettableInConstructor, public FlowControlled
+class SALSA_NEWGA_TEMPLATE EvoAlgo : public ParameterSettableInConstructor, public FlowControlled
 {
 public:
 	/**
@@ -145,6 +145,6 @@ private:
 	unsigned int m_seed;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

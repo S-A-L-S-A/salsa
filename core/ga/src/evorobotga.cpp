@@ -1,5 +1,5 @@
 //  /********************************************************************************
-//  *  FARSA Experiments Library                                                   *
+//  *  SALSA Experiments Library                                                   *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
 //  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -28,7 +28,7 @@
 // #include <QVector>
 // #include <QFile>
 //
-// namespace farsa {
+// namespace salsa {
 //
 // EvorobotGA::EvorobotGA(ConfigurationManager& params)
 // 	: m_population()
@@ -963,7 +963,7 @@
 // 	// is on the stack of the process
 // 	unsigned long int stackMem = (unsigned long int)( generateRandomSeed );
 // 	// time on which the process has been started
-// #ifdef FARSA_WIN
+// #ifdef SALSA_WIN
 // 	unsigned long int startTime = GetTickCount();
 // #else
 // 	unsigned long int startTime = time(NULL);
@@ -1295,7 +1295,7 @@
 //     return "retentionS" + QString::number(seed) + QString(".stat");
 // }
 //
-// } // end namespace farsa
+// } // end namespace salsa
 //
 // // All the suff below is to restore the warning state on Windows
 // #if defined(_MSC_VER)

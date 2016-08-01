@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -25,14 +25,14 @@
 
 #include "phyobject.h"
 
-namespace farsa {
+namespace salsa {
 
 class RenderPhyCone;
 
 /**
  * \brief The shared data for the PhyCone
  */
-class FARSA_WSIM_TEMPLATE PhyConeShared : public PhyObjectShared
+class SALSA_WSIM_TEMPLATE PhyConeShared : public PhyObjectShared
 {
 public:
 	/**
@@ -69,7 +69,7 @@ public:
  *       or equal to the diameter of the base. If this is not the case, then the
  *       height will be clamped to the diameter.
  */
-class FARSA_WSIM_API PhyCone : public PhyObject
+class SALSA_WSIM_API PhyCone : public PhyObject
 {
 public:
 	/**
@@ -150,7 +150,7 @@ public:
 	}
 
 	// Adding code for virtual bounding box functions
-	FARSA_IMPLEMENT_VIRTUAL_BB
+	SALSA_IMPLEMENT_VIRTUAL_BB
 
 protected:
 	/**
@@ -181,7 +181,7 @@ private:
 /**
  * \brief The class rendering the PhyCone
  */
-class FARSA_WSIM_API RenderPhyCone : public RenderPhyObject
+class SALSA_WSIM_API RenderPhyCone : public RenderPhyObject
 {
 public:
 	/**
@@ -212,9 +212,9 @@ public:
 	void render(const PhyConeShared* sharedData, GLContextAndData* contextAndData);
 
 	// Adding code for virtual bounding box functions
-	FARSA_IMPLEMENT_VIRTUAL_RENDERER_BB(PhyCone)
+	SALSA_IMPLEMENT_VIRTUAL_RENDERER_BB(PhyCone)
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

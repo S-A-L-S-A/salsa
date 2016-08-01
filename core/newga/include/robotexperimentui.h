@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -42,9 +42,9 @@
 #include <QVBoxLayout>
 #include <QObject>
 
-namespace farsa {
+namespace salsa {
 
-class FARSA_NEWGA_API RobotExperimentUI : public QObject, public ParameterSettableUI {
+class SALSA_NEWGA_API RobotExperimentUI : public QObject, public ParameterSettableUI {
 	Q_OBJECT
 public:
 	/*! \brief Construct the GUI manager for Evonet
@@ -71,6 +71,6 @@ private:
 	RobotExperiment* exp;
 };
 
-} //end namespace farsa
+} //end namespace salsa
 
 #endif

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -47,7 +47,7 @@
 	#pragma warning(disable:4996)
 #endif
 
-namespace farsa {
+namespace salsa {
 
 EvonetUI::EvonetUI(Evonet* net, DataUploader<ActivationsToGui>* neuronsMonitorUploader)
 	: QObject()
@@ -208,7 +208,7 @@ void EvonetUI::onEvonetUpdated() {
 // 	}
 }
 
-} //end namespace farsa
+} //end namespace salsa
 
 // All the suff below is to restore the warning state on Windows
 #if defined(_MSC_VER)

@@ -23,13 +23,13 @@
 #include "nnfwconfig.h"
 #include "configurationmanager.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief Updatables objects
  *
  *  The Updatable objects has a name.
  */
-class FARSA_NNFW_API Updatable : public Component {
+class SALSA_NNFW_API Updatable : public Component {
 public:
 	/*! Constructor */
 	Updatable( ConfigurationManager& params, QString prefix, Component* parent = NULL );

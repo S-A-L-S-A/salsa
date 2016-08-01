@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -24,7 +24,7 @@
 // #include "private/phyobjectprivate.h"
 // #include "private/worldprivate.h"
 //
-// namespace farsa {
+// namespace salsa {
 //
 // PhyHeightField::PhyHeightField( real side_x, real side_y, World* w, QString name, const wMatrix& tm )
 // 	: PhyObject( w, name, tm, false ) {
@@ -178,4 +178,4 @@
 // // 	real dx, dy, dz;
 // // };
 //
-// } // end namespace farsa
+// } // end namespace salsa

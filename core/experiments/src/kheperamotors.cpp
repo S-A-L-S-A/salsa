@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -25,7 +25,7 @@
 #include "randomgenerator.h"
 #include "logger.h"
 
-namespace farsa {
+namespace salsa {
 
 KheperaMotor::KheperaMotor(ConfigurationManager& params)
 	: AbstractControllerOutput(params)

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -23,7 +23,7 @@
 #include "gaconfig.h"
 #include "core/selection.h"
 
-namespace farsa {
+namespace salsa {
 
 /*!  \brief Deterministic Rank Selection
  *
@@ -34,7 +34,7 @@ namespace farsa {
  *
  * \ingroup ga_sel
  */
-class FARSA_GA_API DeterministicRank : public Selection {
+class SALSA_GA_API DeterministicRank : public Selection {
 public:
 	/*! Constructor */
 	DeterministicRank();
@@ -74,6 +74,6 @@ protected:
 	int idNext;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -28,9 +28,9 @@
 #include "Newton.h"
 #include <QHash>
 
-namespace farsa {
+namespace salsa {
 
-class FARSA_WSIM_INTERNAL WorldPrivate {
+class SALSA_WSIM_INTERNAL WorldPrivate {
 public:
 	NewtonWorld* world;
 	QHash<QString, int> matIDs;
@@ -153,7 +153,7 @@ public:
 	}
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif
 

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Utilities Library                                                     *
+ *  SALSA Utilities Library                                                     *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -20,9 +20,9 @@
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA  *
  ********************************************************************************/
 
-#include "farsamiscutilities.h"
+#include "salsamiscutilities.h"
 
-namespace farsa {
+namespace salsa {
 
 QPair<CommentsPositions, StringsPositions> findCommentsAndStrings(const QString& program, QString* parsedProgram)
 {
@@ -171,4 +171,4 @@ QPair<CommentsPositions, StringsPositions> findCommentsAndStrings(const QString&
 	return QPair<CommentsPositions, StringsPositions>(cpos, spos);
 }
 
-} // end namespace farsa
+} // end namespace salsa

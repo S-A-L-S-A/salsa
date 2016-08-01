@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -23,10 +23,10 @@
 #include "phyellipsoid.h"
 #include "private/phyobjectprivate.h"
 #include "private/worldprivate.h"
-#include "farsaglutils.h"
+#include "salsaglutils.h"
 #include <cmath>
 
-namespace farsa {
+namespace salsa {
 
 void PhyEllipsoid::calculateAABB(const Shared* sharedData, wVector& minPoint, wVector& maxPoint, const wMatrix& tm)
 {
@@ -39,7 +39,7 @@ void PhyEllipsoid::calculateAABB(const Shared* sharedData, wVector& minPoint, wV
 	// http://www.loria.fr/~shornus/ellipsoid-bbox.html (the demonstration of
 	// how to affine-transform a normal vector is in
 	// http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.178.4810&rep=rep1&type=pdf )
-	// Documentation is also in the farsa repository under miscDocumentation/Bounding Box Ellipsoid
+	// Documentation is also in the salsa repository under miscDocumentation/Bounding Box Ellipsoid
 
 	// The matrix transforming a unit sphere into the ellipsoid
 	const wMatrix ellipsoidTransf(wVector(sharedData->radiusX, 0.0, 0.0, 0.0),
@@ -138,4 +138,4 @@ void RenderPhyEllipsoid::render(const PhyEllipsoidShared* sharedData, GLContextA
 	glPopMatrix();
 }
 
-} // end namespace farsa
+} // end namespace salsa

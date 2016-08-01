@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -33,7 +33,7 @@
 
 #include <vector>
 
-namespace farsa {
+namespace salsa {
 
 class PhyJoint;
 class PhyJointPrivate;
@@ -49,7 +49,7 @@ class RenderPhyJoint;
  * reference is also stored inside each DOF (it is not a subclass of
  * WEntityShared because it is used internally by joints and DOFs)
  */
-class FARSA_WSIM_TEMPLATE PhyDOFShared
+class SALSA_WSIM_TEMPLATE PhyDOFShared
 {
 public:
 	/**
@@ -189,7 +189,7 @@ public:
  * status of a joint. Constructor and destructor are private because objects of
  * this kind are only created and destroyed by PhyJoint
  */
-class FARSA_WSIM_API PhyDOF : public QObject
+class SALSA_WSIM_API PhyDOF : public QObject
 {
 	Q_OBJECT
 
@@ -579,7 +579,7 @@ public slots:
 	 */
 	void setLimits(real loLimit, real hiLimit)
 	{
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 		if (!m_shared->isTranslate && (loLimit <= -PI_GRECO)) {
 			qDebug() << "DOF Lower Limit must be greater than -pi";
 		}
@@ -668,7 +668,7 @@ private:
 /**
  * \brief The shared data for a PhyJoint
  */
-class FARSA_WSIM_TEMPLATE PhyJointShared : public WEntityShared
+class SALSA_WSIM_TEMPLATE PhyJointShared : public WEntityShared
 {
 public:
 	/**
@@ -700,14 +700,14 @@ public:
 	 *
 	 * This is a value that is only used to draw the joint
 	 */
-	farsa::real length;
+	salsa::real length;
 
 	/**
 	 * \brief The "radius" of the joint
 	 *
 	 * This is a value that is only used to draw the joint
 	 */
-	farsa::real radius;
+	salsa::real radius;
 };
 
 /**
@@ -717,7 +717,7 @@ public:
  * not instantiable as it is an abstract class. Note that if one of the linked
  * object is destroyed, the joint is destroyed, too
  */
-class FARSA_WSIM_API PhyJoint : public WEntity
+class SALSA_WSIM_API PhyJoint : public WEntity
 {
 public:
 	/**
@@ -1008,7 +1008,7 @@ protected:
  * This class doesn't do the rendering, it only provides few utility functions
  * that can be used by subclasses to do the actual drawing
  */
-class FARSA_WSIM_API RenderPhyJoint : public RenderWEntity
+class SALSA_WSIM_API RenderPhyJoint : public RenderWEntity
 {
 public:
 	/**
@@ -1046,6 +1046,6 @@ protected:
 	void drawJoint(const PhyJointShared* sharedData, GLContextAndData* contextAndData, const wVector& center, const wVector& end1, const wVector& end2);
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

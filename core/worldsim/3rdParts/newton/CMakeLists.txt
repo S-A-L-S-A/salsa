@@ -1,7 +1,7 @@
 # The script to compile Newton Game Dynamics from source
 
 ### set sources and headers files
-set(FARSANEWTON_SRCS
+set(SALSANEWTON_SRCS
 	source/core/dgAABBPolygonSoup.cpp
 	source/core/dgConvexHull3d.cpp
 	source/core/dgConvexHull4d.cpp
@@ -73,7 +73,7 @@ set(FARSANEWTON_SRCS
 	source/physics/dgUserConstraint.cpp
 	source/physics/dgWorld.cpp
 	source/physics/dgWorldDynamicUpdate.cpp)
-set(FARSANEWTON_HDRS
+set(SALSANEWTON_HDRS
 	source/core/dgAABBPolygonSoup.h
 	source/core/dgArray.h
 	source/core/dgConvexHull3d.h
@@ -158,35 +158,35 @@ set(FARSANEWTON_HDRS
 	source/physics/dgWorldDynamicUpdate.h
 	source/physics/dgWorld.h)
 
-add_library(farsanewton SHARED ${FARSANEWTON_SRCS} ${FARSANEWTON_HDRS})
-add_farsa_version(farsanewton)
+add_library(salsanewton SHARED ${SALSANEWTON_SRCS} ${SALSANEWTON_HDRS})
+add_salsa_version(salsanewton)
 
 # Specifying the the include directories: they are used both here and  exported
 # by this library (so that targets linking this one will automatically import
 # the include directories declared here)
-target_include_directories(farsanewton PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/source/core" "${CMAKE_CURRENT_SOURCE_DIR}/source/physics" "${CMAKE_CURRENT_BINARY_DIR}/source/newton")
+target_include_directories(salsanewton PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/source/core" "${CMAKE_CURRENT_SOURCE_DIR}/source/physics" "${CMAKE_CURRENT_BINARY_DIR}/source/newton")
 
 # QtCore is needed because we added a QMutex to solve a bug
-target_link_libraries(farsanewton Qt5::Core)
+target_link_libraries(salsanewton Qt5::Core)
 
 # Additional compiler settings. Always use maximum optimizations
 if (APPLE)
-	target_compile_definitions(farsanewton PRIVATE _MAC_VER _NEWTON_USE_LIB _SCALAR_ARITHMETIC_ONLY)
-	target_compile_options(farsanewton PRIVATE -Wno-strict-aliasing -g -O0 -fpic -msse -msse2 -ffloat-store -funsafe-math-optimizations)
+	target_compile_definitions(salsanewton PRIVATE _MAC_VER _NEWTON_USE_LIB _SCALAR_ARITHMETIC_ONLY)
+	target_compile_options(salsanewton PRIVATE -Wno-strict-aliasing -g -O0 -fpic -msse -msse2 -ffloat-store -funsafe-math-optimizations)
 elseif (UNIX)
-	target_compile_definitions(farsanewton PRIVATE _LINUX_VER)
-	target_compile_options(farsanewton PRIVATE -Wno-strict-aliasing -O3 -fpic -msse -msse2 -ffloat-store -funsafe-math-optimizations -fsingle-precision-constant)
+	target_compile_definitions(salsanewton PRIVATE _LINUX_VER)
+	target_compile_options(salsanewton PRIVATE -Wno-strict-aliasing -O3 -fpic -msse -msse2 -ffloat-store -funsafe-math-optimizations -fsingle-precision-constant)
 elseif (WIN32)
-	target_compile_definitions(farsanewton PRIVATE _NEWTON_BUILD_DLL)
+	target_compile_definitions(salsanewton PRIVATE _NEWTON_BUILD_DLL)
 endif ()
 
 # Specifying the public headers of this target
-set_property(TARGET farsanewton PROPERTY PUBLIC_HEADER ${FARSANEWTON_HDRS})
+set_property(TARGET salsanewton PROPERTY PUBLIC_HEADER ${SALSANEWTON_HDRS})
 
 # Installation paths
-install(TARGETS farsanewton
-        EXPORT farsa
+install(TARGETS salsanewton
+        EXPORT salsa
         ARCHIVE DESTINATION lib/
         LIBRARY DESTINATION lib/
-        PUBLIC_HEADER DESTINATION include/farsa/worldsim/newton
+        PUBLIC_HEADER DESTINATION include/salsa/worldsim/newton
         RUNTIME DESTINATION bin/)

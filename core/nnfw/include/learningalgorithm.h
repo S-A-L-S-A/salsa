@@ -27,7 +27,7 @@
 #include <QVector>
 #include <cmath>
 
-namespace farsa {
+namespace salsa {
 
 class NeuralNet;
 
@@ -56,7 +56,7 @@ class NeuralNet;
  *  \warning Pay attention when you use operator[] because it silently add new data. Like QMap::operator[]
  *
  */
-class FARSA_NNFW_API Pattern : public Component {
+class SALSA_NNFW_API Pattern : public Component {
 public:
 	class PatternInfo {
 	public:
@@ -122,7 +122,7 @@ typedef QVector<Pattern*> PatternSet;
  *
  *  The LearningAlgorithm object is a the abstract class from which to implement learning algorithms
  */
-class FARSA_NNFW_API LearningAlgorithm : public Component {
+class SALSA_NNFW_API LearningAlgorithm : public Component {
 public:
 	/*! Constructor */
 	LearningAlgorithm( ConfigurationManager& params, QString prefix, Component* parent = NULL );

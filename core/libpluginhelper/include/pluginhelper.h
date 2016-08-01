@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -26,10 +26,10 @@
 #include <QString>
 #include <QList>
 #include <QStringList>
-#include "farsamiscutilities.h"
+#include "salsamiscutilities.h"
 #include "dependencysorter.h"
 
-namespace farsa {
+namespace salsa {
 
 namespace pluginHelper {
 
@@ -37,7 +37,7 @@ namespace pluginHelper {
  * \brief Parses a C++ header to extract classes (components and interfaces) to
  *        register
  *
- * This extracts all the other farsa-related stuffs from the header:
+ * This extracts all the other salsa-related stuffs from the header:
  * 	- classes to register (both components and interfaces);
  * 	- their parents and namespaces;
  * 	- pre and post registration functions.
@@ -50,7 +50,7 @@ private:
 		QString name;
 		// The position of the "class" keyword in the original header
 		int classPos;
-		// The position of the FARSA_REGISTER_CLASS macro in the
+		// The position of the SALSA_REGISTER_CLASS macro in the
 		// original header
 		int macroPos;
 		// The namespace of the class (from the outermost to the
@@ -173,7 +173,7 @@ public:
 private:
 	void parse();
 	QVector<int> findRegistrationMacroPositions() const;
-	// This finds all classes that use one of the the FARSA_PLUGIN_* macros, regardless of whether
+	// This finds all classes that use one of the the SALSA_PLUGIN_* macros, regardless of whether
 	// they have to be registered or not
 	QVector<ClassInfo> findAllClassesCandidateForRegistration() const;
 	// Namespaces are returned sorted by starting position (this guarantees that outer namespaces come
@@ -193,7 +193,7 @@ private:
 	// Extracts the post-registration functions
 	void extractPostRegistrationFunctions();
 	// Extracts the parents of the given class. Only publicly inherited classes not surrounded by the
-	// FARSA_NR() macro are returned. Inheriting from template classes is not supported (use typedefs)
+	// SALSA_NR() macro are returned. Inheriting from template classes is not supported (use typedefs)
 	QStringList extractClassParents(const ClassInfo& info) const;
 	// Finds all patterns in the header. This ignores patterns inside comments or strings
 	QVector<FoundPattern> findAllPatterns(const QStringList& patternsToSubstitute) const;
@@ -263,7 +263,7 @@ private:
 	// The content of a generated header file for registration. The %N
 	// patterns will be filled by the QString::arg function.
 	// 	%1 is the macro name for the #include guard;
-	// 	%2 is the name of the subclass of FarsaPlugin.
+	// 	%2 is the name of the subclass of SalsaPlugin.
 	static const QString registrationHeaderTemplate;
 
 	// The content of a generated source file for registration. The %N
@@ -272,7 +272,7 @@ private:
 	// 	%2 is the list of #include directives of header files with the
 	// 	   declaration of classes to register (generated using the
 	// 	   registrationSourceIncludedHeadersTemplate);
-	// 	%3 is the name of the subclass of FarsaPlugin;
+	// 	%3 is the name of the subclass of SalsaPlugin;
 	// 	%4 is the list of instructions to register classes (generated
 	// 	   using the registrationCommandTemplate) and calls to pre/post
 	// 	   registration functions;
@@ -286,7 +286,7 @@ private:
 	// 	%1 is the name of the header file to include
 	static const QString registrationSourceIncludedHeadersTemplate;
 
-	// The template for the command to register classes into the farsa
+	// The template for the command to register classes into the salsa
 	// factory. The %N patterns will be filled by the QString::arg function
 	// 	%1 is the name of the class to register (template argument);
 	// 	%2 is the name of the class to register (registration name);
@@ -353,8 +353,8 @@ private:
 /**
  * \brief Generates the source files with registration and dependencies commands
  *
- * This throws a farsa::RuntimeUserException exception in case of error or a
- * farsa::CircularDependencyException in case of circular dependencies in
+ * This throws a salsa::RuntimeUserException exception in case of error or a
+ * salsa::CircularDependencyException in case of circular dependencies in
  * classes registration
  * \param pluginName the name of plugin being compiled
  * \param destDir the directory where generated files will be written

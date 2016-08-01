@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2009 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -20,7 +20,7 @@
 #include "core/evaluation.h"
 #include "core/genome.h"
 
-namespace farsa {
+namespace salsa {
 
 Evaluation::Evaluation() {
 	isDone = false;
@@ -84,4 +84,4 @@ void Evaluation::evaluationDone() {
 	isDone = true;
 }
 
-} // end namespace farsa
+} // end namespace salsa

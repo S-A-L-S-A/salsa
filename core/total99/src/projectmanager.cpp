@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -48,7 +48,7 @@
 #include <QFileInfo>
 #include <QPushButton>
 
-using namespace farsa;
+using namespace salsa;
 
 ProjectManager::ProjectManager( QWidget* parent, Qt::WindowFlags f )
 	: QWidget( parent, f )
@@ -125,7 +125,7 @@ ProjectManager::ProjectManager( QWidget* parent, Qt::WindowFlags f )
 	menuBar->setLayout( menuLay );
 
 	//--- creating Menus
-#ifdef FARSA_MAC
+#ifdef SALSA_MAC
 	//--- the menu has to be handled in different way on Mac OS X
 	//    See Qt Documentation about it
 	menus = new QMenuBar( this );
@@ -307,23 +307,23 @@ ProjectManager::ProjectManager( QWidget* parent, Qt::WindowFlags f )
 	projectGroupEditor = new GenericGroupEditor( scrollArea );
 	scrollArea->setWidget( projectGroupEditor );
 	projectGroupEditor->setObjectName( "projectGroupEditor" );
-	connect( projectGroupsTree, SIGNAL(currentGroupChanged(GroupInfo, farsa::ConfigurationManager*)),
-			 projectGroupEditor, SLOT(setGroup(GroupInfo, farsa::ConfigurationManager*)) );
-	connect( projectGroupEditor, SIGNAL(parameterChanged(QString, QString, QString, farsa::ConfigurationManager*)),
-			 this, SLOT(checkOnParameterChanges(QString, QString, QString, farsa::ConfigurationManager*)) );
-	connect( projectGroupEditor, SIGNAL(groupRenamed(QString, QString, QString, farsa::ConfigurationManager*)),
-			 projectGroupsTree, SLOT(groupRenamed(QString, QString, QString, farsa::ConfigurationManager*)) );
-	connect( projectGroupEditor, SIGNAL(groupAdded(QString, QString, farsa::ConfigurationManager*)),
-			 this, SLOT(checkOnGroupAdding(QString, QString, farsa::ConfigurationManager*)) );
+	connect( projectGroupsTree, SIGNAL(currentGroupChanged(GroupInfo, salsa::ConfigurationManager*)),
+			 projectGroupEditor, SLOT(setGroup(GroupInfo, salsa::ConfigurationManager*)) );
+	connect( projectGroupEditor, SIGNAL(parameterChanged(QString, QString, QString, salsa::ConfigurationManager*)),
+			 this, SLOT(checkOnParameterChanges(QString, QString, QString, salsa::ConfigurationManager*)) );
+	connect( projectGroupEditor, SIGNAL(groupRenamed(QString, QString, QString, salsa::ConfigurationManager*)),
+			 projectGroupsTree, SLOT(groupRenamed(QString, QString, QString, salsa::ConfigurationManager*)) );
+	connect( projectGroupEditor, SIGNAL(groupAdded(QString, QString, salsa::ConfigurationManager*)),
+			 this, SLOT(checkOnGroupAdding(QString, QString, salsa::ConfigurationManager*)) );
 	projectSplitter->addWidget( scrollArea );
 	projectSplitter->setStretchFactor( 1, 2 );
-	connect( projectGroupEditor, SIGNAL(parameterChanged(QString, QString, QString, farsa::ConfigurationManager*)),
+	connect( projectGroupEditor, SIGNAL(parameterChanged(QString, QString, QString, salsa::ConfigurationManager*)),
 			 this, SLOT(markProjectAsChanged()) );
-	connect( projectGroupEditor, SIGNAL(parameterAdded(QString, QString, QString, farsa::ConfigurationManager*)),
+	connect( projectGroupEditor, SIGNAL(parameterAdded(QString, QString, QString, salsa::ConfigurationManager*)),
 			 this, SLOT(markProjectAsChanged()) );
-	connect( projectGroupEditor, SIGNAL(parameterRemoved(QString, QString, QString, farsa::ConfigurationManager*)),
+	connect( projectGroupEditor, SIGNAL(parameterRemoved(QString, QString, QString, salsa::ConfigurationManager*)),
 			 this, SLOT(markProjectAsChanged()) );
-	connect( projectGroupEditor, SIGNAL(groupRenamed(QString, QString, QString, farsa::ConfigurationManager*)),
+	connect( projectGroupEditor, SIGNAL(groupRenamed(QString, QString, QString, salsa::ConfigurationManager*)),
 			 this, SLOT(markProjectAsChanged()) );
 
 	//--- create the Tabs for LogViewer and Runtime Parameters editor
@@ -408,11 +408,11 @@ ProjectManager::ProjectManager( QWidget* parent, Qt::WindowFlags f )
 ProjectManager::~ProjectManager() {
 }
 
-void ProjectManager::onComponentCreation(farsa::Component* component) {
+void ProjectManager::onComponentCreation(salsa::Component* component) {
 	objsCreated.prepend(qMakePair(component, component->confPath()));
 }
 
-void ProjectManager::onComponentDestruction(farsa::Component*)
+void ProjectManager::onComponentDestruction(salsa::Component*)
 {
 }
 
@@ -461,7 +461,7 @@ void ProjectManager::onQuit() {
 
 void ProjectManager::loadProject() {
 	// --- ask for project file to load
-	QString newf = QFileDialog::getOpenFileName( this, "Load Project from...", projectFile.absolutePath(), "FARSA Configuration file (*.ini *.xml)" );
+	QString newf = QFileDialog::getOpenFileName( this, "Load Project from...", projectFile.absolutePath(), "SALSA Configuration file (*.ini *.xml)" );
 	if ( newf.isEmpty() ) {
 		return;
 	}
@@ -520,7 +520,7 @@ void ProjectManager::saveProject() {
 void ProjectManager::saveAsProject() {
 	if ( !projectLoaded ) return;
 	// --- ask for project file to load
-	QString newf = QFileDialog::getSaveFileName( this, "Save Project as...", projectFile.absolutePath(), "FARSA Configuration file (*.ini *.xml)" );
+	QString newf = QFileDialog::getSaveFileName( this, "Save Project as...", projectFile.absolutePath(), "SALSA Configuration file (*.ini *.xml)" );
 	if ( newf.isEmpty() ) {
 		return;
 	}
@@ -704,7 +704,7 @@ void ProjectManager::configureComponent() {
 
 void ProjectManager::loadPlugin() {
 	// --- ask for file to load
-	QString newf = QFileDialog::getOpenFileName( this, "Load Plugin from...", projectFile.absolutePath(), "FARSA Plugins (*.so *.dylib *.bundle *.dll)" );
+	QString newf = QFileDialog::getOpenFileName( this, "Load Plugin from...", projectFile.absolutePath(), "SALSA Plugins (*.so *.dylib *.bundle *.dll)" );
 	if ( newf.isEmpty() ) {
 		return;
 	}
@@ -759,7 +759,7 @@ void ProjectManager::loadSystemProject()
 	// because we update it if the default destination directory changes
 	QString localPluginDestination = ConfigurationHelper::getString(userprefs, "ProjectManager/localPluginDestination", "");
 	if (localPluginDestination.isEmpty()) {
-		localPluginDestination = ConfigurationHelper::getString(allprefs, "ProjectManager/localPluginDestination", "farsaPlugins");
+		localPluginDestination = ConfigurationHelper::getString(allprefs, "ProjectManager/localPluginDestination", "salsaPlugins");
 	}
 	if (QFileInfo(localPluginDestination).isRelative()) {
 		localPluginDestination = QDir::homePath() + "/" + localPluginDestination;
@@ -835,6 +835,9 @@ void ProjectManager::loadSystemProject()
 
 	// If the used hasn't aborted the process, loading the project and updating configuration
 	if (!pluginConfigurationFile.isEmpty()) {
+		if (!userprefs.groupExists("ProjectManager")) {
+			userprefs.createGroup("ProjectManager");
+		}
 		if (userprefs.parameterExists("ProjectManager/localPluginDestination")) {
 			userprefs.setValue("ProjectManager/localPluginDestination", localPluginDestination);
 		} else {
@@ -980,7 +983,7 @@ void ProjectManager::checkConfigurationManager( QString groupName, QString paren
 	}
 }
 
-void ProjectManager::checkOnParameterChanges( QString param, QString /*value*/, QString /*prefix*/, farsa::ConfigurationManager* confs ) {
+void ProjectManager::checkOnParameterChanges( QString param, QString /*value*/, QString /*prefix*/, salsa::ConfigurationManager* confs ) {
 	//--- if the slot is regarding something different the configuration parameters setted on this object
 	//    it will do nothing
 	if ( confs != &project ) return;
@@ -993,7 +996,7 @@ void ProjectManager::checkOnParameterChanges( QString param, QString /*value*/, 
 	return;
 }
 
-void ProjectManager::checkOnGroupAdding( QString Subgroup, QString prefix, farsa::ConfigurationManager* confs ) {
+void ProjectManager::checkOnGroupAdding( QString Subgroup, QString prefix, salsa::ConfigurationManager* confs ) {
 	//--- if the slot is regarding something different the configuration parameters setted on this object
 	//    it will do nothing
 	if ( confs != &project ) return;
@@ -1032,7 +1035,7 @@ void ProjectManager::showViewerFromQAction() {
 
 void ProjectManager::changePlugin() {
 	QListWidgetItem* item = projectPluginsEdit->currentItem();
-	QString newp = QFileDialog::getOpenFileName( this, "Select a plugin", QString(), "FARSA Plugin (*.so *.dylib *.dll)" );
+	QString newp = QFileDialog::getOpenFileName( this, "Select a plugin", QString(), "SALSA Plugin (*.so *.dylib *.dll)" );
 	if ( newp.isEmpty() ) return;
 	item->setText( QDir::current().relativeFilePath( newp ) );
 	// change the configuration accordingly
@@ -1047,7 +1050,7 @@ void ProjectManager::changeSystemPlugin(const QString& pluginName) {
 }
 
 void ProjectManager::addNewPlugin() {
-	QString newp = QFileDialog::getOpenFileName( this, "Select a plugin", QString(), "FARSA Plugin (*.so *.dylib *.dll)" );
+	QString newp = QFileDialog::getOpenFileName( this, "Select a plugin", QString(), "SALSA Plugin (*.so *.dylib *.dll)" );
 	if ( newp.isEmpty() ) return;
 	/*QListWidgetItem* item =*/ new QListWidgetItem( QDir::current().relativeFilePath( newp ), projectPluginsEdit );
 	// change the configuration accordingly
@@ -1078,7 +1081,7 @@ void ProjectManager::contextMenuPlugin(const QPoint& pos) {
 	// Generating the list of system plugins
 	QStringList systemPlugins;
 	QDir systemPluginsDir(Total99Resources::pluginBasePath);
-	const QString pluginSuffix = "_farsaPlugin" + Total99Resources::pluginSuffix;
+	const QString pluginSuffix = "_salsaPlugin" + Total99Resources::pluginSuffix;
 	foreach (QString pluginFile, systemPluginsDir.entryList()) {
 		if (!QLibrary::isLibrary(pluginFile)) {
 			continue;

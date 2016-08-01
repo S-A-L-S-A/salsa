@@ -22,16 +22,16 @@
 #include "randomgenerator.h"
 #include "logger.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! inizializzazione di globalRND al caricamento della libreria
  *  \todo it would be possible to automatically load/save the status of globalRNG in order
  *   to continue an interrupted random sequence
  */
 #warning THIS SHOULD BE REMOVED, IT IS NOT THREAD-SAFE
-FARSA_UTIL_API RandomGenerator* globalRNG;
+SALSA_UTIL_API RandomGenerator* globalRNG;
 
-bool FARSA_UTIL_API initUtilitiesLib()
+bool SALSA_UTIL_API initUtilitiesLib()
 {
 	static bool calledOnce = false;
 
@@ -46,4 +46,4 @@ bool FARSA_UTIL_API initUtilitiesLib()
 	return true;
 }
 
-} // end namespace farsa
+} // end namespace salsa

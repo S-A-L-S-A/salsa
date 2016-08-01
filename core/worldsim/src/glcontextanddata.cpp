@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -22,7 +22,7 @@
 
 #include "glcontextanddata.h"
 
-namespace farsa {
+namespace salsa {
 
 GLContextAndData::GLContextAndData()
 	: m_glContext(NULL)
@@ -168,4 +168,4 @@ void GLContextAndData::deleteTextures()
 	m_textureIds.clear();
 }
 
-} // end namespace farsa
+} // end namespace salsa

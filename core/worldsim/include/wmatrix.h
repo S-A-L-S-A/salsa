@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -29,11 +29,11 @@
 #include <cstring>
 #include "mathutils.h"
 
-#ifdef FARSA_USE_GSL
+#ifdef SALSA_USE_GSL
 	#include <gsl/gsl_blas.h>
 #endif
 
-namespace farsa {
+namespace salsa {
 
 class wQuaternion;
 
@@ -48,7 +48,7 @@ class wQuaternion;
  *  \par Warnings
  *
  */
-class FARSA_WSIM_TEMPLATE wMatrix {
+class SALSA_WSIM_TEMPLATE wMatrix {
 public:
 	/*! Construct an unintialized matrix */
 	wMatrix();
@@ -152,12 +152,12 @@ private:
 	wVectorT<true>* vecs[4]; // This is only useful for operator[] functions
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 //--- this is included here because wMatrix and wQuaternion have mutual dependencies
 #include "wquaternion.h"
 
-namespace farsa {
+namespace salsa {
 
 inline wMatrix::wMatrix() : x_ax(&data[0]), y_ax(&data[4]), z_ax(&data[8]), w_pos(&data[12]) {
 	vecs[0] = &x_ax;
@@ -394,7 +394,7 @@ inline void wMatrix::transformTriplex( real* dst, int dstStrideInBytes, real* sr
 
 inline wMatrix wMatrix::operator*( const wMatrix &B ) const {
 	const wMatrix& A = *this;
-#ifdef FARSA_USE_GSL
+#ifdef SALSA_USE_GSL
 	wMatrix res;
 	cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, 4, 4, 4, 1.0, A.data, 4, B.data, 4, 0.0, res.data, 4);
 	//cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, 4, 4, 4, 1.0, A.data, 4, B.data, 4, 0.0, res.data, 4);
@@ -521,6 +521,6 @@ inline wMatrix wMatrix::roll( real ang ) {
 					wVector (   0.0f,   0.0f, 0.0f, 1.0f) );
 }
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -23,7 +23,7 @@
 #include "gaconfig.h"
 #include "core/mutation.h"
 
-namespace farsa {
+namespace salsa {
 
 /*!  \brief RandomBit Mutation
  *
@@ -37,7 +37,7 @@ namespace farsa {
  *
  * \ingroup ga_muta
  */
-class FARSA_GA_API RandomBit : public Mutation {
+class SALSA_GA_API RandomBit : public Mutation {
 public:
 	/*! Constructor */
 	RandomBit();
@@ -49,6 +49,6 @@ public:
 	static void describe( QString type );
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

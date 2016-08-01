@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                         *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -37,7 +37,7 @@
 #include <QLabel>
 #include "logger.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief Data exchanged between the GUI and the object performing the test
@@ -74,7 +74,7 @@ struct EvoAlgoTestIndividualDataToGUI
 /**
  * \brief Class to test of the selected individual
  */
-class FARSA_NEWGA_API EvoAlgoTestIndividual : public EvoAlgoTest, private DataUploaderDownloader<EvoAlgoTestIndividualDataToGUI, EvoAlgoTestIndividualDataFromGUI>, private NewDatumNotifiable<EvoAlgoTestIndividualDataFromGUI>
+class SALSA_NEWGA_API EvoAlgoTestIndividual : public EvoAlgoTest, private DataUploaderDownloader<EvoAlgoTestIndividualDataToGUI, EvoAlgoTestIndividualDataFromGUI>, private NewDatumNotifiable<EvoAlgoTestIndividualDataFromGUI>
 {
 public:
 	/**
@@ -262,6 +262,6 @@ private:
 	QString m_filename;
 };
 
-} //end namespace farsa
+} //end namespace salsa
 
 #endif

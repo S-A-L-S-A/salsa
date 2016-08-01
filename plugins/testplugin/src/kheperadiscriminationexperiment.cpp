@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -28,8 +28,8 @@
 #include "configurationhelper.h"
 #include "mathutils.h"
 
-KheperaDiscriminationExperiment::KheperaDiscriminationExperiment(farsa::ConfigurationManager& params)
-	: farsa::EvoRobotExperiment(params)
+KheperaDiscriminationExperiment::KheperaDiscriminationExperiment(salsa::ConfigurationManager& params)
+	: salsa::EvoRobotExperiment(params)
 	, m_wallThickness(0.03f)
 	, m_objectHeights(0.05f)
 	, m_maxPlacingAttempts(100)
@@ -56,27 +56,27 @@ void KheperaDiscriminationExperiment::configure()
 
 	// Loading our parameters. Checks on m_playgroundWidth and m_playgroundHeight will be done in setupArena() because
 	// we need a valid object
-	m_playgroundWidth = farsa::ConfigurationHelper::getReal(configurationManager(), confPath() + "playgroundWidth");
-	m_playgroundHeight = farsa::ConfigurationHelper::getReal(configurationManager(), confPath() + "playgroundHeight");
-	m_distanceThreshold = farsa::ConfigurationHelper::getReal(configurationManager(), confPath() + "distanceThreshold");
-	m_minObjectDistanceFromWall = farsa::ConfigurationHelper::getReal(configurationManager(), confPath() + "minObjectDistanceFromWall");
-	m_minInitialRobotDistanceFromObject = farsa::ConfigurationHelper::getReal(configurationManager(), confPath() + "minInitialRobotDistanceFromObject");
-	m_minInitialRobotDistanceFromWall = farsa::ConfigurationHelper::getReal(configurationManager(), confPath() + "minInitialRobotDistanceFromWall");
+	m_playgroundWidth = salsa::ConfigurationHelper::getReal(configurationManager(), confPath() + "playgroundWidth");
+	m_playgroundHeight = salsa::ConfigurationHelper::getReal(configurationManager(), confPath() + "playgroundHeight");
+	m_distanceThreshold = salsa::ConfigurationHelper::getReal(configurationManager(), confPath() + "distanceThreshold");
+	m_minObjectDistanceFromWall = salsa::ConfigurationHelper::getReal(configurationManager(), confPath() + "minObjectDistanceFromWall");
+	m_minInitialRobotDistanceFromObject = salsa::ConfigurationHelper::getReal(configurationManager(), confPath() + "minInitialRobotDistanceFromObject");
+	m_minInitialRobotDistanceFromWall = salsa::ConfigurationHelper::getReal(configurationManager(), confPath() + "minInitialRobotDistanceFromWall");
 }
 
-void KheperaDiscriminationExperiment::describe(farsa::RegisteredComponentDescriptor& d)
+void KheperaDiscriminationExperiment::describe(salsa::RegisteredComponentDescriptor& d)
 {
 	// Calling parent function
-	farsa::EvoRobotExperiment::describe(d);
+	salsa::EvoRobotExperiment::describe(d);
 
 	d.help("The experiment in which a khepera robot has to discriminate between an object in the arena and the arena walls");
 
-	d.describeReal("playgroundWidth").def(0.5).limits(0.0, +farsa::Infinity).help("The width of the part of the arena surrounded by walls", "This is the width of the playground. The playground is the area where the robot can move");
-	d.describeReal("playgroundHeight").def(0.5).limits(0.0, +farsa::Infinity).help("The height of the part of the arena surrounded by walls", "This is the height of the playground. The playground is the area where the robot can move");
-	d.describeReal("distanceThreshold").def(0.1).limits(0.0, +farsa::Infinity).help("The distance from the object below which the robot is rewarded", "If the distance of the robot from the object is less than this value, the robot is rewarded for the current timestep. This is the distance of the nearest points of the robot and the object (i.e. the robot and object radii are subtracted from the distance between the centers)");
-	d.describeReal("minObjectDistanceFromWall").def(0.05).limits(0.0, +farsa::Infinity).help("The minimum distance of the object from walls", "This is the minimum distance from the walls at which the object is placed. The default is 0.05");
-	d.describeReal("minInitialRobotDistanceFromObject").def(0.1).limits(0.0, +farsa::Infinity).help("The minimum initial distance of the robot from the object", "This is the minimum distance from the object at which the robot is initialized. The default is 0.1");
-	d.describeReal("minInitialRobotDistanceFromWall").def(0.1).limits(0.0, +farsa::Infinity).help("The minimum initial distance of the robot from walls", "This is the minimum distance from the walls at which the robot is initialized. The default is 0.1");
+	d.describeReal("playgroundWidth").def(0.5).limits(0.0, +salsa::Infinity).help("The width of the part of the arena surrounded by walls", "This is the width of the playground. The playground is the area where the robot can move");
+	d.describeReal("playgroundHeight").def(0.5).limits(0.0, +salsa::Infinity).help("The height of the part of the arena surrounded by walls", "This is the height of the playground. The playground is the area where the robot can move");
+	d.describeReal("distanceThreshold").def(0.1).limits(0.0, +salsa::Infinity).help("The distance from the object below which the robot is rewarded", "If the distance of the robot from the object is less than this value, the robot is rewarded for the current timestep. This is the distance of the nearest points of the robot and the object (i.e. the robot and object radii are subtracted from the distance between the centers)");
+	d.describeReal("minObjectDistanceFromWall").def(0.05).limits(0.0, +salsa::Infinity).help("The minimum distance of the object from walls", "This is the minimum distance from the walls at which the object is placed. The default is 0.05");
+	d.describeReal("minInitialRobotDistanceFromObject").def(0.1).limits(0.0, +salsa::Infinity).help("The minimum initial distance of the robot from the object", "This is the minimum distance from the object at which the robot is initialized. The default is 0.1");
+	d.describeReal("minInitialRobotDistanceFromWall").def(0.1).limits(0.0, +salsa::Infinity).help("The minimum initial distance of the robot from walls", "This is the minimum distance from the walls at which the robot is initialized. The default is 0.1");
 }
 
 void KheperaDiscriminationExperiment::postConfigureInitialization()
@@ -110,34 +110,34 @@ void KheperaDiscriminationExperiment::initTrial(int /*trial*/)
 		m_recreateWorld = false;
 	}
 
-	farsa::Arena* arena = getResource<farsa::Arena>("arena");
+	salsa::Arena* arena = getResource<salsa::Arena>("arena");
 
 	// First of all moving the object to a random position in the arena
-	const farsa::real arenaWidthHalfLimitForObject = m_playgroundWidth / 2.0 - m_object->phyObject()->radius() - m_minObjectDistanceFromWall;
-	const farsa::real arenaHeightHalfLimitForObject = m_playgroundHeight / 2.0 - m_object->phyObject()->radius() - m_minObjectDistanceFromWall;
-	const farsa::real ox = farsa::globalRNG->getDouble(-arenaWidthHalfLimitForObject, arenaWidthHalfLimitForObject);
-	const farsa::real oy = farsa::globalRNG->getDouble(-arenaHeightHalfLimitForObject, arenaHeightHalfLimitForObject);
+	const salsa::real arenaWidthHalfLimitForObject = m_playgroundWidth / 2.0 - m_object->phyObject()->radius() - m_minObjectDistanceFromWall;
+	const salsa::real arenaHeightHalfLimitForObject = m_playgroundHeight / 2.0 - m_object->phyObject()->radius() - m_minObjectDistanceFromWall;
+	const salsa::real ox = salsa::globalRNG->getDouble(-arenaWidthHalfLimitForObject, arenaWidthHalfLimitForObject);
+	const salsa::real oy = salsa::globalRNG->getDouble(-arenaHeightHalfLimitForObject, arenaHeightHalfLimitForObject);
 	m_object->setPosition(ox, oy);
 	m_rewardArea->setPosition(ox, oy);
 
 	// Now placing the robot
-	farsa::RobotOnPlane* robot = getResource<farsa::RobotOnPlane>("robot");
+	salsa::RobotOnPlane* robot = getResource<salsa::RobotOnPlane>("robot");
 	unsigned int numAttempts = 0;
 	do {
 		if (numAttempts > m_maxPlacingAttempts) {
-			farsa::throwUserRuntimeError("Unable to place the robot (more than " + QString::number(m_maxPlacingAttempts) + " attempts made)");
+			salsa::throwUserRuntimeError("Unable to place the robot (more than " + QString::number(m_maxPlacingAttempts) + " attempts made)");
 		}
 		numAttempts++;
 
-		const farsa::real arenaWidthHalfLimitForRobot = m_playgroundWidth / 2.0 - robot->robotRadius() - m_minInitialRobotDistanceFromWall;
-		const farsa::real arenaHeightHalfLimitForRobot = m_playgroundHeight / 2.0 - robot->robotRadius() - m_minInitialRobotDistanceFromWall;
-		const farsa::real rx = farsa::globalRNG->getDouble(-arenaWidthHalfLimitForRobot, arenaWidthHalfLimitForRobot);
-		const farsa::real ry = farsa::globalRNG->getDouble(-arenaHeightHalfLimitForRobot, arenaHeightHalfLimitForRobot);
+		const salsa::real arenaWidthHalfLimitForRobot = m_playgroundWidth / 2.0 - robot->robotRadius() - m_minInitialRobotDistanceFromWall;
+		const salsa::real arenaHeightHalfLimitForRobot = m_playgroundHeight / 2.0 - robot->robotRadius() - m_minInitialRobotDistanceFromWall;
+		const salsa::real rx = salsa::globalRNG->getDouble(-arenaWidthHalfLimitForRobot, arenaWidthHalfLimitForRobot);
+		const salsa::real ry = salsa::globalRNG->getDouble(-arenaHeightHalfLimitForRobot, arenaHeightHalfLimitForRobot);
 		robot->setPosition(arena->getPlane(), rx, ry);
 	} while (robotObjectDistance(robot) < m_minInitialRobotDistanceFromObject);
 
 	// Changing also the robot orentation
-	robot->setOrientation(arena->getPlane(), farsa::globalRNG->getDouble(-PI_GRECO, PI_GRECO));
+	robot->setOrientation(arena->getPlane(), salsa::globalRNG->getDouble(-PI_GRECO, PI_GRECO));
 
 	// Resetting fitness for the current trial
 	trialFitnessValue = 0;
@@ -147,10 +147,10 @@ void KheperaDiscriminationExperiment::initStep(int /*step*/)
 {
 	// Checking we don't have any NaN. We just check a value in a matrix because NaN spreads rapidly.
 	// If there is a NaN, we simply restart the trial from scratch.
-	farsa::RobotOnPlane* robot = getResource<farsa::RobotOnPlane>("robot");
-	const farsa::real valueToCheck = robot->position().x;
+	salsa::RobotOnPlane* robot = getResource<salsa::RobotOnPlane>("robot");
+	const salsa::real valueToCheck = robot->position().x;
 	if (isnan(valueToCheck) || isinf(valueToCheck)) {
-		farsa::Logger::warning("Found a NaN value, recreating world and restarting trial from scratch");
+		salsa::Logger::warning("Found a NaN value, recreating world and restarting trial from scratch");
 
 		restartTrial();
 		m_recreateWorld = true;
@@ -173,18 +173,18 @@ void KheperaDiscriminationExperiment::beforeWorldAdvance()
 
 void KheperaDiscriminationExperiment::endStep(int /*step*/)
 {
-	farsa::RobotOnPlane* robot = getResource<farsa::RobotOnPlane>("robot");
-	const farsa::Arena* arena = getResource<farsa::Arena>("arena");
+	salsa::RobotOnPlane* robot = getResource<salsa::RobotOnPlane>("robot");
+	const salsa::Arena* arena = getResource<salsa::Arena>("arena");
 
 	// If robot collided with something, stopping the trial
-	if (arena->getKinematicRobotCollisionsSet(farsa::Arena::RobotResource("robot", getAgent(0))).size() != 0) {
+	if (arena->getKinematicRobotCollisionsSet(salsa::Arena::RobotResource("robot", getAgent(0))).size() != 0) {
 		stopTrial();
 
 		return;
 	}
 
 	// Computing the distance of the robot with the object
-	const farsa::real distance = robotObjectDistance(robot);
+	const salsa::real distance = robotObjectDistance(robot);
 
 	if (distance < m_distanceThreshold) {
 		trialFitnessValue += 1.0;
@@ -193,12 +193,12 @@ void KheperaDiscriminationExperiment::endStep(int /*step*/)
 
 void KheperaDiscriminationExperiment::endTrial(int /*trial*/)
 {
-	totalFitnessValue += trialFitnessValue / farsa::real(getNSteps());
+	totalFitnessValue += trialFitnessValue / salsa::real(getNSteps());
 }
 
 void KheperaDiscriminationExperiment::endIndividual(int /*individual*/)
 {
-	totalFitnessValue = totalFitnessValue / farsa::real(getNTrials());
+	totalFitnessValue = totalFitnessValue / salsa::real(getNTrials());
 }
 
 void KheperaDiscriminationExperiment::endGeneration(int /*generation*/)
@@ -208,19 +208,19 @@ void KheperaDiscriminationExperiment::endGeneration(int /*generation*/)
 void KheperaDiscriminationExperiment::setupArena()
 {
 	// Getting the arena
-	farsa::Arena* arena = getResource<farsa::Arena>("arena");
+	salsa::Arena* arena = getResource<salsa::Arena>("arena");
 
 	// Creating walls all around the arena
-	const farsa::real halfHeight = m_playgroundHeight / 2.0;
-	const farsa::real halfWidth = m_playgroundWidth / 2.0;
-	const farsa::real topWallPos = halfHeight + m_wallThickness / 2.0;
-	const farsa::real bottomWallPos = -(halfHeight + m_wallThickness / 2.0);
-	const farsa::real rightWallPos = halfWidth + m_wallThickness / 2.0;
-	const farsa::real leftWallPos = -(halfWidth + m_wallThickness / 2.0);
-	arena->createWall(Qt::yellow, farsa::wVector(-halfWidth, topWallPos, 0.0), farsa::wVector(halfWidth, topWallPos, 0.0), m_wallThickness, m_objectHeights);
-	arena->createWall(Qt::yellow, farsa::wVector(-halfWidth, bottomWallPos, 0.0), farsa::wVector(halfWidth, bottomWallPos, 0.0), m_wallThickness, m_objectHeights);
-	arena->createWall(Qt::yellow, farsa::wVector(rightWallPos, -halfHeight, 0.0), farsa::wVector(rightWallPos, halfHeight, 0.0), m_wallThickness, m_objectHeights);
-	arena->createWall(Qt::yellow, farsa::wVector(leftWallPos, -halfHeight, 0.0), farsa::wVector(leftWallPos, halfHeight, 0.0), m_wallThickness, m_objectHeights);
+	const salsa::real halfHeight = m_playgroundHeight / 2.0;
+	const salsa::real halfWidth = m_playgroundWidth / 2.0;
+	const salsa::real topWallPos = halfHeight + m_wallThickness / 2.0;
+	const salsa::real bottomWallPos = -(halfHeight + m_wallThickness / 2.0);
+	const salsa::real rightWallPos = halfWidth + m_wallThickness / 2.0;
+	const salsa::real leftWallPos = -(halfWidth + m_wallThickness / 2.0);
+	arena->createWall(Qt::yellow, salsa::wVector(-halfWidth, topWallPos, 0.0), salsa::wVector(halfWidth, topWallPos, 0.0), m_wallThickness, m_objectHeights);
+	arena->createWall(Qt::yellow, salsa::wVector(-halfWidth, bottomWallPos, 0.0), salsa::wVector(halfWidth, bottomWallPos, 0.0), m_wallThickness, m_objectHeights);
+	arena->createWall(Qt::yellow, salsa::wVector(rightWallPos, -halfHeight, 0.0), salsa::wVector(rightWallPos, halfHeight, 0.0), m_wallThickness, m_objectHeights);
+	arena->createWall(Qt::yellow, salsa::wVector(leftWallPos, -halfHeight, 0.0), salsa::wVector(leftWallPos, halfHeight, 0.0), m_wallThickness, m_objectHeights);
 
 	// Now creating the object
 	m_object = arena->createSmallCylinder(Qt::yellow, m_objectHeights);
@@ -230,21 +230,21 @@ void KheperaDiscriminationExperiment::setupArena()
 	m_rewardArea = arena->createCircularTargetArea(m_object->phyObject()->radius() + m_distanceThreshold, Qt::cyan);
 
 	// Finally checking if the arena is big enough. We only check against the robot radius because it is bigger than the object radius
-	farsa::RobotOnPlane* robot = getResource<farsa::RobotOnPlane>("robot");
-	const farsa::real minDimension = robot->robotRadius() + m_minObjectDistanceFromWall + m_minInitialRobotDistanceFromObject + m_minInitialRobotDistanceFromWall;
+	salsa::RobotOnPlane* robot = getResource<salsa::RobotOnPlane>("robot");
+	const salsa::real minDimension = robot->robotRadius() + m_minObjectDistanceFromWall + m_minInitialRobotDistanceFromObject + m_minInitialRobotDistanceFromWall;
 	if (m_playgroundWidth < minDimension) {
-		farsa::throwUserRuntimeError("Cannot run the experiment because the arena is too small (width too small)");
+		salsa::throwUserRuntimeError("Cannot run the experiment because the arena is too small (width too small)");
 	} else if (m_playgroundHeight < minDimension) {
-		farsa::throwUserRuntimeError("Cannot run the experiment because the arena is too small (height too small)");
+		salsa::throwUserRuntimeError("Cannot run the experiment because the arena is too small (height too small)");
 	}
 }
 
-farsa::real KheperaDiscriminationExperiment::robotObjectDistance(farsa::RobotOnPlane* robot) const
+salsa::real KheperaDiscriminationExperiment::robotObjectDistance(salsa::RobotOnPlane* robot) const
 {
 	// Computing the distance of the robot with the object
-	const farsa::wVector robotPosition(robot->position().x, robot->position().y, 0.0);
-	const farsa::wVector objectPosition(m_object->position().x, m_object->position().y, 0.0);
-	const farsa::real distance = (robotPosition - objectPosition).norm() - robot->robotRadius() - m_object->phyObject()->radius();
+	const salsa::wVector robotPosition(robot->position().x, robot->position().y, 0.0);
+	const salsa::wVector objectPosition(m_object->position().x, m_object->position().y, 0.0);
+	const salsa::real distance = (robotPosition - objectPosition).norm() - robot->robotRadius() - m_object->phyObject()->radius();
 
 	return distance;
 }

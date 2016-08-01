@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2009 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -23,7 +23,7 @@
 #include "core/geneticalgoui.h"
 #include <cmath>
 
-namespace farsa {
+namespace salsa {
 
 GeneticAlgo::GeneticAlgo()
 	: evolutionEnd(false),
@@ -203,4 +203,4 @@ void GeneticAlgo::notifyEndGeneration() {
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa

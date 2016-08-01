@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA                                                                       *
+//  *  SALSA                                                                       *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Gianluca Massera <emmegian@yahoo.it>                                        *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -25,7 +25,7 @@
 // #include <QGridLayout>
 // #include <cmath>
 //
-// namespace farsa {
+// namespace salsa {
 //
 // BaseExperimentGUI::BaseExperimentGUI(BaseExperiment* experiment, QWidget* parent, Qt::WindowFlags flags) :
 // 	QWidget(parent, flags),
@@ -146,7 +146,7 @@
 //
 // bool BaseExperimentGUI::event(QEvent* e)
 // {
-// 	if (e->type() == farsa::NewDatumEvent<__BaseExperiment_internal::OperationStatus>::newDatumEventType) {
+// 	if (e->type() == salsa::NewDatumEvent<__BaseExperiment_internal::OperationStatus>::newDatumEventType) {
 // 		// We need a cylce because there could be more than one datum, when the uploader is connected
 // 		// (see dataexchange.h documentation for more information)
 // 		const __BaseExperiment_internal::OperationStatus* d;
@@ -341,5 +341,5 @@
 // 	}
 // }
 //
-// } // End namespace farsa
+// } // End namespace salsa
 //

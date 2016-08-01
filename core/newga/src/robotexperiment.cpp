@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -47,7 +47,7 @@
 	#pragma warning(disable:4996)
 #endif
 
-namespace farsa {
+namespace salsa {
 
 /*
  * Experiment constructor
@@ -76,7 +76,7 @@ RobotExperiment::RobotExperiment()
 	, evonet(NULL)
 	, stepDelay(timestep*1000)
 	, sameRandomSequence(false)
-	, randomGeneratorInUse(farsa::globalRNG)
+	, randomGeneratorInUse(salsa::globalRNG)
 	, localRNG(1)
 	, curInd(-1)
 {
@@ -143,7 +143,7 @@ void RobotExperiment::configure(ConfigurationParameters& params, QString prefix)
 	if (sameRandomSequence) {
 		randomGeneratorInUse = &localRNG;
 	} else {
-		randomGeneratorInUse = farsa::globalRNG;
+		randomGeneratorInUse = salsa::globalRNG;
 	}
 
 	// create a World by default in order to exit from here with all configured properly
@@ -309,12 +309,12 @@ void RobotExperiment::doAllTrialsForIndividual(int individual)
 		return;
 	}
 
-#ifdef FARSA_MAC
+#ifdef SALSA_MAC
 	// If the GUI is active, adding a small delay to let the GUI catch up (this is only done on MacOSX
 	// which seems the most troublesome system)
 	if (!batchRunning) {
 		// Using also the namespace to avoid name clashes
-		farsa::msleep(50);
+		salsa::msleep(50);
 	}
 #endif
 }
@@ -543,7 +543,7 @@ bool RobotExperiment::selectAgent( int id ) {
 					 eagents[agentIdSelected]->robot,
 					 eagents[agentIdSelected]->resourcePrefix+"robot" );
 	declareResource( "evonet",
-					 static_cast<farsa::ParameterSettable*>(eagents[agentIdSelected]->evonet),
+					 static_cast<salsa::ParameterSettable*>(eagents[agentIdSelected]->evonet),
 					 eagents[agentIdSelected]->resourcePrefix+"evonet" );
 	declareResource( "neuronsIterator",
 					 eagents[agentIdSelected]->neuronsIterator,
@@ -590,7 +590,7 @@ void RobotExperiment::setNeuralNetwork(const Evonet* net)
 				agent->neuronsIterator->defineBlock( motor->name(), EvonetIterator::OutputLayer, startIndex, motor->size() );
 				startIndex += motor->size();
 			}
-			declareResource( agent->resourcePrefix+"evonet", static_cast<farsa::ParameterSettable*>(agent->evonet) );
+			declareResource( agent->resourcePrefix+"evonet", static_cast<salsa::ParameterSettable*>(agent->evonet) );
 			declareResource( agent->resourcePrefix+"neuronsIterator", agent->neuronsIterator, agent->resourcePrefix+"evonet" );
 			delete oldNet;
 
@@ -719,7 +719,7 @@ void RobotExperiment::recreateArena() {
 	if ( id == agentIdSelected ) {
 		// rebind the resource of the evonet
 		declareResource( "evonet",
-						static_cast<farsa::ParameterSettable*>(eagents[agentIdSelected]->evonet),
+						static_cast<salsa::ParameterSettable*>(eagents[agentIdSelected]->evonet),
 						eagents[agentIdSelected]->resourcePrefix+"evonet" );
 	}
 }
@@ -842,7 +842,7 @@ void RobotExperiment::EmbodiedAgent::configure() {
 	}
 
 	//recreateNeuralNetwork();
-	//exp->declareResource( resourcePrefix+"evonet", static_cast<farsa::ParameterSettable*>(NULL) );
+	//exp->declareResource( resourcePrefix+"evonet", static_cast<salsa::ParameterSettable*>(NULL) );
 
 	//exp->declareResource( resourcePrefix+"neuronsIterator", neuronsIterator, resourcePrefix+"evonet" );
 }
@@ -908,7 +908,7 @@ void RobotExperiment::EmbodiedAgent::recreateRobot() {
 	evonet->setNetworkName(QString::number(id));
 	locker.unlock();
 
-	exp->declareResource( resourcePrefix+"evonet", static_cast<farsa::ParameterSettable*>(evonet) );
+	exp->declareResource( resourcePrefix+"evonet", static_cast<salsa::ParameterSettable*>(evonet) );
 
 	// Here we have to take the lock again because we are going to change neuronsIterator
 	locker.lock();
@@ -946,7 +946,7 @@ void RobotExperiment::EmbodiedAgent::enable() {
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa
 
 // All the suff below is to restore the warning state on Windows
 #if defined(_MSC_VER)

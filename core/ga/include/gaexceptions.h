@@ -34,7 +34,7 @@
 	#pragma warning(disable:4996)
 #endif
 
-namespace farsa {
+namespace salsa {
 // NOTE: I don't use snprintf instead of sprintf because it seems not to be in
 // the current C++ standard (C++03, it is instead in the C99 standard). Note
 // however that no buffer overflow is possible (buffer lengths are carefully
@@ -43,7 +43,7 @@ namespace farsa {
 /**
  * \brief The exception thrown if evolution could not be resumed
  */
-class FARSA_GA_TEMPLATE CannotResumeEvolutionException : public BaseException
+class SALSA_GA_TEMPLATE CannotResumeEvolutionException : public BaseException
 {
 public:
 	/**
@@ -141,7 +141,7 @@ private:
 	char m_errorMessage[512];
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 // All the suff below is to restore the warning state on Windows
 #if defined(_MSC_VER)

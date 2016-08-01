@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -25,7 +25,7 @@
 #include "core/genotype.h"
 #include <QVector>
 
-namespace farsa {
+namespace salsa {
 
 /*!  \brief Genome class
  *
@@ -37,7 +37,7 @@ namespace farsa {
  *    copy passed to append (or set))
  * \ingroup ga_core
  */
-class FARSA_GA_API Genome : public ParameterSettableWithConfigureFunction {
+class SALSA_GA_API Genome : public ParameterSettableWithConfigureFunction {
 public:
 	/*! Construct an un-initialized Genome with no genotypes */
 	Genome();
@@ -135,6 +135,6 @@ private:
 	Genotype* prototype;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

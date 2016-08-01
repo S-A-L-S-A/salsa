@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experimentes Library                                                  *
+ *  SALSA Experimentes Library                                                  *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -29,7 +29,7 @@
 #include "robots.h"
 #include "motors.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The base abstract class for khepera motors
@@ -44,7 +44,7 @@ namespace farsa {
  * The resources required by this Sensor are:
  * - name defined by the khepera parameter: the simulated physical khepera robot
  */
-class FARSA_EXPERIMENTS_API KheperaMotor : public AbstractControllerOutput
+class SALSA_EXPERIMENTS_API KheperaMotor : public AbstractControllerOutput
 {
 public:
 	/**
@@ -89,7 +89,7 @@ protected:
  * The resources required by this Motor are the same as those of the parent
  * class
  */
-class FARSA_EXPERIMENTS_API KheperaWheelVelocityMotor : public KheperaMotor
+class SALSA_EXPERIMENTS_API KheperaWheelVelocityMotor : public KheperaMotor
 {
 public:
 	/**

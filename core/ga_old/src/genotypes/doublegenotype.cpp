@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2009 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -20,7 +20,7 @@
 #include "genotypes/doublegenotype.h"
 #include <cmath>
 
-namespace farsa {
+namespace salsa {
 
 DoubleGenotype::DoubleGenotype( unsigned int numGenes, double min, double max, unsigned int bitPrecision )
 	: Genotype( numGenes*bitPrecision ) {
@@ -65,4 +65,4 @@ unsigned int DoubleGenotype::geneToBitIndex( unsigned int gene ) const {
 unsigned int DoubleGenotype::bitToGeneIndex( unsigned int bit ) const {
 	return bit / bitprec;
 }
-} // end namespace farsa
+} // end namespace salsa

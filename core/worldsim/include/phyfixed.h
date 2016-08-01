@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -31,14 +31,14 @@
 #include "wquaternion.h"
 #include "phyjoint.h"
 
-namespace farsa {
+namespace salsa {
 
 class RenderPhyFixed;
 
 /**
  * \brief The shared data for a PhyFixed
  */
-class FARSA_WSIM_TEMPLATE PhyFixedShared : public PhyJointShared
+class SALSA_WSIM_TEMPLATE PhyFixedShared : public PhyJointShared
 {
 public:
 	/**
@@ -101,7 +101,7 @@ public:
  *
  * PhyFixed is a joint that simply fix together two objects
  */
-class FARSA_WSIM_API PhyFixed : public PhyJoint
+class SALSA_WSIM_API PhyFixed : public PhyJoint
 {
 public:
 	/**
@@ -192,7 +192,7 @@ protected:
 /**
  * \brief The class rendering the PhyFixed
  */
-class FARSA_WSIM_API RenderPhyFixed : public RenderPhyJoint
+class SALSA_WSIM_API RenderPhyFixed : public RenderPhyJoint
 {
 public:
 	/**
@@ -223,6 +223,6 @@ public:
 	void render(const PhyFixedShared* sharedData, GLContextAndData* contextAndData);
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA Experiments Library                                                   *
+//  *  SALSA Experiments Library                                                   *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Gianluca Massera <emmegian@yahoo.it>                                        *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -29,7 +29,7 @@
 // #include <QStringList>
 // #include <QMap>
 //
-// namespace farsa {
+// namespace salsa {
 //
 // FakeMotor::FakeMotor(ConfigurationParameters& params, QString prefix) :
 // 	Motor(params, prefix),
@@ -168,5 +168,5 @@
 // 	return vel;
 // }
 //
-// } // end namespace farsa
+// } // end namespace salsa
 //

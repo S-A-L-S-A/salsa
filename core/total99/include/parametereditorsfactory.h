@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2012-2013 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -25,7 +25,7 @@
 #include <QString>
 #include <QStringList>
 
-namespace farsa {
+namespace salsa {
 	class ConfigurationManager;
 };
 
@@ -63,6 +63,6 @@ private:
  *  \param receiver is the target object of the slot onChangeParamValueSlot
  *  \param onChangeParamValueSlot is the slot called when the value of the parameter is edited
  */
-QWidget* createParameterEditorWidget(QWidget* parent, farsa::ConfigurationManager* confParams, QString paramPath, QString displayName, const QObject* receiver, const char* onChangeParamValueSlot, bool editable);
+QWidget* createParameterEditorWidget(QWidget* parent, salsa::ConfigurationManager* confParams, QString paramPath, QString displayName, const QObject* receiver, const char* onChangeParamValueSlot, bool editable);
 
 #endif

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -27,7 +27,7 @@
 #include "randomgenerator.h"
 #include "configurationmanager.h"
 
-namespace farsa {
+namespace salsa {
 
 Controller::Controller(ConfigurationManager& params)
 	: Component(params)
@@ -121,4 +121,4 @@ const ControllerOutputsList* Controller::controllerOutputsList() const
 	return m_outputsList;
 }
 
-} // end namespace farsa
+} // end namespace salsa

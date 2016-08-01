@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -28,7 +28,7 @@
 #include "experimentoutput.h"
 #include "mathutils.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The interface for evaluators in ga experiments
@@ -39,7 +39,7 @@ namespace farsa {
  * that generally subclasses of this also inherit from an ExperimentInput
  * subclass.
  */
-class FARSA_NEWGA_TEMPLATE GAEvaluator : public ExperimentOutput
+class SALSA_NEWGA_TEMPLATE GAEvaluator : public ExperimentOutput
 {
 public:
 	/**
@@ -58,7 +58,7 @@ public:
 /**
  * \brief The interface for evaluators returning a single fitness value
  */
-class FARSA_NEWGA_TEMPLATE SingleFitnessGAEvaluator : public GAEvaluator
+class SALSA_NEWGA_TEMPLATE SingleFitnessGAEvaluator : public GAEvaluator
 {
 public:
 	/**
@@ -84,7 +84,7 @@ public:
  * FitnessForMultipleGenotypesGAEvaluator if you need to return different
  * fitness values for different genotypes.
  */
-class FARSA_NEWGA_TEMPLATE FitnessVectorGAEvaluator : public GAEvaluator
+class SALSA_NEWGA_TEMPLATE FitnessVectorGAEvaluator : public GAEvaluator
 {
 public:
 	/**
@@ -115,7 +115,7 @@ public:
  * of fitness values for the same genotype (e.g. for multi-objective genetic
  * algorithms)
  */
-class FARSA_NEWGA_TEMPLATE FitnessForMultipleGenotypesGAEvaluator : public GAEvaluator
+class SALSA_NEWGA_TEMPLATE FitnessForMultipleGenotypesGAEvaluator : public GAEvaluator
 {
 public:
 	/**
@@ -133,6 +133,6 @@ public:
 	virtual real getFitnessForGenotype(int genotypeIndex) = 0;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

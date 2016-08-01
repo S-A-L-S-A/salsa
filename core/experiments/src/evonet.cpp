@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -34,7 +34,7 @@
 
 #include <Eigen/Dense>
 
-#ifndef FARSA_MAC
+#ifndef SALSA_MAC
 	#include <malloc.h>  // DEBUG: to be sobstituted with new
 #endif
 
@@ -46,7 +46,7 @@
 	#pragma warning(disable:4996)
 #endif
 
-namespace farsa {
+namespace salsa {
 
 // MAXN and MAXSTOREDACTIVATIONS are declared in .h and their value is set there, but that is not a
 // definition. This means that if you try to get the address of MAXN or MAXSTOREDACTIVATIONS you get
@@ -1196,7 +1196,7 @@ int Evonet::updateCounts()
     }
 
 
-} // end namespace farsa
+} // end namespace salsa
 
 
 // All the suff below is to restore the warning state on Windows

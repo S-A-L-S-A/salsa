@@ -23,7 +23,7 @@
 
 using namespace Eigen;
 
-namespace farsa {
+namespace salsa {
 
 MatrixLinker::MatrixLinker( ConfigurationManager& params, QString prefix, Component* parent )
 	: Linker( params, prefix, parent ),

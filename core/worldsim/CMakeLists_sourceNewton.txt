@@ -1,4 +1,4 @@
-# Script to compile the farsa worldsim library (with compilation of Newton Game
+# Script to compile the salsa worldsim library (with compilation of Newton Game
 # Dynamics)
 
 # Including the directories with Newton Game Dynamics and QGLViewer
@@ -8,8 +8,8 @@ add_subdirectory(3rdParts/qglviewer)
 # Adding OpenGL
 find_package(OpenGL REQUIRED)
 
-set(FARSAWORLDSIM_SRCS
-	src/farsaglutils.cpp
+set(SALSAWORLDSIM_SRCS
+	src/salsaglutils.cpp
 	src/glcontextanddata.cpp
 	src/graphicalmarkers.cpp
 	src/guirendererscontainer.cpp
@@ -44,8 +44,8 @@ set(FARSAWORLDSIM_SRCS
 	src/world.cpp
 	src/worldhelpers.cpp
 	src/worldsimutils.cpp)
-set(FARSAWORLDSIM_HDRS
-	include/farsaglutils.h
+set(SALSAWORLDSIM_HDRS
+	include/salsaglutils.h
 	include/glcontextanddata.h
 	include/graphicalmarkers.h
 	include/guirendererscontainer.h
@@ -90,36 +90,36 @@ set(FARSAWORLDSIM_HDRS
 	include/wvector.h)
 
 # Adding resources and ui files
-qt5_add_resources(FARSAWORLDSIM_SRCS textures/textures.qrc)
+qt5_add_resources(SALSAWORLDSIM_SRCS textures/textures.qrc)
 
-add_library(farsaworldsim SHARED ${FARSAWORLDSIM_SRCS} ${FARSAWORLDSIM_HDRS})
-add_farsa_version(farsaworldsim)
+add_library(salsaworldsim SHARED ${SALSAWORLDSIM_SRCS} ${SALSAWORLDSIM_HDRS})
+add_salsa_version(salsaworldsim)
 
 # Specifying the the include directories: they are used both here and  exported
 # by this library (so that targets linking this one will automatically import
 # the include directories declared here)
-target_include_directories(farsaworldsim PUBLIC
+target_include_directories(salsaworldsim PUBLIC
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/3rdParts>
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/3rdParts/newton>
-                           $<INSTALL_INTERFACE:include/farsa/worldsim>)
+                           $<INSTALL_INTERFACE:include/salsa/worldsim>)
 
 # Adding dependencies (they are also exported, so targets linking this one will
 # automatically link libraries declared here)
-target_link_libraries(farsaworldsim farsaconfiguration farsautilities farsanewton farsaqglviewer Qt5::Core Qt5::Xml Qt5::Concurrent Qt5::Widgets Qt5::OpenGL ${OPENGL_LIBRARIES})
+target_link_libraries(salsaworldsim salsaconfiguration salsautilities salsanewton salsaqglviewer Qt5::Core Qt5::Xml Qt5::Concurrent Qt5::Widgets Qt5::OpenGL ${OPENGL_LIBRARIES})
 
 # Defines to use. The first ones are used only when compiling the library, the
 # second one both when compiling the library and targets using the library
-target_compile_definitions(farsaworldsim PRIVATE FARSA_WSIM_BUILDING_DLL)
-target_compile_definitions(farsaworldsim PUBLIC WORLDSIM_USE_NEWTON)
+target_compile_definitions(salsaworldsim PRIVATE SALSA_WSIM_BUILDING_DLL)
+target_compile_definitions(salsaworldsim PUBLIC WORLDSIM_USE_NEWTON)
 
 # Specifying the public headers of this target
-set_property(TARGET farsaworldsim PROPERTY PUBLIC_HEADER ${FARSAWORLDSIM_HDRS})
+set_property(TARGET salsaworldsim PROPERTY PUBLIC_HEADER ${SALSAWORLDSIM_HDRS})
 
 # Installation paths
-install(TARGETS farsaworldsim
-        EXPORT farsa
+install(TARGETS salsaworldsim
+        EXPORT salsa
         ARCHIVE DESTINATION lib/
         LIBRARY DESTINATION lib/
-        PUBLIC_HEADER DESTINATION include/farsa/worldsim
+        PUBLIC_HEADER DESTINATION include/salsa/worldsim
         RUNTIME DESTINATION bin/)

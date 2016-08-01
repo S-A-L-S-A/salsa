@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -30,7 +30,7 @@
 #include <QGLContext>
 #include "worldsimconfig.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The class with the OpenGL context and shared data
@@ -46,7 +46,7 @@ namespace farsa {
  * QGLWidet to bind textures. This distinction should probably be removed once
  * we move to Qt5.
  */
-class FARSA_WSIM_API GLContextAndData
+class SALSA_WSIM_API GLContextAndData
 {
 public:
 	/**
@@ -403,6 +403,6 @@ private:
 	GLContextAndData& operator=(const GLContextAndData& other);
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

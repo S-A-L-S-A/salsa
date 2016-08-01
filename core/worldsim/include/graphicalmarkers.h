@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -34,7 +34,7 @@
  * world or attach to other objects
  */
 
-namespace farsa {
+namespace salsa {
 
 class RenderCircularGraphicalMarker;
 class RenderPlanarArrowGraphicalMarker;
@@ -42,7 +42,7 @@ class RenderPlanarArrowGraphicalMarker;
 /**
  * \brief The shared data for the CircularGraphicalMarker
  */
-class FARSA_WSIM_TEMPLATE CircularGraphicalMarkerShared : public OwnerFollowerShared
+class SALSA_WSIM_TEMPLATE CircularGraphicalMarkerShared : public OwnerFollowerShared
 {
 public:
 	/**
@@ -68,7 +68,7 @@ public:
  * The circle lies in the local z = 0 plane. It has a solid color (no light
  * effects)
  */
-class FARSA_WSIM_API CircularGraphicalMarker : public OwnerFollower
+class SALSA_WSIM_API CircularGraphicalMarker : public OwnerFollower
 {
 public:
 	/**
@@ -119,7 +119,7 @@ private:
  * We only implement the render function, we don't provide the rendering of the
  * AABB
  */
-class FARSA_WSIM_API RenderCircularGraphicalMarker : public RenderOwnerFollower
+class SALSA_WSIM_API RenderCircularGraphicalMarker : public RenderOwnerFollower
 {
 public:
 	/**
@@ -153,7 +153,7 @@ public:
 /**
  * \brief The shared data for the PlanarArrowGraphicalMarker
  */
-class FARSA_WSIM_TEMPLATE PlanarArrowGraphicalMarkerShared : public OwnerFollowerShared
+class SALSA_WSIM_TEMPLATE PlanarArrowGraphicalMarkerShared : public OwnerFollowerShared
 {
 public:
 	/**
@@ -200,7 +200,7 @@ public:
  * in the origin of the local frame of reference. It has a solid color (no light
  * effects).
  */
-class FARSA_WSIM_API PlanarArrowGraphicalMarker : public OwnerFollower
+class SALSA_WSIM_API PlanarArrowGraphicalMarker : public OwnerFollower
 {
 public:
 	/**
@@ -255,7 +255,7 @@ private:
  * We only implement the render function, we don't provide the rendering of the
  * AABB
  */
-class FARSA_WSIM_API RenderPlanarArrowGraphicalMarker : public RenderOwnerFollower
+class SALSA_WSIM_API RenderPlanarArrowGraphicalMarker : public RenderOwnerFollower
 {
 public:
 	/**

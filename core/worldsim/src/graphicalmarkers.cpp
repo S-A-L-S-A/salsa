@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -21,9 +21,9 @@
  ********************************************************************************/
 
 #include "graphicalmarkers.h"
-#include "farsaglutils.h"
+#include "salsaglutils.h"
 
-namespace farsa {
+namespace salsa {
 
 CircularGraphicalMarker::CircularGraphicalMarker(World* world, SharedDataWrapper<Shared> shared, real radius, const wMatrix& disp, QString name, const wMatrix& tm)
 	: OwnerFollower(world, shared, disp, name, tm)

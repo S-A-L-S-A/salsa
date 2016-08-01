@@ -24,12 +24,12 @@
 
 #include "outputfunction.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief GaussFunction
  *
  */
-class FARSA_NNFW_API GaussFunction : public OutputFunction {
+class SALSA_NNFW_API GaussFunction : public OutputFunction {
 public:
 	/*! Construct */
 	GaussFunction( ConfigurationManager& params, QString prefix, Component* parent=NULL );

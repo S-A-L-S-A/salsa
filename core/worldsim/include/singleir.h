@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -26,7 +26,7 @@
 #include "ownerfollower.h"
 #include "worldhelpers.h"
 
-namespace farsa {
+namespace salsa {
 
 class World;
 class RenderSingleIR;
@@ -34,7 +34,7 @@ class RenderSingleIR;
 /**
  * \brief The shared data for the SingleIR
  */
-class FARSA_WSIM_TEMPLATE SingleIRShared : public OwnerFollowerShared
+class SALSA_WSIM_TEMPLATE SingleIRShared : public OwnerFollowerShared
 {
 public:
 	/**
@@ -131,7 +131,7 @@ public:
  * but are more computationally expensive. Using a single ray implies a zero
  * aperture. The upper part of the sensor is towards positive Y
  */
-class FARSA_WSIM_API SingleIR : public OwnerFollower
+class SALSA_WSIM_API SingleIR : public OwnerFollower
 {
 public:
 	/**
@@ -365,7 +365,7 @@ private:
  * We only implement the render function, we don't provide the rendering of the
  * AABB
  */
-class FARSA_WSIM_API RenderSingleIR : public RenderOwnerFollower
+class SALSA_WSIM_API RenderSingleIR : public RenderOwnerFollower
 {
 public:
 	/**
@@ -396,6 +396,6 @@ public:
 	void render(const SingleIRShared* sharedData, GLContextAndData* contextAndData);
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

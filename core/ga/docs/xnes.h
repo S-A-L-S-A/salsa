@@ -2,7 +2,7 @@
  * Concrete example for the xNES algorithm (.h)
  */
  
-class xnes : public EvoAlgo, public : farsa::Component
+class xnes : public EvoAlgo, public : salsa::Component
 {
 
 public:

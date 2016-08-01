@@ -20,7 +20,7 @@
 #include "neuralnet.h"
 #include "learningalgorithm.h"
 
-namespace farsa {
+namespace salsa {
 
 void Pattern::setInputsOf( Cluster* cl, const DoubleVector& ins ) {
 	pinfo[cl].inputs.resize( cl->numNeurons() );

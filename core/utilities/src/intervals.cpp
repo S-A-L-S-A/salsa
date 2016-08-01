@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Utilities Library                                                     *
+ *  SALSA Utilities Library                                                     *
  *  Copyright (C) 2007-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -20,7 +20,7 @@
 #include "intervals.h"
 #include <QRegExp>
 
-namespace farsa {
+namespace salsa {
 
 SimpleInterval SimpleInterval::fromString(QString str, bool* ok)
 {
@@ -442,11 +442,11 @@ void Intervals::subtract(OtherIterator_t otherBegin, OtherIterator_t otherEnd)
 }
 
 // Explicit template instantiation of the functions above
-template void Intervals::intersect<QLinkedList<farsa::SimpleInterval>::const_iterator>(QLinkedList<farsa::SimpleInterval>::const_iterator otherBegin, QLinkedList<farsa::SimpleInterval>::const_iterator otherEnd);
-template void Intervals::intersect<const farsa::SimpleInterval*>(const farsa::SimpleInterval* otherBegin, const farsa::SimpleInterval* otherEnd);
-template void Intervals::unite<QLinkedList<farsa::SimpleInterval>::const_iterator>(QLinkedList<farsa::SimpleInterval>::const_iterator otherBegin, QLinkedList<farsa::SimpleInterval>::const_iterator otherEnd);
-template void Intervals::unite<const farsa::SimpleInterval*>(const farsa::SimpleInterval* otherBegin, const farsa::SimpleInterval* otherEnd);
-template void Intervals::subtract<QLinkedList<farsa::SimpleInterval>::const_iterator>(QLinkedList<farsa::SimpleInterval>::const_iterator otherBegin, QLinkedList<farsa::SimpleInterval>::const_iterator otherEnd);
-template void Intervals::subtract<const farsa::SimpleInterval*>(const farsa::SimpleInterval* otherBegin, const farsa::SimpleInterval* otherEnd);
+template void Intervals::intersect<QLinkedList<salsa::SimpleInterval>::const_iterator>(QLinkedList<salsa::SimpleInterval>::const_iterator otherBegin, QLinkedList<salsa::SimpleInterval>::const_iterator otherEnd);
+template void Intervals::intersect<const salsa::SimpleInterval*>(const salsa::SimpleInterval* otherBegin, const salsa::SimpleInterval* otherEnd);
+template void Intervals::unite<QLinkedList<salsa::SimpleInterval>::const_iterator>(QLinkedList<salsa::SimpleInterval>::const_iterator otherBegin, QLinkedList<salsa::SimpleInterval>::const_iterator otherEnd);
+template void Intervals::unite<const salsa::SimpleInterval*>(const salsa::SimpleInterval* otherBegin, const salsa::SimpleInterval* otherEnd);
+template void Intervals::subtract<QLinkedList<salsa::SimpleInterval>::const_iterator>(QLinkedList<salsa::SimpleInterval>::const_iterator otherBegin, QLinkedList<salsa::SimpleInterval>::const_iterator otherEnd);
+template void Intervals::subtract<const salsa::SimpleInterval*>(const salsa::SimpleInterval* otherBegin, const salsa::SimpleInterval* otherEnd);
 
-} // end namespace farsa
+} // end namespace salsa

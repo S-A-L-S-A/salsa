@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -44,7 +44,7 @@
 	#error you must byte-align these structures with the appropriate compiler directives
 #endif
 
-namespace farsa {
+namespace salsa {
 
 typedef unsigned char byte;
 typedef unsigned short word;
@@ -91,15 +91,15 @@ struct MS3DMaterial {
 //--- MS3D STRUCTURES ENDS ---------
 //----------------------------------
 
-} // end namespace farsa
+} // end namespace salsa
 
 #include <cstring>
 #include <QString>
 #include <QFile>
 #include <QImage>
-#include "farsaglutils.h"
+#include "salsaglutils.h"
 
-namespace farsa {
+namespace salsa {
 
 WMesh::WMesh(World* world, SharedDataWrapper<Shared> shared, const wMatrix& disp, QString name, const wMatrix& tm)
 	: OwnerFollower(world, shared, disp, name, tm)
@@ -241,4 +241,4 @@ void RenderWMesh::render(const WMeshShared* sharedData, GLContextAndData* contex
 	glPopMatrix();
 }
 
-} // end namespace farsa
+} // end namespace salsa

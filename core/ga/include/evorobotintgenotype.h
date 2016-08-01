@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -28,14 +28,14 @@
 #include <QVector>
 #include <QTextStream>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief A genotype storing genes as small integers
  *
  * This is compatible with evorobot genotype
  */
-class FARSA_GA_API EvorobotIntGenotype
+class SALSA_GA_API EvorobotIntGenotype
 {
 public:
 	/**
@@ -133,7 +133,7 @@ private:
 
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif
 

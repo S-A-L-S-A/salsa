@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -23,7 +23,7 @@
 #include "commandlineparser.h"
 #include "utilitiesexceptions.h"
 
-namespace farsa {
+namespace salsa {
 
 namespace pluginHelper {
 
@@ -47,7 +47,7 @@ QString CommandLineParser::helpMessage() const
 
 	const QString msg = "\
 The " + appName + " command is used to parse headers and generate commands to\n\
-register classes into the FARSA Factory and to generate the function returning\n\
+register classes into the SALSA Factory and to generate the function returning\n\
 the list of dependencies.\n\
 \n\
 Usage:\n\
@@ -55,13 +55,13 @@ Usage:\n\
 \n\
 The program parses the headers listed on the command line and generates a header\n\
 and source files in the destination directory containing the declaration and\n\
-definition of a subclass of the FarsaPlugin class to register classes into the\n\
+definition of a subclass of the SalsaPlugin class to register classes into the\n\
 factory and to return the list of dependencies read from depfile. Moreover for\n\
 each header a file is created inside headersdestdir with the same name and\n\
-content of the input header except that the FARSA_PLUGIN_API,\n\
-FARSA_PLUGIN_TEMPLATE and FARSA_PLUGINS_INTERNAL macros are replaced with\n\
-FARSA_PLUGIN_API_IMPORT, FARSA_PLUGIN_TEMPLATE_IMPORT and \n\
-FARSA_PLUGINS_INTERNAL_IMPORT respectively. The program return value is 0 for\n\
+content of the input header except that the SALSA_PLUGIN_API,\n\
+SALSA_PLUGIN_TEMPLATE and SALSA_PLUGINS_INTERNAL macros are replaced with\n\
+SALSA_PLUGIN_API_IMPORT, SALSA_PLUGIN_TEMPLATE_IMPORT and \n\
+SALSA_PLUGINS_INTERNAL_IMPORT respectively. The program return value is 0 for\n\
 successfull execution, 1 in case of error. If an error occurs, an explanation is\n\
 printed on the standard error stream.\n\
 \t<pluginname>     The name of the plugin being compiled. The name\n\
@@ -91,14 +91,14 @@ If called this way, the application prints this help message and exists.\n\
 void CommandLineParser::parse()
 {
 	if (m_arguments.size() < 2) {
-		farsa::throwUserRuntimeError("Error parsing the command line: invalid usage: you must provide at least one argument. Call with --help to see the help message");
+		salsa::throwUserRuntimeError("Error parsing the command line: invalid usage: you must provide at least one argument. Call with --help to see the help message");
 	} else if (m_arguments[1] == "--help") {
 		m_printHelp = true;
 
 		// Ending pasing here
 		return;
 	} else if (m_arguments.size() < 7) {
-		farsa::throwUserRuntimeError("Error parsing the command line: invalid usage: when not called with --help we need at least 6 arguments. Call with --help to see the help message");
+		salsa::throwUserRuntimeError("Error parsing the command line: invalid usage: when not called with --help we need at least 6 arguments. Call with --help to see the help message");
 	}
 
 	// Getting all the parameters

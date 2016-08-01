@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2009 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -25,7 +25,7 @@
 #include <QList>
 #include <QFuture>
 
-namespace farsa {
+namespace salsa {
 
 class Evaluation;
 class Reproduction;
@@ -41,7 +41,7 @@ class Reproduction;
  *
  * \ingroup ga_gas
  */
-class FARSA_GA_API ParallelGA : public GeneticAlgo {
+class SALSA_GA_API ParallelGA : public GeneticAlgo {
 public:
 	/*! Constructor */
 	ParallelGA();
@@ -148,6 +148,6 @@ private:
 	QFuture<void>* future;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

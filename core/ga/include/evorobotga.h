@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA Experiments Library                                                   *
+//  *  SALSA Experiments Library                                                   *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
 //  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -31,14 +31,14 @@
 // #include "evorobotintgenotype.h"
 // #include <QString>
 //
-// namespace farsa {
+// namespace salsa {
 //
 // /**
 //  * \brief Genetic algorithm from evorobot (generational implementation)
 //  *
 //  * This class still contains parts from the original algorithm...
 //  */
-// class FARSA_GA_API EvorobotGA : public EvoAlgo
+// class SALSA_GA_API EvorobotGA : public EvoAlgo
 // {
 // public:
 // 	static bool configuresInConstructor()
@@ -474,7 +474,7 @@
 //
 //         int* operator[](int i)
 //         {
-// #ifdef FARSA_DEBUG
+// #ifdef SALSA_DEBUG
 //             if (i > m_pop.size()) {
 //                 abort();
 //             }
@@ -484,7 +484,7 @@
 //
 //         const int* operator[](int i) const
 //         {
-// #ifdef FARSA_DEBUG
+// #ifdef SALSA_DEBUG
 //             if (i > m_pop.size()) {
 //                 abort();
 //             }
@@ -545,6 +545,6 @@
 // 	int pheGen;
 // };
 //
-// } // end namespace farsa
+// } // end namespace salsa
 //
 // #endif

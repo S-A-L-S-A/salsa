@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experimentes Library                                                  *
+ *  SALSA Experimentes Library                                                  *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -26,7 +26,7 @@
 #include "configurationmanager.h"
 #include "configurationhelper.h"
 
-namespace farsa {
+namespace salsa {
 
 #warning VALUTARE SE GenotypesPreparer E GAEvaluator DEVONO ESSERE COMPONENTI O NO E SE QUESTA CLASSE DEVE DISTRUGGERLI O NO. PIÙ IN GENERALE LE DUE COSE SONO LEGATE: FORSE SI PUÒ DIRE CHE SI DISTRUGGONO SOLO I Component E CHE CHI PRENDE UN OGGETTO COME ISTANZA DI UNA SOTTOCLASSE DI Component (INVECE CHE COME ISTANZA DI UNA INTERFACCIA) DEVE DISTRUGGERLO
 
@@ -82,4 +82,4 @@ void EvoAlgo::seedChanged(unsigned int)
 {
 }
 
-} // end namespace farsa
+} // end namespace salsa

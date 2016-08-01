@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -30,12 +30,12 @@
 #include <QSet>
 #include <QStringList>
 #include "typesdb.h"
-#include "farsaplugin.h"
+#include "salsaplugin.h"
 #include "logger.h"
 #include "dependencysorter.h"
 
 // We need this to set the DLL search path on Windows
-#ifdef FARSA_WIN
+#ifdef SALSA_WIN
 	#include "Windows.h"
 #endif
 
@@ -46,7 +46,7 @@
 	#pragma warning(disable:4996)
 #endif
 
-namespace farsa {
+namespace salsa {
 
 QString Total99Resources::findResource(QString resourceName)
 {
@@ -83,14 +83,14 @@ QString Total99Resources::pluginSuffix;
 
 bool Total99Resources::loadPlugin(QString filename)
 {
-#ifdef FARSA_WIN
+#ifdef SALSA_WIN
 	// On Windows, we first have to change the DLL search path to include the directory with plugins
 	SetDllDirectory(pluginBasePath.toLatin1().data());
 #endif
 
 	// Loading the plugin
 	QString errorString;
-	FarsaPlugin* plugin = loadSinglePlugin(filename, &errorString);
+	SalsaPlugin* plugin = loadSinglePlugin(filename, &errorString);
 
 	if (plugin == NULL) {
 		// Error loading the plugin
@@ -106,7 +106,7 @@ bool Total99Resources::loadPlugin(QString filename)
 	// to avoid loading the same plugin twice) and we keep a list of dependencies yet to load. Here it is not
 	// important the loading order (while the registration order is, see below).
 	QStringList dependenciesToLoad = plugin->getDependencies();
-	QMap<QString, FarsaPlugin*> loadedDependencies;
+	QMap<QString, SalsaPlugin*> loadedDependencies;
 	while (!dependenciesToLoad.empty()) {
 		// Taking the first dependency
 		QString curDep = dependenciesToLoad.takeFirst();
@@ -148,7 +148,7 @@ bool Total99Resources::loadPlugin(QString filename)
 	// We can finally register the plugin we loaded first
 	plugin->registerTypes();
 
-#ifdef FARSA_WIN
+#ifdef SALSA_WIN
 	// Reverting to the default behaviour
 	SetDllDirectory(NULL);
 #endif
@@ -163,8 +163,8 @@ void Total99Resources::loadPlugins(QDir dir)
 			continue;
 		}
 
-		// Building a regular expression to actually load only files containing farsaPlugin
-		QRegExp r(".*farsaPlugin.*");
+		// Building a regular expression to actually load only files containing salsaPlugin
+		QRegExp r(".*salsaPlugin.*");
 		if (r.indexIn(pluginfile) == -1) {
 			continue;
 		}
@@ -174,7 +174,7 @@ void Total99Resources::loadPlugins(QDir dir)
 	}
 }
 
-void Total99Resources::loadPlugins(const farsa::ConfigurationManager& params)
+void Total99Resources::loadPlugins(const salsa::ConfigurationManager& params)
 {
 	// First loading plugins in the pluginFile:X parameters
 	QStringList plugins = params.getParametersWithPrefixList("TOTAL99", "pluginFile");
@@ -182,7 +182,7 @@ void Total99Resources::loadPlugins(const farsa::ConfigurationManager& params)
 		QString value = params.getValue("TOTAL99/" + param);
 		if (!QFileInfo(value).isFile()) {
 			// Trying to see if the plugin is in the global plugin directory
-			value = pluginBasePath + "/" + value + "_farsaPlugin" + pluginSuffix;
+			value = pluginBasePath + "/" + value + "_salsaPlugin" + pluginSuffix;
 			if (!QFileInfo(value).isFile()) {
 				Logger::warning( "Ignoring un-existing plugin \"" + params.getValue("TOTAL99/" + param) + "\"" );
 				continue;
@@ -205,28 +205,28 @@ void Total99Resources::loadPlugins(const farsa::ConfigurationManager& params)
 
 void Total99Resources::initialize()
 {
-#ifdef FARSA_WIN
+#ifdef SALSA_WIN
 	confBasePath = qApp->applicationDirPath() + "/../conf";
 	pluginConfigBasePath = qApp->applicationDirPath() + "/../plugins";
 #else
-	confBasePath = qApp->applicationDirPath() + "/../share/farsa/conf";
-	pluginConfigBasePath = qApp->applicationDirPath() + "/../share/farsa/plugins";
+	confBasePath = qApp->applicationDirPath() + "/../share/salsa/conf";
+	pluginConfigBasePath = qApp->applicationDirPath() + "/../share/salsa/plugins";
 #endif
 
-	pluginBasePath = qApp->applicationDirPath() + "/../lib/farsa/plugins";
-#ifdef FARSA_LINUX
-	confUserPath = QString(getenv("HOME")) + "/.farsa/total99";
+	pluginBasePath = qApp->applicationDirPath() + "/../lib/salsa/plugins";
+#ifdef SALSA_LINUX
+	confUserPath = QString(getenv("HOME")) + "/.salsa/total99";
 	pluginSuffix = ".so";
 #endif
 
-#ifdef FARSA_MAC
-	confUserPath = QString(getenv("HOME")) + "/Library/Application Support/farsa/total99";
+#ifdef SALSA_MAC
+	confUserPath = QString(getenv("HOME")) + "/Library/Application Support/salsa/total99";
 	pluginSuffix = ".dylib";
 #endif
 
-#ifdef FARSA_WIN
-	confUserPath = QString(getenv("APPDATA")) + "/farsa/total99";
-#ifdef FARSA_DEBUG
+#ifdef SALSA_WIN
+	confUserPath = QString(getenv("APPDATA")) + "/salsa/total99";
+#ifdef SALSA_DEBUG
 	pluginSuffix = "d.dll";
 #else
 	pluginSuffix = ".dll";
@@ -240,15 +240,15 @@ void Total99Resources::initialize()
 	Logger::info("Total99 Resources Initialized");
 }
 
-FarsaPlugin* Total99Resources::loadSinglePlugin(QString filename, QString* errorString)
+SalsaPlugin* Total99Resources::loadSinglePlugin(QString filename, QString* errorString)
 {
 	if (!QFileInfo(filename).isFile()) {
-		filename = pluginBasePath + "/" + filename + "_farsaPlugin" + pluginSuffix;
+		filename = pluginBasePath + "/" + filename + "_salsaPlugin" + pluginSuffix;
 	}
 
 	// Trying to load the plugin
 	QPluginLoader loader(filename);
-	FarsaPlugin* plugin = qobject_cast<FarsaPlugin*>(loader.instance());
+	SalsaPlugin* plugin = qobject_cast<SalsaPlugin*>(loader.instance());
 	if ((plugin == NULL) && (errorString != NULL)) {
 		*errorString = "Error trying to load \"" + filename + "\", reason: " + loader.errorString();
 	}

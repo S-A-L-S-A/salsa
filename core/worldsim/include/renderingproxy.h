@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -28,11 +28,11 @@
 #include <QSet>
 #include "dataexchange.h"
 
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 	#include <cstdlib>
 #endif
 
-namespace farsa {
+namespace salsa {
 
 class GLContextAndData;
 class WObject;
@@ -61,7 +61,7 @@ namespace __RenderingProxy_internal {
 	 * \internal
 	 */
 	template <class T>
-	void FARSA_WSIM_TEMPLATE render(WEntity* dummy, typename T::Renderer* renderer, const typename T::Shared* sharedData, GLContextAndData* contextAndData);
+	void SALSA_WSIM_TEMPLATE render(WEntity* dummy, typename T::Renderer* renderer, const typename T::Shared* sharedData, GLContextAndData* contextAndData);
 
 	/**
 	 * \brief The function calling the rendering functions for WObjects
@@ -75,7 +75,7 @@ namespace __RenderingProxy_internal {
 	 * \internal
 	 */
 	template <class T>
-	void FARSA_WSIM_TEMPLATE render(WObject* dummy, typename T::Renderer* renderer, const typename T::Shared* sharedData, GLContextAndData* contextAndData);
+	void SALSA_WSIM_TEMPLATE render(WObject* dummy, typename T::Renderer* renderer, const typename T::Shared* sharedData, GLContextAndData* contextAndData);
 
 	/**
 	 * \brief The function calling the rendering functions for PhyObjects
@@ -89,7 +89,7 @@ namespace __RenderingProxy_internal {
 	 * \internal
 	 */
 	template <class T>
-	void FARSA_WSIM_TEMPLATE render(PhyObject* dummy, typename T::Renderer* renderer, const typename T::Shared* sharedData, GLContextAndData* contextAndData);
+	void SALSA_WSIM_TEMPLATE render(PhyObject* dummy, typename T::Renderer* renderer, const typename T::Shared* sharedData, GLContextAndData* contextAndData);
 
 	/**
 	 * \brief The function calling the rendering functions for PhyJoints
@@ -103,7 +103,7 @@ namespace __RenderingProxy_internal {
 	 * \internal
 	 */
 	template <class T>
-	void FARSA_WSIM_TEMPLATE render(PhyJoint* dummy, typename T::Renderer* renderer, const typename T::Shared* sharedData, GLContextAndData* contextAndData);
+	void SALSA_WSIM_TEMPLATE render(PhyJoint* dummy, typename T::Renderer* renderer, const typename T::Shared* sharedData, GLContextAndData* contextAndData);
 
 	/**
 	 * \brief The function calling the rendering functions for
@@ -118,7 +118,7 @@ namespace __RenderingProxy_internal {
 	 * \internal
 	 */
 	template <class T>
-	void FARSA_WSIM_TEMPLATE render(SensorController* dummy, typename T::Renderer* renderer, const typename T::Shared* sharedData, GLContextAndData* contextAndData);
+	void SALSA_WSIM_TEMPLATE render(SensorController* dummy, typename T::Renderer* renderer, const typename T::Shared* sharedData, GLContextAndData* contextAndData);
 
 	/**
 	 * \brief The function calling the rendering functions for
@@ -133,7 +133,7 @@ namespace __RenderingProxy_internal {
 	 * \internal
 	 */
 	template <class T>
-	void FARSA_WSIM_TEMPLATE render(MotorController* dummy, typename T::Renderer* renderer, const typename T::Shared* sharedData, GLContextAndData* contextAndData);
+	void SALSA_WSIM_TEMPLATE render(MotorController* dummy, typename T::Renderer* renderer, const typename T::Shared* sharedData, GLContextAndData* contextAndData);
 
 	/**
 	 * \brief An utility function calling one of the functions above with
@@ -145,7 +145,7 @@ namespace __RenderingProxy_internal {
 	 * \internal
 	 */
 	template <class T>
-	void FARSA_WSIM_TEMPLATE render(typename T::Renderer* renderer, const typename T::Shared* sharedData, GLContextAndData* contextAndData);
+	void SALSA_WSIM_TEMPLATE render(typename T::Renderer* renderer, const typename T::Shared* sharedData, GLContextAndData* contextAndData);
 }
 
 /**
@@ -157,7 +157,7 @@ namespace __RenderingProxy_internal {
  * (which may be the same as the simulation one) in which the render() function
  * is called
  */
-class FARSA_WSIM_TEMPLATE AbstractRenderingProxy
+class SALSA_WSIM_TEMPLATE AbstractRenderingProxy
 {
 public:
 	/**
@@ -197,7 +197,7 @@ public:
  * thread. Type is the WEntity to render
  */
 template <class Type>
-class FARSA_WSIM_TEMPLATE DataFromWEntityRenderingProxy : public AbstractRenderingProxy
+class SALSA_WSIM_TEMPLATE DataFromWEntityRenderingProxy : public AbstractRenderingProxy
 {
 public:
 	/**
@@ -270,7 +270,7 @@ private:
  * copied data. Use this when the renderer and WEntity live in different threads
  */
 template <class Type>
-class FARSA_WSIM_TEMPLATE CopiedDataRenderingProxy : public AbstractRenderingProxy
+class SALSA_WSIM_TEMPLATE CopiedDataRenderingProxy : public AbstractRenderingProxy
 {
 public:
 	/**
@@ -357,7 +357,7 @@ private:
  * corresponding AbstractRenderingProxy objects for a given WEntity when needed.
  * This class is NOT thread safe, use it only in the same thread as World
  */
-class FARSA_WSIM_TEMPLATE AbstractRenderWEntityCreator
+class SALSA_WSIM_TEMPLATE AbstractRenderWEntityCreator
 {
 public:
 	/**
@@ -405,7 +405,7 @@ public:
  * generated.
  */
 template <class Type>
-class FARSA_WSIM_TEMPLATE RenderWEntityCreator : public AbstractRenderWEntityCreator
+class SALSA_WSIM_TEMPLATE RenderWEntityCreator : public AbstractRenderWEntityCreator
 {
 public:
 	/**
@@ -465,7 +465,7 @@ private:
 	const Type* const m_entity;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #include "wobject.h"
 #include "phyobject.h"
@@ -473,7 +473,7 @@ private:
 #include "sensorcontrollers.h"
 #include "motorcontrollers.h"
 
-namespace farsa {
+namespace salsa {
 
 namespace __RenderingProxy_internal {
 	template <class T>

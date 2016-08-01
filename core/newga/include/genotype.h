@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -31,14 +31,14 @@
 #include <QTextStream>
 #include <cstdlib>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The genotype
  *
  * COMMENT HERE
  */
-class FARSA_NEWGA_TEMPLATE Genotype : public ParameterSettableInConstructor
+class SALSA_NEWGA_TEMPLATE Genotype : public ParameterSettableInConstructor
 {
 public:
 	/**
@@ -119,7 +119,7 @@ protected:
  *
  * COMMENT HERE
  */
-class FARSA_NEWGA_API GenotypeFloat : public Genotype
+class SALSA_NEWGA_API GenotypeFloat : public Genotype
 {
 public:
 	/**
@@ -239,7 +239,7 @@ private:
  *
  * COMMENT HERE
  */
-class FARSA_NEWGA_API GenotypeInt : public Genotype
+class SALSA_NEWGA_API GenotypeInt : public Genotype
 {
 public:
 	/**
@@ -347,6 +347,6 @@ private:
 	int m_seed;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

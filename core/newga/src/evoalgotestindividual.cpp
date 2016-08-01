@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                         *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -30,7 +30,7 @@
 #include <QGridLayout>
 #include <QFileDialog>
 
-namespace farsa {
+namespace salsa {
 
 namespace {
 	// The UI manager
@@ -165,9 +165,9 @@ void EvoAlgoTestIndividual::newDatumAvailable(DataDownloader<DownloadedData>* /*
 
 			m_genotypesChanged = true;
 
-			farsa::Logger::info(QString("Loaded %1 genotypes from file: %2").arg(m_genotypes.size()).arg(m_filename));
+			salsa::Logger::info(QString("Loaded %1 genotypes from file: %2").arg(m_genotypes.size()).arg(m_filename));
 		} else {
-			farsa::Logger::info(QString("Failed loading genotypes from file: %1").arg(m_filename));
+			salsa::Logger::info(QString("Failed loading genotypes from file: %1").arg(m_filename));
 		}
 	}
 
@@ -247,7 +247,7 @@ EvoAlgoTestIndividualGUI::EvoAlgoTestIndividualGUI(QString testName, QWidget* pa
 
 bool EvoAlgoTestIndividualGUI::event(QEvent* e)
 {
-	if (e->type() == farsa::NewDatumEvent<EvoAlgoTestIndividualDataToGUI>::newDatumEventType) {
+	if (e->type() == salsa::NewDatumEvent<EvoAlgoTestIndividualDataToGUI>::newDatumEventType) {
 		// We need a cylce because there could be more than one datum, when the uploader is connected
 		// (see dataexchange.h documentation for more information)
 		const EvoAlgoTestIndividualDataToGUI* d;
@@ -298,4 +298,4 @@ void EvoAlgoTestIndividualGUI::updateLabel()
 	m_filenameLabel->setText(QString("File with genotypes: %1 (%2 genotypes loaded)").arg(m_filename).arg(m_individualSpinBox->maximum() + 1));
 }
 
-} //end namespace farsa
+} //end namespace salsa

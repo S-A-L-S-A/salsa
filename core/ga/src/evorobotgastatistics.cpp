@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -25,7 +25,7 @@
 #include <QFile>
 #include <QTextStream>
 
-namespace farsa {
+namespace salsa {
 
 EvorobotGAStatistics::EvorobotGAStatistics()
 	: m_seed(0)
@@ -178,4 +178,4 @@ QString EvorobotGAStatistics::statFilename(const QString& dir) const
 	return dir + separator + "statS" + QString::number(m_seed) + ".fit";
 }
 
-} // end namespace farsa
+} // end namespace salsa

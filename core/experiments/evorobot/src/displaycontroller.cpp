@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA Experiments Library                                                   *
+//  *  SALSA Experiments Library                                                   *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
 //  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -42,7 +42,7 @@
 //
 // #define MAXFREEP 10000
 //
-// namespace farsa {
+// namespace salsa {
 //
 // NetworkDialog::NetworkDialog(Evonet* net, QWidget* parent, Qt::WindowFlags flags) : QWidget( parent, flags )
 // {
@@ -1814,7 +1814,7 @@
 // 	evonet = n;
 // }
 //
-// } //end namespace farsa
+// } //end namespace salsa
 //
 // // All the suff below is to restore the warning state on Windows
 // #if defined(_MSC_VER)

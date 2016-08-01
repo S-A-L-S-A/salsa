@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -47,7 +47,7 @@
 #include <QMap>
 #include <QString>
 
-namespace farsa {
+namespace salsa {
 
 class Evoga;
 
@@ -101,7 +101,7 @@ class Evoga;
  *  - "robot": the robot
  *  - "arena": if present, the arena with objects for wheeled robots simulations
  */
-class FARSA_NEWGA_API RobotExperiment : public OneNeuralNetworkExperimentInput<Evonet>, public SingleFitnessGAEvaluator, public FlowControlled, public ParameterSettableWithConfigureFunction, public ConcurrentResourcesUser
+class SALSA_NEWGA_API RobotExperiment : public OneNeuralNetworkExperimentInput<Evonet>, public SingleFitnessGAEvaluator, public FlowControlled, public ParameterSettableWithConfigureFunction, public ConcurrentResourcesUser
 {
 public:
 	//! Constructor
@@ -503,7 +503,7 @@ protected:
 
 	/*! \brief Returns the random generator
 	 *
-	 *  You should use this function in experiments instead of using farsa::globalRNG because this
+	 *  You should use this function in experiments instead of using salsa::globalRNG because this
 	 *  returns the correct generator depending on whether the same random sequence should be generated
 	 *  for all individuals of the same generation or not. The actual seed for each individual in a given
 	 *  generation depends on the seed of the genetic algorithm, the current generation and the total number
@@ -616,7 +616,7 @@ private:
 	bool sameRandomSequence;
 	/*! The pointer to the random that getRNG returns
 	 *
-	 *  This points either to farsa::globalRNG or to localRNG
+	 *  This points either to salsa::globalRNG or to localRNG
 	 */
 	RandomGenerator* randomGeneratorInUse;
 	/*! A local random generator used if sameRandomSequence is true */
@@ -625,6 +625,6 @@ private:
 	int curInd;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

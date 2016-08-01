@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -23,10 +23,10 @@
 #include "phycone.h"
 #include "private/phyobjectprivate.h"
 #include "private/worldprivate.h"
-#include "farsaglutils.h"
+#include "salsaglutils.h"
 #include "worldsimutils.h"
 
-namespace farsa {
+namespace salsa {
 
 void PhyCone::calculateAABB(const Shared* sharedData, wVector& minPoint, wVector& maxPoint, const wMatrix& tm)
 {
@@ -136,4 +136,4 @@ void RenderPhyCone::render(const PhyConeShared* sharedData, GLContextAndData* co
 	glPopMatrix();
 }
 
-} // end namespace farsa
+} // end namespace salsa

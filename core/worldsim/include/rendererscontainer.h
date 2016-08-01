@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -30,7 +30,7 @@
 #include <QImage>
 #include "wentity.h"
 
-namespace farsa {
+namespace salsa {
 
 class World;
 class AbstractRenderWEntityCreator;
@@ -52,7 +52,7 @@ class WorldGraphicalInfo;
  *       thread. Delete them in subclasses (both in the destructor and in
  *       rendererToBeDeleted())
  */
-class FARSA_WSIM_API AbstractRendererContainer
+class SALSA_WSIM_API AbstractRendererContainer
 {
 protected:
 	/**
@@ -359,6 +359,6 @@ private:
 // 	GLContextAndData m_glContextAndData;
 // };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

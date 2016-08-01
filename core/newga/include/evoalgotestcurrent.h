@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                         *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -34,7 +34,7 @@
 #include <QMap>
 #include "logger.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief Class for test of the selected individual
@@ -47,7 +47,7 @@ namespace farsa {
  * writing subclasses, ALWAYS remember to register the class with the factory,
  * so that it can be instantiated when needed.
  */
-class FARSA_NEWGA_API EvoAlgoTestCurrent : public EvoAlgoTest
+class SALSA_NEWGA_API EvoAlgoTestCurrent : public EvoAlgoTest
 {
 
 public:
@@ -105,6 +105,6 @@ public:
 	void runTest();
 };
 
-} //end namespace farsa
+} //end namespace salsa
 
 #endif

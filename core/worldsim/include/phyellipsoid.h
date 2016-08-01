@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -25,14 +25,14 @@
 
 #include "phyobject.h"
 
-namespace farsa {
+namespace salsa {
 
 class RenderPhyEllipsoid;
 
 /**
  * \brief The shared data for the PhyEllipsoid
  */
-class FARSA_WSIM_TEMPLATE PhyEllipsoidShared : public PhyObjectShared
+class SALSA_WSIM_TEMPLATE PhyEllipsoidShared : public PhyObjectShared
 {
 public:
 	/**
@@ -67,7 +67,7 @@ public:
 /**
  * \brief The class modelling a physical ellipsoid
  */
-class FARSA_WSIM_API PhyEllipsoid : public PhyObject
+class SALSA_WSIM_API PhyEllipsoid : public PhyObject
 {
 public:
 	/**
@@ -159,7 +159,7 @@ public:
 	}
 
 	// Adding code for virtual bounding box functions
-	FARSA_IMPLEMENT_VIRTUAL_BB
+	SALSA_IMPLEMENT_VIRTUAL_BB
 
 protected:
 	/**
@@ -190,7 +190,7 @@ private:
 /**
  * \brief The class rendering the PhyEllipsoid
  */
-class FARSA_WSIM_API RenderPhyEllipsoid : public RenderPhyObject
+class SALSA_WSIM_API RenderPhyEllipsoid : public RenderPhyObject
 {
 public:
 	/**
@@ -221,9 +221,9 @@ public:
 	void render(const PhyEllipsoidShared* sharedData, GLContextAndData* contextAndData);
 
 	// Adding code for virtual bounding box functions
-	FARSA_IMPLEMENT_VIRTUAL_RENDERER_BB(PhyEllipsoid)
+	SALSA_IMPLEMENT_VIRTUAL_RENDERER_BB(PhyEllipsoid)
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

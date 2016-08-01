@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -24,7 +24,7 @@
 #include "core/selection.h"
 #include <QVector>
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief Roulette wheel selection operator
  *
@@ -37,7 +37,7 @@ namespace farsa {
  *
  * \ingroup ga_sel
  */
-class FARSA_GA_API RouletteWheelSelection : public Selection {
+class SALSA_GA_API RouletteWheelSelection : public Selection {
 public:
 	/*! Constructor */
 	RouletteWheelSelection();
@@ -94,7 +94,7 @@ protected:
 	QVector<double> m_cumulativeFitness;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif
 

@@ -1,5 +1,5 @@
  /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -25,7 +25,7 @@
 #include "logger.h"
 #include <QPixmap>
 
-namespace farsa {
+namespace salsa {
 
 Render2DGui::Render2DGui(QWidget *parent, Qt::WindowFlags f)
 	: QLabel(parent, f)
@@ -82,5 +82,5 @@ void Render2DGui::timerEvent(QTimerEvent *)
 	setPixmap(QPixmap::fromImage(d->image));
 }
 
-} // end namespace farsa
+} // end namespace salsa
 

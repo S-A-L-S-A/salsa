@@ -34,7 +34,7 @@
 	#pragma warning(disable:4996)
 #endif
 
-namespace farsa {
+namespace salsa {
 // NOTE: I don't use snprintf instead of sprintf because it seems not to be in
 // the current C++ standard (C++03, it is instead in the C99 standard). Note
 // however that no buffer overflow is possible (buffer lengths are carefully
@@ -49,7 +49,7 @@ namespace farsa {
  * exception. The function takes a QString parameter, so it is easy to format
  * the error message.
  */
-class FARSA_UTIL_TEMPLATE RuntimeUserException : public BaseException
+class SALSA_UTIL_TEMPLATE RuntimeUserException : public BaseException
 {
 public:
 	/**
@@ -154,7 +154,7 @@ private:
  * throwing an exception of type RuntimeUserException (see class description)
  * \param reason the description of why the exception was thrown
  */
-inline void FARSA_UTIL_TEMPLATE throwUserRuntimeError(QString reason)
+inline void SALSA_UTIL_TEMPLATE throwUserRuntimeError(QString reason)
 {
 	throw RuntimeUserException(reason.toLatin1().data());
 }
@@ -166,7 +166,7 @@ inline void FARSA_UTIL_TEMPLATE throwUserRuntimeError(QString reason)
  * We cannot clone standard library exceptions, so we simply copy the what()
  * message here and use this to give feedback to the user
  */
-class FARSA_UTIL_TEMPLATE StandardLibraryException : public BaseException
+class SALSA_UTIL_TEMPLATE StandardLibraryException : public BaseException
 {
 public:
 	/**
@@ -679,7 +679,7 @@ private:
 	char m_errorMessage[256];
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 // All the suff below is to restore the warning state on Windows
 #if defined(_MSC_VER)

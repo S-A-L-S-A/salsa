@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -25,11 +25,11 @@
 #include "private/worldprivate.h"
 #include "worldsimutils.h"
 #include "worldsimexceptions.h"
-#include "farsaglutils.h"
+#include "salsaglutils.h"
 #include <QString>
 #include <cstdlib>
 
-namespace farsa {
+namespace salsa {
 
 PhyCompoundComponentsList::PhyCompoundComponentsList(World* world)
 	: OwnershipChangesListener()
@@ -158,7 +158,7 @@ void PhyCompoundObject::calculateAABB(const Shared* sharedData, wVector& minPoin
 	// Computing the AABBs of all components and merging them
 	const QList<PhyCompoundObjectShared::AbstractComponentAndData>& components = sharedData->components();
 
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 	// Safety check, just to be sure
 	if (Q_UNLIKELY(components.isEmpty())) {
 		abort();
@@ -348,7 +348,7 @@ RenderPhyCompoundObject::~RenderPhyCompoundObject()
 
 void RenderPhyCompoundObject::render(const PhyCompoundObjectShared* sharedData, GLContextAndData* contextAndData)
 {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 	// Safety check, just to be sure
 	if (Q_UNLIKELY(m_componentsRenderers.size() != sharedData->components().size())) {
 		abort();
@@ -365,7 +365,7 @@ void RenderPhyCompoundObject::render(const PhyCompoundObjectShared* sharedData, 
 		ComponentAndRenderer r = m_componentsRenderers[i];
 		PhyCompoundObjectShared::AbstractComponentAndData d = sharedData->components()[i];
 
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 		// Safety check, just to be sure
 		if (Q_UNLIKELY(r.component != d.component)) {
 			abort();
@@ -378,4 +378,4 @@ void RenderPhyCompoundObject::render(const PhyCompoundObjectShared* sharedData, 
 	glPopMatrix();
 }
 
-} // end namespace farsa
+} // end namespace salsa

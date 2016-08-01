@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA Experimentes Library                                                  *
+//  *  SALSA Experimentes Library                                                  *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Gianluca Massera <emmegian@yahoo.it>                                        *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -30,7 +30,7 @@
 // #include "robots.h"
 // #include "helperresources.h"
 //
-// namespace farsa {
+// namespace salsa {
 //
 // /**
 //  * \brief A class to add output neurons that can be used for custom operations
@@ -55,9 +55,9 @@
 //  * This motor also defines the following resources:
 //  * - name defined by the additionalOutputsResource parameter: the name of the
 //  *                   resource that can be used to access the additional outputs.
-//  *                   This can be accessed as a farsa::ResourceVector\<real\>
+//  *                   This can be accessed as a salsa::ResourceVector\<real\>
 //  */
-// class FARSA_EXPERIMENTS_API FakeMotor : public Motor
+// class SALSA_EXPERIMENTS_API FakeMotor : public Motor
 // {
 // public:
 // 	/**
@@ -155,7 +155,7 @@
 //  * maximum allowed velocity. It is used to get a velocity to apply to a joint to
 //  * reach a desired position
 //  */
-// class FARSA_EXPERIMENTS_API ProportionalController
+// class SALSA_EXPERIMENTS_API ProportionalController
 // {
 // public:
 // 	/**
@@ -257,6 +257,6 @@
 // 	double m_maxVelocity;
 // };
 //
-// } // end namespace farsa
+// } // end namespace salsa
 //
 // #endif

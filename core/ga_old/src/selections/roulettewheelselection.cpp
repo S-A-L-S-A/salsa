@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2009 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -23,7 +23,7 @@
 #include "configurationparameters.h"
 #include "randomgenerator.h"
 
-namespace farsa {
+namespace salsa {
 
 RouletteWheelSelection::RouletteWheelSelection() :
 	Selection(),
@@ -86,4 +86,4 @@ void RouletteWheelSelection::describe( QString type ) {
 	d.describeInt( "notSelectedForBreeding" ).limits( 0, INT_MAX ).help( "The worst notSelectedForBreeding individuals will be never selected for reproducing. The selection probability of an individual is proportional to its rank value" );
 }
 
-} // end namespace farsa
+} // end namespace salsa

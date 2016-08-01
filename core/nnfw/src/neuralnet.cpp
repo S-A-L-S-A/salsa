@@ -22,11 +22,11 @@
 #include "configurationhelper.h"
 #include "logger.h"
 
-#ifdef FARSA_USE_GRAPHVIZ
+#ifdef SALSA_USE_GRAPHVIZ
 	#include "neuralnetconfwidget.h"
 #endif
 
-namespace farsa {
+namespace salsa {
 
 NeuralNet::NeuralNet(ConfigurationManager& params, QString prefix, Component* parent) :
 	Component(params,prefix,parent) {
@@ -37,7 +37,7 @@ NeuralNet::~NeuralNet() {
 }
 
 ComponentUI* NeuralNet::getUIManager() {
-#ifdef FARSA_USE_GRAPHVIZ
+#ifdef SALSA_USE_GRAPHVIZ
 	return new NeuralNetUI( this );
 #else
 	return NULL;
@@ -54,7 +54,7 @@ void NeuralNet::removeObserver( NeuralNetObserver* observer ) {
 }
 
 void NeuralNet::addCluster( Cluster* c, bool isInput, bool isOutput ) {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 	if ( !c ) {
 		Logger::warning( "Null Pointer passed to addCluster! This operation will be ignored" );
 		return;
@@ -62,7 +62,7 @@ void NeuralNet::addCluster( Cluster* c, bool isInput, bool isOutput ) {
 #endif
 	// Check if the Cluster is already added
 	if ( find( c ) ) {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 		Logger::warning( "Cluster already added! addCluster will be ignored" );
 #endif
 		return;
@@ -82,7 +82,7 @@ void NeuralNet::addCluster( Cluster* c, bool isInput, bool isOutput ) {
 }
 
 bool NeuralNet::removeCluster( Cluster* c ) {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 	if ( !c ) {
 		Logger::warning( "Null Pointer passed to removeCluster! This operation will return false" );
 		return false;
@@ -100,7 +100,7 @@ bool NeuralNet::removeCluster( Cluster* c ) {
 }
 
 void NeuralNet::markAsInput( Cluster* c ) {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 	if ( !c ) {
 		Logger::warning( "Null Pointer passed to addCluster! This operation will be ignored" );
 		return;
@@ -108,7 +108,7 @@ void NeuralNet::markAsInput( Cluster* c ) {
 #endif
 	// Check if the Cluster exists
 	if ( !find( c ) ) {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 		Logger::warning( "attempt to mark a Cluster not present in this net!" );
 #endif
 		return;
@@ -121,7 +121,7 @@ void NeuralNet::markAsInput( Cluster* c ) {
 }
 
 void NeuralNet::markAsOutput( Cluster* c ) {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 	if ( !c ) {
 		Logger::warning( "Null Pointer passed to addCluster! This operation will be ignored" );
 		return;
@@ -129,7 +129,7 @@ void NeuralNet::markAsOutput( Cluster* c ) {
 #endif
 	// Check if the Cluster exists
 	if ( !find( c ) ) {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 		Logger::warning( "attempt to mark a Cluster not present in this net!" );
 #endif
 		return;
@@ -142,7 +142,7 @@ void NeuralNet::markAsOutput( Cluster* c ) {
 }
 
 void NeuralNet::unmark( Cluster* c ) {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 	if ( !c ) {
 		Logger::warning( "Null Pointer passed to addCluster! This operation will be ignored" );
 		return;
@@ -150,7 +150,7 @@ void NeuralNet::unmark( Cluster* c ) {
 #endif
 	// Check if the Cluster exists
 	if ( !find( c ) ) {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 		Logger::warning( "attempt to unmark a Cluster not present in this net!" );
 #endif
 		return;
@@ -169,7 +169,7 @@ void NeuralNet::unmarkAll( ) {
 }
 
 bool NeuralNet::isIsolated( Cluster* c ) const {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 	if ( !c ) {
 		Logger::warning( "Null Pointer passed to isIsolato! This operation will return false" );
 		return false;
@@ -195,7 +195,7 @@ ClusterList NeuralNet::hiddenClusters() const {
 }
 
 void NeuralNet::addLinker( Linker* l ) {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 	if ( !l ) {
 		Logger::warning( "Null Pointer passed to addLinker! This operation will be ignored" );
 		return;
@@ -203,12 +203,12 @@ void NeuralNet::addLinker( Linker* l ) {
 #endif
 	// Check if the Linker is already added
 	if ( find( l ) ) {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 		Logger::warning( "Linker already added! addLinker will be ignored" );
 #endif
 		return;
 	}
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 	// --- Check: Are There in this net the Clusters that linker l connects ???
 	if ( ! find( l->from() ) ) {
 		Logger::warning( QString("The linker that you want add links cluster ")+l->from()->name()+" that doesn't exist in this net! This operation will be ignored" );
@@ -229,7 +229,7 @@ void NeuralNet::addLinker( Linker* l ) {
 }
 
 bool NeuralNet::removeLinker( Linker* l ) {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 	if ( !l ) {
 		Logger::warning( "Null Pointer passed to removeLinker! This operation will return false" );
 		return false;
@@ -250,7 +250,7 @@ LinkerList NeuralNet::linkers() const {
 }
 
 LinkerList NeuralNet::linkers( Cluster* c, bool out ) const {
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 	if ( !c ) {
 		Logger::warning( "Null Pointer passed to linkers! This operation will return an empty LinkerList" );
 		return LinkerList();
@@ -276,7 +276,7 @@ void NeuralNet::setOrder( Updatable* u[], unsigned int dim ) {
 		if ( find( u[i] ) ) {
 			ups.append( u[i] );
 		}
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 		else {
 			Logger::warning( "In the Updatable order list passed there are some Clusters and/or Linkers not present in this NeuralNet" );
 		}
@@ -293,7 +293,7 @@ void NeuralNet::setOrder( const UpdatableList& u ) {
 		if ( find( u[i] ) ) {
 			ups.append( u[i] );
 		}
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 		else {
 			Logger::warning( "In the Updatable order list passed there are some Clusters and/or Linkers not present in this NeuralNet");
 		}
@@ -321,7 +321,7 @@ Updatable* NeuralNet::getByName( QString name ) {
 	if ( lksMap.contains( name ) ) {
 		return lksMap[name];
 	}
-#ifdef FARSA_DEBUG
+#ifdef SALSA_DEBUG
 	Logger::warning( QString("getByName: Updatable ")+name+" not present in BaseNeuralNet" );
 #endif
 	return NULL;
@@ -445,7 +445,7 @@ void NeuralNet::describe( QString type ) {
 	d.describeSubgroup( "CLUSTER" ).type( "Cluster" ).props( ParamIsList ).help( "A Cluster inside this neural network" );
 	d.describeSubgroup( "LINKER" ).type( "Linker" ).props( ParamIsList ).help( "A Linker inside this neural network" );
 
-#ifdef FARSA_USE_GRAPHVIZ
+#ifdef SALSA_USE_GRAPHVIZ
 	// set the graphical editor
 	setGraphicalEditor<NeuralNetConfWidget>(type);
 #endif

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                         *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -37,7 +37,7 @@
 #include <QMap>
 #include "logger.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief An abstract class for tests of evolved individuals
@@ -50,7 +50,7 @@ namespace farsa {
  * writing subclasses, ALWAYS remember to register the class with the factory,
  * so that it can be instantiated when needed.
  */
-class FARSA_NEWGA_API NewAbstractTest : public ParameterSettableWithConfigureFunction, public FlowControlled
+class SALSA_NEWGA_API NewAbstractTest : public ParameterSettableWithConfigureFunction, public FlowControlled
 {
 
 public:
@@ -153,7 +153,7 @@ protected:
  * writing subclasses, ALWAYS remember to register the class with the factory,
  * so that it can be instantiated when needed.
  */
-class FARSA_NEWGA_API EvoAlgoTest : public NewAbstractTest
+class SALSA_NEWGA_API EvoAlgoTest : public NewAbstractTest
 {
 
 public:
@@ -259,6 +259,6 @@ private:
 	RobotExperiment* m_gae;
 };
 
-} //end namespace farsa
+} //end namespace salsa
 
 #endif

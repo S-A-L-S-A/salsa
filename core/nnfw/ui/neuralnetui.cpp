@@ -30,7 +30,7 @@
 #include <QGraphicsView>
 #include <QScrollArea>
 
-namespace farsa {
+namespace salsa {
 
 NeuralNetUI::NeuralNetUI( NeuralNet* component )
 	: QObject(), ComponentUI() {
@@ -147,4 +147,4 @@ void NeuralNetUI::createQGVNetwork() {
 	view->setFixedSize( scene->sceneRect().width()+20, scene->sceneRect().height()+20 );
 }
 
-} // end namespace farsa
+} // end namespace salsa

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -26,7 +26,7 @@
 #include "worldsimconfig.h"
 #include "wobject.h"
 
-namespace farsa {
+namespace salsa {
 
 class World;
 class RenderOwnerFollower;
@@ -34,7 +34,7 @@ class RenderOwnerFollower;
 /**
  * \brief The shared data for the OwnerFollower
  */
-class FARSA_WSIM_TEMPLATE OwnerFollowerShared : public WObjectShared
+class SALSA_WSIM_TEMPLATE OwnerFollowerShared : public WObjectShared
 {
 public:
 	/**
@@ -69,7 +69,7 @@ public:
  * the matrix of this object directly (it will be changed in the postUpdate()
  * function)
  */
-class FARSA_WSIM_API OwnerFollower : public WObject
+class SALSA_WSIM_API OwnerFollower : public WObject
 {
 public:
 	/**
@@ -177,7 +177,7 @@ private:
  *
  * The implementation of functions in this class is mostly empty.
  */
-class FARSA_WSIM_API RenderOwnerFollower : public RenderWObject
+class SALSA_WSIM_API RenderOwnerFollower : public RenderWObject
 {
 public:
 	/**

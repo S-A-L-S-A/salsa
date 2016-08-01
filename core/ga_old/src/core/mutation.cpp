@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -22,7 +22,7 @@
 #include "configurationparameters.h"
 #include "configurationhelper.h"
 
-namespace farsa {
+namespace salsa {
 
 Mutation::Mutation() {
 	genomev = 0;
@@ -195,4 +195,4 @@ const Mutation::MutationRate& Mutation::getMutationRateForBit( int bit ) const {
 	return iter.value();
 }
 
-} // end namespace farsa
+} // end namespace salsa

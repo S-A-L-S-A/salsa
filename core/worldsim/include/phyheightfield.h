@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -20,18 +20,18 @@
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA  *
  ********************************************************************************/
 
-// This is not converted to FARSA2!!!
+// This is not converted to SALSA2!!!
 // #ifndef PHYHEIGHTFIELD_H
 // #define PHYHEIGHTFIELD_H
 //
 // #include "phyobject.h"
 // class NewtonMesh;
 //
-// namespace farsa {
+// namespace salsa {
 //
 // /*!  PhyHeightField class
 //  */
-// class FARSA_WSIM_API PhyHeightField : public PhyObject {
+// class SALSA_WSIM_API PhyHeightField : public PhyObject {
 // 	Q_OBJECT
 // public:
 // 	/*!  Create a static height field object in the physic world
@@ -67,6 +67,6 @@
 // 	void createPrivateObject();
 // };
 //
-// } // end namespace farsa
+// } // end namespace salsa
 //
 // #endif

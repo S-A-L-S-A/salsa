@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2014                                                     *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -33,7 +33,7 @@
 
 class QVBoxLayout;
 
-namespace farsa {
+namespace salsa {
 
 class RenderWorld;
 
@@ -45,7 +45,7 @@ class RenderWorld;
  * directly on the RenderWorld object. If you try to do this, it will crash on
  * some windows machines :-S
  */
-class FARSA_EXPERIMENTS_API RenderWorldWrapperWidget : public QWidget
+class SALSA_EXPERIMENTS_API RenderWorldWrapperWidget : public QWidget
 {
 	Q_OBJECT
 public:
@@ -97,7 +97,7 @@ protected:
 	wMatrix m_robotTm;
 };
 
-} //end namespace farsa
+} //end namespace salsa
 
 #endif
 

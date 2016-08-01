@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -29,7 +29,7 @@
 #include <QColor>
 #include "updatetrigger.h"
 
-namespace farsa {
+namespace salsa {
 
 class World;
 class RenderWEntity;
@@ -49,7 +49,7 @@ class WEntity;
  * and trigger one update for each "block" of modifications
  */
 template <class SharedDataType>
-class FARSA_WSIM_TEMPLATE SharedDataWrapper
+class SALSA_WSIM_TEMPLATE SharedDataWrapper
 {
 public:
 	/**
@@ -166,7 +166,7 @@ private:
  *          as rendering may happend in a different thread than the one WEntity
  *          lives in
  */
-class FARSA_WSIM_TEMPLATE WEntityShared
+class SALSA_WSIM_TEMPLATE WEntityShared
 {
 public:
 	/**
@@ -213,7 +213,7 @@ private:
  * You can register an instance of this class to a WEntity to get notifications
  * using the WEntity::registerOwnertshipChangesListener() function
  */
-class FARSA_WSIM_TEMPLATE OwnershipChangesListener
+class SALSA_WSIM_TEMPLATE OwnershipChangesListener
 {
 public:
 	/**
@@ -345,7 +345,7 @@ public:
  *       direct subclasses: WObject, PhyJoint, SensorController and
  *       MotorController
  */
-class FARSA_WSIM_API WEntity
+class SALSA_WSIM_API WEntity
 {
 public:
 	/**
@@ -365,7 +365,7 @@ public:
 	 * This keeps the owned object and whether the owner should destroy it
 	 * automatically or not
 	 */
-	struct FARSA_WSIM_TEMPLATE Owned {
+	struct SALSA_WSIM_TEMPLATE Owned {
 		/**
 		 * \brief Constructor
 		 *
@@ -782,7 +782,7 @@ private:
  * must not use it when rendering (a pointer to the data to use is passed to the
  * render() function).
  */
-class FARSA_WSIM_API RenderWEntity
+class SALSA_WSIM_API RenderWEntity
 {
 public:
 	/**

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -37,7 +37,7 @@
 #include <QFile>
 #include <QTextStream>
 
-namespace farsa {
+namespace salsa {
 
 // FakeSensor::FakeSensor(ConfigurationParameters& params, QString prefix) :
 // 	Sensor(params, prefix),
@@ -1154,7 +1154,7 @@ namespace farsa {
 //
 // 			for (QVector<PhyObject2DWrapper::AngularRangeAndColor>::const_iterator it = rangesAndColors.constBegin(); it != rangesAndColors.end(); ++it) {
 // 				// To safely compare with the aperture, we have to convert angles between -PI_GRECO and PI_GRECO
-// 				FARSA_DEBUG_TEST_INVALID(it->minAngle) FARSA_DEBUG_TEST_INVALID(it->maxAngle)
+// 				SALSA_DEBUG_TEST_INVALID(it->minAngle) SALSA_DEBUG_TEST_INVALID(it->maxAngle)
 // 				const double minAngle = normalizeRad(it->minAngle);
 // 				const double maxAngle = normalizeRad(it->maxAngle);
 // 				const QColor color = it->color;
@@ -1453,4 +1453,4 @@ unsigned int SampledIRDataLoader::getLinearIndex(unsigned int id, unsigned int a
 // 	return color;
 // }
 
-} // end namespace farsa
+} // end namespace salsa

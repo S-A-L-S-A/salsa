@@ -24,7 +24,7 @@
 #include "resource.h"
 #include "utilitiesconfig.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief A vector that can be used as a resource
@@ -32,7 +32,7 @@ namespace farsa {
  * The number of elements must be set in the constructor and cannot be changed.
  */
 template<class T>
-class FARSA_UTIL_TEMPLATE ResourceVector : public Resource
+class SALSA_UTIL_TEMPLATE ResourceVector : public Resource
 {
 public:
 	/**
@@ -98,6 +98,6 @@ protected:
 	T* const m_vector;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

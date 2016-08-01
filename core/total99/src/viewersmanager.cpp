@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -71,7 +71,7 @@ QString ViewerWidget::getGroup() const
 	return m_group;
 }
 
-ViewersManager::ViewersManager(ProjectManager* project, farsa::ConfigurationManager& params, QString prefix) :
+ViewersManager::ViewersManager(ProjectManager* project, salsa::ConfigurationManager& params, QString prefix) :
 	QObject(),
 	m_project(project),
 	m_viewers(),
@@ -101,7 +101,7 @@ ViewersManager::ViewersManager(ProjectManager* project, farsa::ConfigurationMana
 	}
 
 	// We also create the directory that will contain the viewers status if it is not present
-	QDir userDir(farsa::Total99Resources::confUserPath);
+	QDir userDir(salsa::Total99Resources::confUserPath);
 	userDir.mkdir("viewersStatus");
 }
 
@@ -215,7 +215,7 @@ void ViewersManager::restoreViewersStatus(QString projectFilename)
 	// If the file with the current viewers configuration is empty, it means that we have to create a new file, even if
 	// viewersStatusFile is not empty
 	if (m_currentViewersStateFile.isEmpty()) {
-		QDir viewersStatusDir(farsa::Total99Resources::confUserPath + "/viewersStatus");
+		QDir viewersStatusDir(salsa::Total99Resources::confUserPath + "/viewersStatus");
 
 		// Getting the list of all .ini files in ascending order so that we can add 1 to the number of
 		// the last file and
@@ -236,7 +236,7 @@ void ViewersManager::restoreViewersStatus(QString projectFilename)
 	// Now actually restoring viewers status
 
 	// The first thing is to restore the main window geometry
-	const QString str = farsa::ConfigurationHelper::getString(m_currentViewersState, "General/total99Geometry", "");
+	const QString str = salsa::ConfigurationHelper::getString(m_currentViewersState, "General/total99Geometry", "");
 	if (!str.isEmpty()) {
 		m_project->restoreGeometry(QByteArray::fromBase64(str.toLatin1()));
 	}
@@ -252,15 +252,15 @@ void ViewersManager::restoreViewersStatus(QString projectFilename)
 		// Now searching a group for the current viewer by comparing titles
 		foreach(QString guiGroup, guisForComponent) {
 			const QString curGuiGroup = viewer->getGroup() + "/" + guiGroup + "/";
-			QString title = farsa::ConfigurationHelper::getString(m_currentViewersState, curGuiGroup + "title", "");
+			QString title = salsa::ConfigurationHelper::getString(m_currentViewersState, curGuiGroup + "title", "");
 
 			if (title == viewer->getTitle()) {
 				// We have found the right group, restoring state
-				const QString str = farsa::ConfigurationHelper::getString(m_currentViewersState, curGuiGroup + "geometry", "");
+				const QString str = salsa::ConfigurationHelper::getString(m_currentViewersState, curGuiGroup + "geometry", "");
 				if (!str.isEmpty()) {
 					viewer->restoreGeometry(QByteArray::fromBase64(str.toLatin1()));
 				}
-				const bool visible = farsa::ConfigurationHelper::getBool(m_currentViewersState, curGuiGroup + "visible", false);
+				const bool visible = salsa::ConfigurationHelper::getBool(m_currentViewersState, curGuiGroup + "visible", false);
 				viewer->setVisible(visible);
 			}
 		}
@@ -284,7 +284,7 @@ void ViewersManager::restoreViewersStatus(QString projectFilename)
 	m_viewersStatusHashes[m_currentExpHash] = m_currentViewersStateFile;
 }
 
-void ViewersManager::save(farsa::ConfigurationManager& params, QString prefix)
+void ViewersManager::save(salsa::ConfigurationManager& params, QString prefix)
 {
 	// Saving associations, first with files, then with hashes
 	const QString filesGroup = prefix + "ViewersManager/Files";
@@ -302,5 +302,5 @@ void ViewersManager::save(farsa::ConfigurationManager& params, QString prefix)
 
 QString ViewersManager::getViewersStatusFilePath(QString statusFileName) const
 {
-	return farsa::Total99Resources::confUserPath + "/viewersStatus/" + statusFileName + ".ini";
+	return salsa::Total99Resources::confUserPath + "/viewersStatus/" + statusFileName + ".ini";
 }

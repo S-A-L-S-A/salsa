@@ -2,7 +2,7 @@
  * Implementation of the algorithm that combines xNES and back-propagation (.h)
  */
  
-class multiLearningAlgo : public xnes, public : farsa::Component
+class multiLearningAlgo : public xnes, public : salsa::Component
 {
 
 public:

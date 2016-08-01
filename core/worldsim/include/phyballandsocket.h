@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -31,14 +31,14 @@
 #include "wquaternion.h"
 #include "phyjoint.h"
 
-namespace farsa {
+namespace salsa {
 
 class RenderPhyBallAndSocket;
 
 /**
  * \brief The shared data for a PhyBallAndSocket
  */
-class FARSA_WSIM_TEMPLATE PhyBallAndSocketShared : public PhyJointShared
+class SALSA_WSIM_TEMPLATE PhyBallAndSocketShared : public PhyJointShared
 {
 public:
 	/**
@@ -96,7 +96,7 @@ public:
  *
  * A class implementing the Ball-and-Socket joint
  */
-class FARSA_WSIM_API PhyBallAndSocket : public PhyJoint
+class SALSA_WSIM_API PhyBallAndSocket : public PhyJoint
 {
 public:
 	/**
@@ -189,7 +189,7 @@ protected:
 /**
  * \brief The class rendering the PhyBallAndSocket
  */
-class FARSA_WSIM_API RenderPhyBallAndSocket : public RenderPhyJoint
+class SALSA_WSIM_API RenderPhyBallAndSocket : public RenderPhyJoint
 {
 public:
 	/**
@@ -220,6 +220,6 @@ public:
 	void render(const PhyBallAndSocketShared* sharedData, GLContextAndData* contextAndData);
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

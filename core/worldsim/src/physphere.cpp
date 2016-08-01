@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -23,9 +23,9 @@
 #include "physphere.h"
 #include "private/phyobjectprivate.h"
 #include "private/worldprivate.h"
-#include "farsaglutils.h"
+#include "salsaglutils.h"
 
-namespace farsa {
+namespace salsa {
 
 void PhySphere::calculateAABB(const Shared* sharedData, wVector& minPoint, wVector& maxPoint, const wMatrix& tm)
 {
@@ -107,4 +107,4 @@ void RenderPhySphere::render(const PhySphereShared* sharedData, GLContextAndData
 	glPopMatrix();
 }
 
-} // end namespace farsa
+} // end namespace salsa

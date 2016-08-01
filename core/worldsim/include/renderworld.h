@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -36,12 +36,12 @@
 #include "glcontextanddata.h"
 #include "wvector.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The 3D viewer of World
  */
-class FARSA_WSIM_API RenderWorld : public QGLViewer
+class SALSA_WSIM_API RenderWorld : public QGLViewer
 {
 	Q_OBJECT
 
@@ -216,9 +216,9 @@ private:
 	 */
 	wVector m_worldMax;
 
-#warning FIX BUG WHICH WAS RESOLVED IN FARSA TRUNK BETWEEN VERSIONS 1311 AND 1474 ABOUT LOADING QGLViewer STATUS FROM FILE (bool m_viewerStateRestoredFromFile, bool viewerStateRestoredFromFile() const AND OTHER STUFFS)
+#warning FIX BUG WHICH WAS RESOLVED IN SALSA TRUNK BETWEEN VERSIONS 1311 AND 1474 ABOUT LOADING QGLViewer STATUS FROM FILE (bool m_viewerStateRestoredFromFile, bool viewerStateRestoredFromFile() const AND OTHER STUFFS)
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

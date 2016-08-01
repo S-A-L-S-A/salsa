@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experimentes Library                                                  *
+ *  SALSA Experimentes Library                                                  *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -32,7 +32,7 @@
 #include "intervals.h"
 #include <QVector>
 
-namespace farsa {
+namespace salsa {
 
 // /**
 //  * \brief A class to add input neurons that can be used for custom operations
@@ -57,9 +57,9 @@ namespace farsa {
 //  * This sensor also defines the following resources:
 //  * - name defined by the additionalInputsResource parameter: the name of the
 //  *                   resource that can be used to access the additional inputs.
-//  *                   This can be accessed as a farsa::ResourceVector\<real\>
+//  *                   This can be accessed as a salsa::ResourceVector\<real\>
 //  */
-// class FARSA_EXPERIMENTS_API FakeSensor : public Sensor
+// class SALSA_EXPERIMENTS_API FakeSensor : public Sensor
 // {
 // public:
 // 	/**
@@ -152,7 +152,7 @@ namespace farsa {
 // /**
 //  * \brief It gets the three absolute coordinate (world frame) of an object
 //  */
-// class FARSA_EXPERIMENTS_API ObjectPositionSensor : public Sensor {
+// class SALSA_EXPERIMENTS_API ObjectPositionSensor : public Sensor {
 // public:
 // 	/*! Constructor and Configure
 // 	 *  \param params is the ConfigurationParameters containing the parameters
@@ -228,7 +228,7 @@ namespace farsa {
 // 	 *       so please be careful when using big receptors with a lot of objects of
 // 	 *       different colors.
 // 	 */
-// 	class FARSA_EXPERIMENTS_API LinearCamera : public ConcurrentResourcesUser
+// 	class SALSA_EXPERIMENTS_API LinearCamera : public ConcurrentResourcesUser
 // 	{
 // 	public:
 // 		/**
@@ -483,7 +483,7 @@ namespace farsa {
 // 	 *       so please be careful when using big receptors with a lot of objects of
 // 	 *       different colors.
 // 	 */
-// 	class FARSA_EXPERIMENTS_API LinearCamera : public ConcurrentResourcesUser
+// 	class SALSA_EXPERIMENTS_API LinearCamera : public ConcurrentResourcesUser
 // 	{
 // 	public:
 // 		/**
@@ -689,7 +689,7 @@ namespace farsa {
  * \brief The exception thrown when an error occurs during IR sample files
  *        loading
  */
-class FARSA_EXPERIMENTS_TEMPLATE SampleFileLoadingException : public BaseException
+class SALSA_EXPERIMENTS_TEMPLATE SampleFileLoadingException : public BaseException
 {
 public:
 	/**
@@ -845,7 +845,7 @@ private:
  *       of the conversion, so positive angles are considered counterclockwise
  *       as usual
  */
-class FARSA_EXPERIMENTS_API SampledIRDataLoader
+class SALSA_EXPERIMENTS_API SampledIRDataLoader
 {
 public:
 	/**
@@ -1030,8 +1030,8 @@ private:
 //  * \param pos the position to check
 //  * \return the color on the ground at the given position
 //  */
-// QColor FARSA_EXPERIMENTS_API getColorAtArenaGroundPosition(Arena* arena, wVector pos);
+// QColor SALSA_EXPERIMENTS_API getColorAtArenaGroundPosition(Arena* arena, wVector pos);
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

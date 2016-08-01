@@ -23,12 +23,12 @@
 #include "nnfwconfig.h"
 #include "matrixlinker.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief NormLinker Class
  *
  */
-class FARSA_NNFW_API NormLinker : public MatrixLinker {
+class SALSA_NNFW_API NormLinker : public MatrixLinker {
 public:
 	/*! Constructor */
 	NormLinker( ConfigurationManager& params, QString prefix, Component* parent = NULL );

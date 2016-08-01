@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Utilities Library                                                     *
+ *  SALSA Utilities Library                                                     *
  *  Copyright (C) 2007-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                         *
@@ -27,7 +27,7 @@
 
 class QTextEdit;
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief Logger class provides methods for logging messages
  *
@@ -49,7 +49,7 @@ namespace farsa {
  *
  *  \ingroup utilities_misc
  */
-class FARSA_UTIL_API Logger {
+class SALSA_UTIL_API Logger {
 public:
 	enum LogLevel {
 		//! Logs everything
@@ -108,6 +108,6 @@ private:
 	~Logger();
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

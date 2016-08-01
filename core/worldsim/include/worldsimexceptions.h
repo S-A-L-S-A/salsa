@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -26,13 +26,13 @@
 #include "worldsimconfig.h"
 #include "baseexception.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The exception thrown when trying to create a WEntity without using the
  *        World::createEntity function
  */
-class FARSA_WSIM_TEMPLATE EntityCreatedOutsideWorldException : public BaseException
+class SALSA_WSIM_TEMPLATE EntityCreatedOutsideWorldException : public BaseException
 {
 public:
 	/**
@@ -138,7 +138,7 @@ private:
  * \brief The exception thrown when trying to create a RendererContainer without
  *        using the World::createRenderersContainer function
  */
-class FARSA_WSIM_TEMPLATE RendererContainerCreatedOutsideWorldException : public BaseException
+class SALSA_WSIM_TEMPLATE RendererContainerCreatedOutsideWorldException : public BaseException
 {
 public:
 	/**
@@ -215,7 +215,7 @@ private:
  * \brief The exception thrown when trying to create a compound object with an
  *        empty component list
  */
-class FARSA_WSIM_TEMPLATE PhyCompoundComponentsListEmptyException : public BaseException
+class SALSA_WSIM_TEMPLATE PhyCompoundComponentsListEmptyException : public BaseException
 {
 public:
 	/**

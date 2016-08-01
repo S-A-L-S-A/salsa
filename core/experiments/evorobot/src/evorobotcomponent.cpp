@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -27,7 +27,7 @@
 #include "configurationhelper.h"
 #include "logger.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! the operation for evolution process */
 class EvolveOperation : public ThreadOperation {
@@ -105,7 +105,7 @@ EvoRobotComponent::EvoRobotComponent(ConfigurationManager& params)
 	testIndividual = new TestIndividual();
 	testIndividual->setComponent(this);
 
-	connect(gaThread, SIGNAL(exceptionDuringOperation(farsa::BaseException*)), this, SLOT(exceptionDuringOperation(farsa::BaseException*)), Qt::BlockingQueuedConnection);
+	connect(gaThread, SIGNAL(exceptionDuringOperation(salsa::BaseException*)), this, SLOT(exceptionDuringOperation(salsa::BaseException*)), Qt::BlockingQueuedConnection);
 }
 
 EvoRobotComponent::~EvoRobotComponent() {
@@ -333,4 +333,4 @@ void EvoRobotComponent::runTest(AbstractTest* test)
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa

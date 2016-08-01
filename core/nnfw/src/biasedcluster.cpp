@@ -24,7 +24,7 @@
 
 using namespace Eigen;
 
-namespace farsa {
+namespace salsa {
 
 BiasedCluster::BiasedCluster( ConfigurationManager& params, QString prefix, Component* parent ) :
 	Cluster( params, prefix, parent ),

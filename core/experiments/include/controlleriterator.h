@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experimentes Library                                                  *
+ *  SALSA Experimentes Library                                                  *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -31,7 +31,7 @@
 #include <QColor>
 #include <QMap>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The abstract interface for iterators interfacing the controller with
@@ -42,7 +42,7 @@ namespace farsa {
  * the same class or in separate classes. See the description of the Controller
  * class for more information
  */
-class FARSA_EXPERIMENTS_TEMPLATE AbstractControllerIterator
+class SALSA_EXPERIMENTS_TEMPLATE AbstractControllerIterator
 {
 public:
 	/**
@@ -120,7 +120,7 @@ public:
  * this and AbstractControllerOutputIterator (both inherit from
  * AbstractControllerIterator).
  */
-class FARSA_EXPERIMENTS_TEMPLATE AbstractControllerInputIterator : virtual public AbstractControllerIterator
+class SALSA_EXPERIMENTS_TEMPLATE AbstractControllerInputIterator : virtual public AbstractControllerIterator
 {
 public:
 	/**
@@ -146,7 +146,7 @@ public:
  * this and AbstractControllerInputIterator (both inherit from
  * AbstractControllerIterator).
  */
-class FARSA_EXPERIMENTS_TEMPLATE AbstractControllerOutputIterator : virtual public AbstractControllerIterator
+class SALSA_EXPERIMENTS_TEMPLATE AbstractControllerOutputIterator : virtual public AbstractControllerIterator
 {
 public:
 	/**
@@ -164,6 +164,6 @@ public:
 	virtual real getOutput() const = 0;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

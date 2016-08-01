@@ -22,7 +22,7 @@
 #include "mathutils.h"
 #include <cmath>
 
-namespace farsa {
+namespace salsa {
 
 PeriodicFunction::PeriodicFunction( ConfigurationManager& params, QString prefix, Component* parent )
 	: OutputFunction(params, prefix, parent),

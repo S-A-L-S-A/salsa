@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -23,7 +23,7 @@
 #include "gaconfig.h"
 #include "genotypes/doublegenotype.h"
 
-namespace farsa {
+namespace salsa {
 
 /*!  \brief SignedRangeGenotype class
  *
@@ -36,7 +36,7 @@ namespace farsa {
  *
  * \ingroup ga_genos
  */
-class FARSA_GA_API SignedRangeGenotype : public DoubleGenotype {
+class SALSA_GA_API SignedRangeGenotype : public DoubleGenotype {
 public:
 	/*! Construct a un-initialized SignedRangeGenotype <br>
 	 *  \param numGenes is the number of double values contained by this SignedRangeGenotype
@@ -81,6 +81,6 @@ private:
 	double dx;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

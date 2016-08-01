@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -24,7 +24,7 @@
 #include "mathutils.h"
 #include "phyobject.h"
 
-namespace farsa {
+namespace salsa {
 
 SensorController::SensorController(World* world, SharedDataWrapper<Shared> shared, QString name)
 	: WEntity(world, shared, name)
@@ -193,4 +193,4 @@ wVector TractionSensorController::traction() const
 	return -m_joint->getForceOnJoint();
 }
 
-} // end namespace farsa
+} // end namespace salsa

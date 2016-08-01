@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -31,7 +31,7 @@
 #include <QList>
 #include <cstdlib>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The interface for classed that test genotypes
@@ -41,7 +41,7 @@ namespace farsa {
  * the generated objects to an ExperimentInput subclass. Some of the subclasses
  * also provide methods to get the requested genotype length
  */
-class FARSA_NEWGA_TEMPLATE GenotypeTester : public ParameterSettableInConstructor
+class SALSA_NEWGA_TEMPLATE GenotypeTester : public ParameterSettableInConstructor
 {
 public:
 	/**
@@ -80,7 +80,7 @@ public:
  * This class has also a method that returns the requested length of a genotype,
  * requestedGenotypeLength()
  */
-class FARSA_NEWGA_TEMPLATE SingleGenotypeTester : public GenotypeTester
+class SALSA_NEWGA_TEMPLATE SingleGenotypeTester : public GenotypeTester
 {
 public:
 	/**
@@ -127,7 +127,7 @@ public:
  * requestedGenotypeLength(). The assumption is that all genotypes have the same
  * length
  */
-class FARSA_NEWGA_TEMPLATE MultipleGenotypesTester : public GenotypeTester
+class SALSA_NEWGA_TEMPLATE MultipleGenotypesTester : public GenotypeTester
 {
 public:
 	/**
@@ -167,7 +167,7 @@ public:
 	virtual int requestedGenotypeLength() const = 0;
 };
 
-class FARSA_NEWGA_API SingleGenotypeFloatToEvonet : public SingleGenotypeTester
+class SALSA_NEWGA_API SingleGenotypeFloatToEvonet : public SingleGenotypeTester
 {
 public:
 	/**
@@ -208,7 +208,7 @@ private:
 	Evonet* m_evonet;
 };
 
-class FARSA_NEWGA_API SingleGenotypeIntToEvonet : public SingleGenotypeTester
+class SALSA_NEWGA_API SingleGenotypeIntToEvonet : public SingleGenotypeTester
 {
 public:
 	/**
@@ -249,6 +249,6 @@ private:
 	Evonet* m_evonet;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

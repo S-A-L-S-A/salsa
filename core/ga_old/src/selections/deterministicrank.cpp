@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2009 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -22,7 +22,7 @@
 #include "selections/deterministicrank.h"
 #include "configurationparameters.h"
 
-namespace farsa {
+namespace salsa {
 
 DeterministicRank::DeterministicRank()
 	: Selection() {
@@ -64,4 +64,4 @@ void DeterministicRank::describe( QString type ) {
 	d.describeInt( "nTruncation" ).limits( 1, INT_MAX ).def( 20 ).help( "Only the first nTruncation individuals will be select for reproduce. The individuals will be sorted on their rank" );
 }
 
-} // end namespace farsa
+} // end namespace salsa

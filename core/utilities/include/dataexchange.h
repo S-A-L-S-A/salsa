@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -240,7 +240,7 @@
 // uploader/downloader) in interfacce/classi più piccole. Ovviamente ricontrollare il codice e usare
 // C++14
 
-namespace farsa {
+namespace salsa {
 
 namespace __DataExchange_internal {
 	class QueueHolderBase;
@@ -261,7 +261,7 @@ class Downloader;
  * \warning Functions in this class are NOT thread safe
  */
 template <class DataType_t>
-class FARSA_UTIL_TEMPLATE DataUploader
+class SALSA_UTIL_TEMPLATE DataUploader
 {
 public:
 	/**
@@ -272,7 +272,7 @@ public:
 	/**
 	 * \brief A typedef to use the correct DatumToUpload
 	 */
-	typedef farsa::DatumToUpload<DataType> DatumToUpload;
+	typedef salsa::DatumToUpload<DataType> DatumToUpload;
 
 	/**
 	 * \brief The possible behaviors when the queue is full
@@ -467,7 +467,7 @@ private:
  * \warning Functions in this class are NOT thread safe
  */
 template <class DataType_t>
-class FARSA_UTIL_TEMPLATE DatumToUpload
+class SALSA_UTIL_TEMPLATE DatumToUpload
 {
 public:
 
@@ -593,7 +593,7 @@ private:
  * that it receives
  */
 template<class DataType_t>
-class FARSA_UTIL_TEMPLATE NewDatumEvent : public QEvent
+class SALSA_UTIL_TEMPLATE NewDatumEvent : public QEvent
 {
 public:
 	/**
@@ -658,7 +658,7 @@ private:
  *        available
  */
 template <class DataType_t>
-class FARSA_UTIL_TEMPLATE NewDatumNotifiable
+class SALSA_UTIL_TEMPLATE NewDatumNotifiable
 {
 public:
 	/**
@@ -692,7 +692,7 @@ public:
  * \warning Functions in this class are NOT thread safe
  */
 template <class DataType_t>
-class FARSA_UTIL_TEMPLATE DataDownloader
+class SALSA_UTIL_TEMPLATE DataDownloader
 {
 public:
 	/**
@@ -859,7 +859,7 @@ private:
  * dataexchange.h for more information
  */
 template <class UploadedData_t, class DownloadedData_t>
-class FARSA_UTIL_TEMPLATE DataUploaderDownloader : public DataUploader<UploadedData_t>, public DataDownloader<DownloadedData_t>
+class SALSA_UTIL_TEMPLATE DataUploaderDownloader : public DataUploader<UploadedData_t>, public DataDownloader<DownloadedData_t>
 {
 public:
 	/**
@@ -970,7 +970,7 @@ public:
  * functions for more information.
  * \note All functions in this class (both public and private) are thread-safe
  */
-class FARSA_UTIL_API GlobalUploaderDownloader
+class SALSA_UTIL_API GlobalUploaderDownloader
 {
 public:
 	/**
@@ -1203,7 +1203,7 @@ private:
 	GlobalUploaderDownloader& operator=(const GlobalUploaderDownloader&);
 };
 
-}  // end namespace farsa
+}  // end namespace salsa
 
 // Implementation of all template members
 #include <QCoreApplication>
@@ -1213,7 +1213,7 @@ private:
 #include <QMutexLocker>
 #include <QtGlobal>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The namespace with classes used in the implementation
@@ -2043,6 +2043,6 @@ void GlobalUploaderDownloader::downloaderDestroyed(DataDownloader<DataType>* dow
 	internalDetach(downloader);
 }
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

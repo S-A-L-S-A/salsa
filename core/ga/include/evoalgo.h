@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -26,7 +26,7 @@
 #include "flowcontrol.h"
 #include <memory>
 
-namespace farsa {
+namespace salsa {
 
 class GenotypeToPhenotype;
 class GAEvaluator;
@@ -64,7 +64,7 @@ class GAEvaluator;
  * 	- gaEvaluator: the group with the component that implements the
  * 	               GAEvaluator interface. This parameter is mandatory.
  */
-class FARSA_GA_API EvoAlgo : public Component, public FlowControlled
+class SALSA_GA_API EvoAlgo : public Component, public FlowControlled
 {
 public:
 	/**
@@ -231,6 +231,6 @@ private:
 	std::auto_ptr<GAEvaluator> m_gaEvaluator;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2009 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -17,22 +17,22 @@
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA  *
  ********************************************************************************/
 
-#ifndef FARSAGA_H
-#define FARSAGA_H
+#ifndef SALSAGA_H
+#define SALSAGA_H
 
 #include "gaconfig.h"
 #include "core/geneticalgo.h"
 #include <QList>
 
-namespace farsa {
+namespace salsa {
 
 class MultiTrials;
 class Mutation;
 
-/*! \brief Common FARSA setup of GA
+/*! \brief Common SALSA setup of GA
  *
  *  \par Description
- *    This GA implements the common characteristics of FARSA setup:
+ *    This GA implements the common characteristics of SALSA setup:
  *    - Rank Selection with Truncation
  *    - Use MultiTrials mechanism for Evaluating the Fitness of a Genotype
  *    - Possibility to set one of Mutations availables (or a custom one)
@@ -41,7 +41,7 @@ class Mutation;
  *
  * \ingroup ga_gas
  */
-class FARSA_GA_API LaralGA : public GeneticAlgo {
+class SALSA_GA_API LaralGA : public GeneticAlgo {
 public:
 	/*! Constructor */
 	LaralGA();
@@ -181,6 +181,6 @@ private:
 	static void runStepWrapper( LaralGA::evaluationThread* e );
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

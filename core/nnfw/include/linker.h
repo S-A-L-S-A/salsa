@@ -24,12 +24,12 @@
 #include "cluster.h"
 #include "updatable.h"
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief Abstract Linker Class. This define the common interface among Linkers
  *
  */
-class FARSA_NNFW_API Linker : public Updatable {
+class SALSA_NNFW_API Linker : public Updatable {
 public:
 	/*! Constructor */
 	Linker( ConfigurationManager& params, QString prefix, Component* parent = NULL );

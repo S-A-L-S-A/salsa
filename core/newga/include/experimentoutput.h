@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -26,7 +26,7 @@
 
 #include "newgaconfig.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The interface for output data from an experiment
@@ -35,7 +35,7 @@ namespace farsa {
  * (to provide functions to set the input and to get the output of the
  * experiment)
  */
-class FARSA_NEWGA_TEMPLATE ExperimentOutput
+class SALSA_NEWGA_TEMPLATE ExperimentOutput
 {
 public:
 	/**
@@ -48,6 +48,6 @@ public:
 	}
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

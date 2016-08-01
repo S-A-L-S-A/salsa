@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -31,14 +31,14 @@
 #include "wquaternion.h"
 #include "phyjoint.h"
 
-namespace farsa {
+namespace salsa {
 
 class RenderPhyHinge;
 
 /**
  * \brief The shared data for a PhyHinge
  */
-class FARSA_WSIM_TEMPLATE PhyHingeShared : public PhyJointShared
+class SALSA_WSIM_TEMPLATE PhyHingeShared : public PhyJointShared
 {
 public:
 	/**
@@ -101,7 +101,7 @@ public:
  *
  * This models an hinge joint
  */
-class FARSA_WSIM_API PhyHinge : public PhyJoint
+class SALSA_WSIM_API PhyHinge : public PhyJoint
 {
 public:
 	/**
@@ -286,7 +286,7 @@ protected:
 /**
  * \brief The class rendering the PhyHinge
  */
-class FARSA_WSIM_API RenderPhyHinge : public RenderPhyJoint
+class SALSA_WSIM_API RenderPhyHinge : public RenderPhyJoint
 {
 public:
 	/**
@@ -317,6 +317,6 @@ public:
 	void render(const PhyHingeShared* sharedData, GLContextAndData* contextAndData);
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

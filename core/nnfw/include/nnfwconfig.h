@@ -20,21 +20,21 @@
 #ifndef NNFWCONFIG_H
 #define NNFWCONFIG_H
 
-// FARSA_NNFW_TEMPLATE is also for classes that are completely inline
+// SALSA_NNFW_TEMPLATE is also for classes that are completely inline
 #ifdef WIN32
 	#define _CRT_SECURE_NO_DEPRECATE
-	#ifdef FARSA_NNFW_BUILDING_DLL
-		#define FARSA_NNFW_API __declspec(dllexport)
-		#define FARSA_NNFW_TEMPLATE __declspec(dllexport)
+	#ifdef SALSA_NNFW_BUILDING_DLL
+		#define SALSA_NNFW_API __declspec(dllexport)
+		#define SALSA_NNFW_TEMPLATE __declspec(dllexport)
 	#else
-		#define FARSA_NNFW_API __declspec(dllimport)
-		#define FARSA_NNFW_TEMPLATE
+		#define SALSA_NNFW_API __declspec(dllimport)
+		#define SALSA_NNFW_TEMPLATE
 	#endif
-	#define FARSA_NNFW_INTERNAL
+	#define SALSA_NNFW_INTERNAL
 #else
-	#define FARSA_NNFW_API
-	#define FARSA_NNFW_TEMPLATE
-	#define FARSA_NNFW_INTERNAL __attribute__ ((visibility ("hidden")))
+	#define SALSA_NNFW_API
+	#define SALSA_NNFW_TEMPLATE
+	#define SALSA_NNFW_INTERNAL __attribute__ ((visibility ("hidden")))
 #endif
 
 //--- read it as: x.yy.zz where
@@ -42,7 +42,7 @@
 //---  yy is minor version
 //---  zz is patch version
 //--- Example: version 2.4.6 is 20406
-#define FARSA_NNFW_VERSION 0x020000
+#define SALSA_NNFW_VERSION 0x020000
 
 #include <QList>
 #include <QVector>
@@ -51,14 +51,14 @@
 #include <QDebug>
 
 #include "Eigen/Core"
-namespace farsa {
+namespace salsa {
 typedef Eigen::VectorXd DoubleVector;
 typedef Eigen::MatrixXd DoubleMatrix;
 }
 
 #include "nnfwexceptions.h"
 
-namespace farsa {
+namespace salsa {
 
 class Updatable;
 /*! Array of Updatable */
@@ -72,9 +72,9 @@ class Linker;
 /*! Array of Linkers */
 typedef QList<Linker*> LinkerList;
 
-extern bool FARSA_NNFW_API initNNFWLib();
+extern bool SALSA_NNFW_API initNNFWLib();
 static const bool nnfwLibInitializer = initNNFWLib();
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

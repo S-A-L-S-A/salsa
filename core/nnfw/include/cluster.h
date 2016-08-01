@@ -30,7 +30,7 @@
 #include <exception>
 #include <memory>
 
-namespace farsa {
+namespace salsa {
 
 /*! \brief Define the common interface among Clusters
  *
@@ -69,7 +69,7 @@ namespace farsa {
  *    by inputs (or outputs) and works over them.
  *
  */
-class FARSA_NNFW_API Cluster : public Updatable {
+class SALSA_NNFW_API Cluster : public Updatable {
 public:
 	/*! Constructor */
 	Cluster( ConfigurationManager& params, QString prefix, Component* parent = NULL );

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -24,9 +24,9 @@
 #include "wmatrix.h"
 #include "logger.h"
 
-using namespace farsa;
+using namespace salsa;
 
-// This is not in the farsa namespace because otherwise we get problems with
+// This is not in the salsa namespace because otherwise we get problems with
 // Q_INIT_RESOURCE (undefined symbol qInitResources_textures)
 bool initWorldSimLib() {
 	static bool dummy = false;

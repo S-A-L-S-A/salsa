@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -34,7 +34,7 @@
 #include "graphicalmarkers.h"
 #include <cmath>
 
-namespace farsa {
+namespace salsa {
 
 const real PhyMarXbot::basex = 0.034f;
 const real PhyMarXbot::basey = 0.143f;
@@ -543,4 +543,4 @@ void PhyMarXbot::changedMatrix() {
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -23,7 +23,7 @@
 #include "worldsimutils.h"
 #include <cmath>
 
-namespace farsa {
+namespace salsa {
 
 void mergeAABBs(wVector& minPointA, wVector& maxPointA, const wVector& minPointB, const wVector& maxPointB)
 {
@@ -39,7 +39,7 @@ void computeEllipseAABB(const wVector& u, const wVector& v, wVector& minPoint, w
 {
 	// To compute the bounding box of an ellipse we follow instructions at
 	// http://www.iquilezles.org/www/articles/ellipses/ellipses.htm
-	// Documentation is also in the farsa repository under miscDocumentation/Bounding Box Ellipse (by extension cylinder and cone)
+	// Documentation is also in the salsa repository under miscDocumentation/Bounding Box Ellipse (by extension cylinder and cone)
 
 	minPoint.x = -sqrt(u.x * u.x + v.x * v.x);
 	minPoint.y = -sqrt(u.y * u.y + v.y * v.y);
@@ -49,4 +49,4 @@ void computeEllipseAABB(const wVector& u, const wVector& v, wVector& minPoint, w
 	maxPoint.z = sqrt(u.z * u.z + v.z * v.z);
 }
 
-} // end namespace farsa
+} // end namespace salsa

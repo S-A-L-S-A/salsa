@@ -1,6 +1,6 @@
-# Script to compile the farsa total99 application
+# Script to compile the salsa total99 application
 
-set(FARSATOTAL99_SRCS
+set(SALSATOTAL99_SRCS
 	src/batchinstancesmanager.cpp
 	src/genericgroupeditor.cpp
 	src/groupstreeeditor.cpp
@@ -8,7 +8,7 @@ set(FARSATOTAL99_SRCS
 	src/parametereditorsfactory.cpp
 	src/projectmanager.cpp
 	src/viewersmanager.cpp)
-set(FARSATOTAL99_HDRS
+set(SALSATOTAL99_HDRS
 	include/batchinstancesmanager.h
 	include/genericgroupeditor.h
 	include/groupstreeeditor.h
@@ -16,8 +16,8 @@ set(FARSATOTAL99_HDRS
 	include/projectmanager.h
 	include/viewersmanager.h)
 
-add_executable(total99 ${FARSATOTAL99_SRCS} ${FARSATOTAL99_HDRS})
-add_farsa_version(total99)
+add_executable(total99 ${SALSATOTAL99_SRCS} ${SALSATOTAL99_HDRS})
+add_salsa_version(total99)
 
 # Specifying the the include directories: they are used both here and  exported
 # by this library (so that targets linking this one will automatically import
@@ -26,11 +26,11 @@ target_include_directories(total99 PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/include"
 
 # Adding dependencies (they are also exported, so targets linking this one will
 # automatically link libraries declared here)
-target_link_libraries(total99 farsautilities farsaconfiguration farsaexperiments Qt5::Core Qt5::Xml Qt5::Widgets Qt5::Concurrent Qt5::OpenGL)
+target_link_libraries(total99 salsautilities salsaconfiguration salsaexperiments Qt5::Core Qt5::Xml Qt5::Widgets Qt5::Concurrent Qt5::OpenGL)
 
 # Installation paths
 install(TARGETS total99
-        EXPORT farsa
+        EXPORT salsa
         RUNTIME DESTINATION bin/)
 
 # Also installing base configuration, icons and templates

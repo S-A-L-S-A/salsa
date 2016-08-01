@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -21,7 +21,7 @@
 #include "core/genotype.h"
 #include "randomgenerator.h"
 
-namespace farsa {
+namespace salsa {
 
 RandomBit::RandomBit()
 	: Mutation() {
@@ -49,4 +49,4 @@ void RandomBit::describe( QString type ) {
 	addTypeDescription( type, "Mutation operator", "Replace a bit with a random one with the probability specified by mutation_rate parameter" );
 }
 
-} // end namespace farsa
+} // end namespace salsa

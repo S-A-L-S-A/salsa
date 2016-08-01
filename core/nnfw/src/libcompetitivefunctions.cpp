@@ -20,7 +20,7 @@
 #include "libcompetitivefunctions.h"
 #include "configurationhelper.h"
 
-namespace farsa {
+namespace salsa {
 
 WinnerTakeAllFunction::WinnerTakeAllFunction( ConfigurationManager& params, QString prefix, Component* parent )
 	: OutputFunction(params,prefix,parent),

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -21,17 +21,17 @@
 #include <cmath>
 #include <cstdlib>
 
-#ifdef FARSA_USE_GSL
+#ifdef SALSA_USE_GSL
 	#include "gsl/gsl_rng.h"
 	#include "gsl/gsl_randist.h"
 #endif
 
-namespace farsa {
+namespace salsa {
 
-class FARSA_UTIL_INTERNAL RandomGeneratorPrivate
+class SALSA_UTIL_INTERNAL RandomGeneratorPrivate
 {
 public:
-#ifdef FARSA_USE_GSL
+#ifdef SALSA_USE_GSL
 	gsl_rng* const rng;
 
 	RandomGeneratorPrivate()
@@ -71,7 +71,7 @@ RandomGenerator::~RandomGenerator()
 void RandomGenerator::setSeed(unsigned int seed)
 {
 	m_seed = seed;
-#ifdef FARSA_USE_GSL
+#ifdef SALSA_USE_GSL
 	gsl_rng_set(m_priv->rng, seed);
 #else
 	srand(seed);
@@ -85,7 +85,7 @@ unsigned int RandomGenerator::seed() const
 
 bool RandomGenerator::getBool(double trueProbability)
 {
-#ifdef FARSA_USE_GSL
+#ifdef SALSA_USE_GSL
 	return gsl_rng_uniform(m_priv->rng) < trueProbability;
 #else
 	return (double(rand()) / double(RAND_MAX)) < trueProbability;
@@ -94,7 +94,7 @@ bool RandomGenerator::getBool(double trueProbability)
 
 int RandomGenerator::getInt(int min, int max)
 {
-#ifdef FARSA_USE_GSL
+#ifdef SALSA_USE_GSL
 	return gsl_rng_uniform_int(m_priv->rng, std::abs(max - min) + 1) + min;
 #else
 	return min + (rand() % (max - min));
@@ -103,7 +103,7 @@ int RandomGenerator::getInt(int min, int max)
 
 double RandomGenerator::getDouble(double min, double max)
 {
-#ifdef FARSA_USE_GSL
+#ifdef SALSA_USE_GSL
 	// FIXME: this implementation never returns max
 	return gsl_ran_flat(m_priv->rng, min, max);
 #else
@@ -113,7 +113,7 @@ double RandomGenerator::getDouble(double min, double max)
 
 double RandomGenerator::getGaussian(double var, double mean)
 {
-#ifdef FARSA_USE_GSL
+#ifdef SALSA_USE_GSL
 	return gsl_ran_gaussian(m_priv->rng, var) + mean;
 #else
 	// Using Marsaglia polar method to convert uniform random numbers to gaussian. Implementation
@@ -139,4 +139,4 @@ double RandomGenerator::getGaussian(double var, double mean)
 #endif
 }
 
-} // end namespace farsa
+} // end namespace salsa

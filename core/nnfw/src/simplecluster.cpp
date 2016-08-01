@@ -20,7 +20,7 @@
 #include "simplecluster.h"
 #include "outputfunction.h"
 
-namespace farsa {
+namespace salsa {
 
 SimpleCluster::SimpleCluster( ConfigurationManager& params, QString prefix, Component* parent )
 	: Cluster( params, prefix, parent ) {

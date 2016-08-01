@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -26,7 +26,7 @@
 #include "worldsimconfig.h"
 #include "wvector.h"
 
-namespace farsa {
+namespace salsa {
 
 class wMatrix;
 
@@ -41,7 +41,7 @@ class wMatrix;
  *  \par Warnings
  *
  */
-class FARSA_WSIM_TEMPLATE wQuaternion {
+class SALSA_WSIM_TEMPLATE wQuaternion {
 public:
 	/*! constructor */
 	wQuaternion();
@@ -74,12 +74,12 @@ public:
 	real q3;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 //--- this is included here because wMatrix and wQuaternion has mutual dependencies
 #include "wmatrix.h"
 
-namespace farsa {
+namespace salsa {
 
 inline wQuaternion::wQuaternion() {
 	q0 = 1.0;
@@ -285,6 +285,6 @@ inline wQuaternion wQuaternion::slerp( const wQuaternion &QB, real t ) const {
 	return Q;
 }
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

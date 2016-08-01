@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -24,7 +24,7 @@
 #include "world.h"
 #include "worldsimexceptions.h"
 
-namespace farsa {
+namespace salsa {
 
 WEntity::WEntity(World* world, SharedDataWrapper<Shared> shared, QString name)
 	: m_world(world)

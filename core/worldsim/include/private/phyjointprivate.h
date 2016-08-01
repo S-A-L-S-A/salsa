@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -28,9 +28,9 @@
 #include "private/worldprivate.h"
 #include "Newton.h"
 
-namespace farsa {
+namespace salsa {
 
-class FARSA_WSIM_INTERNAL PhyJointPrivate {
+class SALSA_WSIM_INTERNAL PhyJointPrivate {
 public:
 	NewtonJoint* joint;
 	NewtonBody* parent;
@@ -54,7 +54,7 @@ public:
 	};
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif
 

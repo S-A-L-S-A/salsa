@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -30,14 +30,14 @@
 #include "evoalgotest.h"
 #include "baseexperiment.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief This class setups an evolutionary experiment.
  *
  * It inherits from the base experiment.
  */
-class FARSA_NEWGA_API EvoAlgoComponent : public BaseExperiment
+class SALSA_NEWGA_API EvoAlgoComponent : public BaseExperiment
 {
 	Q_OBJECT
 public:
@@ -67,6 +67,6 @@ private:
 	QVector<NewAbstractTest*> m_tests;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

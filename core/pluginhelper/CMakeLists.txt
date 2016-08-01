@@ -1,16 +1,16 @@
-# Script to compile the farsa farsapluginhelper application
+# Script to compile the salsa salsapluginhelper application
 
-set(FARSAPLUGINHELPER_SRCS
+set(SALSAPLUGINHELPER_SRCS
 	src/main.cpp)
 
-add_executable(farsapluginhelper ${FARSAPLUGINHELPER_SRCS})
-add_farsa_version(farsapluginhelper)
+add_executable(salsapluginhelper ${SALSAPLUGINHELPER_SRCS})
+add_salsa_version(salsapluginhelper)
 
 # Adding dependencies (they are also exported, so targets linking this one will
 # automatically link libraries declared here)
-target_link_libraries(farsapluginhelper farsalibpluginhelper Qt5::Core)
+target_link_libraries(salsapluginhelper salsalibpluginhelper Qt5::Core)
 
 # Installation paths
-install(TARGETS farsapluginhelper
-        EXPORT farsa
+install(TARGETS salsapluginhelper
+        EXPORT salsa
         RUNTIME DESTINATION bin/)

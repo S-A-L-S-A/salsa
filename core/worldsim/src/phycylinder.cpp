@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -23,11 +23,11 @@
 #include "phycylinder.h"
 #include "private/phyobjectprivate.h"
 #include "private/worldprivate.h"
-#include "farsaglutils.h"
+#include "salsaglutils.h"
 #include "worldsimutils.h"
 #include <QtAlgorithms>
 
-namespace farsa {
+namespace salsa {
 
 void PhyCylinder::calculateAABB(const Shared* sharedData, wVector& minPoint, wVector& maxPoint, const wMatrix& tm)
 {
@@ -737,4 +737,4 @@ void RenderPhyCylinder::updateGraphicalRepresentation(const PhyCylinderShared* s
 	m_lowerBaseSegmentsLength.append(numVertexesCurSegment);
 }
 
-} // end namespace farsa
+} // end namespace salsa

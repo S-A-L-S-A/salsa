@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -35,11 +35,11 @@
 #include <QMutexLocker>
 #include <QEvent>
 #include <QGLWidget>
-#include "farsaglutils.h"
+#include "salsaglutils.h"
 
 // These instructions are needed because QT 4.8 no longer depends on glu, so we
 // have to include it here explicitly
-#ifdef FARSA_MAC
+#ifdef SALSA_MAC
 # include <GLUT/glut.h>
 #else
 # include <GL/glu.h>
@@ -53,7 +53,7 @@ using namespace qglviewer;
 # include <QWheelEvent>
 #endif
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The namespace with internal helper classes
@@ -558,4 +558,4 @@ void RenderWorld::drawSkyGroundBox()
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa

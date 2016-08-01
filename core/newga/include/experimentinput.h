@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -27,7 +27,7 @@
 #include "newgaconfig.h"
 #include <QList>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The interface for input data to an experiment
@@ -36,7 +36,7 @@ namespace farsa {
  * (to provide functions to set the input and to get the output of the
  * experiment)
  */
-class FARSA_NEWGA_TEMPLATE ExperimentInput
+class SALSA_NEWGA_TEMPLATE ExperimentInput
 {
 public:
 	/**
@@ -53,7 +53,7 @@ public:
  * \brief The base class for experiments that take one neural network in input
  */
 template <class NeuralNetwork_t>
-class FARSA_NEWGA_TEMPLATE OneNeuralNetworkExperimentInput : public ExperimentInput
+class SALSA_NEWGA_TEMPLATE OneNeuralNetworkExperimentInput : public ExperimentInput
 {
 public:
 	/**
@@ -86,7 +86,7 @@ public:
  *        input
  */
 template <class NeuralNetwork_t>
-class FARSA_NEWGA_TEMPLATE MultipleNeuralNetworksExperimentInput : public ExperimentInput
+class SALSA_NEWGA_TEMPLATE MultipleNeuralNetworksExperimentInput : public ExperimentInput
 {
 public:
 	/**
@@ -110,6 +110,6 @@ public:
 	virtual void setNeuralNetwork(const QList<NeuralNetwork>& nets) = 0;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

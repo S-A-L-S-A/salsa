@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -32,7 +32,7 @@
 #include "graphicalmarkers.h"
 #include <QVector>
 
-namespace farsa {
+namespace salsa {
 
 class PhyObject;
 class PhyJoint;
@@ -41,7 +41,7 @@ class PhyCylinder;
 /**
  * \brief The shared data for the PhyKhepera
  */
-class FARSA_WSIM_TEMPLATE PhyKheperaShared : public WObjectShared
+class SALSA_WSIM_TEMPLATE PhyKheperaShared : public WObjectShared
 {
 public:
 	/**
@@ -76,7 +76,7 @@ public:
 
 #if defined(__GNUC__) && defined(DEVELOPER_WARNINGS)
 	#warning il renderer del Khepera ci vuole per disegnare l AABB e l OBB. Inoltre aggiungere funzioni statiche per calcolare i due (si potrebbe anche decidere di usare una mesh per disegnare il khepera invece dei pezzi)
-	#warning SAREBBE BENE NON FAR EREDITARE PhyKhepera DA QObject, MA PER FARLO BISOGNA CHE NEANCHE I PhyDof EREDITINO DA QObject (FARLO, MAGARI DOPO L INTEGRAZIONE IN FARSA2, TANTO NON DOVREBBE COMPORTARE CAMBIAMENTI CHE INTERESSANO AGLI UTENTI!!!)
+	#warning SAREBBE BENE NON FAR EREDITARE PhyKhepera DA QObject, MA PER FARLO BISOGNA CHE NEANCHE I PhyDof EREDITINO DA QObject (FARLO, MAGARI DOPO L INTEGRAZIONE IN SALSA2, TANTO NON DOVREBBE COMPORTARE CAMBIAMENTI CHE INTERESSANO AGLI UTENTI!!!)
 #endif
 
 /**
@@ -85,7 +85,7 @@ public:
  * This class models a khepera II robot. For more information about the robot go
  * to http://www.k-team.com/mobile-robotics-products/khepera-ii/introduction
  */
-class FARSA_WSIM_API PhyKhepera : public QObject, public WObject
+class SALSA_WSIM_API PhyKhepera : public QObject, public WObject
 {
 	Q_OBJECT
 
@@ -350,6 +350,6 @@ private:
 	friend class World;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

@@ -1,5 +1,5 @@
 /***************************************************************************
- *  FARSA Configuration Library                                            *
+ *  SALSA Configuration Library                                            *
  *  Copyright (C) 2007-2013                                                *
  *  Gianluca Massera <emmegian@yahoo.it>                                   *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                    *
@@ -31,29 +31,29 @@
 
 #warning TOGLIERE I NAMESPACES DALLE CLASSI PARENT QUANDO SI REGISTRA VEDI COMMENTO SOTTO
 // ALTRIMENTI RISCHIAMO DI AVERE PROBLEMI (AD ESEMPIO NEL TYPESDB C'È Component, NON
-// farsa::Component, MA SE UNA CLASSE EREDITA DA farsa::Component AL MOMENTO SI USEREBBE
-// COME PARENT farsa::Component CHE NON VIENE RICONOSCIUTO)
+// salsa::Component, MA SE UNA CLASSE EREDITA DA salsa::Component AL MOMENTO SI USEREBBE
+// COME PARENT salsa::Component CHE NON VIENE RICONOSCIUTO)
 
-using namespace farsa;
-using namespace farsa::pluginHelper;
+using namespace salsa;
+using namespace salsa::pluginHelper;
 
 const char* h0 = "\n\
-class FARSA_PLUGIN_API C0 {};\n\
+class SALSA_PLUGIN_API C0 {};\n\
 ";
 
 const char* h1 = "\n\
-class FARSA_PLUGIN_API C1 : public Component\n\
+class SALSA_PLUGIN_API C1 : public Component\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C1(ConfigurationManager& params);\n\
 };\n\
 ";
 
 const char* h2 = "\n\
-class FARSA_PLUGIN_API C1 : public Component\n\
+class SALSA_PLUGIN_API C1 : public Component\n\
 {\n\
-	// FARSA_REGISTER_CLASS\n\
+	// SALSA_REGISTER_CLASS\n\
 public:\n\
 	C1(ConfigurationManager& params);\n\
 };\n\
@@ -62,61 +62,61 @@ public:\n\
 const char* h3 = "\n\
 class C1\n\
 {\n\
-	// FARSA_REGISTER_CLASS\n\
+	// SALSA_REGISTER_CLASS\n\
 public:\n\
 	C1(ConfigurationManager& params);\n\
 };\n\
 \n\
-class FARSA_PLUGIN_API C2 : public Component\n\
+class SALSA_PLUGIN_API C2 : public Component\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C2(ConfigurationManager& params);\n\
 };\n\
 ";
 
 const char* h4 = "\n\
-class FARSA_PLUGIN_API C1\n\
+class SALSA_PLUGIN_API C1\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C1(ConfigurationManager& params);\n\
 };\n\
 \n\
-class FARSA_PLUGIN_API C2 : public Component\n\
+class SALSA_PLUGIN_API C2 : public Component\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C2(ConfigurationManager& params);\n\
 };\n\
 ";
 
 const char* h5 = "\n\
-//class FARSA_PLUGIN_API C1\n\
+//class SALSA_PLUGIN_API C1\n\
 //{\n\
-//	FARSA_REGISTER_CLASS\n\
+//	SALSA_REGISTER_CLASS\n\
 //public:\n\
 //	C1(ConfigurationManager& params);\n\
 //};\n\
 \n\
-class FARSA_PLUGIN_API C2 : public Component\n\
+class SALSA_PLUGIN_API C2 : public Component\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C2(ConfigurationManager& params);\n\
 };\n\
 ";
 
 const char* h6 = "\n\
-class FARSA_PLUGIN_API C1\n\
+class SALSA_PLUGIN_API C1\n\
 {\n\
 public:\n\
 	C1(ConfigurationManager& params);\n\
 };\n\
 \n\
-class FARSA_PLUGIN_API C2 : public Component\n\
+class SALSA_PLUGIN_API C2 : public Component\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C2(ConfigurationManager& params);\n\
 };\n\
@@ -125,21 +125,21 @@ public:\n\
 const char* h7 = "\n\
 class C1\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C1(ConfigurationManager& params);\n\
 };\n\
 \n\
-class FARSA_PLUGIN_API C2 : public Component\n\
+class SALSA_PLUGIN_API C2 : public Component\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C2(ConfigurationManager& params);\n\
 };\n\
 ";
 
 const char* h8 = "\n\
-class FARSA_PLUGIN_API C1\n\
+class SALSA_PLUGIN_API C1\n\
 {\n\
 public:\n\
 	C1(ConfigurationManager& params);\n\
@@ -147,28 +147,28 @@ public:\n\
 \n\
 class C2 : public Component\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C2(ConfigurationManager& params);\n\
 };\n\
 ";
 
 const char* h9 = "\n\
-class FARSA_PLUGIN_API C1\n\
+class SALSA_PLUGIN_API C1\n\
 {}\n\
-FARSA_REGISTER_CLASS\n\
+SALSA_REGISTER_CLASS\n\
 ";
 
 const char* h10 = "\n\
-class FARSA_PLUGIN_API C1;\n\
-FARSA_REGISTER_CLASS\n\
+class SALSA_PLUGIN_API C1;\n\
+SALSA_REGISTER_CLASS\n\
 ";
 
 const char* h11 = "\n\
 namespace N1 {\n\
-class FARSA_PLUGIN_API C1 : public Component\n\
+class SALSA_PLUGIN_API C1 : public Component\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C1(ConfigurationManager& params);\n\
 };\n\
@@ -178,9 +178,9 @@ public:\n\
 const char* h12 = "\n\
 namespace N1 {\n\
 namespace N2 {\n\
-class FARSA_PLUGIN_API C1 : public Component\n\
+class SALSA_PLUGIN_API C1 : public Component\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C1(ConfigurationManager& params);\n\
 };\n\
@@ -195,9 +195,9 @@ namespace No {\n\
 }\n\
 \n\
 namespace N2 {\n\
-class FARSA_PLUGIN_API C1 : public Component\n\
+class SALSA_PLUGIN_API C1 : public Component\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C1(ConfigurationManager& params);\n\
 };\n\
@@ -206,91 +206,91 @@ public:\n\
 ";
 
 const char* h14 = "\n\
-class FARSA_PLUGIN_API C1\n\
+class SALSA_PLUGIN_API C1\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C1();\n\
 };\n\
 ";
 
 const char* h15 = "\n\
-class FARSA_PLUGIN_API C1 : public P1, private P2, public P3\n\
+class SALSA_PLUGIN_API C1 : public P1, private P2, public P3\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C1();\n\
 };\n\
 ";
 
 const char* h16 = "\n\
-class FARSA_PLUGIN_API C1 : public P1, private P2, public FARSA_NR(P3)\n\
+class SALSA_PLUGIN_API C1 : public P1, private P2, public SALSA_NR(P3)\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C1();\n\
 };\n\
 ";
 
 const char* h17 = "\n\
-class FARSA_PLUGIN_API C1 : public P1, private P2, public P3\n\
+class SALSA_PLUGIN_API C1 : public P1, private P2, public P3\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C1();\n\
 };\n\
 \n\
-class FARSA_PLUGIN_TEMPLATE C2\n\
+class SALSA_PLUGIN_TEMPLATE C2\n\
 {\n\
 };\n\
 \n\
-class FARSA_PLUGIN_INTERNAL Int\n\
+class SALSA_PLUGIN_INTERNAL Int\n\
 {\n\
 };\n\
 ";
 
 const char* h17_mangled = "\n\
-class FARSA_PLUGIN_API_IMPORT C1 : public P1, private P2, public P3\n\
+class SALSA_PLUGIN_API_IMPORT C1 : public P1, private P2, public P3\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C1();\n\
 };\n\
 \n\
-class FARSA_PLUGIN_TEMPLATE_IMPORT C2\n\
+class SALSA_PLUGIN_TEMPLATE_IMPORT C2\n\
 {\n\
 };\n\
 \n\
-class FARSA_PLUGIN_INTERNAL_IMPORT Int\n\
+class SALSA_PLUGIN_INTERNAL_IMPORT Int\n\
 {\n\
 };\n\
 ";
 
 const char* h18 = "\n\
-class FARSA_PLUGIN_API C1 : public P1, private P2, public FARSA_NR(P3)\n\
+class SALSA_PLUGIN_API C1 : public P1, private P2, public SALSA_NR(P3)\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C1();\n\
 };\n\
 \n\
-FARSA_PRE_REGISTRATION_FUNCTION(firstFun)\n\
-FARSA_PRE_REGISTRATION_FUNCTION(otherFunction)\n\
+SALSA_PRE_REGISTRATION_FUNCTION(firstFun)\n\
+SALSA_PRE_REGISTRATION_FUNCTION(otherFunction)\n\
 ";
 
 const char* h19 = "\n\
-class FARSA_PLUGIN_API C1 : public P1, private P2, public FARSA_NR(P3)\n\
+class SALSA_PLUGIN_API C1 : public P1, private P2, public SALSA_NR(P3)\n\
 {\n\
-	FARSA_REGISTER_CLASS\n\
+	SALSA_REGISTER_CLASS\n\
 public:\n\
 	C1();\n\
 };\n\
 \n\
-FARSA_PRE_REGISTRATION_FUNCTION(firstFun)\n\
-FARSA_PRE_REGISTRATION_FUNCTION(otherFunction)\n\
+SALSA_PRE_REGISTRATION_FUNCTION(firstFun)\n\
+SALSA_PRE_REGISTRATION_FUNCTION(otherFunction)\n\
 \n\
-FARSA_POST_REGISTRATION_FUNCTION(dummy)\n\
-FARSA_POST_REGISTRATION_FUNCTION(dumbFunction)\n\
+SALSA_POST_REGISTRATION_FUNCTION(dummy)\n\
+SALSA_POST_REGISTRATION_FUNCTION(dumbFunction)\n\
 ";
 
 /**

@@ -27,7 +27,7 @@
 #include "qgv/QGVScene.h"
 #include <QMap>
 
-namespace farsa {
+namespace salsa {
 
 NeuralNetConfWidget::NeuralNetConfWidget(ConfigurationManager& params, QString prefix, QWidget* parent, Qt::WindowFlags f) :
 	ConfigurationWidget( params, prefix, parent, f )
@@ -131,4 +131,4 @@ void NeuralNetConfWidget::createQGVNetwork() {
 	view->setFixedSize( scene->sceneRect().width()+20, scene->sceneRect().height()+20 );
 }
 
-} // end namespace farsa
+} // end namespace salsa

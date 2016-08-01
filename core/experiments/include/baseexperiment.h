@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA                                                                       *
+//  *  SALSA                                                                       *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Gianluca Massera <emmegian@yahoo.it>                                        *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -51,7 +51,7 @@
 // #include <memory>
 // #include <QtGlobal>
 //
-// namespace farsa {
+// namespace salsa {
 //
 // class BaseExperimentGUI;
 //
@@ -67,7 +67,7 @@
 // 	 * \brief The data sent by a BaseExperiment instance to the
 // 	 *        corresponding GUI
 // 	 */
-// 	struct FARSA_EXPERIMENTS_TEMPLATE OperationStatus {
+// 	struct SALSA_EXPERIMENTS_TEMPLATE OperationStatus {
 // 		/**
 // 		 * \brief The list of possible status
 // 		 */
@@ -108,7 +108,7 @@
 // 	 * \brief The data sent by a BaseExperimentGUI instance to the
 // 	 *        corresponding experiment
 // 	 */
-// 	struct FARSA_EXPERIMENTS_TEMPLATE OperationControl {
+// 	struct SALSA_EXPERIMENTS_TEMPLATE OperationControl {
 // 		/**
 // 		 * \brief The list of possible actions to perform
 // 		 */
@@ -268,7 +268,7 @@
 //  *       BaseExperiment, so you could end up deleting stuffs while an operation
 //  *       is still running.
 //  */
-// class FARSA_EXPERIMENTS_API BaseExperiment : public Component, public ParameterSettableUI, public ThreadOperation, private FlowControlled
+// class SALSA_EXPERIMENTS_API BaseExperiment : public Component, public ParameterSettableUI, public ThreadOperation, private FlowControlled
 // {
 // 	Q_OBJECT
 //
@@ -981,11 +981,11 @@
 // 	/**
 // 	 * \brief Warns the user about an exception thrown by the experiment
 // 	 *
-// 	 * This is a slot. We have to use farsa::BaseException instead of simply
+// 	 * This is a slot. We have to use salsa::BaseException instead of simply
 // 	 * BaseException because otherwise moc doesn't work as expected
 // 	 * \param e the exception that has been thrown
 // 	 */
-// 	void exceptionDuringOperation(farsa::BaseException *e);
+// 	void exceptionDuringOperation(salsa::BaseException *e);
 //
 // 	/**
 // 	 * \brief The slot connected to the signal mapper to start an operation
@@ -1309,7 +1309,7 @@
 // 	BaseExperimentFlowController m_flowController;
 // };
 //
-// } // End namespace farsa
+// } // End namespace salsa
 //
 // /**
 //  * \brief The macro to add an operation to an experiment that runs in a separate

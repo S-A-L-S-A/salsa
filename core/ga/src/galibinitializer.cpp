@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experimentes Library                                                  *
+ *  SALSA Experimentes Library                                                  *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -28,9 +28,9 @@
 #include "logger.h"
 #include "typesdb.h"
 
-namespace farsa {
+namespace salsa {
 
-bool FARSA_GA_API initGaLib()
+bool SALSA_GA_API initGaLib()
 {
 	static bool calledOnce = false;
 
@@ -48,4 +48,4 @@ bool FARSA_GA_API initGaLib()
 	return true;
 }
 
-} // end namespace farsa
+} // end namespace salsa

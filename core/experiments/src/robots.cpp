@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                         *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -29,7 +29,7 @@
 #include <QStringList>
 #include <QRegExp>
 
-namespace farsa {
+namespace salsa {
 
 namespace {
 	QString extractRobotName(ConfigurationManager& params, QString prefix)
@@ -234,7 +234,7 @@ void RobotOnPlane::setPosition(const Box2DWrapper* plane, const wVector& pos)
 // }
 //
 // #if defined(__GNUC__) && defined(DEVELOPER_WARNINGS)
-// 	#warning LE FUNZIONI orientation() E setOrientation() DEI ROBOT NON USANO LO STESSO RIFERIMENTO, OSSIA setOrientation(orientation()) RUOTA IL ROBOT ANCHE SE NON DOVREBBE! CORREGGERE IN FARSA2
+// 	#warning LE FUNZIONI orientation() E setOrientation() DEI ROBOT NON USANO LO STESSO RIFERIMENTO, OSSIA setOrientation(orientation()) RUOTA IL ROBOT ANCHE SE NON DOVREBBE! CORREGGERE IN SALSA2
 // #endif
 //
 // real MarXbot::orientation(const Box2DWrapper* plane) const
@@ -466,4 +466,4 @@ QColor Khepera::robotColor() const
 	return PhyKhepera::color();
 }
 
-} //end namespace farsa
+} //end namespace salsa

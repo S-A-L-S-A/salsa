@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA Experimentes Library                                                  *
+//  *  SALSA Experimentes Library                                                  *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Gianluca Massera <emmegian@yahoo.it>                                        *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -31,7 +31,7 @@
 // #include "phycylinder.h"
 // #include "sensors.h"
 //
-// namespace farsa {
+// namespace salsa {
 //
 // /**
 //  * \brief The base abstract class for e-puck sensors
@@ -55,7 +55,7 @@
 //  * - name defined by the neuronsIterator parameter: the object to iterate over
 //  *   neurons of the neural network
 //  */
-// class FARSA_EXPERIMENTS_API EpuckSensor : public Sensor
+// class SALSA_EXPERIMENTS_API EpuckSensor : public Sensor
 // {
 // public:
 // 	/**
@@ -129,7 +129,7 @@
 //  * The resources required by this Sensor are the same as those of the parent
 //  * class
 //  */
-// class FARSA_EXPERIMENTS_API EpuckProximityIRSensor : public EpuckSensor
+// class SALSA_EXPERIMENTS_API EpuckProximityIRSensor : public EpuckSensor
 // {
 // public:
 // 	/**
@@ -211,7 +211,7 @@
 //  * class plus:
 //  * - arena: the instance of the Arena object where the robot lives
 //  */
-// class FARSA_EXPERIMENTS_API EpuckGroundIRSensor : public EpuckSensor
+// class SALSA_EXPERIMENTS_API EpuckGroundIRSensor : public EpuckSensor
 // {
 // public:
 // 	/**
@@ -315,7 +315,7 @@
 //  * class plus:
 //  * - arena: the instance of the Arena object where the robot lives
 //  */
-// class FARSA_EXPERIMENTS_API EpuckLinearCameraSensor : public EpuckSensor
+// class SALSA_EXPERIMENTS_API EpuckLinearCameraSensor : public EpuckSensor
 // {
 // public:
 // 	/**
@@ -454,7 +454,7 @@
 //  * class plus:
 //  * - arena: the instance of the Arena object where the robot lives
 //  */
-// class FARSA_EXPERIMENTS_API EpuckSampledProximityIRSensor : public EpuckSensor
+// class SALSA_EXPERIMENTS_API EpuckSampledProximityIRSensor : public EpuckSensor
 // {
 // public:
 // 	/**

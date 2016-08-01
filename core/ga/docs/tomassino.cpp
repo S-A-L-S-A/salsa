@@ -146,12 +146,12 @@ class RoboticExperiment;
 // Example for simple generational GA
 ////////////////////////////////////////////////////////////////////////////////
 
-class SimpleGenerationalGA : public EvoAlgo, public farsa::Component
+class SimpleGenerationalGA : public EvoAlgo, public salsa::Component
 {
 public:
 	SimpleGenerationalGA(ConfigurationManager& params, QString prefix)
 		: EvoAlgo()
-		, farsa::Component(params, prefix)
+		, salsa::Component(params, prefix)
 		, m_genotypeToTest(NULL)
 		, m_fitnessEvaluator(NULL)
 	{
@@ -204,12 +204,12 @@ private:
 	UniqueFitnessEvaluator* m_fitnessEvaluator;
 };
 
-class OneGenomeToOneNeuralNetworkMapping : public SingleGenotypeToTest, public farsa::Component
+class OneGenomeToOneNeuralNetworkMapping : public SingleGenotypeToTest, public salsa::Component
 {
 public:
 	OneGenomeToOneNeuralNetworkMapping(ConfigurationManager& params, QString prefix)
 		: SingleGenotypeToTest()
-		, farsa::Component(params, prefix)
+		, salsa::Component(params, prefix)
 		, m_net(NULL)
 		, m_nextGenotype(NULL)
 		, m_evaluator(NULL)
@@ -252,14 +252,14 @@ private:
 	OneNeuralNetworkExperimentInput* m_evaluator;
 };
 
-class SingleRobotEvaluator : public RoboticExperiment, public UniqueFitnessEvaluator, public OneNeuralNetworkExperimentInput, public farsa::Component
+class SingleRobotEvaluator : public RoboticExperiment, public UniqueFitnessEvaluator, public OneNeuralNetworkExperimentInput, public salsa::Component
 {
 public:
 	SingleRobotEvaluator(ConfigurationManager& params, QString prefix)
 		: RoboticExperiment()
 		, UniqueFitnessEvaluator()
 		, OneNeuralNetworkExperimentInput()
-		, farsa::Component(params, prefix)
+		, salsa::Component(params, prefix)
 	{
 		... // Read parameters, create agent, ...
 	}

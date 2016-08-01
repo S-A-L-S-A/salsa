@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2009 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -24,7 +24,7 @@
 #include "parametersettable.h"
 #include <QVector>
 
-namespace farsa {
+namespace salsa {
 
 class Genotype;
 class Genome;
@@ -39,7 +39,7 @@ class GeneticAlgo;
  *
  *  \ingroup ga_core
  */
-class FARSA_GA_API GeneticAlgoIODelegate {
+class SALSA_GA_API GeneticAlgoIODelegate {
 public:
 	/*! called at the end of each generation to save data
 	 *  \param ga is the GA requesting to saveData
@@ -56,7 +56,7 @@ public:
  *  Subclass it and implements the method accordlying on what you need to be notified
  * \ingroup ga_core
  */
-class FARSA_GA_API GeneticAlgoObserver {
+class SALSA_GA_API GeneticAlgoObserver {
 public:
 	//! virtual destructor
 	virtual ~GeneticAlgoObserver() { };
@@ -75,7 +75,7 @@ public:
  *
  * \ingroup ga_core
  */
-class FARSA_GA_API GeneticAlgo : public ParameterSettableWithConfigureFunction {
+class SALSA_GA_API GeneticAlgo : public ParameterSettableWithConfigureFunction {
 public:
 	/*! Constructor */
 	GeneticAlgo( );
@@ -217,6 +217,6 @@ protected:
 	QList<GeneticAlgoObserver*> observers;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

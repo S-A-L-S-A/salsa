@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Utilities                                                           *
+ *  SALSA - Utilities                                                           *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -26,7 +26,7 @@
 #include <QList>
 #include "utilitiesconfig.h"
 
-namespace farsa {
+namespace salsa {
 
 /*!  A command line option parser.
  *
@@ -89,7 +89,7 @@ namespace farsa {
  * \author froglogic GbR (GetOpt class)<contact@froglogic.com>
  * \author G. Massera (this modified and QT4 complaint version)
  */
-class FARSA_UTIL_API OptionParser {
+class SALSA_UTIL_API OptionParser {
 public:
     /*!
      * Constructs a command line parser from the arguments stored in a
@@ -352,7 +352,7 @@ private:
     int currArg;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif
 

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -28,7 +28,7 @@
 #include <QMenu>
 #include <QAction>
 
-using namespace farsa;
+using namespace salsa;
 
 QString GroupInfo::shortHelp() const
 {
@@ -60,7 +60,7 @@ QString GroupInfo::longHelp() const
 	}
 }
 
-GroupsTreeEditor::GroupsTreeEditor( farsa::ConfigurationManager* confParams, QWidget* parent, Qt::WindowFlags f )
+GroupsTreeEditor::GroupsTreeEditor( salsa::ConfigurationManager* confParams, QWidget* parent, Qt::WindowFlags f )
 	:	QWidget( parent, f ),
 		confParams( confParams ),
 		groupInfos() {
@@ -77,7 +77,7 @@ GroupsTreeEditor::GroupsTreeEditor( farsa::ConfigurationManager* confParams, QWi
 GroupsTreeEditor::~GroupsTreeEditor() {
 }
 
-void GroupsTreeEditor::setConfigurationManager( farsa::ConfigurationManager* confParams ) {
+void GroupsTreeEditor::setConfigurationManager( salsa::ConfigurationManager* confParams ) {
 	this->confParams = confParams;
 	initConfTree();
 	confTree->setCurrentItem( confTree->topLevelItem(0) );
@@ -135,7 +135,7 @@ GroupInfo GroupsTreeEditor::findGroupInfo( QString fullPath ) {
 	return GroupInfo();
 }
 
-void GroupsTreeEditor::groupRenamed( QString, QString, QString, farsa::ConfigurationManager* confs ) {
+void GroupsTreeEditor::groupRenamed( QString, QString, QString, salsa::ConfigurationManager* confs ) {
 	//--- if the slot is regarding something different the configuration parameters setted on this object
 	//    it will do nothing
 	if ( confs != confParams ) return;

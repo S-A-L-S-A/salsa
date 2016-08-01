@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                         *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -24,7 +24,7 @@
 #include "abstracttest.h"
 #include "evorobotcomponent.h"
 
-namespace farsa {
+namespace salsa {
 
 // void AvailableTestList::addTest(QString name, AbstractTest *test)
 // {
@@ -49,4 +49,4 @@ namespace farsa {
 //
 // QMap<QString, AbstractTest*> AvailableTestList::m_map;
 
-} //end namespace farsa
+} //end namespace salsa

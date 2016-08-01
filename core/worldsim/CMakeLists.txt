@@ -1,4 +1,4 @@
-# Script to compile the farsa worldsim library
+# Script to compile the salsa worldsim library
 
 # ==============================================================================
 # ======= FORSE QUI METTERE SEMPRE COMPILAZIONE DA SORGENTI E MAI BINARIO ======

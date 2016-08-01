@@ -26,7 +26,7 @@
 
 using namespace Eigen;
 
-namespace farsa {
+namespace salsa {
 
 IdentityFunction::IdentityFunction( ConfigurationManager& params, QString prefix, Component* parent )
 	: OutputFunction(params,prefix,parent) {

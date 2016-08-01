@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA - Total99                                                             *
+ *  SALSA - Total99                                                             *
  *  Copyright (C) 2005-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -195,7 +195,7 @@ namespace __BatchInstancesManager_internal {
 	}
 }
 
-BatchInstancesManager::BatchInstancesManager(farsa::ConfigurationManager& params, QWidget* parent, Qt::WindowFlags flags)
+BatchInstancesManager::BatchInstancesManager(salsa::ConfigurationManager& params, QWidget* parent, Qt::WindowFlags flags)
 	: QWidget(parent, flags)
 	, m_configurationParameters(params)
 	, m_instanceName(NULL)
@@ -287,11 +287,11 @@ BatchInstancesManager::BatchInstancesManager(farsa::ConfigurationManager& params
 	}
 
 	// Restoring our status if present on the configuration parameters object
-	QString str = farsa::ConfigurationHelper::getString(m_configurationParameters, "BatchInstancesManager/geometry", "");
+	QString str = salsa::ConfigurationHelper::getString(m_configurationParameters, "BatchInstancesManager/geometry", "");
 	if (!str.isEmpty()) {
 		restoreGeometry(QByteArray::fromBase64(str.toLatin1()));
 	}
-	bool wasVisible = farsa::ConfigurationHelper::getBool(m_configurationParameters, "BatchInstancesManager/visible", false);
+	bool wasVisible = salsa::ConfigurationHelper::getBool(m_configurationParameters, "BatchInstancesManager/visible", false);
 	if (wasVisible) {
 		show();
 	}
@@ -369,7 +369,7 @@ void BatchInstancesManager::terminateAll()
 void BatchInstancesManager::chooseConfigurationFile()
 {
 	// Ask the user which file to load
-	QString confFilePath = QFileDialog::getOpenFileName(this, "Select configuration file", QString(), "FARSA Configuration file (*.ini *.xml)");
+	QString confFilePath = QFileDialog::getOpenFileName(this, "Select configuration file", QString(), "SALSA Configuration file (*.ini *.xml)");
 
 	// Filling the m_confFilePathEdit with the selected file
 	if (!confFilePath.isEmpty()) {

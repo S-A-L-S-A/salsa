@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experimentes Library                                                  *
+ *  SALSA Experimentes Library                                                  *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -38,14 +38,14 @@
 	#pragma warning(disable:4996)
 #endif
 
-namespace farsa {
+namespace salsa {
 
 class Evonet;
 
 /**
  * \brief The exception thrown when EvonetIterator is not in a valid status
  */
-class FARSA_CONF_TEMPLATE EvonetIteratorInvalidStatusException : public BaseException
+class SALSA_CONF_TEMPLATE EvonetIteratorInvalidStatusException : public BaseException
 {
 public:
 	/**
@@ -175,7 +175,7 @@ private:
  *
  * \ingroup experiments_utils
  */
-class FARSA_EXPERIMENTS_API EvonetIterator : public AbstractControllerInputIterator, public AbstractControllerOutputIterator
+class SALSA_EXPERIMENTS_API EvonetIterator : public AbstractControllerInputIterator, public AbstractControllerOutputIterator
 {
 public:
 	/**
@@ -314,7 +314,7 @@ private:
 	int m_curIndex;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 // All the suff below is to restore the warning state on Windows
 #if defined(_MSC_VER)

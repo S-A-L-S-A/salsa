@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -30,7 +30,7 @@
 #include <cmath>
 #include <QSet>
 
-namespace farsa {
+namespace salsa {
 
 wPID::wPID() {
 	p_gain = 0;
@@ -256,11 +256,11 @@ bool wheeledRobotsComputeWheelsSpeed(const wMatrix& start, const wMatrix& end, r
 
 	// Useful constants
 	const real epsilon = 0.0001f;
-	const wVector& Xs = start.x_ax; FARSA_DEBUG_TEST_INVALID(Xs.x) FARSA_DEBUG_TEST_INVALID(Xs.y) FARSA_DEBUG_TEST_INVALID(Xs.z)
-	const wVector& Xe = end.x_ax; FARSA_DEBUG_TEST_INVALID(Xe.x) FARSA_DEBUG_TEST_INVALID(Xe.y) FARSA_DEBUG_TEST_INVALID(Xe.z)
+	const wVector& Xs = start.x_ax; SALSA_DEBUG_TEST_INVALID(Xs.x) SALSA_DEBUG_TEST_INVALID(Xs.y) SALSA_DEBUG_TEST_INVALID(Xs.z)
+	const wVector& Xe = end.x_ax; SALSA_DEBUG_TEST_INVALID(Xe.x) SALSA_DEBUG_TEST_INVALID(Xe.y) SALSA_DEBUG_TEST_INVALID(Xe.z)
 	const real halfAxletrack = axletrack / 2.0f;
-	const wVector displacementVector = end.w_pos - start.w_pos; FARSA_DEBUG_TEST_INVALID(displacementVector.x) FARSA_DEBUG_TEST_INVALID(displacementVector.y) FARSA_DEBUG_TEST_INVALID(displacementVector.z)
-	const real displacement = displacementVector.norm(); FARSA_DEBUG_TEST_INVALID(displacement)
+	const wVector displacementVector = end.w_pos - start.w_pos; SALSA_DEBUG_TEST_INVALID(displacementVector.x) SALSA_DEBUG_TEST_INVALID(displacementVector.y) SALSA_DEBUG_TEST_INVALID(displacementVector.z)
+	const real displacement = displacementVector.norm(); SALSA_DEBUG_TEST_INVALID(displacement)
 	// If displacement is 0, direction will be invalid (the check for displacement != 0 is done below)
 	const wVector direction = displacementVector.scale(1.0f / displacement);
 
@@ -274,7 +274,7 @@ bool wheeledRobotsComputeWheelsSpeed(const wMatrix& start, const wMatrix& end, r
 	// meaning that the robot has rotated of 180° (otherwise the hypothesis of constant wheel
 	// speed doesn't hold). In the latter case, however which wheel has positive velocity is not
 	// defined, here we always return the left wheel as having positive velocity
-	const farsa::real dotX = min(1.0f, max(-1.0f, Xs % Xe)); FARSA_DEBUG_TEST_INVALID(dotX)
+	const salsa::real dotX = min(1.0f, max(-1.0f, Xs % Xe)); SALSA_DEBUG_TEST_INVALID(dotX)
 	if (fabs(1.0f - dotX) < epsilon) {
 		// If the displacement is 0, the robot hasn't moved at all
 		if (fabs(displacement) < epsilon) {
@@ -284,7 +284,7 @@ bool wheeledRobotsComputeWheelsSpeed(const wMatrix& start, const wMatrix& end, r
 			// Xs and Xe are parallel and have the same direction. Checking if Pe-Ps is along
 			// -Y or not (start.y_ax and end.y_ax are parallel because we just checked that
 			// Xs and Xe are parallel and the Z axes are parallel by hypothesis)
-			const farsa::real dotDirY = direction % (-start.y_ax); FARSA_DEBUG_TEST_INVALID(dotDirY)
+			const salsa::real dotDirY = direction % (-start.y_ax); SALSA_DEBUG_TEST_INVALID(dotDirY)
 
 			if (fabs(1.0f - dotDirY) < epsilon) {
 				// Positive speed
@@ -297,8 +297,8 @@ bool wheeledRobotsComputeWheelsSpeed(const wMatrix& start, const wMatrix& end, r
 			} else {
 				// Impossible movement, multiplying by dotDirY (i.e. the cos of the angle)
 				// to get the displacement along -Y
-				leftWheelDistance = dotDirY * displacement; FARSA_DEBUG_TEST_INVALID(leftWheelDistance)
-				rightWheelDistance = dotDirY * displacement; FARSA_DEBUG_TEST_INVALID(rightWheelDistance)
+				leftWheelDistance = dotDirY * displacement; SALSA_DEBUG_TEST_INVALID(leftWheelDistance)
+				rightWheelDistance = dotDirY * displacement; SALSA_DEBUG_TEST_INVALID(rightWheelDistance)
 				ret = false;
 			}
 		}
@@ -310,11 +310,11 @@ bool wheeledRobotsComputeWheelsSpeed(const wMatrix& start, const wMatrix& end, r
 		} else {
 			// Xs and Xe are parallel and have opposite directions. Checking if Pe-Ps is
 			// along X or not.
-			const farsa::real dotDirX = direction % Xs; FARSA_DEBUG_TEST_INVALID(dotDirX)
+			const salsa::real dotDirX = direction % Xs; SALSA_DEBUG_TEST_INVALID(dotDirX)
 
-			const real distCenterOfRotationToCenterOfRobot = displacement / 2.0f; FARSA_DEBUG_TEST_INVALID(distCenterOfRotationToCenterOfRobot)
-			const real slowWheel = (distCenterOfRotationToCenterOfRobot - halfAxletrack) * PI_GRECO; FARSA_DEBUG_TEST_INVALID(slowWheel)
-			const real fastWheel = (distCenterOfRotationToCenterOfRobot + halfAxletrack) * PI_GRECO; FARSA_DEBUG_TEST_INVALID(fastWheel)
+			const real distCenterOfRotationToCenterOfRobot = displacement / 2.0f; SALSA_DEBUG_TEST_INVALID(distCenterOfRotationToCenterOfRobot)
+			const real slowWheel = (distCenterOfRotationToCenterOfRobot - halfAxletrack) * PI_GRECO; SALSA_DEBUG_TEST_INVALID(slowWheel)
+			const real fastWheel = (distCenterOfRotationToCenterOfRobot + halfAxletrack) * PI_GRECO; SALSA_DEBUG_TEST_INVALID(fastWheel)
 
 			if (fabs(1.0f - dotDirX) < epsilon) {
 				leftWheelDistance = slowWheel;
@@ -326,11 +326,11 @@ bool wheeledRobotsComputeWheelsSpeed(const wMatrix& start, const wMatrix& end, r
 				// Impossible movement, multiplying by dotDirX (i.e. the cos of the angle)
 				// to get the displacement along X
 				if (dotDirX > 0.0f) {
-					leftWheelDistance = dotDirX * slowWheel; FARSA_DEBUG_TEST_INVALID(leftWheelDistance)
-					rightWheelDistance = dotDirX * fastWheel; FARSA_DEBUG_TEST_INVALID(rightWheelDistance)
+					leftWheelDistance = dotDirX * slowWheel; SALSA_DEBUG_TEST_INVALID(leftWheelDistance)
+					rightWheelDistance = dotDirX * fastWheel; SALSA_DEBUG_TEST_INVALID(rightWheelDistance)
 				} else {
-					leftWheelDistance = dotDirX * fastWheel; FARSA_DEBUG_TEST_INVALID(leftWheelDistance)
-					rightWheelDistance = dotDirX * slowWheel; FARSA_DEBUG_TEST_INVALID(rightWheelDistance)
+					leftWheelDistance = dotDirX * fastWheel; SALSA_DEBUG_TEST_INVALID(leftWheelDistance)
+					rightWheelDistance = dotDirX * slowWheel; SALSA_DEBUG_TEST_INVALID(rightWheelDistance)
 				}
 				ret = false;
 			}
@@ -359,24 +359,24 @@ bool wheeledRobotsComputeWheelsSpeed(const wMatrix& start, const wMatrix& end, r
 
 			// First of all we need the angle between the two X axes (i.e. how much the robot has rotated).
 			// We need to know the sign of the rotation
-			const real rotationSign = (((Xs * Xe) % start.z_ax) < 0.0f) ? -1.0f : 1.0f; FARSA_DEBUG_TEST_INVALID(rotationSign)
-			const real angle = acos(dotX) * rotationSign; FARSA_DEBUG_TEST_INVALID(angle)
+			const real rotationSign = (((Xs * Xe) % start.z_ax) < 0.0f) ? -1.0f : 1.0f; SALSA_DEBUG_TEST_INVALID(rotationSign)
+			const real angle = acos(dotX) * rotationSign; SALSA_DEBUG_TEST_INVALID(angle)
 
 			// Now computing the distance of each wheel from the instant center of rotation. The distance
 			// is signed (positive along local X)
-			const real distLeftWheel = k + halfAxletrack; FARSA_DEBUG_TEST_INVALID(distLeftWheel)
-			const real distRightWheel = k - halfAxletrack; FARSA_DEBUG_TEST_INVALID(distRightWheel)
+			const real distLeftWheel = k + halfAxletrack; SALSA_DEBUG_TEST_INVALID(distLeftWheel)
+			const real distRightWheel = k - halfAxletrack; SALSA_DEBUG_TEST_INVALID(distRightWheel)
 
 			// Now computing the arc travelled by each wheel (signed, positive for forward motion, negative
 			// for backward motion)
-			leftWheelDistance = distLeftWheel * angle; FARSA_DEBUG_TEST_INVALID(leftWheelDistance)
-			rightWheelDistance = distRightWheel * angle; FARSA_DEBUG_TEST_INVALID(rightWheelDistance)
+			leftWheelDistance = distLeftWheel * angle; SALSA_DEBUG_TEST_INVALID(leftWheelDistance)
+			rightWheelDistance = distRightWheel * angle; SALSA_DEBUG_TEST_INVALID(rightWheelDistance)
 		}
 	}
 
 	// Computing the wheel velocities
-	leftWheelVelocity = (leftWheelDistance / wheelr) / timestep; FARSA_DEBUG_TEST_INVALID(leftWheelVelocity)
-	rightWheelVelocity = (rightWheelDistance / wheelr) / timestep; FARSA_DEBUG_TEST_INVALID(rightWheelVelocity)
+	leftWheelVelocity = (leftWheelDistance / wheelr) / timestep; SALSA_DEBUG_TEST_INVALID(leftWheelVelocity)
+	rightWheelVelocity = (rightWheelDistance / wheelr) / timestep; SALSA_DEBUG_TEST_INVALID(rightWheelVelocity)
 
 	return ret;
 }
@@ -739,4 +739,4 @@ void MarXbotAttachmentDeviceMotorController::attachmentDeviceAboutToBeDestroyed(
 	}
 }
 
-} // end namespace farsa
+} // end namespace salsa

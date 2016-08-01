@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -24,7 +24,7 @@
 #include "robotexperimentui.h"
 #include "configurationhelper.h"
 
-namespace farsa {
+namespace salsa {
 
 RobotExperimentUI::RobotExperimentUI( RobotExperiment* e )
 	: ParameterSettableUI()
@@ -67,4 +67,4 @@ void RobotExperimentUI::updateRenderWorld()
 	}
 }
 
-} //end namespace farsa
+} //end namespace salsa

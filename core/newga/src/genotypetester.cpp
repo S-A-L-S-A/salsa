@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -24,7 +24,7 @@
 #include "genotypetester.h"
 #include "configurationhelper.h"
 
-namespace farsa {
+namespace salsa {
 
 SingleGenotypeFloatToEvonet::SingleGenotypeFloatToEvonet(ConfigurationParameters& params, QString prefix)
 	: SingleGenotypeTester(params, prefix)
@@ -121,4 +121,4 @@ int SingleGenotypeIntToEvonet::requestedGenotypeLength() const
 	return m_evonet->freeParameters();
 }
 
-} // end namespace farsa
+} // end namespace salsa

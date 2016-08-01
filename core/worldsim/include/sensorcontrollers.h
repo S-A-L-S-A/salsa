@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -29,7 +29,7 @@
 #include "phyjoint.h"
 #include "singleir.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief SensorController Class
@@ -37,7 +37,7 @@ namespace farsa {
  * A common interface among SensorController hierachy. This has no renderer nor
  * shared data
  */
-class FARSA_WSIM_API SensorController : public WEntity
+class SALSA_WSIM_API SensorController : public WEntity
 {
 protected:
 	/**
@@ -106,7 +106,7 @@ private:
  * vector of activations (m_activations) which must be filled in the update()
  * function by subclasses
  */
-class FARSA_WSIM_API IRSensorController : public SensorController
+class SALSA_WSIM_API IRSensorController : public SensorController
 {
 protected:
 	/**
@@ -196,7 +196,7 @@ protected:
  * This takes the list of SingleIR in the constructor and uses them to obtain
  * activations.
  */
-class FARSA_WSIM_API SimulatedIRProximitySensorController : public IRSensorController
+class SALSA_WSIM_API SimulatedIRProximitySensorController : public IRSensorController
 {
 protected:
 	/**
@@ -290,7 +290,7 @@ private:
  * of the color of the object below the sensor. The SingleIR should have a
  * single ray (zero aperture).
  */
-class FARSA_WSIM_API SimulatedIRGroundSensorController : public IRSensorController
+class SALSA_WSIM_API SimulatedIRGroundSensorController : public IRSensorController
 {
 protected:
 	/**
@@ -381,7 +381,7 @@ private:
  * This class implements the controller for the traction sensor found e.g. on
  * the MarXbot robot
  */
-class FARSA_WSIM_API TractionSensorController : public SensorController
+class SALSA_WSIM_API TractionSensorController : public SensorController
 {
 protected:
 
@@ -427,6 +427,6 @@ private:
 	friend class World;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

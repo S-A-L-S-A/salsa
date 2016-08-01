@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -41,7 +41,7 @@
 #include "simpletimer.h"
 #include "worldhelpers.h"
 
-namespace farsa {
+namespace salsa {
 
 class World;
 class WorldPrivate;
@@ -77,7 +77,7 @@ class AbstractRenderWEntityCreator;
  * Please note that this class is not thread safe and is not meant to be
  * inheritable!
  */
-class FARSA_WSIM_API World : public Resource
+class SALSA_WSIM_API World : public Resource
 {
 public:
 	/**
@@ -1133,25 +1133,25 @@ private:
 	friend class WorldPrivate;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #include "renderingproxy.h"
 #include "wentity.h"
 #include "rendererscontainer.h"
 
 // Implementation of template functions
-namespace farsa
+namespace salsa
 {
 template <class CT, class T>
 T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type)
 {
-#define __FARSA_WORLD_PRE_CREATE_ENTITY Q_UNUSED(type);\
+#define __SALSA_WORLD_PRE_CREATE_ENTITY Q_UNUSED(type);\
                                         m_creatingSomething = true;\
                                         WEntityAndBuddies e;\
                                         typename T::Shared* sharedData = new typename T::Shared();\
                                         e.sharedDataHolder = new SharedDataHolder<typename T::Shared>(sharedData); \
                                         SharedDataWrapper<typename T::Shared> sharedDataWrapper(sharedData);
-#define __FARSA_WORLD_POST_CREATE_ENTITY customizer.immediatePostCreationAction(entity);\
+#define __SALSA_WORLD_POST_CREATE_ENTITY customizer.immediatePostCreationAction(entity);\
                                          e.entity = entity;\
                                          e.rendererCreator = new RenderWEntityCreator<T>(entity);\
                                          if (customizer.addToWorldLists()) {\
@@ -1170,188 +1170,188 @@ T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T
                                          customizer.delayedPostCreationAction(entity);\
                                          return entity;
 
-	__FARSA_WORLD_PRE_CREATE_ENTITY
+	__SALSA_WORLD_PRE_CREATE_ENTITY
 
 	T* const entity = new T(this, sharedDataWrapper);
 
-	__FARSA_WORLD_POST_CREATE_ENTITY
+	__SALSA_WORLD_POST_CREATE_ENTITY
 }
 
 template <class CT, class T, class P0>
 T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0)
 {
-	__FARSA_WORLD_PRE_CREATE_ENTITY
+	__SALSA_WORLD_PRE_CREATE_ENTITY
 
 	T* const entity = new T(this, sharedDataWrapper, p0);
 
-	__FARSA_WORLD_POST_CREATE_ENTITY
+	__SALSA_WORLD_POST_CREATE_ENTITY
 }
 
 template <class CT, class T, class P0, class P1>
 T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1)
 {
-	__FARSA_WORLD_PRE_CREATE_ENTITY
+	__SALSA_WORLD_PRE_CREATE_ENTITY
 
 	T* const entity = new T(this, sharedDataWrapper, p0, p1);
 
-	__FARSA_WORLD_POST_CREATE_ENTITY
+	__SALSA_WORLD_POST_CREATE_ENTITY
 }
 
 template <class CT, class T, class P0, class P1, class P2>
 T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2)
 {
-	__FARSA_WORLD_PRE_CREATE_ENTITY
+	__SALSA_WORLD_PRE_CREATE_ENTITY
 
 	T* const entity = new T(this, sharedDataWrapper, p0, p1, p2);
 
-	__FARSA_WORLD_POST_CREATE_ENTITY
+	__SALSA_WORLD_POST_CREATE_ENTITY
 }
 
 template <class CT, class T, class P0, class P1, class P2, class P3>
 T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3)
 {
-	__FARSA_WORLD_PRE_CREATE_ENTITY
+	__SALSA_WORLD_PRE_CREATE_ENTITY
 
 	T* const entity = new T(this, sharedDataWrapper, p0, p1, p2, p3);
 
-	__FARSA_WORLD_POST_CREATE_ENTITY
+	__SALSA_WORLD_POST_CREATE_ENTITY
 }
 
 template <class CT, class T, class P0, class P1, class P2, class P3, class P4>
 T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4)
 {
-	__FARSA_WORLD_PRE_CREATE_ENTITY
+	__SALSA_WORLD_PRE_CREATE_ENTITY
 
 	T* const entity = new T(this, sharedDataWrapper, p0, p1, p2, p3, p4);
 
-	__FARSA_WORLD_POST_CREATE_ENTITY
+	__SALSA_WORLD_POST_CREATE_ENTITY
 }
 
 template <class CT, class T, class P0, class P1, class P2, class P3, class P4, class P5>
 T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5)
 {
-	__FARSA_WORLD_PRE_CREATE_ENTITY
+	__SALSA_WORLD_PRE_CREATE_ENTITY
 
 	T* const entity = new T(this, sharedDataWrapper, p0, p1, p2, p3, p4, p5);
 
-	__FARSA_WORLD_POST_CREATE_ENTITY
+	__SALSA_WORLD_POST_CREATE_ENTITY
 }
 
 template <class CT, class T, class P0, class P1, class P2, class P3, class P4, class P5, class P6>
 T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6)
 {
-	__FARSA_WORLD_PRE_CREATE_ENTITY
+	__SALSA_WORLD_PRE_CREATE_ENTITY
 
 	T* const entity = new T(this, sharedDataWrapper, p0, p1, p2, p3, p4, p5, p6);
 
-	__FARSA_WORLD_POST_CREATE_ENTITY
+	__SALSA_WORLD_POST_CREATE_ENTITY
 }
 
 template <class CT, class T, class P0, class P1, class P2, class P3, class P4, class P5, class P6, class P7>
 T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7)
 {
-	__FARSA_WORLD_PRE_CREATE_ENTITY
+	__SALSA_WORLD_PRE_CREATE_ENTITY
 
 	T* const entity = new T(this, sharedDataWrapper, p0, p1, p2, p3, p4, p5, p6, p7);
 
-	__FARSA_WORLD_POST_CREATE_ENTITY
+	__SALSA_WORLD_POST_CREATE_ENTITY
 }
 
 template<class T>
 T* World::createRenderersContainer(TypeToCreate<T> type)
 {
-#define __FARSA_WORLD_PRE_CREATE_RENDERER_CONTAINER Q_UNUSED(type);\
+#define __SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER Q_UNUSED(type);\
                                                     m_creatingSomething = true;
-#define __FARSA_WORLD_POST_CREATE_RENDERER_CONTAINER m_renderersContainers.append(c);\
+#define __SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER m_renderersContainers.append(c);\
                                                      m_creatingSomething = false;\
                                                      notifyRendererContainerOfAllEntitiesAndTextures(c);\
                                                      return c;
 
-	__FARSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
 
 	T* const c = new T(this);
 
-	__FARSA_WORLD_POST_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
 }
 
 template<class T, class P0>
 T* World::createRenderersContainer(TypeToCreate<T> type, P0 p0)
 {
-	__FARSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
 
 	T* const c = new T(this, p0);
 
-	__FARSA_WORLD_POST_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
 }
 
 template<class T, class P0, class P1>
 T* World::createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1)
 {
-	__FARSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
 
 	T* const c = new T(this, p0, p1);
 
-	__FARSA_WORLD_POST_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
 }
 
 template<class T, class P0, class P1, class P2>
 T* World::createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2)
 {
-	__FARSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
 
 	T* const c = new T(this, p0, p1, p2);
 
-	__FARSA_WORLD_POST_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
 }
 
 template<class T, class P0, class P1, class P2, class P3>
 T* World::createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3)
 {
-	__FARSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
 
 	T* const c = new T(this, p0, p1, p2, p3);
 
-	__FARSA_WORLD_POST_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
 }
 
 template<class T, class P0, class P1, class P2, class P3, class P4>
 T* World::createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4)
 {
-	__FARSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
 
 	T* const c = new T(this, p0, p1, p2, p3, p4);
 
-	__FARSA_WORLD_POST_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
 }
 
 template<class T, class P0, class P1, class P2, class P3, class P4, class P5>
 T* World::createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5)
 {
-	__FARSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
 
 	T* const c = new T(this, p0, p1, p2, p3, p4, p5);
 
-	__FARSA_WORLD_POST_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
 }
 
 template<class T, class P0, class P1, class P2, class P3, class P4, class P5, class P6>
 T* World::createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6)
 {
-	__FARSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
 
 	T* const c = new T(this, p0, p1, p2, p3, p4, p5, p6);
 
-	__FARSA_WORLD_POST_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
 }
 
 template<class T, class P0, class P1, class P2, class P3, class P4, class P5, class P6, class P7>
 T* World::createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7)
 {
-	__FARSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
 
 	T* const c = new T(this, p0, p1, p2, p3, p4, p5, p6, p7);
 
-	__FARSA_WORLD_POST_CREATE_RENDERER_CONTAINER
+	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
 }
 
 template <class CT>

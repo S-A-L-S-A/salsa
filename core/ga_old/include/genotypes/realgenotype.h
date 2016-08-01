@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Genetic Algorithm Library                                             *
+ *  SALSA Genetic Algorithm Library                                             *
  *  Copyright (C) 2007-2008 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -24,7 +24,7 @@
 #include "genotypes/doublegenotype.h"
 #include <cfloat>
 
-namespace farsa {
+namespace salsa {
 
 /*!  \brief RealGenotype class
  *
@@ -34,7 +34,7 @@ namespace farsa {
  *
  * \ingroup ga_genos
  */
-class FARSA_GA_API RealGenotype : public DoubleGenotype {
+class SALSA_GA_API RealGenotype : public DoubleGenotype {
 public:
 	/*! Construct a un-initialized RealGenotype <br>
 	 *  \param numGenes is the number of float values contained by this RealGenotype
@@ -81,6 +81,6 @@ private:
 	float* genes;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

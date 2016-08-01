@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -25,7 +25,7 @@
 
 #include "utilitiesconfig.h"
 
-namespace farsa {
+namespace salsa {
 
 template <class CounterType>
 class UpdateChecker;
@@ -434,6 +434,6 @@ private:
  */
 typedef UpdateChecker<> UpdateCheckerLong;
 
-}  // end namespace farsa
+}  // end namespace salsa
 
 #endif

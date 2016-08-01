@@ -24,7 +24,7 @@
 
 using namespace Eigen;
 
-namespace farsa {
+namespace salsa {
 
 Cluster::Cluster( ConfigurationManager& params, QString prefix, Component* parent ) :
 	Updatable(params, prefix, parent),

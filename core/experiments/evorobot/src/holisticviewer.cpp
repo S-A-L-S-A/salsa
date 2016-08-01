@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA Experiments Library                                                   *
+//  *  SALSA Experiments Library                                                   *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
 //  *  Onofrio Gigliotta <onofrio.gigliotta@istc.cnr.it>                           *
@@ -23,7 +23,7 @@
 //
 // #include "holisticviewer.h"
 //
-// namespace farsa {
+// namespace salsa {
 //
 // HolisticViewer::HolisticViewer(Evonet* network, QWidget* parent, Qt::WindowFlags flags)
 // 	: QWidget(parent, flags),
@@ -154,4 +154,4 @@
 // 	updateGrid();
 // }
 //
-// } //end namespace farsa
+// } //end namespace salsa

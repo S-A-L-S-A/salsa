@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -25,7 +25,7 @@
 
 #include "utilitiesconfig.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The interface for classes controlling the flow of execution
@@ -33,7 +33,7 @@ namespace farsa {
  * This class is used to control the execution flow of subclasses of
  * FlowControlled. See FlowControlled description for more information
  */
-class FARSA_UTIL_TEMPLATE FlowController
+class SALSA_UTIL_TEMPLATE FlowController
 {
 public:
 	/**
@@ -63,7 +63,7 @@ public:
  * This class implements a dummy flw controller, in which stop() always return
  * false and pause() always returns immediately
  */
-class FARSA_UTIL_TEMPLATE DummyFlowController : public FlowController
+class SALSA_UTIL_TEMPLATE DummyFlowController : public FlowController
 {
 public:
 	/**
@@ -165,9 +165,9 @@ public:
  *       simulation thread and a GUI thread)
  */
 #if defined(__GNUC__) && defined(DEVELOPER_WARNINGS)
-	#warning forse in farsa 2 questa roba si può mettere nella classe Component che ha una struttura gerarchica, in modo da propagare automaticamente il flow controller ai figli. In tal caso la funzione flowControllerChanged può essere forse rimossa
+	#warning forse in salsa 2 questa roba si può mettere nella classe Component che ha una struttura gerarchica, in modo da propagare automaticamente il flow controller ai figli. In tal caso la funzione flowControllerChanged può essere forse rimossa
 #endif
-class FARSA_UTIL_TEMPLATE FlowControlled
+class SALSA_UTIL_TEMPLATE FlowControlled
 {
 public:
 	/**

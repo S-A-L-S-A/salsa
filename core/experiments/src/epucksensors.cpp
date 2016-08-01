@@ -1,5 +1,5 @@
 // /********************************************************************************
-//  *  FARSA Experiments Library                                                   *
+//  *  SALSA Experiments Library                                                   *
 //  *  Copyright (C) 2007-2012                                                     *
 //  *  Gianluca Massera <emmegian@yahoo.it>                                        *
 //  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -28,7 +28,7 @@
 // #include "arena.h"
 // #include <limits>
 //
-// namespace farsa {
+// namespace salsa {
 //
 // EpuckSensor::EpuckSensor(ConfigurationParameters& params, QString prefix) :
 // 	Sensor(params, prefix),

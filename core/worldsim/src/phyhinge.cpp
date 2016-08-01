@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA                                                                       *
+ *  SALSA                                                                       *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -26,7 +26,7 @@
 #include "private/phyobjectprivate.h"
 #include "private/worldprivate.h"
 
-namespace farsa {
+namespace salsa {
 
 PhyHinge::PhyHinge(World* world, SharedDataWrapper<Shared> shared, PhyObject* parent, PhyObject* child, const wVector& axis, const wVector& centre, real startAngle, QString name)
 	: PhyJoint(world, shared, parent, child, name)
@@ -396,4 +396,4 @@ void RenderPhyHinge::render(const PhyHingeShared* sharedData, GLContextAndData* 
 	drawJoint(sharedData, contextAndData, sharedData->globalMatrixParent.w_pos, end1, end2);
 }
 
-} // end namespace farsa
+} // end namespace salsa

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Experiments Library                                                   *
+ *  SALSA Experiments Library                                                   *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -25,7 +25,7 @@
 #include "logger.h"
 #include "randomgenerator.h"
 
-namespace farsa {
+namespace salsa {
 
 EvonetIterator::EvonetIterator(Evonet* evonet)
 	: AbstractControllerIterator()
@@ -173,4 +173,4 @@ int EvonetIterator::layerIndexToLinearIndex(int index, Layer layer) const
 	return linearIndex;
 }
 
-} // end namespace farsa
+} // end namespace salsa

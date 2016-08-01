@@ -1,5 +1,5 @@
 /*******************************************************************************
- * FARSA New Genetic Algorithm Library                                        *
+ * SALSA New Genetic Algorithm Library                                        *
  * Copyright (C) 2007-2012                                                    *
  * Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                  *
  * Tomassino Ferrauto <tomassino.ferrauto@istc.cnr.it>                        *
@@ -35,13 +35,13 @@
 #include <QVector>
 #include <Eigen/Core>
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief The steady state algorithm.
  *
  */
-class FARSA_NEWGA_API SteadyStateAlgo : public EvoAlgo
+class SALSA_NEWGA_API SteadyStateAlgo : public EvoAlgo
 {
 public:
 	/**
@@ -149,6 +149,6 @@ private:
 	int m_rngSeed;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

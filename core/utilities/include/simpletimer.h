@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Utilities Library                                                     *
+ *  SALSA Utilities Library                                                     *
  *  Copyright (C) 2007-2011 Gianluca Massera <emmegian@yahoo.it>                *
  *                                                                              *
  *  This program is free software; you can redistribute it and/or modify        *
@@ -22,23 +22,23 @@
 
 #include "utilitiesconfig.h"
 
-#ifdef FARSA_WIN
+#ifdef SALSA_WIN
 	#include <windows.h>
 #else
 	#include <sys/time.h>
 	#include <unistd.h>
 #endif
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief A simple function to sleep for the given amount of milliseconds
  *
  * \param msec the amout of milliseconds to sleep
  */
-inline void FARSA_UTIL_TEMPLATE msleep(unsigned int msec)
+inline void SALSA_UTIL_TEMPLATE msleep(unsigned int msec)
 {
-#ifdef FARSA_WIN
+#ifdef SALSA_WIN
 	Sleep(msec);
 #else
 	usleep(msec * 1000);
@@ -57,11 +57,11 @@ inline void FARSA_UTIL_TEMPLATE msleep(unsigned int msec)
  *
  * \ingroup utilities_timer
  */
-class FARSA_UTIL_TEMPLATE SimpleTimer {
+class SALSA_UTIL_TEMPLATE SimpleTimer {
 public:
 	/*! Construct the timer */
 	SimpleTimer() {
-#ifdef FARSA_WIN
+#ifdef SALSA_WIN
 		QueryPerformanceFrequency( &frequency );
 		QueryPerformanceCounter( &baseCount );
 #else
@@ -72,7 +72,7 @@ public:
 	};
 	/*! return microsecond elapsed from last tic() call */
 	int tac() {
-#ifdef FARSA_WIN
+#ifdef SALSA_WIN
 		unsigned ticks;
 		QueryPerformanceCounter( &count );
 		count.QuadPart -= baseCount.QuadPart;
@@ -86,7 +86,7 @@ public:
 	};
 	/*! return microsecond elapsed from last tic() call */
 	int tic() {
-#ifdef FARSA_WIN
+#ifdef SALSA_WIN
 		unsigned ticks;
 		QueryPerformanceCounter( &count );
 		count.QuadPart -= baseCount.QuadPart;
@@ -102,7 +102,7 @@ public:
 #endif
 	};
 private:
-#ifdef FARSA_WIN
+#ifdef SALSA_WIN
 	LARGE_INTEGER count;
 	LARGE_INTEGER frequency;
 	LARGE_INTEGER baseCount;
@@ -111,6 +111,6 @@ private:
 #endif
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif

@@ -1,5 +1,5 @@
 /********************************************************************************
- *  FARSA Utilities Library                                                     *
+ *  SALSA Utilities Library                                                     *
  *  Copyright (C) 2007-2012                                                     *
  *  Gianluca Massera <emmegian@yahoo.it>                                        *
  *  Stefano Nolfi <stefano.nolfi@istc.cnr.it>                                   *
@@ -31,7 +31,7 @@
 #include <limits>
 #include "mathutils.h"
 
-namespace farsa {
+namespace salsa {
 
 /**
  * \brief A class modelling a range of real values
@@ -41,7 +41,7 @@ namespace farsa {
  * intervals and operations with intervals. Moreover this class doesn't perform
  * any sanity check (e.g. you are allowed to have start > end)
  */
-class FARSA_UTIL_API SimpleInterval
+class SALSA_UTIL_API SimpleInterval
 {
 public:
 	/**
@@ -215,7 +215,7 @@ public:
  * with start > end. To access the simple intervals you have to use
  * const_iterators or get the const linked list of SimpleInterval
  */
-class FARSA_UTIL_API Intervals
+class SALSA_UTIL_API Intervals
 {
 public:
 	/**
@@ -746,6 +746,6 @@ protected:
 	QLinkedList<SimpleInterval> m_intervals;
 };
 
-} // end namespace farsa
+} // end namespace salsa
 
 #endif
