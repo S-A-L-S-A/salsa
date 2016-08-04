@@ -20,6 +20,8 @@
 #ifndef GACONFIG_H
 #define GACONFIG_H
 
+#include "salsaversion.h"
+
 /*! \file
  *  \brief This file contains the common type defitions used on the whole framework
  *
@@ -51,14 +53,6 @@ extern bool SALSA_GA_API initGALib();
 static const bool GALibInitializer = initGALib();
 
 } // end namespace salsa
-
-//--- read it as: x.yy.zz where
-//---  x  is major version
-//---  yy is minor version
-//---  zz is patch version
-//--- Example: version 2.4.6 is 20406
-//--- Actual Version: 0.1.0
-#define SALSA_GA_VERSION 10405
 
 #include <QtDebug>
 

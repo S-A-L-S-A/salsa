@@ -116,3 +116,6 @@ install(FILES "README" DESTINATION "${MISC_FILES_DESTINATION}")
 install(FILES "${CMAKE_BINARY_DIR}/salsaConfig.cmake" DESTINATION "${MISC_FILES_DESTINATION}")
 install(FILES "FindGSL.cmake" DESTINATION "${MISC_FILES_DESTINATION}")
 install(FILES "tests/testPlugin.py" DESTINATION "${MISC_FILES_DESTINATION}")
+
+# We also install salsaversion.h by hand here
+install(FILES "salsaversion.h" DESTINATION "include/salsa")

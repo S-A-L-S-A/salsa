@@ -24,6 +24,8 @@
 #ifndef NEWGACONFIG_H
 #define NEWGACONFIG_H
 
+#include "salsaversion.h"
+
 /*! \file
  *  \brief This file contains the common type defitions used on the whole framework
  *
@@ -55,14 +57,6 @@ extern bool SALSA_NEWGA_API initNewGALib();
 static const bool NewGALibInitializer = initNewGALib();
 
 } // end namespace salsa
-
-//--- read it as: x.yy.zz where
-//---  x  is major version
-//---  yy is minor version
-//---  zz is patch version
-//--- Example: version 2.4.6 is 20406
-//--- Actual Version: 0.1.0
-#define SALSA_NEWGA_VERSION 10405
 
 #include <QtDebug>
 

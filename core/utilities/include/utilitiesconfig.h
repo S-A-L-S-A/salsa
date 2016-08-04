@@ -20,6 +20,8 @@
 #ifndef UTILITIESCONFIG_H
 #define UTILITIESCONFIG_H
 
+#include "salsaversion.h"
+
 // SALSA_UTIL_TEMPLATE is also for classes that are completely inline
 #ifdef WIN32
 	#define _CRT_SECURE_NO_DEPRECATE
@@ -36,13 +38,6 @@
 	#define SALSA_UTIL_TEMPLATE
 	#define SALSA_UTIL_INTERNAL __attribute__ ((visibility ("hidden")))
 #endif
-
-//--- read it as: x.yy.zz where
-//---  x  is major version
-//---  yy is minor version
-//---  zz is patch version
-//--- Example: version 2.4.6 is 20406
-#define SALSA_UTIL_VERSION 0x020000
 
 namespace salsa {
 

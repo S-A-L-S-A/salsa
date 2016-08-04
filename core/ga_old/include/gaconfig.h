@@ -20,6 +20,8 @@
 #ifndef GACONFIG_H
 #define GACONFIG_H
 
+#include "salsaversion.h"
+
 // SALSA_GA_TEMPLATE is also for classes that are completely inline
 #ifdef WIN32
 	#define _CRT_SECURE_NO_DEPRECATE
@@ -43,13 +45,6 @@ extern bool SALSA_GA_API initGALib();
 static const bool GALibInitializer = initGALib();
 
 } // end namespace salsa
-
-//--- read it as: xx.yy.zz where
-//---  xx  is major version
-//---  yy  is minor version
-//---  zz  is patch version
-//--- Example: version 2.4.6 is 0x020406
-#define SALSA_VERSION 0x020000
 
 #include <QtDebug>
 

@@ -20,4 +20,14 @@
  *  59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.              *
  ***************************************************************************/
 
-QUI METTERE LA VERSIONE DI SALSA E INCLUDERLO DA TUTTI I I *config.h DELLE VARIE LIBRERIE
+#ifndef SALSAVERSION_H
+#define SALSAVERSION_H
+
+//--- read it as: xx.yy.zz where
+//---  xx  is major version
+//---  yy  is minor version
+//---  zz  is patch version
+//--- Example: version 2.4.6 is 0x020406
+#define SALSA_VERSION 0x010000
+
+#endif

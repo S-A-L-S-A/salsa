@@ -23,6 +23,8 @@
 #ifndef WORLDSIMCONFIG_H
 #define WORLDSIMCONFIG_H
 
+#include "salsaversion.h"
+
 // SALSA_WSIM_TEMPLATE is also for classes that are completely inline
 #ifdef WIN32
 	#ifndef NOMINMAX
@@ -45,12 +47,5 @@
 
 extern bool SALSA_WSIM_API initWorldSimLib();
 static const bool worldSimInitializer = initWorldSimLib();
-
-//--- read it as: x.yy.zz where
-//---  x  is major version
-//---  yy is minor version
-//---  zz is patch version
-//--- Example: version 2.4.6 is 20406
-#define SALSA_WSIM_VERSION 0x020000
 
 #endif
