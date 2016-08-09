@@ -87,14 +87,11 @@ add_salsa_version(salsaexperiments)
 
 # Specifying the the include directories: they are used both here and  exported
 # by this library (so that targets linking this one will automatically import
-# the include directories declared here). CMAKE_SOURCE_DIR is needed for
-# salsaversion.h
+# the include directories declared here)
 target_include_directories(salsaexperiments PUBLIC
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/evorobot/include>
-                           $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}>
-                           $<INSTALL_INTERFACE:include/salsa/experiments>
-                           $<INSTALL_INTERFACE:include/salsa>)
+                           $<INSTALL_INTERFACE:include/salsa/experiments>)
 
 # Adding dependencies (they are also exported, so targets linking this one will
 # automatically link libraries declared here)

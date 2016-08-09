@@ -1,22 +1,32 @@
 # The minimum required version of CMake corresponds to the one in Ubuntu 14.04
 # LTS
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.1.0)
 
 # CMake policies
 cmake_policy(SET CMP0042 NEW)
+cmake_policy(SET CMP0048 NEW)
+
+# Using C++14
+set(CMAKE_CXX_STANDARD 14)
+
+# Including the file with helpers
+include(Helpers.cmake)
 
 # Version Information
 set(SALSA_VER_MAJ 1)
 set(SALSA_VER_MIN 0)
 set(SALSA_VER_PAT 0)
 
-project(salsa CXX)
+pad_number_smaller_than_10(SALSA_PADDED_VER_MAJ ${SALSA_VER_MAJ})
+pad_number_smaller_than_10(SALSA_PADDED_VER_MIN ${SALSA_VER_MIN})
+pad_number_smaller_than_10(SALSA_PADDED_VER_PAT ${SALSA_VER_PAT})
+set(SALSA_VERSION "0x${SALSA_PADDED_VER_MAJ}${SALSA_PADDED_VER_MIN}${SALSA_PADDED_VER_PAT}")
+message(STATUS "SALSA version: ${SALSA_VERSION}")
+
+project(salsa VERSION ${SALSA_VER_MAJ}.${SALSA_VER_MIN}.${SALSA_VER_PAT} LANGUAGES CXX)
 set(CMAKE_COLOR_MAKEFILE ON)
 # We set this to be able to load our script (e.g. for GSL)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR})
-
-# Including the file with helpers
-include(Helpers.cmake)
 
 # A variable to select whether to display developer warnings when compiling or
 # not
@@ -88,6 +98,9 @@ else()
 	set(MISC_FILES_DESTINATION share/salsa)
 endif()
 
+# Generating the salsaversion.h file
+configure_file("salsaversion.h.in" "${CMAKE_BINARY_DIR}/salsaversion.h" @ONLY)
+
 # Adding all subdirectories
 add_subdirectory(configuration)
 add_subdirectory(utilities)
@@ -118,4 +131,4 @@ install(FILES "FindGSL.cmake" DESTINATION "${MISC_FILES_DESTINATION}")
 install(FILES "tests/testPlugin.py" DESTINATION "${MISC_FILES_DESTINATION}")
 
 # We also install salsaversion.h by hand here
-install(FILES "salsaversion.h" DESTINATION "include/salsa")
+install(FILES "${CMAKE_BINARY_DIR}/salsaversion.h" DESTINATION "include/salsa")

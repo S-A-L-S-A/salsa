@@ -39,11 +39,12 @@ add_salsa_version(salsaconfiguration)
 
 # Specifying the the include directories: they are used both here and  exported
 # by this library (so that targets linking this one will automatically import
-# the include directories declared here). CMAKE_SOURCE_DIR is needed for
-# salsaversion.h
+# the include directories declared here). CMAKE_BINARY_DIR is needed for
+# salsaversion.h. We only include it here because this library is used
+# everywhere in SALSA, so other libraries will inherit these include directories
 target_include_directories(salsaconfiguration PUBLIC
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-                           $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}>
+                           $<BUILD_INTERFACE:${CMAKE_BINARY_DIR}>
                            $<INSTALL_INTERFACE:include/salsa/configuration>
                            $<INSTALL_INTERFACE:include/salsa>)
 

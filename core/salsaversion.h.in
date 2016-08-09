@@ -28,6 +28,6 @@
 //---  yy  is minor version
 //---  zz  is patch version
 //--- Example: version 2.4.6 is 0x020406
-#define SALSA_VERSION 0x010000
+#define SALSA_VERSION @SALSA_VERSION@
 
 #endif
