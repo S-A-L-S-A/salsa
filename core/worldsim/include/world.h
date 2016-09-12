@@ -411,190 +411,19 @@ public:
 	 * 	world->deleteEntity(e);
 	 *
 	 * After a call to deleteEntity the pointer passed as argument ("e" in
-	 * the example) is no longer valid
+	 * the example) is no longer valid. args are parameters to pass to
+	 * the entities constructor after the world and the shared data object
 	 * \param type an instance of the class TypeToCreate with the WEntity
 	 *             subclass to create as the template parameter.
 	 * \return a pointer to the new entity
 	 */
-	template <class T>
-	T* createEntity(TypeToCreate<T> type)
+	template <class T, class... Args>
+	T* createEntity(TypeToCreate<T> type, Args&&... args)
 	{
 		// We cannot remove TypeToCreate because the customizer needs to be an l-value (cannot be a r-value,
 		// i.e. we cannot call createEntity(WEntityCreationCustomizer<T>(), ...)
 		WEntityCreationCustomizer<T> customizer;
-		return createEntity(customizer, type);
-	}
-
-	/**
-	 * \brief The function to create an entity
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param type an instance of the class TypeToCreate with the WEntity
-	 *             subclass to create as the template parameter.
-	 * \param p0 the third parameter of the entity constructor (the one
-	 *           after World and SharedData)
-	 * \return a pointer to the new entity
-	 */
-	template <class T, class P0>
-	T* createEntity(TypeToCreate<T> type, P0 p0)
-	{
-		WEntityCreationCustomizer<T> customizer;
-		return createEntity(customizer, type, p0);
-	}
-
-	/**
-	 * \brief The function to create an entity
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param type an instance of the class TypeToCreate with the WEntity
-	 *             subclass to create as the template parameter.
-	 * \param p0 the third parameter of the entity constructor (the one
-	 *           after World and SharedData)
-	 * \param p1 the fourth parameter of the entity constructor
-	 * \return a pointer to the new entity
-	 */
-	template <class T, class P0, class P1>
-	T* createEntity(TypeToCreate<T> type, P0 p0, P1 p1)
-	{
-		WEntityCreationCustomizer<T> customizer;
-		return createEntity(customizer, type, p0, p1);
-	}
-
-	/**
-	 * \brief The function to create an entity
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param type an instance of the class TypeToCreate with the WEntity
-	 *             subclass to create as the template parameter.
-	 * \param p0 the third parameter of the entity constructor (the one
-	 *           after World and SharedData)
-	 * \param p1 the fourth parameter of the entity constructor
-	 * \param p2 the fifth parameter of the entity constructor
-	 * \return a pointer to the new entity
-	 */
-	template <class T, class P0, class P1, class P2>
-	T* createEntity(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2)
-	{
-		WEntityCreationCustomizer<T> customizer;
-		return createEntity(customizer, type, p0, p1, p2);
-	}
-
-	/**
-	 * \brief The function to create an entity
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param type an instance of the class TypeToCreate with the WEntity
-	 *             subclass to create as the template parameter.
-	 * \param p0 the third parameter of the entity constructor (the one
-	 *           after World and SharedData)
-	 * \param p1 the fourth parameter of the entity constructor
-	 * \param p2 the fifth parameter of the entity constructor
-	 * \param p3 the sixth parameter of the entity constructor
-	 * \return a pointer to the new entity
-	 */
-	template <class T, class P0, class P1, class P2, class P3>
-	T* createEntity(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3)
-	{
-		WEntityCreationCustomizer<T> customizer;
-		return createEntity(customizer, type, p0, p1, p2, p3);
-	}
-
-	/**
-	 * \brief The function to create an entity
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param type an instance of the class TypeToCreate with the WEntity
-	 *             subclass to create as the template parameter.
-	 * \param p0 the third parameter of the entity constructor (the one
-	 *           after World and SharedData)
-	 * \param p1 the fourth parameter of the entity constructor
-	 * \param p2 the fifth parameter of the entity constructor
-	 * \param p3 the sixth parameter of the entity constructor
-	 * \param p4 the seventh parameter of the entity constructor
-	 * \return a pointer to the new entity
-	 */
-	template <class T, class P0, class P1, class P2, class P3, class P4>
-	T* createEntity(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4)
-	{
-		WEntityCreationCustomizer<T> customizer;
-		return createEntity(customizer, type, p0, p1, p2, p3, p4);
-	}
-
-	/**
-	 * \brief The function to create an entity
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param type an instance of the class TypeToCreate with the WEntity
-	 *             subclass to create as the template parameter.
-	 * \param p0 the third parameter of the entity constructor (the one
-	 *           after World and SharedData)
-	 * \param p1 the fourth parameter of the entity constructor
-	 * \param p2 the fifth parameter of the entity constructor
-	 * \param p3 the sixth parameter of the entity constructor
-	 * \param p4 the seventh parameter of the entity constructor
-	 * \param p5 the eighth parameter of the entity constructor
-	 * \return a pointer to the new entity
-	 */
-	template <class T, class P0, class P1, class P2, class P3, class P4, class P5>
-	T* createEntity(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5)
-	{
-		WEntityCreationCustomizer<T> customizer;
-		return createEntity(customizer, type, p0, p1, p2, p3, p4, p5);
-	}
-
-	/**
-	 * \brief The function to create an entity
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param type an instance of the class TypeToCreate with the WEntity
-	 *             subclass to create as the template parameter.
-	 * \param p0 the third parameter of the entity constructor (the one
-	 *           after World and SharedData)
-	 * \param p1 the fourth parameter of the entity constructor
-	 * \param p2 the fifth parameter of the entity constructor
-	 * \param p3 the sixth parameter of the entity constructor
-	 * \param p4 the seventh parameter of the entity constructor
-	 * \param p5 the eighth parameter of the entity constructor
-	 * \param p6 the ninth parameter of the entity constructor
-	 * \return a pointer to the new entity
-	 */
-	template <class T, class P0, class P1, class P2, class P3, class P4, class P5, class P6>
-	T* createEntity(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6)
-	{
-		WEntityCreationCustomizer<T> customizer;
-		return createEntity(customizer, type, p0, p1, p2, p3, p4, p5, p6);
-	}
-
-	/**
-	 * \brief The function to create an entity
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param type an instance of the class TypeToCreate with the WEntity
-	 *             subclass to create as the template parameter.
-	 * \param p0 the third parameter of the entity constructor (the one
-	 *           after World and SharedData)
-	 * \param p1 the fourth parameter of the entity constructor
-	 * \param p2 the fifth parameter of the entity constructor
-	 * \param p3 the sixth parameter of the entity constructor
-	 * \param p4 the seventh parameter of the entity constructor
-	 * \param p5 the eighth parameter of the entity constructor
-	 * \param p6 the ninth parameter of the entity constructor
-	 * \param p7 the tenth parameter of the entity constructor
-	 * \return a pointer to the new entity
-	 */
-	template <class T, class P0, class P1, class P2, class P3, class P4, class P5, class P6, class P7>
-	T* createEntity(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7)
-	{
-		WEntityCreationCustomizer<T> customizer;
-		return createEntity(customizer, type, p0, p1, p2, p3, p4, p5, p6, p7);
+		return createEntity(customizer, type, std::forward<Args>(args)...);
 	}
 
 	/**
@@ -603,164 +432,15 @@ public:
 	 * This is the same ad the version that do not take a pointer to a
 	 * WEntityCreationCustomizer object, but uses properties of the
 	 * WEntityCreationCustomizer object to customize the creation process.
-	 * You should rarely need this function. This function is for entities
-	 * whose constructor only takes two parameters: the world and the shared
-	 * data object
+	 * You should rarely need this function. args are parameters to pass to
+	 * the entities constructor after the world and the shared data object
 	 * \param customizer the object that allows to customize object creation
 	 * \param type an instance of the class TypeToCreate with the WEntity
 	 *             subclass to create as the template parameter.
 	 * \return a pointer to the new entity
 	 */
-	template <class CT, class T>
-	T* createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type);
-
-	/**
-	 * \brief The function to create an entity
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param customizer the object that allows to customize object creation
-	 * \param type an instance of the class TypeToCreate with the WEntity
-	 *             subclass to create as the template parameter.
-	 * \param p0 the third parameter of the entity constructor (the one
-	 *           after World and SharedData)
-	 * \return a pointer to the new entity
-	 */
-	template <class CT, class T, class P0>
-	T* createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0);
-
-	/**
-	 * \brief The function to create an entity
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param customizer the object that allows to customize object creation
-	 * \param type an instance of the class TypeToCreate with the WEntity
-	 *             subclass to create as the template parameter.
-	 * \param p0 the third parameter of the entity constructor (the one
-	 *           after World and SharedData)
-	 * \param p1 the fourth parameter of the entity constructor
-	 * \return a pointer to the new entity
-	 */
-	template <class CT, class T, class P0, class P1>
-	T* createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1);
-
-	/**
-	 * \brief The function to create an entity
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param customizer the object that allows to customize object creation
-	 * \param type an instance of the class TypeToCreate with the WEntity
-	 *             subclass to create as the template parameter.
-	 * \param p0 the third parameter of the entity constructor (the one
-	 *           after World and SharedData)
-	 * \param p1 the fourth parameter of the entity constructor
-	 * \param p2 the fifth parameter of the entity constructor
-	 * \return a pointer to the new entity
-	 */
-	template <class CT, class T, class P0, class P1, class P2>
-	T* createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2);
-
-	/**
-	 * \brief The function to create an entity
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param customizer the object that allows to customize object creation
-	 * \param type an instance of the class TypeToCreate with the WEntity
-	 *             subclass to create as the template parameter.
-	 * \param p0 the third parameter of the entity constructor (the one
-	 *           after World and SharedData)
-	 * \param p1 the fourth parameter of the entity constructor
-	 * \param p2 the fifth parameter of the entity constructor
-	 * \param p3 the sixth parameter of the entity constructor
-	 * \return a pointer to the new entity
-	 */
-	template <class CT, class T, class P0, class P1, class P2, class P3>
-	T* createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3);
-
-	/**
-	 * \brief The function to create an entity
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param customizer the object that allows to customize object creation
-	 * \param type an instance of the class TypeToCreate with the WEntity
-	 *             subclass to create as the template parameter.
-	 * \param p0 the third parameter of the entity constructor (the one
-	 *           after World and SharedData)
-	 * \param p1 the fourth parameter of the entity constructor
-	 * \param p2 the fifth parameter of the entity constructor
-	 * \param p3 the sixth parameter of the entity constructor
-	 * \param p4 the seventh parameter of the entity constructor
-	 * \return a pointer to the new entity
-	 */
-	template <class CT, class T, class P0, class P1, class P2, class P3, class P4>
-	T* createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4);
-
-	/**
-	 * \brief The function to create an entity
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param customizer the object that allows to customize object creation
-	 * \param type an instance of the class TypeToCreate with the WEntity
-	 *             subclass to create as the template parameter.
-	 * \param p0 the third parameter of the entity constructor (the one
-	 *           after World and SharedData)
-	 * \param p1 the fourth parameter of the entity constructor
-	 * \param p2 the fifth parameter of the entity constructor
-	 * \param p3 the sixth parameter of the entity constructor
-	 * \param p4 the seventh parameter of the entity constructor
-	 * \param p5 the eighth parameter of the entity constructor
-	 * \return a pointer to the new entity
-	 */
-	template <class CT, class T, class P0, class P1, class P2, class P3, class P4, class P5>
-	T* createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5);
-
-	/**
-	 * \brief The function to create an entity
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param customizer the object that allows to customize object creation
-	 * \param type an instance of the class TypeToCreate with the WEntity
-	 *             subclass to create as the template parameter.
-	 * \param p0 the third parameter of the entity constructor (the one
-	 *           after World and SharedData)
-	 * \param p1 the fourth parameter of the entity constructor
-	 * \param p2 the fifth parameter of the entity constructor
-	 * \param p3 the sixth parameter of the entity constructor
-	 * \param p4 the seventh parameter of the entity constructor
-	 * \param p5 the eighth parameter of the entity constructor
-	 * \param p6 the ninth parameter of the entity constructor
-	 * \return a pointer to the new entity
-	 */
-	template <class CT, class T, class P0, class P1, class P2, class P3, class P4, class P5, class P6>
-	T* createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6);
-
-	/**
-	 * \brief The function to create an entity
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param customizer the object that allows to customize object creation
-	 * \param type an instance of the class TypeToCreate with the WEntity
-	 *             subclass to create as the template parameter.
-	 * \param p0 the third parameter of the entity constructor (the one
-	 *           after World and SharedData)
-	 * \param p1 the fourth parameter of the entity constructor
-	 * \param p2 the fifth parameter of the entity constructor
-	 * \param p3 the sixth parameter of the entity constructor
-	 * \param p4 the seventh parameter of the entity constructor
-	 * \param p5 the eighth parameter of the entity constructor
-	 * \param p6 the ninth parameter of the entity constructor
-	 * \param p7 the tenth parameter of the entity constructor
-	 * \return a pointer to the new entity
-	 */
-	template <class CT, class T, class P0, class P1, class P2, class P3, class P4, class P5, class P6, class P7>
-	T* createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7);
+	template <class CT, class T, class... Args>
+	T* createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, Args&&... args);
 
 	/**
 	 * \brief The function to delete an entity
@@ -778,167 +458,17 @@ public:
 	/**
 	 * \brief The function to create renderers containers
 	 *
-	 * Use this function to create a renderer container. This function can
-	 * be used for classes that only take a pointer to the world in the
-	 * constructor, for classes with more parameters use overloads.
-	 * Containers created in this way must be deleted using the
-	 * deleteRenderersContainer() function and are deleted if world is
-	 * deleted
+	 * Use this function to create a renderer container. Containers created
+	 * in this way must be deleted using the deleteRenderersContainer()
+	 * function and are deleted if world is deleted. args are parameters to
+	 * pass to the entities constructor after the world pointer
 	 * \param type an instance of the class TypeToCreate with the
 	 *             AbstractRendererContainer subclass to create as the
 	 *             template parameter.
 	 * \return a pointer to the new render container
 	 */
-	template<class T>
-	T* createRenderersContainer(TypeToCreate<T> type);
-
-	/**
-	 * \brief The function to create renderers containers
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param type an instance of the class TypeToCreate with the
-	 *             AbstractRendererContainer subclass to create as the
-	 *             template parameter.
-	 * \param p0 the second parameter of the renderer container constructor
-	 *           (the one after World)
-	 * \return a pointer to the new render container
-	 */
-	template<class T, class P0>
-	T* createRenderersContainer(TypeToCreate<T> type, P0 p0);
-
-	/**
-	 * \brief The function to create renderers containers
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param type an instance of the class TypeToCreate with the
-	 *             AbstractRendererContainer subclass to create as the
-	 *             template parameter.
-	 * \param p0 the second parameter of the renderer container constructor
-	 *           (the one after World)
-	 * \param p1 the third parameter of the renderer container constructor
-	 * \return a pointer to the new render container
-	 */
-	template<class T, class P0, class P1>
-	T* createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1);
-
-	/**
-	 * \brief The function to create renderers containers
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param type an instance of the class TypeToCreate with the
-	 *             AbstractRendererContainer subclass to create as the
-	 *             template parameter.
-	 * \param p0 the second parameter of the renderer container constructor
-	 *           (the one after World)
-	 * \param p1 the third parameter of the renderer container constructor
-	 * \param p2 the fourth parameter of the renderer container constructor
-	 * \return a pointer to the new render container
-	 */
-	template<class T, class P0, class P1, class P2>
-	T* createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2);
-
-	/**
-	 * \brief The function to create renderers containers
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param type an instance of the class TypeToCreate with the
-	 *             AbstractRendererContainer subclass to create as the
-	 *             template parameter.
-	 * \param p0 the second parameter of the renderer container constructor
-	 *           (the one after World)
-	 * \param p1 the third parameter of the renderer container constructor
-	 * \param p2 the fourth parameter of the renderer container constructor
-	 * \param p3 the fifth parameter of the renderer container constructor
-	 * \return a pointer to the new render container
-	 */
-	template<class T, class P0, class P1, class P2, class P3>
-	T* createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3);
-
-	/**
-	 * \brief The function to create renderers containers
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param type an instance of the class TypeToCreate with the
-	 *             AbstractRendererContainer subclass to create as the
-	 *             template parameter.
-	 * \param p0 the second parameter of the renderer container constructor
-	 *           (the one after World)
-	 * \param p1 the third parameter of the renderer container constructor
-	 * \param p2 the fourth parameter of the renderer container constructor
-	 * \param p3 the fifth parameter of the renderer container constructor
-	 * \param p4 the sixth parameter of the renderer container constructor
-	 * \return a pointer to the new render container
-	 */
-	template<class T, class P0, class P1, class P2, class P3, class P4>
-	T* createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4);
-
-	/**
-	 * \brief The function to create renderers containers
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param type an instance of the class TypeToCreate with the
-	 *             AbstractRendererContainer subclass to create as the
-	 *             template parameter.
-	 * \param p0 the second parameter of the renderer container constructor
-	 *           (the one after World)
-	 * \param p1 the third parameter of the renderer container constructor
-	 * \param p2 the fourth parameter of the renderer container constructor
-	 * \param p3 the fifth parameter of the renderer container constructor
-	 * \param p4 the sixth parameter of the renderer container constructor
-	 * \param p5 the seventh parameter of the renderer container constructor
-	 * \return a pointer to the new render container
-	 */
-	template<class T, class P0, class P1, class P2, class P3, class P4, class P5>
-	T* createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5);
-
-	/**
-	 * \brief The function to create renderers containers
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param type an instance of the class TypeToCreate with the
-	 *             AbstractRendererContainer subclass to create as the
-	 *             template parameter.
-	 * \param p0 the second parameter of the renderer container constructor
-	 *           (the one after World)
-	 * \param p1 the third parameter of the renderer container constructor
-	 * \param p2 the fourth parameter of the renderer container constructor
-	 * \param p3 the fifth parameter of the renderer container constructor
-	 * \param p4 the sixth parameter of the renderer container constructor
-	 * \param p5 the seventh parameter of the renderer container constructor
-	 * \param p6 the eighth parameter of the renderer container constructor
-	 * \return a pointer to the new render container
-	 */
-	template<class T, class P0, class P1, class P2, class P3, class P4, class P5, class P6>
-	T* createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6);
-
-	/**
-	 * \brief The function to create renderers containers
-	 *
-	 * See the documentation for the version with no parameters for more
-	 * information
-	 * \param type an instance of the class TypeToCreate with the
-	 *             AbstractRendererContainer subclass to create as the
-	 *             template parameter.
-	 * \param p0 the second parameter of the renderer container constructor
-	 *           (the one after World)
-	 * \param p1 the third parameter of the renderer container constructor
-	 * \param p2 the fourth parameter of the renderer container constructor
-	 * \param p3 the fifth parameter of the renderer container constructor
-	 * \param p4 the sixth parameter of the renderer container constructor
-	 * \param p5 the seventh parameter of the renderer container constructor
-	 * \param p6 the eighth parameter of the renderer container constructor
-	 * \param p7 the ninth parameter of the renderer container constructor
-	 * \return a pointer to the new render container
-	 */
-	template<class T, class P0, class P1, class P2, class P3, class P4, class P5, class P6, class P7>
-	T* createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7);
+	template<class T, class... Args>
+	T* createRenderersContainer(TypeToCreate<T> type, Args&&... args);
 
 	/**
 	 * \brief Deletes a renderer container
@@ -1142,216 +672,50 @@ private:
 // Implementation of template functions
 namespace salsa
 {
-template <class CT, class T>
-T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type)
+template <class CT, class T, class... Args>
+T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, Args&&... args)
 {
-#define __SALSA_WORLD_PRE_CREATE_ENTITY Q_UNUSED(type);\
-                                        m_creatingSomething = true;\
-                                        WEntityAndBuddies e;\
-                                        typename T::Shared* sharedData = new typename T::Shared();\
-                                        e.sharedDataHolder = new SharedDataHolder<typename T::Shared>(sharedData); \
-                                        SharedDataWrapper<typename T::Shared> sharedDataWrapper(sharedData);
-#define __SALSA_WORLD_POST_CREATE_ENTITY customizer.immediatePostCreationAction(entity);\
-                                         e.entity = entity;\
-                                         e.rendererCreator = new RenderWEntityCreator<T>(entity);\
-                                         if (customizer.addToWorldLists()) {\
-                                                 QLinkedList<WEntityAndBuddies>::iterator it = m_entities.insert(m_entities.end(), e);\
-                                                 m_entitiesMap[e.entity] = it;\
-                                         } else {\
-                                                 QLinkedList<WEntityAndBuddies>::iterator it = m_shadowEntities.insert(m_entities.end(), e);\
-                                                 m_shadowEntitiesMap[e.entity] = it;\
-                                         }\
-                                         postCreationActionForType(customizer, entity);\
-                                         m_creatingSomething = false;\
-                                         if (customizer.addToWorldLists()) {\
-                                                 notifyRendererContainersOfNewEntity(e.rendererCreator);\
-                                         }\
-                                         customizer.setWEntityAndBuddies(e);\
-                                         customizer.delayedPostCreationAction(entity);\
-                                         return entity;
+	Q_UNUSED(type);
+	m_creatingSomething = true;
+	WEntityAndBuddies e;
+	typename T::Shared* sharedData = new typename T::Shared();
+	e.sharedDataHolder = new SharedDataHolder<typename T::Shared>(sharedData);
+	SharedDataWrapper<typename T::Shared> sharedDataWrapper(sharedData);
 
-	__SALSA_WORLD_PRE_CREATE_ENTITY
+	T* const entity = new T(this, sharedDataWrapper, std::forward<Args>(args)...);
 
-	T* const entity = new T(this, sharedDataWrapper);
-
-	__SALSA_WORLD_POST_CREATE_ENTITY
+	customizer.immediatePostCreationAction(entity);
+	e.entity = entity;
+	e.rendererCreator = new RenderWEntityCreator<T>(entity);
+	if (customizer.addToWorldLists()) {
+		QLinkedList<WEntityAndBuddies>::iterator it = m_entities.insert(m_entities.end(), e);
+		m_entitiesMap[e.entity] = it;
+	} else {
+		QLinkedList<WEntityAndBuddies>::iterator it = m_shadowEntities.insert(m_entities.end(), e);
+		m_shadowEntitiesMap[e.entity] = it;
+	}
+	postCreationActionForType(customizer, entity);
+	m_creatingSomething = false;
+	if (customizer.addToWorldLists()) {
+		notifyRendererContainersOfNewEntity(e.rendererCreator);
+	}
+	customizer.setWEntityAndBuddies(e);
+	customizer.delayedPostCreationAction(entity);
+	return entity;
 }
 
-template <class CT, class T, class P0>
-T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0)
+template<class T, class... Args>
+T* World::createRenderersContainer(TypeToCreate<T> type, Args&&... args)
 {
-	__SALSA_WORLD_PRE_CREATE_ENTITY
+	Q_UNUSED(type);
+	m_creatingSomething = true;
 
-	T* const entity = new T(this, sharedDataWrapper, p0);
+	T* const c = new T(this, std::forward<Args>(args)...);
 
-	__SALSA_WORLD_POST_CREATE_ENTITY
-}
-
-template <class CT, class T, class P0, class P1>
-T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1)
-{
-	__SALSA_WORLD_PRE_CREATE_ENTITY
-
-	T* const entity = new T(this, sharedDataWrapper, p0, p1);
-
-	__SALSA_WORLD_POST_CREATE_ENTITY
-}
-
-template <class CT, class T, class P0, class P1, class P2>
-T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2)
-{
-	__SALSA_WORLD_PRE_CREATE_ENTITY
-
-	T* const entity = new T(this, sharedDataWrapper, p0, p1, p2);
-
-	__SALSA_WORLD_POST_CREATE_ENTITY
-}
-
-template <class CT, class T, class P0, class P1, class P2, class P3>
-T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3)
-{
-	__SALSA_WORLD_PRE_CREATE_ENTITY
-
-	T* const entity = new T(this, sharedDataWrapper, p0, p1, p2, p3);
-
-	__SALSA_WORLD_POST_CREATE_ENTITY
-}
-
-template <class CT, class T, class P0, class P1, class P2, class P3, class P4>
-T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4)
-{
-	__SALSA_WORLD_PRE_CREATE_ENTITY
-
-	T* const entity = new T(this, sharedDataWrapper, p0, p1, p2, p3, p4);
-
-	__SALSA_WORLD_POST_CREATE_ENTITY
-}
-
-template <class CT, class T, class P0, class P1, class P2, class P3, class P4, class P5>
-T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5)
-{
-	__SALSA_WORLD_PRE_CREATE_ENTITY
-
-	T* const entity = new T(this, sharedDataWrapper, p0, p1, p2, p3, p4, p5);
-
-	__SALSA_WORLD_POST_CREATE_ENTITY
-}
-
-template <class CT, class T, class P0, class P1, class P2, class P3, class P4, class P5, class P6>
-T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6)
-{
-	__SALSA_WORLD_PRE_CREATE_ENTITY
-
-	T* const entity = new T(this, sharedDataWrapper, p0, p1, p2, p3, p4, p5, p6);
-
-	__SALSA_WORLD_POST_CREATE_ENTITY
-}
-
-template <class CT, class T, class P0, class P1, class P2, class P3, class P4, class P5, class P6, class P7>
-T* World::createEntity(WEntityCreationCustomizer<CT>& customizer, TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7)
-{
-	__SALSA_WORLD_PRE_CREATE_ENTITY
-
-	T* const entity = new T(this, sharedDataWrapper, p0, p1, p2, p3, p4, p5, p6, p7);
-
-	__SALSA_WORLD_POST_CREATE_ENTITY
-}
-
-template<class T>
-T* World::createRenderersContainer(TypeToCreate<T> type)
-{
-#define __SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER Q_UNUSED(type);\
-                                                    m_creatingSomething = true;
-#define __SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER m_renderersContainers.append(c);\
-                                                     m_creatingSomething = false;\
-                                                     notifyRendererContainerOfAllEntitiesAndTextures(c);\
-                                                     return c;
-
-	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
-
-	T* const c = new T(this);
-
-	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
-}
-
-template<class T, class P0>
-T* World::createRenderersContainer(TypeToCreate<T> type, P0 p0)
-{
-	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
-
-	T* const c = new T(this, p0);
-
-	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
-}
-
-template<class T, class P0, class P1>
-T* World::createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1)
-{
-	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
-
-	T* const c = new T(this, p0, p1);
-
-	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
-}
-
-template<class T, class P0, class P1, class P2>
-T* World::createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2)
-{
-	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
-
-	T* const c = new T(this, p0, p1, p2);
-
-	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
-}
-
-template<class T, class P0, class P1, class P2, class P3>
-T* World::createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3)
-{
-	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
-
-	T* const c = new T(this, p0, p1, p2, p3);
-
-	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
-}
-
-template<class T, class P0, class P1, class P2, class P3, class P4>
-T* World::createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4)
-{
-	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
-
-	T* const c = new T(this, p0, p1, p2, p3, p4);
-
-	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
-}
-
-template<class T, class P0, class P1, class P2, class P3, class P4, class P5>
-T* World::createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5)
-{
-	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
-
-	T* const c = new T(this, p0, p1, p2, p3, p4, p5);
-
-	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
-}
-
-template<class T, class P0, class P1, class P2, class P3, class P4, class P5, class P6>
-T* World::createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6)
-{
-	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
-
-	T* const c = new T(this, p0, p1, p2, p3, p4, p5, p6);
-
-	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
-}
-
-template<class T, class P0, class P1, class P2, class P3, class P4, class P5, class P6, class P7>
-T* World::createRenderersContainer(TypeToCreate<T> type, P0 p0, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6, P7 p7)
-{
-	__SALSA_WORLD_PRE_CREATE_RENDERER_CONTAINER
-
-	T* const c = new T(this, p0, p1, p2, p3, p4, p5, p6, p7);
-
-	__SALSA_WORLD_POST_CREATE_RENDERER_CONTAINER
+	m_renderersContainers.append(c);
+	m_creatingSomething = false;
+	notifyRendererContainerOfAllEntitiesAndTextures(c);
+	return c;
 }
 
 template <class CT>
