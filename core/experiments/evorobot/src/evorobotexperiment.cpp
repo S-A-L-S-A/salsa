@@ -94,7 +94,7 @@ EvoRobotExperiment::~EvoRobotExperiment()
 
 	delete arena;
 
-	// auto_ptr stuffs will be deleted automatically
+	// unique_ptr stuffs will be deleted automatically
 }
 
 void EvoRobotExperiment::configure()

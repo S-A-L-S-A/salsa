@@ -233,10 +233,10 @@ namespace ComponentInstantiationTestHierarchy {
 	private:
 		QString m_p1;
 		QString m_p2;
-		std::auto_ptr<AbstractAnother> m_another;
-		std::auto_ptr<Two> m_two0;
-		std::auto_ptr<Two> m_two1;
-		std::auto_ptr<Two> m_two2;
+		std::unique_ptr<AbstractAnother> m_another;
+		std::unique_ptr<Two> m_two0;
+		std::unique_ptr<Two> m_two1;
+		std::unique_ptr<Two> m_two2;
 	};
 
 	class Two : public salsa::Component
@@ -266,7 +266,7 @@ namespace ComponentInstantiationTestHierarchy {
 	private:
 		const float m_f;
 		QString m_p1;
-		std::auto_ptr<AbstractThree> m_three;
+		std::unique_ptr<AbstractThree> m_three;
 	};
 
 	class TwoCreator : public salsa::ComponentCreator
@@ -371,7 +371,7 @@ namespace ComponentInstantiationTestHierarchy {
 
 	private:
 		QString m_pa;
-		std::auto_ptr<AbstractThree> m_three;
+		std::unique_ptr<AbstractThree> m_three;
 	};
 
 	class CorrectCircularDependencyRoot;
@@ -394,7 +394,7 @@ namespace ComponentInstantiationTestHierarchy {
 		void postConfigureInitialization();
 
 	private:
-		std::auto_ptr<CorrectCircularDependencyA> m_a;
+		std::unique_ptr<CorrectCircularDependencyA> m_a;
 	};
 
 	class CorrectCircularDependencyA : public salsa::Component
@@ -413,7 +413,7 @@ namespace ComponentInstantiationTestHierarchy {
 		void postConfigureInitialization();
 
 	private:
-		std::auto_ptr<CorrectCircularDependencyB> m_b;
+		std::unique_ptr<CorrectCircularDependencyB> m_b;
 	};
 
 	class CorrectCircularDependencyB : public salsa::Component
@@ -432,7 +432,7 @@ namespace ComponentInstantiationTestHierarchy {
 		void postConfigureInitialization();
 
 	private:
-		// Not an auto_ptr to prevent double-free
+		// Not an unique_ptr to prevent double-free
 		CorrectCircularDependencyA* m_a;
 	};
 
@@ -456,7 +456,7 @@ namespace ComponentInstantiationTestHierarchy {
 		void postConfigureInitialization();
 
 	private:
-		std::auto_ptr<ConstructorCircularDependencyA> m_a;
+		std::unique_ptr<ConstructorCircularDependencyA> m_a;
 	};
 
 	class ConstructorCircularDependencyA : public salsa::Component
@@ -474,7 +474,7 @@ namespace ComponentInstantiationTestHierarchy {
 		void postConfigureInitialization();
 
 	private:
-		std::auto_ptr<ConstructorCircularDependencyB> m_b;
+		std::unique_ptr<ConstructorCircularDependencyB> m_b;
 	};
 
 	class ConstructorCircularDependencyB : public salsa::Component
@@ -492,7 +492,7 @@ namespace ComponentInstantiationTestHierarchy {
 		void postConfigureInitialization();
 
 	private:
-		// Not an auto_ptr to prevent double-free
+		// Not an unique_ptr to prevent double-free
 		ConstructorCircularDependencyA* m_a;
 	};
 
@@ -516,7 +516,7 @@ namespace ComponentInstantiationTestHierarchy {
 		void postConfigureInitialization();
 
 	private:
-		std::auto_ptr<WrongCircularDependencyA> m_a;
+		std::unique_ptr<WrongCircularDependencyA> m_a;
 	};
 
 	class WrongCircularDependencyA : public salsa::Component
@@ -535,7 +535,7 @@ namespace ComponentInstantiationTestHierarchy {
 		void postConfigureInitialization();
 
 	private:
-		std::auto_ptr<WrongCircularDependencyB> m_b;
+		std::unique_ptr<WrongCircularDependencyB> m_b;
 	};
 
 	class WrongCircularDependencyB : public salsa::Component
@@ -554,7 +554,7 @@ namespace ComponentInstantiationTestHierarchy {
 		void postConfigureInitialization();
 
 	private:
-		// Not an auto_ptr to prevent double-free
+		// Not an unique_ptr to prevent double-free
 		WrongCircularDependencyA* m_a;
 	};
 

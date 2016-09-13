@@ -332,7 +332,7 @@ private:
 	double threshold;
 };
 
-/*! \brief LeakyIntegrator Function !! 
+/*! \brief LeakyIntegrator Function !!
  *
  */
 class SALSA_NNFW_API LeakyIntegratorFunction : public OutputFunction {
@@ -366,7 +366,7 @@ private:
 	DoubleVector outprev;
 };
 
-/*! \brief LogLike Function !! 
+/*! \brief LogLike Function !!
  *
  *  It compute the following equation:
  *  \f[
@@ -435,9 +435,9 @@ public:
 	static void describe( QString type );
 private:
 	//! first function
-	std::auto_ptr<OutputFunction> first;
+	std::unique_ptr<OutputFunction> first;
 	//! second function
-	std::auto_ptr<OutputFunction> second;
+	std::unique_ptr<OutputFunction> second;
 	//! intermediate result (for speedup calculation)
 	DoubleVector mid;
 	//! Copy constructor and copy operator (here to prevent usage)
@@ -487,8 +487,8 @@ public:
 	static void describe( QString type );
 private:
 	//--- functions
-	std::auto_ptr<OutputFunction> first;
-	std::auto_ptr<OutputFunction> second;
+	std::unique_ptr<OutputFunction> first;
+	std::unique_ptr<OutputFunction> second;
 	//--- temporary result
 	DoubleVector mid;
 	//--- weights

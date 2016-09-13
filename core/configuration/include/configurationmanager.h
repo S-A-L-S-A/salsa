@@ -394,21 +394,21 @@ public:
 	 * \brief Creates a copy of this object
 	 *
 	 * The copy will not share data with this. Also all association of
-	 * existing objects with groups will not be copied. If dest is not NULL,
+	 * existing objects with groups will not be copied. If dest is not nullptr,
 	 * the given object is used (first of all, its shared data will be
 	 * detached, so that linked ConfigurationManager objects will not be
 	 * influenced) and it is also the return value of the function. If it is
-	 * NULL, a ConfigurationManager object is allocated using new and is
+	 * nullptr, a ConfigurationManager object is allocated using new and is
 	 * returned.
 	 * \param dest the object that will contain a deep copy of this
-	 *             ConfigurationManager. If NULL a node is new-allocated and
+	 *             ConfigurationManager. If nullptr a node is new-allocated and
 	 *             returned
 	 * \return the new object
 	 * \warning If you supply an existing ConfigurationManager as dest, it
 	 *          must not be accessed by another thread when this function is
 	 *          called
 	 */
-	ConfigurationManager* createDeepCopy(ConfigurationManager* dest = NULL);
+	ConfigurationManager* createDeepCopy(ConfigurationManager* dest = nullptr);
 
 	/**
 	 * \brief Returns the list of sub-groups in the given group
@@ -826,7 +826,7 @@ private:
 	// perform all registration after all components have been created)
 	struct RegisteredRequestForResourceChangeNotification
 	{
-		RegisteredRequestForResourceChangeNotification(Component* n, QString r, Component* o = NULL)
+		RegisteredRequestForResourceChangeNotification(Component* n, QString r, Component* o = nullptr)
 			: notifee(n)
 			, resourceName(r)
 			, resourceOwner(o)
@@ -840,7 +840,7 @@ private:
 
 		Component* notifee;
 		QString resourceName;
-		// This is NULL if no owner was specified during the
+		// This is nullptr if no owner was specified during the
 		// regustration request
 		Component* resourceOwner;
 	};
@@ -857,7 +857,7 @@ private:
 			, getComponentFromGroupRecursionLevel(0)
 			, componentsToConfigure()
 			, componentsConfiguredNotInitialized()
-			, nodeForComponentBeingCreated(NULL)
+			, nodeForComponentBeingCreated(nullptr)
 			, typeForComponentBeingCreated()
 			, prefixForComponentBeingCreated()
 			, requestedNotifications()
@@ -873,7 +873,7 @@ private:
 		QMutex mutex;
 
 		// The root of the tree with configuration parameters
-		std::auto_ptr<ConfigurationNode> root;
+		std::unique_ptr<ConfigurationNode> root;
 
 		// The level of recursion for calls to getComponentFromGroup.
 		// This is incremented every time the getComponentFromGroup
@@ -982,7 +982,7 @@ TypeToCreate* ConfigurationManager::getComponentFromGroup(QString group, bool co
 			release(false);
 
 			// Resetting variables relative to the current node. Hopefully truncate will not throw...
-			m_params.m_shared->nodeForComponentBeingCreated = NULL;
+			m_params.m_shared->nodeForComponentBeingCreated = nullptr;
 			m_params.m_shared->typeForComponentBeingCreated.truncate(0);
 			m_params.m_shared->prefixForComponentBeingCreated.truncate(0);
 		}
@@ -1019,7 +1019,7 @@ TypeToCreate* ConfigurationManager::getComponentFromGroup(QString group, bool co
 		// We put implementations to avoid warning under windows. Anyway, these are private, so
 		// nobody can call them. The initialization of m_params is to avoid compilation errors
 		// under MSVC
-		RecursionLevelRAII(const RecursionLevelRAII& /*other*/) : m_params(*((ConfigurationManager *) NULL)) {}
+		RecursionLevelRAII(const RecursionLevelRAII& /*other*/) : m_params(*((ConfigurationManager *) nullptr)) {}
 		RecursionLevelRAII& operator=(const RecursionLevelRAII& /*other*/) { return *this; }
 	};
 
@@ -1049,9 +1049,9 @@ TypeToCreate* ConfigurationManager::getComponentFromGroup(QString group, bool co
 	RecursionLevelRAII recursionLevelRAII(*this);
 
 	// The pointer to return
-	TypeToCreate* retObj = NULL;
+	TypeToCreate* retObj = nullptr;
 	// This is used only if the object is created during this call
-	std::auto_ptr<Component> retObjRAII(NULL);
+	std::unique_ptr<Component> retObjRAII(nullptr);
 
 	// Setting properties that will be read by the new component
 	m_shared->nodeForComponentBeingCreated = node;
@@ -1077,7 +1077,7 @@ TypeToCreate* ConfigurationManager::getComponentFromGroup(QString group, bool co
 				retObjRAII.reset(creator->create(*this, group, configure));
 				retObj = dynamic_cast<TypeToCreate*>(retObjRAII.get());
 
-				if (retObj == NULL) {
+				if (retObj == nullptr) {
 					throw CannotConvertToTypeException(typeToCreate.toLatin1().data(), typeid(TypeToCreate));
 				}
 
@@ -1102,7 +1102,7 @@ TypeToCreate* ConfigurationManager::getComponentFromGroup(QString group, bool co
 		case ComponentCreatedNotConfigured:
 			// We configure the object if we have to and then return the object
 			retObj = dynamic_cast<TypeToCreate *>(component.component);
-			if (retObj == NULL) {
+			if (retObj == nullptr) {
 				throw CannotConvertToTypeException(typeid(component.component).name(), typeid(TypeToCreate));
 			}
 			if (configure) {
@@ -1133,7 +1133,7 @@ TypeToCreate* ConfigurationManager::getComponentFromGroup(QString group, bool co
 			} else {
 				// Ok, returning object
 				retObj = dynamic_cast<TypeToCreate *>(component.component);
-				if (retObj == NULL) {
+				if (retObj == nullptr) {
 					throw CannotConvertToTypeException(typeid(component.component).name(), typeid(TypeToCreate));
 				}
 			}
@@ -1141,7 +1141,7 @@ TypeToCreate* ConfigurationManager::getComponentFromGroup(QString group, bool co
 		case ComponentCreatedAndConfigured:
 			// Ok, returning object
 			retObj = dynamic_cast<TypeToCreate *>(component.component);
-			if (retObj == NULL) {
+			if (retObj == nullptr) {
 				throw CannotConvertToTypeException(typeid(component.component).name(), typeid(TypeToCreate));
 			}
 			break;
@@ -1165,7 +1165,7 @@ TypeToCreate* ConfigurationManager::getComponentFromGroup(QString group, bool co
 	}
 
 #warning SEE THIS COMMENT
-	// This function is not completely exception safe: if a configured object is created and then an exception is thrown, the object is not destroyed (unless its parent component uses auto_ptr or similar stuffs). It would be better to make sure all components are destroyed, even when the exception is thrown during postConfigureInitialization or resource registration.
+	// This function is not completely exception safe: if a configured object is created and then an exception is thrown, the object is not destroyed (unless its parent component uses unique_ptr or similar stuffs). It would be better to make sure all components are destroyed, even when the exception is thrown during postConfigureInitialization or resource registration.
 
 	retObjRAII.release();
 	return retObj;

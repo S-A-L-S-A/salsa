@@ -161,7 +161,7 @@ public:
 	 *  In the first row, getDelegateFor return a pointer to the function for retrieving the
 	 *  vector of biases.
 	 *  At the second row the delegate is used.
-	 * 
+	 *
 	 *  Look at the code of Linker and DotLinker for a full example on how to use it.
 	 */
 	typedef DoubleVector& (*getStateVectorFuncPtr)( Cluster* );
@@ -181,7 +181,7 @@ protected:
 	/*! Configure a delegate for a specifing state vector; who implements subclasses of Cluster
 	 *  has to specify a name and the method used to retrieve any state vector that needs to be
 	 *  public (i.e. used by Linkers for accessing and modifing it.
-	 *  
+	 *
 	 *  The usage is the following: suppose the case of BiasedCluster that has the biases vector and
 	 *  the metod biases() that returns the reference to the DoubleVector containing the biases.
 	 *  In this case, in the constructor there is the following statement:
@@ -210,7 +210,7 @@ private:
 	/*! Output of neurons */
 	DoubleVector outputdata;
 	/*! OutputFunction Object */
-	std::auto_ptr<OutputFunction> updater;
+	std::unique_ptr<OutputFunction> updater;
 	/*! True if the inputs needs a reset */
 	bool needRst;
 	/*! In Accumulated mode the needRst is always false, and then linkers attached to this will never resetInputs

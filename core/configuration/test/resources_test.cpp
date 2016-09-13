@@ -201,7 +201,7 @@ private slots:
 	{
 		ConfigurationManager manager = fillTemporaryConfigurationFileAndLoadParameters(standaloneConfigurationFile);
 
-		std::auto_ptr<Component> s(manager.getComponentFromGroup<Component>("root"));
+		std::unique_ptr<Component> s(manager.getComponentFromGroup<Component>("root"));
 
 		QCOMPARE(s->resourcesCount("dummy"), 0);
 		QCOMPARE(s->resourcesCount<int>("dummy"), 0);
@@ -212,7 +212,7 @@ private slots:
 	{
 		ConfigurationManager manager = fillTemporaryConfigurationFileAndLoadParameters(standaloneConfigurationFile);
 
-		std::auto_ptr<Component> s(manager.getComponentFromGroup<Component>("root"));
+		std::unique_ptr<Component> s(manager.getComponentFromGroup<Component>("root"));
 
 		int i = 0;
 		float f = 0.0f;
@@ -254,7 +254,7 @@ private slots:
 	{
 		ConfigurationManager manager = fillTemporaryConfigurationFileAndLoadParameters(standaloneConfigurationFile);
 
-		std::auto_ptr<Component> s(manager.getComponentFromGroup<Component>("root"));
+		std::unique_ptr<Component> s(manager.getComponentFromGroup<Component>("root"));
 
 		int i = 0;
 		float f = 0.0f;
@@ -285,8 +285,8 @@ private slots:
 		ConfigurationManager manager = fillTemporaryConfigurationFileAndLoadParameters(standaloneConfigurationFile);
 		ConfigurationManager manager2 = fillTemporaryConfigurationFileAndLoadParameters(standaloneConfigurationFile);
 
-		std::auto_ptr<Component> s(manager.getComponentFromGroup<Component>("root"));
-		std::auto_ptr<Component> s2(manager2.getComponentFromGroup<Component>("root"));
+		std::unique_ptr<Component> s(manager.getComponentFromGroup<Component>("root"));
+		std::unique_ptr<Component> s2(manager2.getComponentFromGroup<Component>("root"));
 
 		int i = 0;
 
@@ -327,7 +327,7 @@ private slots:
 	{
 		ConfigurationManager manager = fillTemporaryConfigurationFileAndLoadParameters(standaloneConfigurationFile);
 
-		std::auto_ptr<Component> s(manager.getComponentFromGroup<Component>("root"));
+		std::unique_ptr<Component> s(manager.getComponentFromGroup<Component>("root"));
 
 		int i = 0;
 		float f = 0.0f;
@@ -381,7 +381,7 @@ private slots:
 	{
 		ConfigurationManager manager = fillTemporaryConfigurationFileAndLoadParameters(standaloneConfigurationFile);
 
-		std::auto_ptr<Component> s(manager.getComponentFromGroup<Component>("root"));
+		std::unique_ptr<Component> s(manager.getComponentFromGroup<Component>("root"));
 
 		int i = 0;
 
@@ -399,7 +399,7 @@ private slots:
 	{
 		ConfigurationManager manager = fillTemporaryConfigurationFileAndLoadParameters(standaloneConfigurationFile);
 
-		std::auto_ptr<Component> s(manager.getComponentFromGroup<Component>("root"));
+		std::unique_ptr<Component> s(manager.getComponentFromGroup<Component>("root"));
 
 		int i = 0;
 

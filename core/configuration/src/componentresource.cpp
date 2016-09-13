@@ -26,7 +26,7 @@
 
 namespace salsa {
 
-ResourceAccessor::ConfigurationManagerLocker::ConfigurationManagerLocker(const std::auto_ptr<ConfigurationManager>& manager)
+ResourceAccessor::ConfigurationManagerLocker::ConfigurationManagerLocker(const std::unique_ptr<ConfigurationManager>& manager)
 	: m_manager(manager.get())
 {
 	m_manager->m_shared->mutex.lock();

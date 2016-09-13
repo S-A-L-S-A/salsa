@@ -341,7 +341,7 @@ class ConfigurationManager_Test : public QObject
 			manager.createParameter(prefix + "one/two", "dummy");
 			manager.createParameter(prefix + "one/another", "param");
 
-			std::auto_ptr<ConfigurationManager> copyAllocated(manager.createDeepCopy());
+			std::unique_ptr<ConfigurationManager> copyAllocated(manager.createDeepCopy());
 
 			QVERIFY(copyAllocated->groupExists(prefix + "one"));
 			QVERIFY(copyAllocated->groupExists(prefix + "one/two"));

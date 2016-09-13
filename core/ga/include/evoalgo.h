@@ -222,13 +222,13 @@ private:
 	/**
 	 * \brief The object preparing genotypes for evaluation
 	 */
-	std::auto_ptr<GenotypeToPhenotype> m_genotypeToPhenotype;
+	std::unique_ptr<GenotypeToPhenotype> m_genotypeToPhenotype;
 
 	/**
 	 * \brief The object performing the evaluation of the currently prepared
 	 *        genotypes
 	 */
-	std::auto_ptr<GAEvaluator> m_gaEvaluator;
+	std::unique_ptr<GAEvaluator> m_gaEvaluator;
 };
 
 } // end namespace salsa

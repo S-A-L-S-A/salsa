@@ -488,7 +488,7 @@ private:
 	//! the evolutionary algorithm
 	Evoga* ga;
 	//! the world where robot and objects are simulated
-	std::auto_ptr<World> world;
+	std::unique_ptr<World> world;
 	// ! The renderers container
 	GUIRenderersContainer* renderersContainer;
 	//! the timestep

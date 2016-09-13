@@ -63,7 +63,7 @@ Cluster::Cluster( ConfigurationManager& params, QString prefix, Component* paren
 }
 
 Cluster::~Cluster() {
-	// No need to delete anything else, we use auto_ptr
+	// No need to delete anything else, we use unique_ptr
 }
 
 void Cluster::setOutFunction( OutputFunction *up ) {

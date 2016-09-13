@@ -100,7 +100,7 @@ private:
 	class ConfigurationManagerLocker
 	{
 	public:
-		ConfigurationManagerLocker(const std::auto_ptr<ConfigurationManager>& manager);
+		ConfigurationManagerLocker(const std::unique_ptr<ConfigurationManager>& manager);
 		~ConfigurationManagerLocker();
 
 	private:
@@ -305,7 +305,7 @@ private:
 	// ConfigurationManager instances created via copy operations from the
 	// same object share the same data structures. We use a pointer here so
 	// that we do not have to include the ConfigurationManager header
-	std::auto_ptr<ConfigurationManager> m_confManager;
+	std::unique_ptr<ConfigurationManager> m_confManager;
 
 	// Component is friend to access private members. Component inherits
 	// from this, but we cannot make the private section protected because

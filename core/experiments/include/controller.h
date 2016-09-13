@@ -303,8 +303,8 @@ protected:
 	const ControllerOutputsList* controllerOutputsList() const;
 
 private:
-	std::auto_ptr<AbstractControllerInputIterator> m_inputIterator;
-	std::auto_ptr<AbstractControllerOutputIterator> m_outputIterator;
+	std::unique_ptr<AbstractControllerInputIterator> m_inputIterator;
+	std::unique_ptr<AbstractControllerOutputIterator> m_outputIterator;
 	ControllerInputsList* m_inputsList;
 	ControllerOutputsList* m_outputsList;
 };

@@ -628,13 +628,13 @@ private:
 	QSet<NObj> m_nobjs;
 
 	// The database of materials
-	std::auto_ptr<MaterialDB> m_mats;
+	std::unique_ptr<MaterialDB> m_mats;
 
 	// This is true if we have been initialized
 	bool m_isInitialized;
 
 	// Engine encapsulation
-	std::auto_ptr<WorldPrivate> m_priv;
+	std::unique_ptr<WorldPrivate> m_priv;
 
 	// The map of textures (the key is the name of the texture)
 	QMap<QString, QImage> m_textures;

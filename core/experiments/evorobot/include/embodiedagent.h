@@ -213,8 +213,8 @@ private:
 	virtual void resourceChanged(QString name, Component* owner, ResourceChangeType changeType);
 
 	bool m_enabled;
-	std::auto_ptr<Controller> m_controller;
-	std::auto_ptr<Robot> m_robot;
+	std::unique_ptr<Controller> m_controller;
+	std::unique_ptr<Robot> m_robot;
 	QVector<AbstractControllerInput*> m_inputs;
 	QVector<AbstractControllerOutput*> m_outputs;
 };

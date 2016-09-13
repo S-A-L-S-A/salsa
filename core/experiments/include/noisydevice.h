@@ -178,7 +178,7 @@ private:
 	real applyNoise(real v) const;
 
 	// The block to which noise is added
-	std::auto_ptr<AbstractControllerInput> m_input;
+	std::unique_ptr<AbstractControllerInput> m_input;
 };
 
 /**
@@ -247,7 +247,7 @@ private:
 	real applyNoise(real v) const;
 
 	// The block to feed with noisy data
-	std::auto_ptr<AbstractControllerOutput> m_output;
+	std::unique_ptr<AbstractControllerOutput> m_output;
 };
 
 } // end namespace salsa

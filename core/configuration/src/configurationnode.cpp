@@ -126,8 +126,8 @@ ConfigurationNode* ConfigurationNode::addNode(QString name)
 
 	throwIfChildAlreadyExists(name);
 
-	// auto_ptr is used to stay exception safe
-	std::auto_ptr<ConfigurationNode> newNode(new ConfigurationNode(this, name));
+	// unique_ptr is used to stay exception safe
+	std::unique_ptr<ConfigurationNode> newNode(new ConfigurationNode(this, name));
 	m_children.insert(name, newNode.get());
 
 	return newNode.release();
@@ -143,8 +143,8 @@ ConfigurationNode* ConfigurationNode::addNodeOrReturnExisting(QString name)
 		return child;
 	}
 
-	// auto_ptr is used to stay exception safe
-	std::auto_ptr<ConfigurationNode> newNode(new ConfigurationNode(this, name));
+	// unique_ptr is used to stay exception safe
+	std::unique_ptr<ConfigurationNode> newNode(new ConfigurationNode(this, name));
 	m_children.insert(name, newNode.get());
 
 	return newNode.release();
@@ -191,7 +191,7 @@ void ConfigurationNode::renameChild(QString oldName, QString newName)
 	throwIfChildDoesNotExists(oldName);
 
 	// We checked above that the child exists
-	std::auto_ptr<ConfigurationNode> childNode(m_children.value(oldName, NULL));
+	std::unique_ptr<ConfigurationNode> childNode(m_children.value(oldName, NULL));
 
 	// Take the element with oldName and re-insert it with newName
 	m_children.remove(oldName);

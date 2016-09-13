@@ -630,7 +630,7 @@ CompositeFunction::CompositeFunction( ConfigurationManager& params, QString pref
 }
 
 CompositeFunction::~CompositeFunction() {
-	// auto_ptr will release memory for us
+	// unique_ptr will release memory for us
 }
 
 void CompositeFunction::apply( DoubleVector& inputs, DoubleVector& outputs ) {
@@ -700,7 +700,7 @@ LinearComboFunction::LinearComboFunction( ConfigurationManager& params, QString 
 }
 
 LinearComboFunction::~LinearComboFunction() {
-	// auto_ptr will release memory for us
+	// unique_ptr will release memory for us
 }
 
 void LinearComboFunction::apply( DoubleVector& inputs, DoubleVector& outputs ) {

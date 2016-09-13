@@ -42,14 +42,14 @@ class ConfigurationNode_Test : public QObject
 {
 	Q_OBJECT
 
-	typedef std::auto_ptr<ConfigurationNode> ConfigurationNodeAutoPtr;
+	typedef std::unique_ptr<ConfigurationNode> ConfigurationNodeUniquePtr;
 	typedef QSet<QString> StringSet;
 	typedef QSet<ConfigurationNode*> ConfigurationNodesSet;
 
 	struct TreeAndNodes
 	{
 		// Indentation reflects the hierarchy of nodes
-		ConfigurationNodeAutoPtr root;
+		ConfigurationNodeUniquePtr root;
 			ConfigurationNode* one;
 			ConfigurationNode* two;
 				ConfigurationNode* grandchild;
@@ -58,9 +58,6 @@ class ConfigurationNode_Test : public QObject
 						ConfigurationNode* andAgain;
 	};
 
-	// Don't returning a TreeAndNodes object because it contains an auto_ptr
-	// and things could get wired (we would like to use unique_ptr but for
-	// the moment we must stick to C++03)
 	void generateTree(TreeAndNodes& t)
 	{
 		// Indentation reflects the hierarchy of nodes
@@ -92,8 +89,8 @@ private slots:
 
 	void createNodeValidName()
 	{
-		ConfigurationNodeAutoPtr nodeValidName(new ConfigurationNode("group"));
-		ConfigurationNodeAutoPtr nodeValidDotName(new ConfigurationNode("thisIs..Valid"));
+		ConfigurationNodeUniquePtr nodeValidName(new ConfigurationNode("group"));
+		ConfigurationNodeUniquePtr nodeValidDotName(new ConfigurationNode("thisIs..Valid"));
 
 		QCOMPARE(nodeValidName->getParent(), (ConfigurationNode*) NULL);
 		QCOMPARE(nodeValidName->getName(), QString("group"));
@@ -110,7 +107,7 @@ private slots:
 
 	void addNode()
 	{
-		ConfigurationNodeAutoPtr root(new ConfigurationNode("rootGroup"));
+		ConfigurationNodeUniquePtr root(new ConfigurationNode("rootGroup"));
 		ConfigurationNode* child = root->addNode("child");
 
 		QCOMPARE(child->getParent(), root.get());
@@ -120,7 +117,7 @@ private slots:
 
 	void addNodeOrReturnExisting()
 	{
-		ConfigurationNodeAutoPtr root(new ConfigurationNode("rootGroup"));
+		ConfigurationNodeUniquePtr root(new ConfigurationNode("rootGroup"));
 		ConfigurationNode* child = root->addNodeOrReturnExisting("child");
 
 		QCOMPARE(child->getParent(), root.get());
@@ -130,7 +127,7 @@ private slots:
 
 	void checkChildExists()
 	{
-		ConfigurationNodeAutoPtr root(new ConfigurationNode("rootGroup"));
+		ConfigurationNodeUniquePtr root(new ConfigurationNode("rootGroup"));
 		root->addNodeOrReturnExisting("child");
 
 		QCOMPARE(root->hasChild("child"), true);
@@ -139,7 +136,7 @@ private slots:
 
 	void childrenList()
 	{
-		ConfigurationNodeAutoPtr root(new ConfigurationNode("rootGroup"));
+		ConfigurationNodeUniquePtr root(new ConfigurationNode("rootGroup"));
 		const StringSet childrenNames = StringSet() << "child" << "anotherChild" << "Timmy" << "Tommy" << "Jimmy";
 		ConfigurationNodesSet children;
 		const QRegExp re(".*hild");
@@ -170,7 +167,7 @@ private slots:
 
 	void deleteChild()
 	{
-		ConfigurationNodeAutoPtr root(new ConfigurationNode("root"));
+		ConfigurationNodeUniquePtr root(new ConfigurationNode("root"));
 		root->addNode("one");
 		root->addNode("two");
 		root->addNode("three");
@@ -184,7 +181,7 @@ private slots:
 
 	void renameChild()
 	{
-		ConfigurationNodeAutoPtr root(new ConfigurationNode("root"));
+		ConfigurationNodeUniquePtr root(new ConfigurationNode("root"));
 		root->addNode("one");
 		root->addNode("two");
 		root->addNode("three");
@@ -281,7 +278,7 @@ private slots:
 
 	void addParameter()
 	{
-		ConfigurationNodeAutoPtr node(new ConfigurationNode("root"));
+		ConfigurationNodeUniquePtr node(new ConfigurationNode("root"));
 
 		node->addParameter("p1");
 		node->addParameter("p2..p3");
@@ -297,7 +294,7 @@ private slots:
 
 	void deleteParameter()
 	{
-		ConfigurationNodeAutoPtr node(new ConfigurationNode("root"));
+		ConfigurationNodeUniquePtr node(new ConfigurationNode("root"));
 
 		node->addParameter("p1");
 		node->addParameter("param");
@@ -316,7 +313,7 @@ private slots:
 
 	void parametersList()
 	{
-		ConfigurationNodeAutoPtr root(new ConfigurationNode("root"));
+		ConfigurationNodeUniquePtr root(new ConfigurationNode("root"));
 		const StringSet parameters = StringSet() << "parameter" << "anotherParam" << "One" << "Two" << "Three";
 		const QRegExp re(".*aram.*");
 		const StringSet filteredParameters = StringSet() << "parameter" << "anotherParam";
@@ -422,8 +419,8 @@ private slots:
 		TreeAndNodes t;
 		generateTree(t);
 
-		ConfigurationNodeAutoPtr newTree1(t.root->createDeepCopy());
-		ConfigurationNodeAutoPtr newTree2(new ConfigurationNode("rootNode"));
+		ConfigurationNodeUniquePtr newTree1(t.root->createDeepCopy());
+		ConfigurationNodeUniquePtr newTree2(new ConfigurationNode("rootNode"));
 		ConfigurationNode* newTree2Ptr = t.root->createDeepCopy(newTree2.get());
 
 		QVERIFY(*(t.root) == *newTree1);
@@ -450,7 +447,7 @@ private slots:
 		TreeAndNodes t;
 		generateTree(t);
 
-		ConfigurationNodeAutoPtr newTree(t.grandchild->createDeepCopy());
+		ConfigurationNodeUniquePtr newTree(t.grandchild->createDeepCopy());
 
 		QCOMPARE(newTree->getNode("")->getDepthLevel(), 0);
 		QCOMPARE(newTree->getNode("downOneLevel")->getDepthLevel(), 1);

@@ -230,7 +230,7 @@ ResourceHandler* Component::getResourceHandlerForOurResource(QString name)
 
 	if (h == NULL) {
 		// Adding an non-existant resource (in an exception-safe way)
-		std::auto_ptr<ResourceHandler> hp(new ResourceHandler(name, this));
+		std::unique_ptr<ResourceHandler> hp(new ResourceHandler(name, this));
 		resources()[name][this] = hp.get();
 		h = hp.release();
 	}

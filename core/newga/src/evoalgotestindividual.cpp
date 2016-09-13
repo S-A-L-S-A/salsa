@@ -126,7 +126,7 @@ void EvoAlgoTestIndividual::runTest()
 		Logger::error(QString("The specified genotype index (%1) is not valid").arg(testedIndividual));
 		return;
 	}
-	std::auto_ptr<Genotype> g(m_genotypes[testedIndividual]);
+	std::unique_ptr<Genotype> g(m_genotypes[testedIndividual]);
 	// This is necessary in case the list of genotypes gets freed to avoid deleting also the genotype
 	// we are testing
 	m_genotypes[testedIndividual] = NULL;
@@ -140,7 +140,7 @@ void EvoAlgoTestIndividual::runTest()
 	// Acquiring the lock again to put the genotype back in the vector
 	locker.relock();
 
-	// If the list of genotypes has changed, we do nothing, the destructor of std::auto_ptr will delete
+	// If the list of genotypes has changed, we do nothing, the destructor of std::unique_ptr will delete
 	// the tested genotype, otherwise we put the genotype back in the list
 	if (!m_genotypesChanged) {
 		m_genotypes[testedIndividual] = g.release();
@@ -185,7 +185,7 @@ bool EvoAlgoTestIndividual::loadGenotypes()
 	if (inData.open(QFile::ReadOnly)) {
 		QTextStream in(&inData);
 		while (!in.atEnd()) {
-			std::auto_ptr<Genotype> g(getPrototype()->clone());
+			std::unique_ptr<Genotype> g(getPrototype()->clone());
 			bool loaded = g->loadGen(in);
 			if (!loaded) {
 				// This could be not a real error, only notifying the user

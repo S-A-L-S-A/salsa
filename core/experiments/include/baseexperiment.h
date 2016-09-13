@@ -443,10 +443,10 @@
 // 		friend class BaseExperiment;
 //
 // 		/**
-// 		 * \brief auto_ptr is friend to be able to call the destructor
+// 		 * \brief unique_ptr is friend to be able to call the destructor
 // 		 */
 // 		template <class T>
-// 		friend class std::auto_ptr;
+// 		friend class std::unique_ptr;
 // 	};
 //
 // 	/**
@@ -1040,7 +1040,7 @@
 // 	template <class T>
 // 	void addOperation(QString name, void (T::*func)(), bool useSeparateThread, bool steppable)
 // 	{
-// 		std::auto_ptr<AbstractOperationWrapper> newOp(new OperationWrapper<T>(static_cast<T*>(this), func));
+// 		std::unique_ptr<AbstractOperationWrapper> newOp(new OperationWrapper<T>(static_cast<T*>(this), func));
 // 		newOp->name = name;
 // 		newOp->useSeparateThread = useSeparateThread;
 // 		newOp->steppable = steppable;
@@ -1073,7 +1073,7 @@
 // 	template <class T, class P0>
 // 	void addOperation(QString name, void (T::*func)(P0), P0 p0, bool useSeparateThread, bool steppable)
 // 	{
-// 		std::auto_ptr<AbstractOperationWrapper> newOp(new OperationWrapperOneParameter<T, P0>(static_cast<T*>(this), func, p0));
+// 		std::unique_ptr<AbstractOperationWrapper> newOp(new OperationWrapperOneParameter<T, P0>(static_cast<T*>(this), func, p0));
 // 		newOp->name = name;
 // 		newOp->useSeparateThread = useSeparateThread;
 // 		newOp->steppable = steppable;
@@ -1107,7 +1107,7 @@
 // 	template <class T, class P0, class P1>
 // 	void addOperation(QString name, void (T::*func)(P0, P1), P0 p0, P1 p1, bool useSeparateThread, bool steppable)
 // 	{
-// 		std::auto_ptr<AbstractOperationWrapper> newOp(new OperationWrapperTwoParameters<T, P0, P1>(static_cast<T*>(this), func, p0, p1));
+// 		std::unique_ptr<AbstractOperationWrapper> newOp(new OperationWrapperTwoParameters<T, P0, P1>(static_cast<T*>(this), func, p0, p1));
 // 		newOp->name = name;
 // 		newOp->useSeparateThread = useSeparateThread;
 // 		newOp->steppable = steppable;
@@ -1142,7 +1142,7 @@
 // 	template <class T, class P0, class P1, class P2>
 // 	void addOperation(QString name, void (T::*func)(P0, P1, P2), P0 p0, P1 p1, P2 p2, bool useSeparateThread, bool steppable)
 // 	{
-// 		std::auto_ptr<AbstractOperationWrapper> newOp(new OperationWrapperThreeParameters<T, P0, P1, P2>(static_cast<T*>(this), func, p0, p1, p2));
+// 		std::unique_ptr<AbstractOperationWrapper> newOp(new OperationWrapperThreeParameters<T, P0, P1, P2>(static_cast<T*>(this), func, p0, p1, p2));
 // 		newOp->name = name;
 // 		newOp->useSeparateThread = useSeparateThread;
 // 		newOp->steppable = steppable;
@@ -1231,12 +1231,12 @@
 // 	 * This is used to map all signals from QActions to the runOperation()
 // 	 * function so that it can run the selected slot in the worker thread
 // 	 */
-// 	std::auto_ptr<QSignalMapper> m_actionSignalsMapper;
+// 	std::unique_ptr<QSignalMapper> m_actionSignalsMapper;
 //
 // 	/**
 // 	 * \brief The thread running the operations
 // 	 */
-// 	std::auto_ptr<WorkerThread> const m_workerThread;
+// 	std::unique_ptr<WorkerThread> const m_workerThread;
 //
 // 	/**
 // 	 * \brief The ID of the operation to run

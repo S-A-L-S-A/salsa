@@ -565,7 +565,7 @@ private:
 					descriptorType2String(d->type()).toLatin1().data());
 			}
 		} else {
-			// We need this for exception safety. We cannot use auto_ptr because we would need to make
+			// We need this for exception safety. We cannot use unique_ptr because we would need to make
 			// it friend of AbstractDescriptor to make it able to destroy the object
 			try {
 				ret = new T(typeDescr(), fullPath);

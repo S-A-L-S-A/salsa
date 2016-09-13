@@ -29,7 +29,7 @@
 
 // NOTES AND TODOS
 //
-// Check that all components that are not stored in auto_ptr in their parents
+// Check that all components that are not stored in unique_ptr in their parents
 // 	are destroyed when exceptions are thrown. They probably aren't (see
 // 	comment in getComponentFromGroup)
 
@@ -234,7 +234,7 @@ private slots:
 
 		FunctionCallsSequenceRecorder actual;
 
-		std::auto_ptr<Component> c(manager.getComponentFromGroup<Component>("group"));
+		std::unique_ptr<Component> c(manager.getComponentFromGroup<Component>("group"));
 		QVERIFY(c.get() != NULL);
 		QCOMPARE(c->typeName(), QString("Standalone"));
 		QCOMPARE(c->confPath(), QString("group/"));
@@ -271,7 +271,7 @@ private slots:
 
 		FunctionCallsSequenceRecorder actual;
 
-		std::auto_ptr<Component> c(manager.getComponentFromGroup<Component>("group"));
+		std::unique_ptr<Component> c(manager.getComponentFromGroup<Component>("group"));
 		QVERIFY(c.get() != NULL);
 		QCOMPARE(c->typeName(), QString("StandaloneWithConfigure"));
 		QCOMPARE(c->confPath(), QString("group/"));
@@ -377,7 +377,7 @@ private slots:
 
 		FunctionCallsSequenceRecorder actual;
 
-		std::auto_ptr<Component> c(manager.getComponentFromGroup<Component>("one"));
+		std::unique_ptr<Component> c(manager.getComponentFromGroup<Component>("one"));
 		QVERIFY(c.get() != NULL);
 		QCOMPARE(expected, actual);
 	}
@@ -580,7 +580,7 @@ private slots:
 
 		FunctionCallsSequenceRecorder actual;
 
-		std::auto_ptr<Component> c(manager.getComponentFromGroup<Component>("Root"));
+		std::unique_ptr<Component> c(manager.getComponentFromGroup<Component>("Root"));
 		QVERIFY(c.get() != NULL);
 		QCOMPARE(expected, actual);
 	}
@@ -645,7 +645,7 @@ private slots:
 	{
 		ConfigurationManager manager = fillTemporaryConfigurationFileAndLoadParameters(hierarchyConfigurationFile);
 
-		std::auto_ptr<One> c(manager.getComponentFromGroup<One>("one"));
+		std::unique_ptr<One> c(manager.getComponentFromGroup<One>("one"));
 		QVERIFY(c.get() != NULL);
 		QCOMPARE(c.get(), manager.getComponentFromGroup<Component>("one"));
 		QCOMPARE(c->two0(), manager.getComponentFromGroup<Component>("one/two:4"));

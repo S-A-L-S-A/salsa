@@ -41,7 +41,7 @@ Controller::Controller(ConfigurationManager& params)
 Controller::~Controller()
 {
 	// Checking that the input and output iterators are not the same object. If it is so,
-	// releasing one auto_ptr to prevent a double-free
+	// releasing one unique_ptr to prevent a double-free
 	if (static_cast<AbstractControllerIterator*>(m_inputIterator.get()) == static_cast<AbstractControllerIterator*>(m_outputIterator.get())) {
 		m_outputIterator.release();
 	}

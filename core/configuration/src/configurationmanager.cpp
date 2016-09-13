@@ -156,9 +156,9 @@ ConfigurationManager* ConfigurationManager::createDeepCopy(ConfigurationManager*
 {
 	QMutexLocker locker(&(m_shared->mutex));
 
-	// Allocating memory for the destination if necessary. The auto_ptr for the allocated object
+	// Allocating memory for the destination if necessary. The unique_ptr for the allocated object
 	// is needed to stay exception-safe
-	std::auto_ptr<ConfigurationManager> allocatedObj;
+	std::unique_ptr<ConfigurationManager> allocatedObj;
 	if (dest == NULL) {
 		dest = new ConfigurationManager();
 		allocatedObj.reset(dest);

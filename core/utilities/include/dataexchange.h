@@ -1300,9 +1300,9 @@ namespace __DataExchange_internal {
 			, uploader(u)
 			, downloader(NULL)
 		{
-			// Allocating all memory. We use auto_ptr to ensure exception safety
-			std::auto_ptr<DataType> uploaderDatum(new DataType());
-			std::auto_ptr<DataType> downloaderDatum(new DataType());
+			// Allocating all memory. We use unique_ptr to ensure exception safety
+			std::unique_ptr<DataType> uploaderDatum(new DataType());
+			std::unique_ptr<DataType> downloaderDatum(new DataType());
 
 			// Explicitly using a try-catch block to be exception-safe
 			try {
@@ -1323,7 +1323,7 @@ namespace __DataExchange_internal {
 			nextUploadIt = queue.begin();
 			nextDownloadIt = queue.begin();
 
-			// Now releasing the auto_ptrs
+			// Now releasing the unique_ptrs
 			nextUploaderDatum = uploaderDatum.release();
 			currentDownloaderDatum = downloaderDatum.release();
 
@@ -1532,7 +1532,7 @@ DataType_t* DataUploader<DataType_t>::createDatum()
 			case IncreaseQueueSize: {
 					// We have to add a datum to the queue at the current location. After the current
 					// datum has been uploaded, this element will be the nextUploaderDatum
-					std::auto_ptr<DataType> d(new DataType());
+				std::unique_ptr<DataType> d(new DataType());
 					m_queue->nextUploadIt = m_queue->queue.insert(m_queue->nextDownloadIt, d.get());
 					d.release();
 				} break;
@@ -1975,15 +1975,15 @@ void GlobalUploaderDownloader::internalDetach(DataUploaderDownloader<DataType1, 
 
 	// Taking all locks. To be able to use RAII with the mutex of the downloader associated with
 	// the uploader of uploaderDownloader and with the queue associated with the downloader of
-	// uploaderDownloader (which may not exist), we use an std::auto_ptr
-	std::auto_ptr<QMutexLocker> otherDownloaderMutexLocker;
+	// uploaderDownloader (which may not exist), we use an std::unique_ptr
+	std::unique_ptr<QMutexLocker> otherDownloaderMutexLocker;
 	DataDownloader<DataType1>* const otherDownloader = uploader->m_queue->downloader;
 	if (otherDownloader != NULL) {
 		otherDownloaderMutexLocker.reset(new QMutexLocker(&(otherDownloader->m_mutex)));
 	}
 	QMutexLocker queueMutexLocker(&(uploader->m_queue->mutex));
 	QMutexLocker downloaderMutexLocker(&(downloader->m_mutex));
-	std::auto_ptr<QMutexLocker> otherQueueMutexLocker;
+	std::unique_ptr<QMutexLocker> otherQueueMutexLocker;
 	if (downloader->m_queue) {
 		otherQueueMutexLocker.reset(new QMutexLocker(&(downloader->m_queue->mutex)));
 	}

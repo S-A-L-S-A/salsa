@@ -33,13 +33,13 @@ namespace salsa {
 
 Component* ComponentCreator::create(ConfigurationManager& settings, QString prefix, bool configure)
 {
-	std::auto_ptr<Component> t;
+	std::unique_ptr<Component> t;
 
 	{
 		// Before creating the component, we create a ResourceAccessor instance that could be used
 		// in the instantiate method. We define a block so that resourceAccessor is destroyed after
 		// the component has been created
-		std::auto_ptr<ResourceAccessor> resourceAccessor(new ResourceAccessor(settings, settings.getConfigurationNodeForCurrentComponent()));
+		std::unique_ptr<ResourceAccessor> resourceAccessor(new ResourceAccessor(settings, settings.getConfigurationNodeForCurrentComponent()));
 		t.reset(instantiate(settings, prefix, resourceAccessor.get()));
 	}
 
@@ -84,7 +84,7 @@ TypesDB::TypesDB()
 {
 	// Registering Component. This is needed because it is the root of the class hierarchy
 	const QString name = "Component";
-	std::auto_ptr<const RegisteredTypeInfo> componentInfo(new RegisteredTypeInfo(name, QStringList(), false, false, Component::configuresInConstructor()));
+	std::unique_ptr<const RegisteredTypeInfo> componentInfo(new RegisteredTypeInfo(name, QStringList(), false, false, Component::configuresInConstructor()));
 	m_typesMap.insert(name, componentInfo.get());
 	componentInfo.release();
 	m_childrenMap[name] = QStringList();

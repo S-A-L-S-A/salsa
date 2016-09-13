@@ -530,11 +530,11 @@ public:
 
 private:
 	template <class T>
-	std::auto_ptr<const RegisteredTypeInfo> generateInfoForType(const QString& name, const QStringList& parents);
+	std::unique_ptr<const RegisteredTypeInfo> generateInfoForType(const QString& name, const QStringList& parents);
 
 	// This actually performs registration. creator should be NULL if the type cannot be instantiated
 	template <class NewClass>
-	void registerType(std::auto_ptr<const RegisteredTypeInfo> info, std::auto_ptr<ComponentCreator> creator);
+	void registerType(std::unique_ptr<const RegisteredTypeInfo>&& info, std::unique_ptr<ComponentCreator>&& creator);
 
 	// Checks if re-registration of a class is possible. A class can be re-registered only if it has
 	// the same parents and the same characteristics of the already registered class. If the class is
@@ -591,7 +591,7 @@ private:
 	QMap<QString, ConfigurationWidgetCreator*> m_editorsMap;
 
 	// The description of registered types
-	std::auto_ptr<ConfigurationManager> m_typeDescriptions;
+	std::unique_ptr<ConfigurationManager> m_typeDescriptions;
 
 	// The map with all registered descriptors for types
 	QMap<QString, RegisteredComponentDescriptor*> m_typeDescriptors;
@@ -667,21 +667,21 @@ namespace __Factory_internal {
 	};
 
 	template <class T>
-	std::auto_ptr<ComponentCreator> createGenericCreator(Bool2Type<true>)
+	std::unique_ptr<ComponentCreator> createGenericCreator(Bool2Type<true>)
 	{
-		return std::auto_ptr<ComponentCreator>(new ComponentCreatorT<T>());
+		return std::unique_ptr<ComponentCreator>(new ComponentCreatorT<T>());
 	}
 
 	template <class T>
-	std::auto_ptr<ComponentCreator> createGenericCreator(Bool2Type<false>)
+	std::unique_ptr<ComponentCreator> createGenericCreator(Bool2Type<false>)
 	{
 		abort();
 
-		return std::auto_ptr<ComponentCreator>();
+		return std::unique_ptr<ComponentCreator>();
 	}
 
 	template <class T>
-	std::auto_ptr<ComponentCreator> createGenericCreator()
+	std::unique_ptr<ComponentCreator> createGenericCreator()
 	{
 		return createGenericCreator<T>(Bool2Type<isComponent<T>::value && checkClass<T>::canBeCreated>());
 	}
@@ -701,7 +701,7 @@ ConfigurationWidget* ConfigurationWidgetCreatorT<T>::create(ConfigurationManager
 	const QString terminatedPrefix = prefix + GroupSeparator;
 
 	// Creating the new editor
-	std::auto_ptr<T> t(new T(params, terminatedPrefix, parent, f));
+	std::unique_ptr<T> t(new T(params, terminatedPrefix, parent, f));
 
 	return t.release();
 }
@@ -709,34 +709,34 @@ ConfigurationWidget* ConfigurationWidgetCreatorT<T>::create(ConfigurationManager
 template <class NewClass>
 void TypesDB::registerType(QString className, QStringList parents)
 {
-	std::auto_ptr<const RegisteredTypeInfo> info(generateInfoForType<NewClass>(className, parents));
-	std::auto_ptr<ComponentCreator> creator = info->canBeCreated ? __Factory_internal::createGenericCreator<NewClass>() : std::auto_ptr<ComponentCreator>();
+	std::unique_ptr<const RegisteredTypeInfo> info(generateInfoForType<NewClass>(className, parents));
+	std::unique_ptr<ComponentCreator> creator = info->canBeCreated ? __Factory_internal::createGenericCreator<NewClass>() : std::unique_ptr<ComponentCreator>();
 
-	registerType<NewClass>(info, creator);
+	registerType<NewClass>(std::move(info), std::move(creator));
 }
 
 template <class NewClass, class ObjectCreator>
 void TypesDB::registerType(QString className, QStringList parents)
 {
-	std::auto_ptr<const RegisteredTypeInfo> info = generateInfoForType<NewClass>(className, parents);
+	std::unique_ptr<const RegisteredTypeInfo> info = generateInfoForType<NewClass>(className, parents);
 	if (!info->canBeCreated) {
 		throw ClassNameIsAbstractException(className.toLatin1().data());
 	}
-	std::auto_ptr<ComponentCreator> creator(new ObjectCreator());
+	std::unique_ptr<ComponentCreator> creator(new ObjectCreator());
 
-	registerType<NewClass>(info, creator);
+	registerType<NewClass>(std::move(info), std::move(creator));
 }
 
 template <class NewClass>
 void TypesDB::registerType(QString className, QStringList parents, ComponentCreator* creator)
 {
-	std::auto_ptr<const RegisteredTypeInfo> info = generateInfoForType<NewClass>(className, parents);
+	std::unique_ptr<const RegisteredTypeInfo> info = generateInfoForType<NewClass>(className, parents);
 	if (!info->canBeCreated && (creator != NULL)) {
 		throw ClassNameIsAbstractException(className.toLatin1().data());
 	}
-	std::auto_ptr<ComponentCreator> creatorPtr(creator);
+	std::unique_ptr<ComponentCreator> creatorPtr(creator);
 
-	registerType<NewClass>(info, creatorPtr);
+	registerType<NewClass>(std::move(info), std::move(creatorPtr));
 }
 
 template <class EditorType>
@@ -753,17 +753,17 @@ void TypesDB::registerEditorForType(QString type)
 	m_editorsMap[type] = new ConfigurationWidgetCreatorT<EditorType>();
 }
 template <class T>
-std::auto_ptr<const RegisteredTypeInfo> TypesDB::generateInfoForType(const QString& name, const QStringList& parents)
+std::unique_ptr<const RegisteredTypeInfo> TypesDB::generateInfoForType(const QString& name, const QStringList& parents)
 {
 	const bool canBeCreated = __Factory_internal::isComponent<T>::value && __Factory_internal::checkClass<T>::canBeCreated;
 	const bool isInterface = __Factory_internal::isInterface<T>();
 	const bool configuresInConstructor = (canBeCreated || !isInterface) ? __Factory_internal::configuresInConstructor<T>() : false;
 
-	return std::auto_ptr<const RegisteredTypeInfo>(new RegisteredTypeInfo(name, parents, canBeCreated, isInterface, configuresInConstructor));
+	return std::unique_ptr<const RegisteredTypeInfo>(new RegisteredTypeInfo(name, parents, canBeCreated, isInterface, configuresInConstructor));
 }
 
 template <class NewClass>
-void TypesDB::registerType(std::auto_ptr<const RegisteredTypeInfo> info, std::auto_ptr<ComponentCreator> creator)
+void TypesDB::registerType(std::unique_ptr<const RegisteredTypeInfo>&& info, std::unique_ptr<ComponentCreator>&& creator)
 {
 	checkParentsRegistered(info.get());
 
@@ -788,7 +788,7 @@ void TypesDB::registerType(std::auto_ptr<const RegisteredTypeInfo> info, std::au
 		m_creators[pInfo->name] = creator.get();
 		creator->m_typeInfo = m_typesMap[pInfo->name];
 
-		// Releasing the pointer to the creator from auto_ptr
+		// Releasing the pointer to the creator from unique_ptr
 		creator.release();
 	}
 	if (pInfo->canBeCreated || !pInfo->isInterface) {
