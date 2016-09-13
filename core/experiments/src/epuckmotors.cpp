@@ -82,8 +82,8 @@
 //
 // EpuckWheelVelocityMotor::EpuckWheelVelocityMotor(ConfigurationParameters& params, QString prefix) :
 // 	EpuckMotor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL)
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr)
 // {
 // }
 //

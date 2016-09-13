@@ -140,10 +140,10 @@ class ResourceHandler;
  * you declare a resource, you can change the pointer over time, simply
  * re-declaring a resource with the same resource name. Once declared, a
  * resource lives until the declaring object is not deleted. This means that you
- * cannot really delete a resource, but you can declare it a NULL using
+ * cannot really delete a resource, but you can declare it a nullptr using
  * declareResourceAsNull() (see below for important things to keep in mind when
  * changing or deleting a resource). After declareResourceAsNull() is called any
- * call to getResource will return NULL for that resource. Resources are
+ * call to getResource will return nullptr for that resource. Resources are
  * actually deleted only if their owner is deleted. Memory for the resource is
  * never explicity freed (not even when declareResourceAsNull() is called), so
  * this must be managed externally (by the object owning the resource).
@@ -243,14 +243,14 @@ class ResourceHandler;
  * addNotifiedResource(), removeNotifiedResource(), and
  * removeAllNotifiedResources() functions. These functions allow specifying the
  * owner of the resource for which notifications are requested. If the owner is
- * not specified (or set to NULL), an algorithm like the one described for the
+ * not specified (or set to nullptr), an algorithm like the one described for the
  * getResource\<Type\>(name) function is used to resolve name ambiguities (this
  * means that an exception could be thrown in case the ambiguity cannot be
  * resolved); if the owner is specified the resource of that owner is used (see
  * the description of each function for more information). When a resource in
  * the list changes, the resourceChanged() function is called with information
  * about the resource that changed and how it changed i.e. whether it was added,
- * modified, declared as NULL or deleted (a resource is deleted if its owner is
+ * modified, declared as nullptr or deleted (a resource is deleted if its owner is
  * deleted). Please note that the resourceChanged() function is called in the
  * thread of the resource owner, see below for more information on possible
  * multithreading issues and for exceptions to this rule. Moreover, if resources
@@ -264,7 +264,7 @@ class ResourceHandler;
  * also specify the owner of the resource, i.e. notifications will be sent if
  * the given owner creates a resource with the given name (we need the owner
  * because it would otherwise not be clear to which resource we should refer). A
- * notification will be sent also when a resource is declared as NULL (using
+ * notification will be sent also when a resource is declared as nullptr (using
  * declareResourceAsNull()), but this doesn't influence the list of resources
  * for which notifications have to be sent. This means that when the resource is
  * re-declared (by the same owner), you will be notified again. When however a
@@ -358,7 +358,7 @@ class ResourceHandler;
  * is destroyed its resources are not being used, you should use
  * declareResourceAsNull() in the destructor before deleting the resource. This
  * way objects using the resource will first be notified that the pointer has
- * been set to NULL and then that the resource has been deleted (this is needed
+ * been set to nullptr and then that the resource has been deleted (this is needed
  * because the notification that a resource has been deleted will be sent by the
  * destructor of Component and by that time the resource should have been
  * already destroyed).
@@ -437,13 +437,13 @@ public:
 	 *        viewers of this component
 	 *
 	 * The returned ComponentUI instance is handled externally, you must not
-	 * delete it. The default implementation returns NULL.
+	 * delete it. The default implementation returns nullptr.
 	 * \return a new-allocated instance of the class handling the viewers of
-	 *         this component or NULL if this component has no viewers
+	 *         this component or nullptr if this component has no viewers
 	 */
 	virtual ComponentUI* getUIManager()
 	{
-		return NULL;
+		return nullptr;
 	}
 
 	/**
@@ -492,19 +492,19 @@ public:
 	 * This method overwrites any previous declaration with the same name.
 	 * \param name the name of the resource to declare
 	 * \param resource the pointer to the object/variable resource (this
-	 *                 must not be NULL, see declareResourceAsNull)
+	 *                 must not be nullptr, see declareResourceAsNull)
 	 */
 	template<class T>
 	void declareResource(QString name, T* resource);
 
 	/**
-	 * \brief Declares a resource as being NULL
+	 * \brief Declares a resource as being nullptr
 	 *
-	 * You cannot use declareResource to set the resource to NULL, use this
-	 * function instead. A resource declared as NULL exists and all attempts
-	 * to get it return NULL, no matter the type you specify when calling
+	 * You cannot use declareResource to set the resource to nullptr, use this
+	 * function instead. A resource declared as nullptr exists and all attempts
+	 * to get it return nullptr, no matter the type you specify when calling
 	 * e.g. getResource.
-	 * \param name the name of the resource to declare as NULL
+	 * \param name the name of the resource to declare as nullptr
 	 */
 	void declareResourceAsNull(QString name);
 

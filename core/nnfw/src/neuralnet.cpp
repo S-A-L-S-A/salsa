@@ -40,7 +40,7 @@ ComponentUI* NeuralNet::getUIManager() {
 #ifdef SALSA_USE_GRAPHVIZ
 	return new NeuralNetUI( this );
 #else
-	return NULL;
+	return nullptr;
 #endif
 }
 
@@ -324,7 +324,7 @@ Updatable* NeuralNet::getByName( QString name ) {
 #ifdef SALSA_DEBUG
 	Logger::warning( QString("getByName: Updatable ")+name+" not present in BaseNeuralNet" );
 #endif
-	return NULL;
+	return nullptr;
 }
 
 bool NeuralNet::find( const Cluster* cl ) const {

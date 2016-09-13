@@ -134,14 +134,14 @@ protected:
 	/**
 	 * \brief Returns the owner as a WObject, if it is a WObject
 	 *
-	 * \return the owner as a WObject, if it is a WObject, otherwise NULL
+	 * \return the owner as a WObject, if it is a WObject, otherwise nullptr
 	 */
 	WObject* ownerWObject()
 	{
-		if (owner() != NULL) {
+		if (owner() != nullptr) {
 			return dynamic_cast<WObject*>(owner());
 		} else {
-			return NULL;
+			return nullptr;
 		}
 	}
 
@@ -149,14 +149,14 @@ protected:
 	 * \brief Returns the owner as a WObject, if it is a WObject (const
 	 *        version)
 	 *
-	 * \return the owner as a WObject, if it is a WObject, otherwise NULL
+	 * \return the owner as a WObject, if it is a WObject, otherwise nullptr
 	 */
 	const WObject* ownerWObject() const
 	{
-		if (owner() != NULL) {
+		if (owner() != nullptr) {
 			return dynamic_cast<const WObject*>(owner());
 		} else {
-			return NULL;
+			return nullptr;
 		}
 	}
 

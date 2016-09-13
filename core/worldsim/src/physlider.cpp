@@ -39,7 +39,7 @@ PhySlider::PhySlider(World* world, SharedDataWrapper<Shared> shared, PhyObject* 
 	d->localMatrixParent = wMatrix::grammSchmidt(axis);
 
 	// Calculating the local matrix respect to child object
-	if (m_parent != NULL) {
+	if (m_parent != nullptr) {
 		d->globalMatrixParent = m_shared->localMatrixParent * m_parent->matrix();
 	} else {
 		d->globalMatrixParent = m_shared->localMatrixParent;
@@ -67,7 +67,7 @@ PhySlider::~PhySlider()
 wVector PhySlider::centre() const
 {
 	// Calculating global matrix if necessary
-	if (parent() != NULL) {
+	if (parent() != nullptr) {
 		return (m_shared->localMatrixParent * parent()->matrix()).w_pos;
 	} else {
 		return m_shared->globalMatrixParent.w_pos;
@@ -86,7 +86,7 @@ void PhySlider::updateJointInfo()
 	//--- calculate the global matrices
 	//--- if parent doesn't exist, then globalMatrixParent and localMatrixParent coincide and
 	//--- there is no need to re-assign it because it was already done in constructor
-	if (parent() != NULL) {
+	if (parent() != nullptr) {
 		d->globalMatrixParent = m_shared->localMatrixParent * parent()->matrix();
 	}
 	d->globalMatrixChild = m_shared->localMatrixChild * child()->matrix();
@@ -115,7 +115,7 @@ void PhySlider::updateJointInfo()
 	if (m_shared->enabled) {
 		wVector velocityParent, velocityChild;
 #ifdef WORLDSIM_USE_NEWTON
-		if (parent() != NULL) {
+		if (parent() != nullptr) {
 			NewtonBodyGetVelocity(m_priv->parent, &velocityParent[0]);
 		} else {
 			velocityParent = wVector(0, 0, 0);

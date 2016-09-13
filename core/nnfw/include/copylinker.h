@@ -50,7 +50,7 @@ namespace salsa {
 class SALSA_NNFW_API CopyLinker : public Linker {
 public:
 	/*! Constructor */
-	CopyLinker( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	CopyLinker( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~CopyLinker();
 	/*! Update the linker */

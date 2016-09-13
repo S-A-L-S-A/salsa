@@ -38,7 +38,7 @@ namespace salsa {
 class SALSA_NNFW_API BiasedCluster : public Cluster {
 public:
 	/*! Constructor */
-	BiasedCluster( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	BiasedCluster( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~BiasedCluster();
 	/*! Update the outputs of neurons */

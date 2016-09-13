@@ -173,7 +173,7 @@ protected:
 	 */
 	virtual void flowControllerChanged(FlowController* flowController)
 	{
-		if (m_gae != NULL)
+		if (m_gae != nullptr)
 		{
 			m_gae->setFlowController(flowController);
 		}

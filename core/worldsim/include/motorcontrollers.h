@@ -431,7 +431,7 @@ protected:
 	 *               and must not be destroyed (it is deleted after this
 	 *               motorcontroller has been deleted)
 	 * \param robot the robot whose attachment device we control (must not
-	 *              be NULL)
+	 *              be nullptr)
 	 * \param name the name of the object
 	 */
 	MarXbotAttachmentDeviceMotorController(World* world, SharedDataWrapper<Shared> shared, PhyMarXbot* robot, QString name = "unamed");
@@ -557,7 +557,7 @@ public:
 	 */
 	bool attachmentPossible() const
 	{
-		return (tryToAttach() != NULL);
+		return (tryToAttach() != nullptr);
 	}
 
 	/**
@@ -567,14 +567,14 @@ public:
 	 */
 	bool attachedToRobot() const
 	{
-		return (m_attachedRobot != NULL);
+		return (m_attachedRobot != nullptr);
 	}
 
 	/**
 	 * \brief Returns the robot to which we are attached
 	 *
-	 * If we are not attached to any robot, this returns NULL
-	 * \return the robot to which we are attached or NULL if we are not
+	 * If we are not attached to any robot, this returns nullptr
+	 * \return the robot to which we are attached or nullptr if we are not
 	 *         attached to another robot
 	 */
 	PhyMarXbot* attachedRobot()
@@ -585,8 +585,8 @@ public:
 	/**
 	 * \brief Returns the robot to which we are attached (const version)
 	 *
-	 * If we are not attached to any robot, this returns NULL
-	 * \return the robot to which we are attached or NULL if we are not
+	 * If we are not attached to any robot, this returns nullptr
+	 * \return the robot to which we are attached or nullptr if we are not
 	 *         attached to another robot
 	 */
 	const PhyMarXbot* attachedRobot() const
@@ -622,8 +622,8 @@ private:
 	 *
 	 * This function performs all tests needed to see if there is another
 	 * robot to which we can attach closing the gripper. If it finds one,
-	 * it returns it, otherwise NULL is returned
-	 * \return the robot to which we can attach or NULL if there is no robot
+	 * it returns it, otherwise nullptr is returned
+	 * \return the robot to which we can attach or nullptr if there is no robot
 	 *         to which to attach
 	 */
 	PhyMarXbot* tryToAttach() const;
@@ -653,14 +653,14 @@ private:
 	 * \brief The joint between two robots that are attached using the
 	 *        attachment device
 	 *
-	 * This is NULL if the robot is not attached to any other robot
+	 * This is nullptr if the robot is not attached to any other robot
 	 */
 	PhyJoint* m_joint;
 
 	/**
 	 * \brief The robot to which we are attached
 	 *
-	 * This is NULL if we are not attached to any other robot
+	 * This is nullptr if we are not attached to any other robot
 	 */
 	PhyMarXbot* m_attachedRobot;
 

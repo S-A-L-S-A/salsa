@@ -44,7 +44,7 @@
 class GroupInfo {
 public:
 	GroupInfo() {
-		treeItem = NULL;
+		treeItem = nullptr;
 		hasType = false;
 		isSubgroup = false;
 	};

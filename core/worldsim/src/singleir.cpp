@@ -61,7 +61,7 @@ void SingleIR::update()
 
 	// Resetting the current RayCastHit object
 	Shared* const d = m_shared.getModifiableShared();
-	d->rayCastHit.object = NULL;
+	d->rayCastHit.object = nullptr;
 	d->rayCastHit.distance = 1.0;
 
 	// Getting the owner as a WObject
@@ -69,9 +69,9 @@ void SingleIR::update()
 
 	// If we are attached to a phyobject, we ignore it in collisions
 	QSet<PhyObject*> ignoredObjs;
-	if (own != NULL) {
+	if (own != nullptr) {
 		PhyObject* phyObj = dynamic_cast<PhyObject*>(own);
-		if (phyObj != NULL) {
+		if (phyObj != nullptr) {
 			ignoredObjs.insert(phyObj);
 		}
 	}
@@ -103,7 +103,7 @@ void SingleIR::set(double minDist, double maxDist, double aperture, unsigned int
 	d->aperture = aperture;
 	d->numRays = numRays;
 
-	d->rayCastHit.object = NULL;
+	d->rayCastHit.object = nullptr;
 	d->rayCastHit.distance = 1.0;
 
 	if (m_shared->numRays != 0) {

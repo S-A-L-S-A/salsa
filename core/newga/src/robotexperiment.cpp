@@ -60,9 +60,9 @@ RobotExperiment::RobotExperiment()
 	, nsteps(1)
 	, nstep(0)
 	, ntrial(0)
-	, savedConfigurationParameters(NULL)
-	, savedPrefix(NULL)
-	, world(NULL)
+	, savedConfigurationParameters(nullptr)
+	, savedPrefix(nullptr)
+	, world(nullptr)
 	, timestep(0.05f)
 	, eagents()
 	, agentIdSelected(0)
@@ -72,8 +72,8 @@ RobotExperiment::RobotExperiment()
 	, restartCurrentTrial(false)
 	, endCurrentIndividualLife(false)
 	, batchRunning(false)
-	, arena(NULL)
-	, evonet(NULL)
+	, arena(nullptr)
+	, evonet(nullptr)
 	, stepDelay(timestep*1000)
 	, sameRandomSequence(false)
 	, randomGeneratorInUse(salsa::globalRNG)
@@ -178,7 +178,7 @@ void RobotExperiment::configure(ConfigurationParameters& params, QString prefix)
 	//selectAgent(0);
 
 	// Adding robots to the arena (if the arena exists)
-	if (arena != NULL) {
+	if (arena != nullptr) {
 		QStringList robots;
 		foreach(EmbodiedAgent* e, eagents) {
 			robots.append(e->resourcePrefix+"robot");
@@ -440,11 +440,11 @@ void RobotExperiment::doStep()
 	beforeWorldAdvance();
 	// advance the world simulation
 	locker.lock();
-	if (arena != NULL) {
+	if (arena != nullptr) {
 		arena->prepareToHandleKinematicRobotCollisions();
 	}
 	world->advance();
-	if (arena != NULL) {
+	if (arena != nullptr) {
 		arena->handleKinematicRobotCollisions();
 	}
 	locker.unlock();
@@ -503,25 +503,25 @@ int RobotExperiment::getRequestedMotors() const
 
 Sensor* RobotExperiment::getSensor( QString name, int id ) {
 	if ( !eagents[id]->enabled ) {
-		Logger::error( "getSensor returned NULL pointer because the agent "+QString::number(id)+" is disabled" );
-		return NULL;
+		Logger::error( "getSensor returned nullptr pointer because the agent "+QString::number(id)+" is disabled" );
+		return nullptr;
 	} else if ( eagents[id]->sensorsMap.contains( name ) ) {
 		return eagents[id]->sensorsMap[name];
 	} else {
-		Logger::error( "getSensor returned NULL pointer because there is no sensor named "+name+" in the agent "+QString::number(id) );
-		return NULL;
+		Logger::error( "getSensor returned nullptr pointer because there is no sensor named "+name+" in the agent "+QString::number(id) );
+		return nullptr;
 	}
 }
 
 Motor* RobotExperiment::getMotor( QString name, int id ) {
 	if ( !eagents[id]->enabled ) {
-		Logger::error( "getMotor returned NULL pointer because the agent "+QString::number(id)+" is disabled" );
-		return NULL;
+		Logger::error( "getMotor returned nullptr pointer because the agent "+QString::number(id)+" is disabled" );
+		return nullptr;
 	} else if ( eagents[id]->motorsMap.contains( name ) ) {
 		return eagents[id]->motorsMap[name];
 	} else {
-		Logger::error( "getMotor returned NULL pointer because there is no motor named "+name+" in the agent "+QString::number(id) );
-		return NULL;
+		Logger::error( "getMotor returned nullptr pointer because there is no motor named "+name+" in the agent "+QString::number(id) );
+		return nullptr;
 	}
 }
 
@@ -596,7 +596,7 @@ void RobotExperiment::setNeuralNetwork(const Evonet* net)
 
 			// Making this net the one responsible of updating guis
 			EvonetUI* uimanager = net->getCurrentUIManager();
-			if (uimanager != NULL) {
+			if (uimanager != nullptr) {
 				uimanager->changeNet(agent->evonet);
 			}
 		}
@@ -630,9 +630,9 @@ void RobotExperiment::recreateWorld() {
 
 	// Removing deleted resources (if they existed) and then re-declaring world
 	Arena* old_arena = arena;
-	if ( arena != NULL ) {
+	if ( arena != nullptr ) {
 		deleteResource( "arena" );
-		arena = NULL;
+		arena = nullptr;
 	}
 
 	QList<Robot*> old_robots;
@@ -642,7 +642,7 @@ void RobotExperiment::recreateWorld() {
 			if (eagents[i]->enabled) {
 				deleteResource( eagents[i]->resourcePrefix+"robot" );
 				old_robots.push_back(eagents[i]->robot);
-				eagents[i]->robot = NULL;
+				eagents[i]->robot = nullptr;
 			}
 		}
 	}
@@ -683,7 +683,7 @@ void RobotExperiment::recreateArena() {
 	// First of all we need to check whether there is an Arena group or not
 	if (!ConfigurationHelper::hasGroup( *savedConfigurationParameters, (*savedPrefix) + "Arena" ) ) {
 		// This is just to be sure...
-		arena = NULL;
+		arena = nullptr;
 		return;
 	}
 
@@ -764,9 +764,9 @@ RobotExperiment::EmbodiedAgent::EmbodiedAgent( int id, QString agentPath, RobotE
 	enabled = true;
 	this->agentPath = agentPath;
 	this->exp = exp;
-	evonet = NULL;
+	evonet = nullptr;
 	neuronsIterator = new EvonetIterator();
-	robot = NULL;
+	robot = nullptr;
 	resourcePrefix = QString("agent[%1]:").arg(id);
 }
 
@@ -789,7 +789,7 @@ void RobotExperiment::EmbodiedAgent::configure() {
 				agentPath+sensorGroup, "__resourcePrefix__", resourcePrefix );
 		// !! END OF TRICK !!
 		Sensor* sensor = exp->savedConfigurationParameters->getObjectFromGroup<Sensor>(agentPath + sensorGroup);
-		if ( sensor == NULL ) {
+		if ( sensor == nullptr ) {
 			Logger::error("Cannot create the Sensor from group " + *(exp->savedPrefix) + sensorGroup + ". Aborting");
 			abort();
 		}
@@ -820,7 +820,7 @@ void RobotExperiment::EmbodiedAgent::configure() {
 				agentPath+motorGroup, "__resourcePrefix__", resourcePrefix );
 		// !! END OF TRICK !!
 		Motor* motor = exp->savedConfigurationParameters->getObjectFromGroup<Motor>(agentPath + motorGroup);
-		if (motor == NULL) {
+		if (motor == nullptr) {
 			Logger::error("Cannot create the Motor from group " + *(exp->savedPrefix) + motorGroup + ". Aborting");
 			abort();
 		}
@@ -842,7 +842,7 @@ void RobotExperiment::EmbodiedAgent::configure() {
 	}
 
 	//recreateNeuralNetwork();
-	//exp->declareResource( resourcePrefix+"evonet", static_cast<salsa::ParameterSettable*>(NULL) );
+	//exp->declareResource( resourcePrefix+"evonet", static_cast<salsa::ParameterSettable*>(nullptr) );
 
 	//exp->declareResource( resourcePrefix+"neuronsIterator", neuronsIterator, resourcePrefix+"evonet" );
 }
@@ -934,7 +934,7 @@ void RobotExperiment::EmbodiedAgent::disable() {
 		// Deleting the resource for the robot and then robot
 		exp->deleteResource( resourcePrefix+"robot" );
 		delete robot;
-		robot = NULL;
+		robot = nullptr;
 	}
 }
 

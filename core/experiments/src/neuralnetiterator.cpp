@@ -26,8 +26,8 @@
 // namespace salsa {
 //
 // NeuralNetIterator::NeuralNetIterator() :
-// 	neuralnet(NULL),
-// 	cluster(NULL),
+// 	neuralnet(nullptr),
+// 	cluster(nullptr),
 // 	currIndex(-1) {
 // }
 //
@@ -37,7 +37,7 @@
 //
 // void NeuralNetIterator::setNeuralNet( NeuralNet* neuralnet ) {
 // 	this->neuralnet = neuralnet;
-// 	cluster = NULL;
+// 	cluster = nullptr;
 // 	currIndex = -1;
 // }
 //

@@ -296,10 +296,10 @@ public:
 	 * \param path the path of the node whose corresponding object has to be
 	 *             set (relative to this node)
 	 * \param object the object corresponding to the given node. If is is
-	 *               NULL and status is not CreatingObject nor
+	 *               nullptr and status is not CreatingObject nor
 	 *               ObjectNotCreated, only the status of the current object
 	 *               is changed; if status is ObjectNotCreated this is
-	 *               ignored (object is set to NULL); otherwise the object
+	 *               ignored (object is set to nullptr); otherwise the object
 	 *               for the node is set to the value of this parameter.
 	 * \param status the status of the object
 	 */
@@ -308,7 +308,7 @@ public:
 	/**
 	 * \brief Resets the object for this node
 	 *
-	 * This sets the object to NULL and the object status to
+	 * This sets the object to nullptr and the object status to
 	 * ObjectNotCreated
 	 */
 	void resetComponent();
@@ -441,7 +441,7 @@ public:
 	/**
 	 * \brief Deletes all children and parameters
 	 *
-	 * This also resets to NULL the associated object, if present
+	 * This also resets to nullptr the associated object, if present
 	 */
 	void clearAll();
 
@@ -468,20 +468,20 @@ public:
 	 * \brief Creates a duplicate this node and all subnodes
 	 *
 	 * The new node is a deep copy of this node and is the root of a new
-	 * tree (its parent is set to NULL). If dest is not NULL, the given node
+	 * tree (its parent is set to nullptr). If dest is not nullptr, the given node
 	 * is used as the root (clearAll() is called on it before doing anything
-	 * else) and it is also the return value of the function. If it is NULL,
+	 * else) and it is also the return value of the function. If it is nullptr,
 	 * a ConfigurationNode object is allocated using new and is returned.
 	 * The name of the new root node is set to be the same as this name.
 	 * Objects associated with copied nodes are not copied (i.e. new nodes
 	 * will have no object associated with them)
 	 * \warning the name of dest is not changed by this function (if dest
-	 *          is not NULL)
+	 *          is not nullptr)
 	 * \param dest the node that will become the root of the new tree. If
-	 *             NULL a node is new-allocated and returned
+	 *             nullptr a node is new-allocated and returned
 	 * \return the new node
 	 */
-	ConfigurationNode* createDeepCopy(ConfigurationNode* dest = NULL);
+	ConfigurationNode* createDeepCopy(ConfigurationNode* dest = nullptr);
 
 private:
 	// This constructor is used when adding nodes (this allows to specify
@@ -489,9 +489,9 @@ private:
 	ConfigurationNode(ConfigurationNode* parent, QString name);
 
 	// This is like getNode() but does not throw an exception if the path
-	// is not valid. If firstNonExistingGroup is not NULL, it is set to the
+	// is not valid. If firstNonExistingGroup is not nullptr, it is set to the
 	// name of the first group in path that does not exist
-	const ConfigurationNode* getNodeOrReturnNullIfNonExistent(QString path, QString* firstNonExistingGroup = NULL) const;
+	const ConfigurationNode* getNodeOrReturnNullIfNonExistent(QString path, QString* firstNonExistingGroup = nullptr) const;
 
 	// Recursively copies parameters and child nodes from one node to
 	// another. Note that this doesn't clear the destination node! Moreover

@@ -32,7 +32,7 @@ namespace salsa {
 class SALSA_NNFW_API WinnerTakeAllFunction : public OutputFunction {
 public:
 	/*! Construct */
-	WinnerTakeAllFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	WinnerTakeAllFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~WinnerTakeAllFunction() { /* Nothing to do */ };
 	/*! Set the value */

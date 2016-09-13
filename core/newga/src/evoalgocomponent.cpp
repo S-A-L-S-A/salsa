@@ -30,7 +30,7 @@ namespace salsa {
 EvoAlgoComponent::EvoAlgoComponent() :
 	BaseExperiment(),
 	m_batchRunning(false),
-	m_ga(NULL),
+	m_ga(nullptr),
 	m_replications(1),
 	m_tests()
 {

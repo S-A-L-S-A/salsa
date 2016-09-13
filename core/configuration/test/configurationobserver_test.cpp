@@ -98,7 +98,7 @@ private slots:
 		FunctionCallsSequenceRecorder actual;
 
 		One* one = manager.getComponentFromGroup<One>("one");
-		QVERIFY(one != NULL);
+		QVERIFY(one != nullptr);
 
 		FunctionCallsSequenceRecorder expected;
 		expected.callBegin("TestObserver::onComponentCreation " + nameForComponentPointer(one->another()->three()));
@@ -123,7 +123,7 @@ private slots:
 		observer.observe(&manager);
 
 		One* one = manager.getComponentFromGroup<One>("one");
-		QVERIFY(one != NULL);
+		QVERIFY(one != nullptr);
 
 		FunctionCallsSequenceRecorder expected;
 		expected.callBegin("TestObserver::onComponentDestruction " + nameForComponentPointer(one));
@@ -153,11 +153,11 @@ private slots:
 			observer.observe(&manager);
 
 			One* one = manager.getComponentFromGroup<One>("one");
-			QVERIFY(one != NULL);
+			QVERIFY(one != nullptr);
 			manager.destroyAllComponents();
 		}
 
-		QVERIFY(observer.observed() == NULL);
+		QVERIFY(observer.observed() == nullptr);
 	}
 };
 

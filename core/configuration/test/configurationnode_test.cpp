@@ -92,9 +92,9 @@ private slots:
 		ConfigurationNodeUniquePtr nodeValidName(new ConfigurationNode("group"));
 		ConfigurationNodeUniquePtr nodeValidDotName(new ConfigurationNode("thisIs..Valid"));
 
-		QCOMPARE(nodeValidName->getParent(), (ConfigurationNode*) NULL);
+		QCOMPARE(nodeValidName->getParent(), (ConfigurationNode*) nullptr);
 		QCOMPARE(nodeValidName->getName(), QString("group"));
-		QCOMPARE(nodeValidDotName->getParent(), (ConfigurationNode*) NULL);
+		QCOMPARE(nodeValidDotName->getParent(), (ConfigurationNode*) nullptr);
 		QCOMPARE(nodeValidDotName->getName(), QString("thisIs..Valid"));
 	}
 
@@ -253,7 +253,7 @@ private slots:
 		QCOMPARE(t.root->getComponentForNode("two/grandchild/downAgain/andAgain").component, andAgainComponent);
 		QCOMPARE(t.root->getComponentForNode("two/grandchild/downAgain/andAgain").status, ConfiguringComponent);
 
-		t.root->setComponentForNode("two", NULL, ConfiguringComponent);
+		t.root->setComponentForNode("two", nullptr, ConfiguringComponent);
 		QCOMPARE(t.two->getComponentForNode("").component, twoComponent);
 		QCOMPARE(t.two->getComponentForNode("").status, ConfiguringComponent);
 
@@ -262,17 +262,17 @@ private slots:
 		QCOMPARE(t.andAgain->getComponentForNode("").component, andAgainOtherComponent);
 		QCOMPARE(t.andAgain->getComponentForNode("").status, CreatingComponent);
 
-		t.two->setComponentForNode("", NULL, ComponentNotCreated);
-		QCOMPARE(t.two->getComponentForNode("").component, (Component*) NULL);
+		t.two->setComponentForNode("", nullptr, ComponentNotCreated);
+		QCOMPARE(t.two->getComponentForNode("").component, (Component*) nullptr);
 		QCOMPARE(t.two->getComponentForNode("").status, ComponentNotCreated);
 
 		Component* downOneLevelOtherComponent = componentDummyPointerFromNumber(componentsId++);
 		t.downOneLevel->setComponentForNode("", downOneLevelOtherComponent, ComponentNotCreated);
-		QCOMPARE(t.downOneLevel->getComponentForNode("").component, (Component*) NULL);
+		QCOMPARE(t.downOneLevel->getComponentForNode("").component, (Component*) nullptr);
 		QCOMPARE(t.downOneLevel->getComponentForNode("").status, ComponentNotCreated);
 
 		t.root->resetComponent();
-		QCOMPARE(t.root->getComponentForNode("").component, (Component*) NULL);
+		QCOMPARE(t.root->getComponentForNode("").component, (Component*) nullptr);
 		QCOMPARE(t.root->getComponentForNode("").status, ComponentNotCreated);
 	}
 

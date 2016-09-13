@@ -57,13 +57,13 @@ EvoRobotViewer::EvoRobotViewer( EvoRobotComponent* component )
 	, ComponentUI()
 	, evorobot(component)
 	, ga(evorobot->getGA())
-	, statViewer(NULL)
-	, ftv(NULL)
-	, renderworldwrapper(NULL)
-	, infoEvoga(NULL)
-	, simulationThrottle(NULL)
-	, simulationSpeed(NULL)
-	, timer(NULL)
+	, statViewer(nullptr)
+	, ftv(nullptr)
+	, renderworldwrapper(nullptr)
+	, infoEvoga(nullptr)
+	, simulationThrottle(nullptr)
+	, simulationSpeed(nullptr)
+	, timer(nullptr)
 {
 	timer = new QTimer(this);
 	timer->setInterval( 40 );
@@ -327,7 +327,7 @@ void EvoRobotViewer::onWorldAdvance() {
 	}
 
 // 	if ( exp->getActivityPhase() == EvoRobotExperiment::INTEST ) {
-// // 		if (m_icubview != NULL)  {
+// // 		if (m_icubview != nullptr)  {
 // // 			m_icubview->setImage( exp->getResource<PhyiCub>( "robot" ) );   // update the iCub camera widget
 // // 		}
 // 	}
@@ -371,9 +371,9 @@ void EvoRobotViewer::onActionFinished() {
 // 	class ImageDisplayer : public QWidget
 // 	{
 // 	public:
-// 		ImageDisplayer(QWidget* parent = NULL) :
+// 		ImageDisplayer(QWidget* parent = nullptr) :
 // 			QWidget(parent),
-// 			m_image(NULL)
+// 			m_image(nullptr)
 // 		{
 // 		}
 //
@@ -397,7 +397,7 @@ void EvoRobotViewer::onActionFinished() {
 // 	private:
 // 		void paintEvent(QPaintEvent *)
 // 		{
-// 			if (m_image == NULL) {
+// 			if (m_image == nullptr) {
 // 				return;
 // 			}
 //
@@ -434,8 +434,8 @@ void EvoRobotViewer::onActionFinished() {
 // 	// Taking the image in yarp format
 // 	yarp::sig::ImageOf<yarp::sig::PixelRgb> yarpImage;
 // 	// yarp::dev::IFrameGrabberImage* frameGrabber = useRightCamera ? icub->rightEyeFrameGrabber() :  icub->leftEyeFrameGrabber();
-// 	yarp::dev::IFrameGrabberImage* frameGrabber = NULL; // The line above crashes with multithread
-// 	if (frameGrabber == NULL) {
+// 	yarp::dev::IFrameGrabberImage* frameGrabber = nullptr; // The line above crashes with multithread
+// 	if (frameGrabber == nullptr) {
 // 		return;
 // 	}
 // 	// frameGrabber->getImage(yarpImage); // Crashes with multithread

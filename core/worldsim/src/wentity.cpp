@@ -30,12 +30,12 @@ WEntity::WEntity(World* world, SharedDataWrapper<Shared> shared, QString name)
 	: m_world(world)
 	, m_shared(shared)
 	, m_name(name)
-	, m_owner(NULL)
+	, m_owner(nullptr)
 	, m_owned()
 	, m_useColorTextureOfOwner(true)
 	, m_myTexture(m_shared->texture)
 	, m_myColor(m_shared->color)
-	, m_ownershipChangesListener(NULL)
+	, m_ownershipChangesListener(nullptr)
 {
 	// Checking that we are being created inside a call to World::createEntity
 	if (!m_world->checkCreatingFromWorldAndResetFlag()) {
@@ -46,13 +46,13 @@ WEntity::WEntity(World* world, SharedDataWrapper<Shared> shared, QString name)
 WEntity::~WEntity()
 {
 	// Notifying listener if we have to
-	if (m_ownershipChangesListener != NULL) {
+	if (m_ownershipChangesListener != nullptr) {
 		m_ownershipChangesListener->entityDestroyed(this);
 	}
 
 	// If I'm owned by some other object, removing myself from the list
-	if (m_owner != NULL) {
-		m_owner->removeFromOwned(this, NULL, true);
+	if (m_owner != nullptr) {
+		m_owner->removeFromOwned(this, nullptr, true);
 	}
 
 	// Now deleting all owned objects I have to delete
@@ -74,7 +74,7 @@ void WEntity::setName(QString name)
 void WEntity::setOwner(WEntity* owner, bool destroy)
 {
 	// If I was owned by another object, first removing from my old owner
-	if ((m_owner != NULL) && (m_owner != owner)) {
+	if ((m_owner != nullptr) && (m_owner != owner)) {
 		m_owner->removeFromOwned(this, owner, false);
 	}
 
@@ -82,7 +82,7 @@ void WEntity::setOwner(WEntity* owner, bool destroy)
 	m_owner = owner;
 
 	// Now adding to the new owner
-	if (m_owner != NULL) {
+	if (m_owner != nullptr) {
 		m_owner->addToOwned(this, destroy);
 	}
 
@@ -90,7 +90,7 @@ void WEntity::setOwner(WEntity* owner, bool destroy)
 	updateColorTextureFromOwner();
 
 	// Notifying of the change
-	if (m_ownershipChangesListener != NULL) {
+	if (m_ownershipChangesListener != nullptr) {
 		m_ownershipChangesListener->ownerChanged(this, oldOwner);
 	}
 }
@@ -188,7 +188,7 @@ OwnershipChangesListener* WEntity::registerOwnertshipChangesListener(OwnershipCh
 
 	m_ownershipChangesListener = listener;
 
-	if (oldListener != NULL) {
+	if (oldListener != nullptr) {
 		oldListener->listenerChanged(this, m_ownershipChangesListener);
 	}
 
@@ -223,7 +223,7 @@ void WEntity::updateColorTextureFromOwner()
 	// Getting the first WEntity owner using its own texture and color
 	WEntity* curObj = this;
 	WEntity* curOwner = owner();
-	while (curObj->useColorTextureOfOwner() && (curOwner != NULL)) {
+	while (curObj->useColorTextureOfOwner() && (curOwner != nullptr)) {
 		curObj = curOwner;
 		curOwner = curOwner->owner();
 	}
@@ -242,7 +242,7 @@ void WEntity::addToOwned(WEntity* obj, bool destroy)
 	m_owned.append(Owned(obj, destroy));
 
 	// Notifying that we now own a new object
-	if (m_ownershipChangesListener != NULL) {
+	if (m_ownershipChangesListener != nullptr) {
 		m_ownershipChangesListener->ownedAdded(this, obj);
 	}
 }
@@ -250,7 +250,7 @@ void WEntity::addToOwned(WEntity* obj, bool destroy)
 void WEntity::removeFromOwned(WEntity* obj, WEntity* newOwner, bool destroyed)
 {
 	// Calling ownedChangedOwner to notify of the change
-	if (m_ownershipChangesListener != NULL) {
+	if (m_ownershipChangesListener != nullptr) {
 		m_ownershipChangesListener->ownedChangedOwner(this, obj, newOwner, destroyed);
 	}
 

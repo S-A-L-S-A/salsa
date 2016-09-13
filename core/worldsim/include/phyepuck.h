@@ -419,7 +419,7 @@ private:
 	 * \brief The graphical marker on the khepera indicating the front of
 	 *        the robot
 	 *
-	 * If NULL no marker is displayed
+	 * If nullptr no marker is displayed
 	 */
 	PlanarArrowGraphicalMarker* m_frontMarker;
 

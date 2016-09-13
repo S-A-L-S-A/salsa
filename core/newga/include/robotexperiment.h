@@ -280,19 +280,19 @@ public:
 	/*! Return a pointer to the Sensor with name specified
 	 *  \param name is the name of the sensor your are looking for
 	 *  \param agentID the id of the agent
-	 *  \return a pointer to the sensor or NULL is the sensor doesn't exists
+	 *  \return a pointer to the sensor or nullptr is the sensor doesn't exists
 	 *          or the agent is disabled
 	 */
 	Sensor* getSensor( QString sensorName, int agentId=0 );
 	/*! Return a pointer to the Motor with name specified
 	 *  \param name is the name of the motor your are looking for
 	 *  \param agentID the id of the agent
-	 *  \return a pointer to the motor or NULL is the sensor doesn't exists
+	 *  \return a pointer to the motor or nullptr is the sensor doesn't exists
 	 *          or the agent is disabled
 	 */
 	Motor* getMotor( QString motorName, int agentId=0 );
 
-	//! Returns the arena. This can returns NULL if no arena object is present
+	//! Returns the arena. This can returns nullptr if no arena object is present
 	Arena* getArena() {
 		return arena;
 	}
@@ -602,7 +602,7 @@ private:
 	bool endCurrentIndividualLife;
 	//! whether we are running in batch or not
 	bool batchRunning;
-	//! The arena with objects for wheeled robot simulations. This can be NULL
+	//! The arena with objects for wheeled robot simulations. This can be nullptr
 	Arena* arena;
 	//! The neural network
 	Evonet* evonet;

@@ -138,7 +138,7 @@
 // 	/**
 // 	 * \brief The toolbar
 // 	 *
-// 	 * This is NULL until the first call to toolBar()
+// 	 * This is nullptr until the first call to toolBar()
 // 	 */
 // 	QToolBar *m_toolBar;
 //

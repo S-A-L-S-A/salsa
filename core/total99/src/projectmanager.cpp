@@ -59,14 +59,14 @@ ProjectManager::ProjectManager( QWidget* parent, Qt::WindowFlags f )
 	, projectLoaded(false)
 	, projectChanged(false)
 	, componentOutdated(false)
-	, component(NULL)
+	, component(nullptr)
 	, allprefs()
 	, userprefs()
 	, recentProjects()
 	, uimanagers()
 	, viewersMap()
 	, objsCreated()
-	, batchInstancesManager(NULL)
+	, batchInstancesManager(nullptr)
 {
 	//--- read the total99.ini preferences into default directory where total99 has been installed
 	//    and then merge the defaul preferences with those into total99.ini into the user directory
@@ -76,7 +76,7 @@ ProjectManager::ProjectManager( QWidget* parent, Qt::WindowFlags f )
 	applyUITemplate( ConfigurationHelper::getString( allprefs, "UI/template", "kids" ) );
 
 	// Creating the widget managing batch instances
-	batchInstancesManager = new BatchInstancesManager(userprefs, NULL);
+	batchInstancesManager = new BatchInstancesManager(userprefs, nullptr);
 
 	//--- create the viewers manager
 	viewersManager = new ViewersManager( this, allprefs, "" );
@@ -417,7 +417,7 @@ void ProjectManager::onComponentDestruction(salsa::Component*)
 }
 
 void ProjectManager::onQuit() {
-	if (component == NULL) {
+	if (component == nullptr) {
 		// We only save geometry here if there is no component, because the geometry for the component
 		// could be different from the starting geometry of the window
 		geometryToSave = saveGeometry();
@@ -456,7 +456,7 @@ void ProjectManager::onQuit() {
 
 	// Delete the batchInstancesManager
 	delete batchInstancesManager;
-	batchInstancesManager = NULL;
+	batchInstancesManager = nullptr;
 }
 
 void ProjectManager::loadProject() {
@@ -546,7 +546,7 @@ void ProjectManager::closeComponent() {
 	//disconnect( component, SIGNAL(statusChanged(QString)), this, SLOT(updateStatusLabels()) );
 	cleanComponentUIs();
 	delete component;
-	component = NULL;
+	component = nullptr;
 	projectEdit2RuntimeLay->setCurrentIndex( 0 );
 	// when re-enable all edit widgets
 	projectNameEdit->setEnabled( true );
@@ -678,7 +678,7 @@ void ProjectManager::configureComponent() {
 		createComponentUIs();
 	} catch( std::exception& e ) {
 		cleanComponentUIs();
-		component = NULL;
+		component = nullptr;
 		updateActionsState();
 		updateStatusLabels();
 		QMessageBox::warning( this, QString("Error creating the Component"), QString("The Component ") + pexpg + QString(" cannot be created; The error is:\n") + e.what() + QString("\nCheck your configuration file.") );
@@ -782,8 +782,8 @@ void ProjectManager::loadSystemProject()
 	// Checking if the plugin exists in the current localPluginDestination and setting the messagebox accordingly
 	const QString localPluginPath = localPluginDestination + "/" + relativePluginPath;
 	QString pluginConfigurationFile; // The plugin configuration file to use
-	QPushButton *useLocalCopy = NULL;
-	QPushButton *copyToDefaultDestination = NULL;
+	QPushButton *useLocalCopy = nullptr;
+	QPushButton *copyToDefaultDestination = nullptr;
 	if (QFileInfo(localPluginPath).exists()) {
 		msgBox.setText(QString("The selected system plugin (%1) will be copied to a writable location. The default location is \"%2\", and already exists. You can choose to use data in the existing directory, overwrite it or choose another directory.").arg(systemProjects[systemProjectsList->currentRow()][0]).arg(localPluginDestination + "/" + relativePluginFilename));
 
@@ -859,14 +859,14 @@ void ProjectManager::markProjectAsChanged() {
 }
 
 void ProjectManager::updateActionsState() {
-	actionsMap["loadProject"]->setEnabled( component==NULL );
-	actionsMap["newProject"]->setEnabled( component==NULL );
-	actionsMap["saveProject"]->setEnabled( component==NULL && projectChanged && projectFile.exists() );
-	actionsMap["saveAsProject"]->setEnabled( component==NULL && projectLoaded /*|| !projectFile.exists()*/ );
-	actionsMap["loadPlugin"]->setEnabled( component==NULL );
+	actionsMap["loadProject"]->setEnabled( component==nullptr );
+	actionsMap["newProject"]->setEnabled( component==nullptr );
+	actionsMap["saveProject"]->setEnabled( component==nullptr && projectChanged && projectFile.exists() );
+	actionsMap["saveAsProject"]->setEnabled( component==nullptr && projectLoaded /*|| !projectFile.exists()*/ );
+	actionsMap["loadPlugin"]->setEnabled( component==nullptr );
 	actionsMap["closeProject"]->setEnabled( projectLoaded );
 	actionsMap["createExperiment"]->setEnabled( projectLoaded );
-	actionsMap["closeExperiment"]->setEnabled( component!=NULL );
+	actionsMap["closeExperiment"]->setEnabled( component!=nullptr );
 }
 
 void ProjectManager::changeProjectMainInfo() {
@@ -1327,7 +1327,7 @@ bool ProjectManager::copyPluginData(const QString& relPluginPath, const QString&
 void ProjectManager::closeEvent(QCloseEvent* event)
 {
 	delete batchInstancesManager;
-	batchInstancesManager = NULL;
+	batchInstancesManager = nullptr;
 
 	QWidget::closeEvent(event);
 }

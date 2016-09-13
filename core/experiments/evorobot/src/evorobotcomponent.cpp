@@ -92,7 +92,7 @@ private:
 
 EvoRobotComponent::EvoRobotComponent(ConfigurationManager& params)
 	: Component(params)
-	, ga(NULL)
+	, ga(nullptr)
 	, batchRunning(false)
 	, runningOperation(false)
 	, mutex()
@@ -147,15 +147,15 @@ void EvoRobotComponent::configure()
 // 		test->setComponent( this );
 // 		AvailableTestList::addTest( testGroups[i], test );
 // 		/*
-// 		if (dynamic_cast<TestAll *>(test) != NULL) {
+// 		if (dynamic_cast<TestAll *>(test) != nullptr) {
 // 			testAllAdded = true;
-// 		} else */ if (dynamic_cast<TestIndividual *>(test) != NULL) {
+// 		} else */ if (dynamic_cast<TestIndividual *>(test) != nullptr) {
 // 			testIndividualAdded = true;
-// 		} else if (dynamic_cast<TestRandom *>(test) != NULL) {
+// 		} else if (dynamic_cast<TestRandom *>(test) != nullptr) {
 // 			testRandomAdded = true;
-// 		} else if (dynamic_cast<TestCurrent *>(test) != NULL) {
+// 		} else if (dynamic_cast<TestCurrent *>(test) != nullptr) {
 // 			testCurrentAdded = true;
-// 		} /* else if (dynamic_cast<TestZero *>(test) != NULL) {
+// 		} /* else if (dynamic_cast<TestZero *>(test) != nullptr) {
 // 			testZeroAdded = true;
 // 		} */
 // 	}

@@ -59,7 +59,7 @@ public:
 	 *
 	 * If this observer was associated to another ConfigurationManager, the
 	 * previous association is removed
-	 * \param manager the configuration manger to observe. If NULL, stops
+	 * \param manager the configuration manger to observe. If nullptr, stops
 	 *                observing
 	 */
 	void observe(ConfigurationManager* manager);

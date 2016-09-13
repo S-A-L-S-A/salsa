@@ -176,7 +176,7 @@ public:
 	 * the first object it finds with the given name, even if there are more
 	 * than one. You should try to avoid using this function
 	 * \param name the name to look for
-	 * \return the WEntity with specified name, or NULL if no entity has
+	 * \return the WEntity with specified name, or nullptr if no entity has
 	 *         that name
 	 */
 	WEntity* getEntity(const QString& name);
@@ -244,7 +244,7 @@ public:
 	 *                penetration at each point
 	 * \return true if the two object are in contacts
 	 */
-	bool checkContacts(PhyObject* obj1, PhyObject* obj2, int maxContacts = 4, QVector<wVector>* contacts = NULL, QVector<wVector>* normals = NULL, QVector<real>* penetra = NULL);
+	bool checkContacts(PhyObject* obj1, PhyObject* obj2, int maxContacts = 4, QVector<wVector>* contacts = nullptr, QVector<wVector>* normals = nullptr, QVector<real>* penetra = nullptr);
 
 	/**
 	 * \brief Checks whether two objects collide or not
@@ -259,7 +259,7 @@ public:
 	 *                 contact points in the world frame of reference
 	 * \return true if the two object are in contacts
 	 */
-	bool smartCheckContacts(PhyObject* obj1, PhyObject* obj2, int maxContacts = 4, QVector<wVector>* contacts = NULL);
+	bool smartCheckContacts(PhyObject* obj1, PhyObject* obj2, int maxContacts = 4, QVector<wVector>* contacts = nullptr);
 
 	/**
 	 * \brief Checks whether the ray from start to end intersects obj
@@ -276,7 +276,7 @@ public:
 	 *         point and 1.0 the ending point). If the ray misses the
 	 *         objects, the returned value is greater than 1.0
 	 */
-	real collisionRayCast(PhyObject* obj, wVector start, wVector end, wVector* normal = NULL);
+	real collisionRayCast(PhyObject* obj, wVector start, wVector end, wVector* normal = nullptr);
 
 	/**
 	 * \brief Returns the bodyes which intersect the ray from start to end
@@ -552,7 +552,7 @@ private:
 	// PhyObjects, needed because we cannot implement that function here
 	// (there are problems with headers). If onlyCreateCollisionShape is
 	// true, only the collision shape should be created.
-	// collisionShapeOffset the offset of the collision shape (can be NULL
+	// collisionShapeOffset the offset of the collision shape (can be nullptr
 	// if there is no offset)
 	void postCreationActionForType(PhyObject* entity, bool onlyCreateCollisionShape, const wMatrix* collisionShapeOffset);
 
@@ -729,7 +729,7 @@ template <class CT>
 void World::postCreationActionForType(WEntityCreationCustomizer<CT>& customizer, PhyObject* entity)
 {
 	// Calling the non-template function
-	postCreationActionForType(entity, customizer.onlyCreateCollisionShape(), customizer.usingCustomCollisionShapeOffset() ? &(customizer.customCollisionShapeOffset()) : NULL);
+	postCreationActionForType(entity, customizer.onlyCreateCollisionShape(), customizer.usingCustomCollisionShapeOffset() ? &(customizer.customCollisionShapeOffset()) : nullptr);
 }
 
 }

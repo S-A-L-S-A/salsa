@@ -21,7 +21,7 @@
 
 #include "testutils.h"
 
-FunctionCallsSequenceRecorder* FunctionCallsSequenceRecorder::m_curFunctionCallsSequenceRecorder = NULL;
+FunctionCallsSequenceRecorder* FunctionCallsSequenceRecorder::m_curFunctionCallsSequenceRecorder = nullptr;
 
 bool FunctionCallsSequenceRecorder::SingleCall::operator==(const SingleCall& other) const
 {
@@ -39,14 +39,14 @@ FunctionCallsSequenceRecorder::FunctionCallsSequenceRecorder()
 {
 	m_curFunctionCallsSequenceRecorder = this;
 
-	m_root.parent = NULL;
+	m_root.parent = nullptr;
 	m_root.callEnded = true;
 }
 
 FunctionCallsSequenceRecorder::~FunctionCallsSequenceRecorder()
 {
 	if (m_curFunctionCallsSequenceRecorder == this) {
-		m_curFunctionCallsSequenceRecorder = NULL;
+		m_curFunctionCallsSequenceRecorder = nullptr;
 	}
 }
 
@@ -129,14 +129,14 @@ void FunctionCallsSequenceRecorder::recursivelyFillFunctionMap(QMap<QString, int
 
 FunctionCall::FunctionCall(QString funcName)
 {
-	if (FunctionCallsSequenceRecorder::m_curFunctionCallsSequenceRecorder != NULL) {
+	if (FunctionCallsSequenceRecorder::m_curFunctionCallsSequenceRecorder != nullptr) {
 		FunctionCallsSequenceRecorder::m_curFunctionCallsSequenceRecorder->callBegin(funcName);
 	}
 }
 
 FunctionCall::~FunctionCall()
 {
-	if (FunctionCallsSequenceRecorder::m_curFunctionCallsSequenceRecorder != NULL) {
+	if (FunctionCallsSequenceRecorder::m_curFunctionCallsSequenceRecorder != nullptr) {
 		FunctionCallsSequenceRecorder::m_curFunctionCallsSequenceRecorder->callEnd();
 	}
 }

@@ -70,7 +70,7 @@ void Renderer2D::updateGuiInfo()
 	while (true) {
 		const Rendering2DDataFromGui* d = downloadDatum();
 
-		if (d == NULL) {
+		if (d == nullptr) {
 			break;
 		}
 

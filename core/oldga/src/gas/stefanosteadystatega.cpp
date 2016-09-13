@@ -32,15 +32,15 @@ namespace salsa {
 
 StefanoSteadyStateGA::StefanoSteadyStateGA() :
 	GeneticAlgo(),
-	fitfunc(NULL),
-	muta(NULL),
+	fitfunc(nullptr),
+	muta(nullptr),
 	curPhase(initParent),
 	curGenotype(0),
 	isInitialized(false),
 	isFinalized(true),
 	numEvaluations(),
 	cumulatedFitness(),
-	offspring(NULL)
+	offspring(nullptr)
 {
 }
 
@@ -120,7 +120,7 @@ void StefanoSteadyStateGA::initialize() {
 	evolutionEnd = false;
 	evaluationDone = false;
 	delete offspring;
-	offspring = NULL;
+	offspring = nullptr;
 
 	getIODelegate()->recoverData(this);
 
@@ -244,7 +244,7 @@ void StefanoSteadyStateGA::finalize() {
 	isFinalized = true;
 	evolutionEnd = true;
 	delete offspring;
-	offspring = NULL;
+	offspring = nullptr;
 
 	// Rank is already normalized
 

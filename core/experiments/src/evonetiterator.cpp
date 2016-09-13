@@ -33,7 +33,7 @@ EvonetIterator::EvonetIterator(Evonet* evonet)
 	, AbstractControllerOutputIterator()
 	, m_evonet(evonet)
 	, m_blocks()
-	, m_curBlock(NULL)
+	, m_curBlock(nullptr)
 	, m_curIndex(0)
 {
 }
@@ -153,7 +153,7 @@ real EvonetIterator::getOutput() const
 
 void EvonetIterator::checkCurrentStatus(const QString& funcName) const
 {
-	if (m_curBlock == NULL) {
+	if (m_curBlock == nullptr) {
 		throw EvonetIteratorInvalidStatusException(funcName.toLatin1().data(), "you should call setCurrentBlock first");
 	}
 	if (m_curIndex >= m_curBlock->endIndex) {

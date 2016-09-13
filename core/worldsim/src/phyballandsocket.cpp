@@ -43,7 +43,7 @@ PhyBallAndSocket::PhyBallAndSocket(World* world, SharedDataWrapper<Shared> share
 	d->localMatrixParent.sanitifize();
 
 	// Calculating the local matrix respect to child object
-	if (m_parent != NULL) {
+	if (m_parent != nullptr) {
 		d->globalMatrixParent = m_shared->localMatrixParent * m_parent->matrix();
 	} else {
 		d->globalMatrixParent = m_shared->localMatrixParent;
@@ -66,7 +66,7 @@ PhyBallAndSocket::~PhyBallAndSocket()
 wVector PhyBallAndSocket::centre() const
 {
 	// Calculating global matrix if necessary
-	if (m_parent != NULL) {
+	if (m_parent != nullptr) {
 		return (m_shared->localMatrixParent * parent()->matrix()).w_pos;
 	} else {
 		return m_shared->globalMatrixParent.w_pos;

@@ -28,8 +28,8 @@ namespace salsa {
 
 SingleGenotypeFloatToEvonet::SingleGenotypeFloatToEvonet(ConfigurationParameters& params, QString prefix)
 	: SingleGenotypeTester(params, prefix)
-	, m_gae(NULL)
-	, m_evonet(NULL)
+	, m_gae(nullptr)
+	, m_evonet(nullptr)
 {
 	m_gae = params.getObjectFromParameter<RobotExperiment>(prefix + QString("gaEvaluator"));
 	if (params.getValue(prefix + "NET/netFile").isEmpty()) {
@@ -75,8 +75,8 @@ int SingleGenotypeFloatToEvonet::requestedGenotypeLength() const
 
 SingleGenotypeIntToEvonet::SingleGenotypeIntToEvonet(ConfigurationParameters& params, QString prefix)
 	: SingleGenotypeTester(params, prefix)
-	, m_gae(NULL)
-	, m_evonet(NULL)
+	, m_gae(nullptr)
+	, m_evonet(nullptr)
 {
 	// HERE WE SHOULD HAVE OneNeuralNetworkExperimentInput INSTEAD OF RobotExperiment, BUT THE FORMER IS NOT A SUBCLASS OF ParameterSettable (IT CAN'T BE BECAUSE IT IS USED WITH MULTIPLE INHERITANCE)!!! 
 	m_gae = params.getObjectFromParameter<RobotExperiment>(prefix + QString("gaEvaluator"));

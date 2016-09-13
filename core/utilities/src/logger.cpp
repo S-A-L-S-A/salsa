@@ -62,7 +62,7 @@ namespace {
 	public:
 		TextEditUpdater() :
 			QObject(),
-			textEdit(NULL)
+			textEdit(nullptr)
 		{
 		}
 
@@ -73,12 +73,12 @@ namespace {
 
 		bool hasTextEdit() const
 		{
-			return (textEdit != NULL);
+			return (textEdit != nullptr);
 		}
 
 	protected:
 		virtual void customEvent( QEvent* event ) {
-			// If textEdit is NULL we will crash here (this should never happend)
+			// If textEdit is nullptr we will crash here (this should never happend)
 			TextToAppend* tevent = dynamic_cast<TextToAppend*>( event );
 			if ( tevent ) {
 				textEdit->append( tevent->getText() );
@@ -197,7 +197,7 @@ namespace {
 
 	LoggerImplementation::LoggerImplementation() :
 		stdOut(true),
-		file(NULL),
+		file(nullptr),
 		textEditUpdater(new TextEditUpdater()),
 		logLevel(Logger::LogAll),
 		outStreamMutex(),
@@ -212,8 +212,8 @@ namespace {
 
 		// These lines are here to have a "clean" crash if somebody tries to access
 		// the logger after returning from the main function
-		textEditUpdater = NULL;
-		file = NULL;
+		textEditUpdater = nullptr;
+		file = nullptr;
 	}
 
 	//--- this is the main function for logging. This function is thread-safe
@@ -246,7 +246,7 @@ namespace {
 			//textEdit->moveCursor( QTextCursor::End );
 			//textEdit->moveCursor( QTextCursor::StartOfLine );
 		}
-		if ( file != NULL ) {
+		if ( file != nullptr ) {
 			QMutexLocker locker(&fileStreamMutex);
 
 			QTextStream fileStream;

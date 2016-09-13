@@ -152,8 +152,8 @@ public:
 	SimpleGenerationalGA(ConfigurationManager& params, QString prefix)
 		: EvoAlgo()
 		, salsa::Component(params, prefix)
-		, m_genotypeToTest(NULL)
-		, m_fitnessEvaluator(NULL)
+		, m_genotypeToTest(nullptr)
+		, m_fitnessEvaluator(nullptr)
 	{
 		// Configuring in the constructor, the configure function will not be called
 
@@ -210,9 +210,9 @@ public:
 	OneGenomeToOneNeuralNetworkMapping(ConfigurationManager& params, QString prefix)
 		: SingleGenotypeToTest()
 		, salsa::Component(params, prefix)
-		, m_net(NULL)
-		, m_nextGenotype(NULL)
-		, m_evaluator(NULL)
+		, m_net(nullptr)
+		, m_nextGenotype(nullptr)
+		, m_evaluator(nullptr)
 	{
 		// Configuring in the constructor, the configure function will not be called
 		m_net = params.getObjectFromGroup<Evonet>(prefix + "NeuralNetwork"); // Empty net, perhaps a prototype of networks to generate

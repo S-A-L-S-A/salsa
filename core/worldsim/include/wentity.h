@@ -297,7 +297,7 @@ public:
  * automatically by this class destructor or can be left to the owner
  * implementation (for example when there must be a precise order in destroying
  * owned objects). Owners are other instances of this class. Setting the owner
- * to NULL means that the object has no owner.
+ * to nullptr means that the object has no owner.
  * Each subclass must define two inner types: Shared and Renderer. Shared is the
  * class with the status of the object that should be shared with the Renderer,
  * so it should contain all the properties that are needed to draw the entity,
@@ -602,8 +602,8 @@ public:
 	 *        a new object becomes owned by this
 	 *
 	 * There can be only one listener at a time. Setting the listener to
-	 * NULL removes the current listener. This function returns the previous
-	 * listerner or NULL if no listener was registered before
+	 * nullptr removes the current listener. This function returns the previous
+	 * listerner or nullptr if no listener was registered before
 	 * \param listener the new listener
 	 * \return the old listener
 	 */

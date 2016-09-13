@@ -211,12 +211,12 @@ namespace salsa {
 	 *        comments and strings from a program
 	 *
 	 * \param program the program to parse
-	 * \param parsedProgram if not NULL, fills with the program with
+	 * \param parsedProgram if not nullptr, fills with the program with
 	 *                      comments replaced with a space
 	 * \return a pair made up of a list with comments positions and a list
 	 *         with strings positions
 	 */
-	QPair<CommentsPositions, StringsPositions> findCommentsAndStrings(const QString& program, QString* parsedProgram = NULL);
+	QPair<CommentsPositions, StringsPositions> findCommentsAndStrings(const QString& program, QString* parsedProgram = nullptr);
 
 	/**
 	 * \brief Returns true if the provided position is inside the list of comments

@@ -85,8 +85,8 @@
 //
 // EpuckProximityIRSensor::EpuckProximityIRSensor(ConfigurationParameters& params, QString prefix) :
 // 	EpuckSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL)
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr)
 // {
 // }
 //
@@ -159,9 +159,9 @@
 //
 // EpuckGroundIRSensor::EpuckGroundIRSensor(ConfigurationParameters& params, QString prefix) :
 // 	EpuckSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL),
-// 	m_arena(NULL)
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr),
+// 	m_arena(nullptr)
 // {
 // 	// Here we also need the arena to work
 // 	addUsableResource("arena");
@@ -244,11 +244,11 @@
 //
 // EpuckLinearCameraSensor::EpuckLinearCameraSensor(ConfigurationParameters& params, QString prefix) :
 // 	EpuckSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL),
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr),
 // 	m_numReceptors(ConfigurationHelper::getInt(params, prefix + "numReceptors", 8)),
 // 	m_aperture(ConfigurationHelper::getDouble(params, prefix + "aperture", 360.0f)),
-// 	m_camera(NULL),
+// 	m_camera(nullptr),
 // 	m_drawCamera(ConfigurationHelper::getBool(params, prefix + "drawCamera", true)),
 // 	m_ignoreWalls(ConfigurationHelper::getBool(params, prefix + "ignoreWalls", false))
 // {
@@ -324,7 +324,7 @@
 // 		// Deleting the camera if the robot was deleted
 // 		if (resourceName == m_epuckResource) {
 // 			delete m_camera;
-// 			m_camera = NULL;
+// 			m_camera = nullptr;
 // 		}
 //
 // 		return;
@@ -365,9 +365,9 @@
 //
 // EpuckSampledProximityIRSensor::EpuckSampledProximityIRSensor(ConfigurationParameters& params, QString prefix) :
 // 	EpuckSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_arena(NULL),
-// 	m_neuronsIterator(NULL),
+// 	m_robot(nullptr),
+// 	m_arena(nullptr),
+// 	m_neuronsIterator(nullptr),
 // 	m_roundSamples(ConfigurationHelper::getString(params, prefix + "roundSamples", "round.sam")),
 // 	m_smallSamples(ConfigurationHelper::getString(params, prefix + "smallSamples", "small.sam")),
 // 	m_wallSamples(ConfigurationHelper::getString(params, prefix + "wallSamples", "wall.sam"))

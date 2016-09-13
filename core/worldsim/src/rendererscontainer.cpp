@@ -66,8 +66,8 @@ void AbstractRendererContainer::addRenderer(AbstractRenderWEntityCreator* render
 void AbstractRendererContainer::deletedRenderer(AbstractRenderWEntityCreator* rendererCreator)
 {
 	// Checking that the creator is in the map. If it is not or the index is wrong, aborting
-	RenderWEntity* const renderer = m_rendersForCreators.value(rendererCreator, NULL);
-	if ((renderer == NULL) || (m_creatorsForRenderers.value(renderer, NULL) != rendererCreator)){
+	RenderWEntity* const renderer = m_rendersForCreators.value(rendererCreator, nullptr);
+	if ((renderer == nullptr) || (m_creatorsForRenderers.value(renderer, nullptr) != rendererCreator)){
 		abort();
 	}
 

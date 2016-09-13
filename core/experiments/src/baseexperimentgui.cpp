@@ -32,19 +32,19 @@
 // 	DataUploaderDownloader<__BaseExperiment_internal::OperationControl, __BaseExperiment_internal::OperationStatus>(1, BlockUploader, this),
 // 	m_experiment(experiment),
 // 	m_operations(),
-// 	m_operationSelectionGroup(NULL),
-// 	m_operationsListLabel(NULL),
-// 	m_operationsList(NULL),
-// 	m_selectedOperationInfo(NULL),
-// 	m_startSelectedOperationButton(NULL),
-// 	m_currentOperationControlGroup(NULL),
-// 	m_currentOperationInfo(NULL),
-// 	m_stopCurrentOperationButton(NULL),
-// 	m_steppableOperationControlGroup(NULL),
-// 	m_pauseOperationButton(NULL),
-// 	m_stepOperationButton(NULL),
-// 	m_delaySliderLabel(NULL),
-// 	m_delaySlider(NULL),
+// 	m_operationSelectionGroup(nullptr),
+// 	m_operationsListLabel(nullptr),
+// 	m_operationsList(nullptr),
+// 	m_selectedOperationInfo(nullptr),
+// 	m_startSelectedOperationButton(nullptr),
+// 	m_currentOperationControlGroup(nullptr),
+// 	m_currentOperationInfo(nullptr),
+// 	m_stopCurrentOperationButton(nullptr),
+// 	m_steppableOperationControlGroup(nullptr),
+// 	m_pauseOperationButton(nullptr),
+// 	m_stepOperationButton(nullptr),
+// 	m_delaySliderLabel(nullptr),
+// 	m_delaySlider(nullptr),
 // 	m_runningOperationID(-1)
 // {
 // 	// Associating data uploaders and downloaders
@@ -150,7 +150,7 @@
 // 		// We need a cylce because there could be more than one datum, when the uploader is connected
 // 		// (see dataexchange.h documentation for more information)
 // 		const __BaseExperiment_internal::OperationStatus* d;
-// 		while ((d = downloadDatum()) != NULL) {
+// 		while ((d = downloadDatum()) != nullptr) {
 // 			switch (d->status) {
 // 				case __BaseExperiment_internal::OperationStatus::NewOperation:
 // 					updateOperationsList();

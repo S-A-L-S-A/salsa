@@ -36,7 +36,7 @@
 // 	m_additionalOutputs(ConfigurationHelper::getUnsignedInt(params, prefix + "additionalOutputs", 1)),
 // 	m_neuronsIteratorResource(actualResourceNameForMultirobot(ConfigurationHelper::getString(params, prefix + "neuronsIterator", "neuronsIterator"))),
 // 	m_additionalOutputsResource(actualResourceNameForMultirobot(ConfigurationHelper::getString(params, prefix + "additionalOutputsResource", "additionalOutputs"))),
-// 	m_neuronsIterator(NULL)
+// 	m_neuronsIterator(nullptr)
 // {
 // 	usableResources(QStringList() << m_neuronsIteratorResource << m_additionalOutputsResource);
 //

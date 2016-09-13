@@ -25,10 +25,10 @@
 namespace salsa {
 
 GLContextAndData::GLContextAndData()
-	: m_glContext(NULL)
+	: m_glContext(nullptr)
 	, m_textureMap()
 	, m_textureIds()
-	, m_widget(NULL)
+	, m_widget(nullptr)
 	, m_drawObjects(true)
 	, m_drawLabels(false)
 	, m_drawLocalAxes(false)
@@ -57,13 +57,13 @@ void GLContextAndData::setGLContext(QGLContext* glContext)
 
 const QGLContext* GLContextAndData::glContext() const
 {
-	if (m_glContext != NULL) {
+	if (m_glContext != nullptr) {
 		return m_glContext;
-	} else if (m_widget != NULL) {
+	} else if (m_widget != nullptr) {
 		return m_widget->context();
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void GLContextAndData::setTextureMap(const QMap<QString, QImage>& textures)
@@ -77,13 +77,13 @@ void GLContextAndData::setTextureMap(const QMap<QString, QImage>& textures)
 
 bool GLContextAndData::textureID(QString texture, GLuint& textureID)
 {
-	if ((m_glContext == NULL) && (m_widget == NULL)) {
+	if ((m_glContext == nullptr) && (m_widget == nullptr)) {
 		return false;
 	}
 
 	if (m_textureMap.contains(texture)) {
 		if (!m_textureIds.contains(texture)) {
-			if (m_glContext != NULL) {
+			if (m_glContext != nullptr) {
 				m_textureIds[texture] = m_glContext->bindTexture(m_textureMap[texture], GL_TEXTURE_2D, GL_RGB);
 			} else {
 				m_textureIds[texture] = m_widget->bindTexture(m_textureMap[texture], GL_TEXTURE_2D, GL_RGB);
@@ -100,7 +100,7 @@ bool GLContextAndData::textureID(QString texture, GLuint& textureID)
 
 void GLContextAndData::setWidget(QGLWidget* widget)
 {
-	if (m_glContext == NULL) {
+	if (m_glContext == nullptr) {
 		deleteTextures();
 	}
 
@@ -154,12 +154,12 @@ void GLContextAndData::setDrawContacts(bool d)
 
 void GLContextAndData::deleteTextures()
 {
-	if ((m_glContext == NULL) && (m_widget == NULL)) {
+	if ((m_glContext == nullptr) && (m_widget == nullptr)) {
 		return;
 	}
 
 	for (QMap<QString, GLuint>::iterator it = m_textureIds.begin(); it != m_textureIds.end(); ++it) {
-		if (m_glContext != NULL) {
+		if (m_glContext != nullptr) {
 			m_glContext->deleteTexture(it.value());
 		} else {
 			m_widget->deleteTexture(it.value());

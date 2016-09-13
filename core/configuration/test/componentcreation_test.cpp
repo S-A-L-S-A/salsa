@@ -235,7 +235,7 @@ private slots:
 		FunctionCallsSequenceRecorder actual;
 
 		std::unique_ptr<Component> c(manager.getComponentFromGroup<Component>("group"));
-		QVERIFY(c.get() != NULL);
+		QVERIFY(c.get() != nullptr);
 		QCOMPARE(c->typeName(), QString("Standalone"));
 		QCOMPARE(c->confPath(), QString("group/"));
 		QCOMPARE(expected, actual);
@@ -272,7 +272,7 @@ private slots:
 		FunctionCallsSequenceRecorder actual;
 
 		std::unique_ptr<Component> c(manager.getComponentFromGroup<Component>("group"));
-		QVERIFY(c.get() != NULL);
+		QVERIFY(c.get() != nullptr);
 		QCOMPARE(c->typeName(), QString("StandaloneWithConfigure"));
 		QCOMPARE(c->confPath(), QString("group/"));
 		QCOMPARE(expected, actual);
@@ -378,7 +378,7 @@ private slots:
 		FunctionCallsSequenceRecorder actual;
 
 		std::unique_ptr<Component> c(manager.getComponentFromGroup<Component>("one"));
-		QVERIFY(c.get() != NULL);
+		QVERIFY(c.get() != nullptr);
 		QCOMPARE(expected, actual);
 	}
 
@@ -581,7 +581,7 @@ private slots:
 		FunctionCallsSequenceRecorder actual;
 
 		std::unique_ptr<Component> c(manager.getComponentFromGroup<Component>("Root"));
-		QVERIFY(c.get() != NULL);
+		QVERIFY(c.get() != nullptr);
 		QCOMPARE(expected, actual);
 	}
 
@@ -604,7 +604,7 @@ private slots:
 		ConfigurationManager manager = fillTemporaryConfigurationFileAndLoadParameters(hierarchyForDestructionConfigurationFile);
 
 		Component* c = manager.getComponentFromGroup<Component>("one");
-		QVERIFY(c != NULL);
+		QVERIFY(c != nullptr);
 
 		QMap<QString, int> expectedDestructionMap;
 		expectedDestructionMap["DestructionOne::~DestructionOne"] = 1;
@@ -627,7 +627,7 @@ private slots:
 
 		Standalone* c = manager.getComponentFromParameter<Standalone>("root/mycomponent");
 
-		QVERIFY(c != NULL);
+		QVERIFY(c != nullptr);
 		manager.destroyAllComponents();
 	}
 
@@ -637,7 +637,7 @@ private slots:
 
 		Standalone* c = manager.getComponentFromParameter<Standalone>("root/mycomponent");
 
-		QVERIFY(c != NULL);
+		QVERIFY(c != nullptr);
 		manager.destroyAllComponents();
 	}
 
@@ -646,7 +646,7 @@ private slots:
 		ConfigurationManager manager = fillTemporaryConfigurationFileAndLoadParameters(hierarchyConfigurationFile);
 
 		std::unique_ptr<One> c(manager.getComponentFromGroup<One>("one"));
-		QVERIFY(c.get() != NULL);
+		QVERIFY(c.get() != nullptr);
 		QCOMPARE(c.get(), manager.getComponentFromGroup<Component>("one"));
 		QCOMPARE(c->two0(), manager.getComponentFromGroup<Component>("one/two:4"));
 		QCOMPARE(c->two0()->three(), manager.getComponentFromGroup<Component>("one/two:4/three"));

@@ -32,7 +32,7 @@ namespace salsa {
 class SALSA_NNFW_API IdentityFunction : public OutputFunction {
 public:
 	/*! Construct */
-	IdentityFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	IdentityFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~IdentityFunction() { /* Nothing to do */ };
 	/*! Implement the identity function */
@@ -52,7 +52,7 @@ public:
 class SALSA_NNFW_API ScaleFunction : public OutputFunction {
 public:
 	/*! Construct */
-	ScaleFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	ScaleFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~ScaleFunction() { /* Nothing to do */ };
 	/*! Implement the identity function */
@@ -81,7 +81,7 @@ private:
 class SALSA_NNFW_API GainFunction : public OutputFunction {
 public:
 	/*! Construct */
-	GainFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	GainFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~GainFunction() { /* Nothing to do */ };
 	/*! Implement the Gain function */
@@ -109,7 +109,7 @@ private:
 class SALSA_NNFW_API SigmoidFunction : public OutputFunction {
 public:
 	/*! Construct a sigmoid updater with parameter l */
-	SigmoidFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	SigmoidFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~SigmoidFunction() { /* Nothing to do */ };
 	/*! Implement the updating method */
@@ -137,7 +137,7 @@ private:
 class SALSA_NNFW_API FakeSigmoidFunction : public OutputFunction {
 public:
 	/*! Construct a sigmoid updater with parameter l */
-	FakeSigmoidFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	FakeSigmoidFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~FakeSigmoidFunction() { /* Nothing to do */ };
 	/*! Implement the updating method */
@@ -170,7 +170,7 @@ private:
 class SALSA_NNFW_API ScaledSigmoidFunction : public OutputFunction {
 public:
 	/*! Construct a scaled sigmoid updater with parameter l */
-	ScaledSigmoidFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	ScaledSigmoidFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~ScaledSigmoidFunction() { /* Nothing to do */ };
 	/*! Implement the updating method */
@@ -218,7 +218,7 @@ private:
 class SALSA_NNFW_API RampFunction : public OutputFunction {
 public:
 	/*! Default constructor*/
-	RampFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	RampFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~RampFunction() { /* Nothing to do */ };
 	/*! Implement the updating method */
@@ -268,7 +268,7 @@ private:
 class SALSA_NNFW_API LinearFunction : public OutputFunction {
 public:
 	/*! Default constructor */
-	LinearFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	LinearFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~LinearFunction() { /* Nothing to do */ };
 	/*! Implement the updating method */
@@ -302,7 +302,7 @@ private:
 class SALSA_NNFW_API StepFunction : public OutputFunction {
 public:
 	/*! Construct a step updater */
-	StepFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	StepFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~StepFunction() { /* Nothing to do */ };
 	/*! Implement the updating method */
@@ -338,7 +338,7 @@ private:
 class SALSA_NNFW_API LeakyIntegratorFunction : public OutputFunction {
 public:
 	/*! Default constructor */
-	LeakyIntegratorFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	LeakyIntegratorFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~LeakyIntegratorFunction() { /* Nothing to do */ };
 	/*! Zeroing the status */
@@ -377,7 +377,7 @@ private:
 class SALSA_NNFW_API LogLikeFunction : public OutputFunction {
 public:
 	/*! Construct a LogLike with deltas specified */
-	LogLikeFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	LogLikeFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~LogLikeFunction() { /* Nothing to do */ };
 	/*! Implement the updating method */
@@ -409,7 +409,7 @@ private:
 class SALSA_NNFW_API CompositeFunction : public OutputFunction {
 public:
 	/*! Default constructor */
-	CompositeFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	CompositeFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~CompositeFunction();
 	/*! Set the first function of CompositeFunction */
@@ -454,7 +454,7 @@ private:
 class SALSA_NNFW_API LinearComboFunction : public OutputFunction {
 public:
 	/*! Standard constructor */
-	LinearComboFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	LinearComboFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~LinearComboFunction();
 	/*! Set the first function of LinearComboFunction */

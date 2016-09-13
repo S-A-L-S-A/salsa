@@ -47,7 +47,7 @@ public:
 	 * \param manager the viewers manager
 	 * \param parent the parent widget
 	 */
-	ViewerWidget(QString title, QString group, QWidget* central, ViewersManager* manager, QWidget* parent = NULL);
+	ViewerWidget(QString title, QString group, QWidget* central, ViewersManager* manager, QWidget* parent = nullptr);
 
 	/**
 	 * \brief Destructor

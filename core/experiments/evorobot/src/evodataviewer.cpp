@@ -74,7 +74,7 @@ EvoDataViewer::EvoDataViewer(int nchunks, int chunksize, int style, QWidget* par
 	qtimer->setInterval(4000);
 	QObject::connect(qtimer,SIGNAL(timeout()),this,SLOT(pickUnvisible()));
 
-	elw=NULL;
+	elw=nullptr;
 
 
 	pickY = 0;
@@ -203,7 +203,7 @@ void EvoDataViewer::resizeEvent(QResizeEvent *evt)
 {
 
 	evt->accept();
-	if (qpixmap!=NULL) delete qpixmap;
+	if (qpixmap!=nullptr) delete qpixmap;
 	qpixmap=new QPixmap(width(), height());
 	reset();
 }
@@ -293,7 +293,7 @@ void EvoDataViewer::mousePressEvent(QMouseEvent* evt)
 	}
 
 	if(evt->button()==Qt::RightButton) {
-		if(elw==NULL) {
+		if(elw==nullptr) {
 			elw = new EvoListViewer (this->dataChunks,this->nchunks, &this->nviewChange);
 		} else {
 			elw->restoreSelected();
@@ -403,7 +403,7 @@ DataChunk::DataChunk(const QString&  lab, const QColor& col, int s, bool vis)
 	, max(1)
 	, maxValue(-9999.00)
 	, style(0)
-	, data(NULL)
+	, data(nullptr)
 	, zeroValue(0.0)
 {
 	data= new double[size];
@@ -828,8 +828,8 @@ FitViewer::FitViewer( QWidget* parent, Qt::WindowFlags flags ) : QWidget( parent
 	padding=50;
 	reset();
 
-	sortedIndex = NULL;
-	dataChunks = NULL;
+	sortedIndex = nullptr;
+	dataChunks = nullptr;
 }
 
 FitViewer::FitViewer(int nchunks, int chunksize, QWidget* parent, Qt::WindowFlags flags) : QWidget( parent, flags )
@@ -851,7 +851,7 @@ FitViewer::FitViewer(int nchunks, int chunksize, QWidget* parent, Qt::WindowFlag
 FitViewer::~FitViewer()
 {
 	delete[] sortedIndex;
-	if (dataChunks != NULL) {
+	if (dataChunks != nullptr) {
 		for (int i = 0; i < nchunks; i++) {
 			delete dataChunks[i];
 		}

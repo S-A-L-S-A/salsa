@@ -64,7 +64,7 @@ public:
 		DoubleVector outputs;
 	};
 	/*! Construct an empty Pattern */
-	Pattern(ConfigurationManager& params, QString prefix, Component* parent = NULL) : 
+	Pattern(ConfigurationManager& params, QString prefix, Component* parent = nullptr) : 
 		Component(params,prefix,parent), pinfo() { /*nothing else to do*/ };
 	/*! Destructor */
 	~Pattern() { /*nothing to do*/ };
@@ -125,7 +125,7 @@ typedef QVector<Pattern*> PatternSet;
 class SALSA_NNFW_API LearningAlgorithm : public Component {
 public:
 	/*! Constructor */
-	LearningAlgorithm( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	LearningAlgorithm( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Constructor */
 	LearningAlgorithm();
 	/*! Destructor */

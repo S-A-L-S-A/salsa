@@ -216,7 +216,7 @@ private:
 	QComboBox* combo;
 	QListWidget* list;
 public:
-	TestIndividualGUI(TestIndividual* tb, QWidget *parent = NULL, Qt::WindowFlags flags=0);
+	TestIndividualGUI(TestIndividual* tb, QWidget *parent = nullptr, Qt::WindowFlags flags=0);
 private slots:
 	void agentClicked();
 	void populateCombo();

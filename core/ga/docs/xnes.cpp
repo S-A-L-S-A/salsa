@@ -4,12 +4,12 @@
  
 xnes::xnes()
 	: EvoAlgo()
-	, m_genotypeToTest(NULL)
+	, m_genotypeToTest(nullptr)
 	, m_offspring()
-	, m_individual(NULL)
+	, m_individual(nullptr)
 	, m_covMat()
-	, m_evaluator(NULL)
-	, m_rng(NULL)
+	, m_evaluator(nullptr)
+	, m_rng(nullptr)
 {
 	int m_numGenes = m_genotypeToTest->requestedGenotypeLength();
 }

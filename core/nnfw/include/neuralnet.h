@@ -118,7 +118,7 @@ public:
 class SALSA_NNFW_API NeuralNet : public Component {
 public:
 	/*! Construct an empty neural network */
-	NeuralNet( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	NeuralNet( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	~NeuralNet();
 	/*! Set the name of the NeuralNet
@@ -216,7 +216,7 @@ public:
 	 *      //--- now bias1 points to the BiasedCluster with name "aName"
 	 *  } else {
 	 *      //--- error, there is no BiasedCluster with that name
-	 *      //--- now bias1 is NULL
+	 *      //--- now bias1 is nullptr
 	 *  }
 	 *  //--- you can also use it for assignment:
 	 *  bias2 = byName("aName", bias1);
@@ -228,7 +228,7 @@ public:
 		return aPointer;
 	};
 	/*! Return the Updatable with the name specified<br>
-	 *  Returns NULL-pointer if there's no updatable object whit the name specified<br>
+	 *  Returns nullptr-pointer if there's no updatable object whit the name specified<br>
 	 *  \warning return the first that finds. If you have named different Updatables with same name
 	 *   there no way to retrieve all of them with this methods... call them with unique name ;-)
 	 */

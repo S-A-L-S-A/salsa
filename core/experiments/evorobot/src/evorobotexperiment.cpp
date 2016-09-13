@@ -57,9 +57,9 @@ EvoRobotExperiment::EvoRobotExperiment(ConfigurationManager& params)
 	, nsteps(1)
 	, nstep(0)
 	, ntrial(0)
-	, ga(NULL)
+	, ga(nullptr)
 	, world()
-	, renderersContainer(NULL)
+	, renderersContainer(nullptr)
 	, timestep(0.05f)
 	, eagents()
 	, gaPhase(NONE)
@@ -68,7 +68,7 @@ EvoRobotExperiment::EvoRobotExperiment(ConfigurationManager& params)
 	, restartCurrentTrial(false)
 	, endCurrentIndividualLife(false)
 	, batchRunning(false)
-	, arena(NULL)
+	, arena(nullptr)
 	, stepDelay(timestep*1000)
 	, sameRandomSequence(false)
 	, randomGeneratorInUse(salsa::globalRNG)
@@ -141,7 +141,7 @@ void EvoRobotExperiment::configure()
 		eagents.append(configurationManager().getComponentFromGroup<EmbodiedAgent>(copiedAgentGroup));
 
 #warning THIS WILL BE REMOVED WHEN WE HAVE REMOVED/HEAVILY REFACTORED THE Evoga/Evonet/EvorobotExperiment MESS
-		if (dynamic_cast<Evonet*>(eagents.last()->controller()) == NULL) {
+		if (dynamic_cast<Evonet*>(eagents.last()->controller()) == nullptr) {
 			ConfigurationHelper::throwUserConfigError(copiedAgentGroup, "", "The only supported controller for the moment is Evonet*");
 		}
 	}
@@ -403,7 +403,7 @@ float EvoRobotExperiment::getWorldTimeStep() const
 
 void EvoRobotExperiment::resetWorld()
 {
-	if (world.get() == NULL) {
+	if (world.get() == nullptr) {
 		return;
 	}
 
@@ -483,18 +483,18 @@ void EvoRobotExperiment::doStep()
 	}
 	beforeWorldAdvance();
 	// advance the world simulation
-	if (arena != NULL) {
+	if (arena != nullptr) {
 		arena->prepareToHandleKinematicRobotCollisions();
 	}
 	world->advance();
-	if (arena != NULL) {
+	if (arena != nullptr) {
 		arena->handleKinematicRobotCollisions();
 	}
 }
 
 void EvoRobotExperiment::createWorld()
 {
-	if (world.get() != NULL) {
+	if (world.get() != nullptr) {
 		return;
 	}
 
@@ -516,19 +516,19 @@ void EvoRobotExperiment::createWorld()
 
 void EvoRobotExperiment::destroyArena()
 {
-	if ((arena == NULL) || !configurationManager().groupExists(confPath() + "ARENA")) {
+	if ((arena == nullptr) || !configurationManager().groupExists(confPath() + "ARENA")) {
 		return;
 	}
 
 	declareResourceAsNull("arena");
 
 	delete arena;
-	arena = NULL;
+	arena = nullptr;
 }
 
 void EvoRobotExperiment::createArena()
 {
-	if ((arena != NULL) || !configurationManager().groupExists(confPath() + "ARENA")) {
+	if ((arena != nullptr) || !configurationManager().groupExists(confPath() + "ARENA")) {
 		return;
 	}
 

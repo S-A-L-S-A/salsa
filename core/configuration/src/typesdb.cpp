@@ -187,7 +187,7 @@ ConfigurationWidget* TypesDB::getEditorForType(ConfigurationManager& params, QSt
 	if ((!typeForGroup.isEmpty()) && (m_editorsMap.contains(typeForGroup))) {
 		return m_editorsMap[typeForGroup]->create(params, prefix, parent, f);
 	}
-	return NULL;
+	return nullptr;
 }
 
 bool TypesDB::dumpTypeDescription(QString filename, QString format) const
@@ -277,7 +277,7 @@ void TypesDB::componentRegistrationChecks(const RegisteredTypeInfo* info)
 
 RegisteredComponentDescriptor& TypesDB::editableTypeDescriptor(QString typeName)
 {
-	RegisteredComponentDescriptor* ret = NULL;
+	RegisteredComponentDescriptor* ret = nullptr;
 
 	if (m_typeDescriptors.contains(typeName)) {
 #warning FORSE DOVREMMO PREVEDERE UN MECCANISMO PER RESETTARE UN DESCRIPTOR NEL CASO DI RE-REGISTRAZIONI...

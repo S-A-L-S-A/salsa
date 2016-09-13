@@ -44,7 +44,7 @@ GUIRenderersContainer::GUIRenderersContainer(World* world, WorldDataUploadeDownl
 	, m_renderersToDelete()
 	, m_worldGraphicalInfo()
 {
-	if (otherEnd != NULL) {
+	if (otherEnd != nullptr) {
 		GlobalUploaderDownloader::attach(this, otherEnd);
 	}
 }
@@ -185,7 +185,7 @@ void GUIRenderersContainer::deleteRenderers()
 		// Trying to get the list of renderers to delete from the GUI
 		const RenderingDataFromGUI* d;
 
-		while ((d = downloadDatum()) != NULL) {
+		while ((d = downloadDatum()) != nullptr) {
 #ifdef SALSA_DEBUG
 			// Safety check: the renderers the GUI tells us to delete should also be in our set of renderers to delete
 			if (!m_renderersToDelete.contains(d->renderersToDelete)) {
@@ -212,13 +212,13 @@ GUIRenderersContainerDataExchange::GUIRenderersContainerDataExchange(int updateD
 	, m_textures()
 	, m_worldGraphicalInfo()
 	, m_renderersToDelete()
-	, m_data(NULL)
+	, m_data(nullptr)
 	, m_dummyContacts()
 	, m_renderersChanged()
 	, m_texturesChanged()
 	, m_worldGraphicalInfoChanged()
 {
-	if (otherEnd != NULL) {
+	if (otherEnd != nullptr) {
 		GlobalUploaderDownloader::attach(this, otherEnd);
 	}
 
@@ -240,7 +240,7 @@ GUIRenderersContainerDataExchange::~GUIRenderersContainerDataExchange()
 		}
 		m_renderersToDelete.clear();
 
-		if (m_data != NULL) {
+		if (m_data != nullptr) {
 			foreach (RenderWEntity* r, m_data->renderers) {
 				delete r;
 			}
@@ -251,7 +251,7 @@ GUIRenderersContainerDataExchange::~GUIRenderersContainerDataExchange()
 void GUIRenderersContainerDataExchange::render(GLContextAndData* contextAndData)
 {
 	// Calling render() on all proxies (if we have data)
-	if (m_data != NULL) {
+	if (m_data != nullptr) {
 		foreach (AbstractRenderingProxy* r, m_data->renderingProxies) {
 			r->render(contextAndData);
 		}
@@ -260,7 +260,7 @@ void GUIRenderersContainerDataExchange::render(GLContextAndData* contextAndData)
 
 const ContactMap& GUIRenderersContainerDataExchange::contacts() const
 {
-	if (m_data != NULL) {
+	if (m_data != nullptr) {
 		return m_data->contacts;
 	} else {
 		return m_dummyContacts;
@@ -269,7 +269,7 @@ const ContactMap& GUIRenderersContainerDataExchange::contacts() const
 
 real GUIRenderersContainerDataExchange::timeStep() const
 {
-	if (m_data != NULL) {
+	if (m_data != nullptr) {
 		return m_data->timeStep;
 	} else {
 		return 0.0;
@@ -278,7 +278,7 @@ real GUIRenderersContainerDataExchange::timeStep() const
 
 real GUIRenderersContainerDataExchange::elapsedTime() const
 {
-	if (m_data != NULL) {
+	if (m_data != nullptr) {
 		return m_data->elapsedTime;
 	} else {
 		return 0.0;
@@ -291,7 +291,7 @@ void GUIRenderersContainerDataExchange::checkUpdates()
 	const RenderingDataToGUI* newData = downloadDatum();
 
 	// Checking if there is something new
-	if (newData != NULL) {
+	if (newData != nullptr) {
 		m_data = newData;
 
 		// Checking updates for renderers

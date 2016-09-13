@@ -315,7 +315,7 @@ public:
 	//! Returns the length of the genome
 	int getGenomeLength();
 
-	//! Returns the arena. This can returns NULL if no arena object is present
+	//! Returns the arena. This can returns nullptr if no arena object is present
 	Arena* getArena() {
 		return arena;
 	}
@@ -507,7 +507,7 @@ private:
 	bool endCurrentIndividualLife;
 	//! whether we are running in batch or not
 	bool batchRunning;
-	//! The arena with objects for wheeled robot simulations. This can be NULL
+	//! The arena with objects for wheeled robot simulations. This can be nullptr
 	Arena* arena;
 	/*! a delay expressed in msec to apply at each step for slowing down the simulation
 	 *  It's only used when the GUI is active and not in batching mode

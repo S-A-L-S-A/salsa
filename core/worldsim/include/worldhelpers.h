@@ -413,9 +413,9 @@ public:
 		, m_usingCustomCollisionShapeOffset(false)
 		, m_entityAndBuddies()
 	{
-		m_entityAndBuddies.entity = NULL;
-		m_entityAndBuddies.sharedDataHolder = NULL;
-		m_entityAndBuddies.rendererCreator = NULL;
+		m_entityAndBuddies.entity = nullptr;
+		m_entityAndBuddies.sharedDataHolder = nullptr;
+		m_entityAndBuddies.rendererCreator = nullptr;
 	}
 
 	/**

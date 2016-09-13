@@ -41,7 +41,7 @@ class ConfigurationManager;
 enum ResourceChangeType {
 	ResourceCreated, /**< The resource has been created */
 	ResourceModified, /**< The resource has been modified */
-	ResourceDeclaredAsNull, /**< The resource has been declared as NULL */
+	ResourceDeclaredAsNull, /**< The resource has been declared as nullptr */
 	ResourceDeleted /**< The resource has been deleted (i.e. the owner has
 	                     been deleted) */
 };
@@ -293,7 +293,7 @@ private:
 	const QMap<QString, QMap<Component*, ResourceHandler*> >& resources() const;
 	QMap<QString, QMap<Component*, ResourceHandler*> >& resources();
 
-	// Returns the resource with the given name and owner or NULL if it
+	// Returns the resource with the given name and owner or nullptr if it
 	// doesn't exist
 	ResourceHandler* getResourceHandlerWithOwner(QString name, Component* owner) const;
 
@@ -470,7 +470,7 @@ public:
 	void set(QObject* res);
 
 	/**
-	 * \brief Marks this resource as NULL
+	 * \brief Marks this resource as nullptr
 	 *
 	 * This also notifes all observers of this resource
 	 */
@@ -481,8 +481,8 @@ public:
 	 *
 	 * Specialization for primitive types are implemented after the class
 	 * because we cannot explitly specialize a function in a non-namespace.
-	 * If the resource is declared as NULL or does not exists, returns NULL
-	 * \return the resource or NULL if the type is not compatible
+	 * If the resource is declared as nullptr or does not exists, returns nullptr
+	 * \return the resource or nullptr if the type is not compatible
 	 */
 	template<class T>
 	T* get() const
@@ -495,7 +495,7 @@ public:
 			case t_qObject:
 				return dynamic_cast<T*>(m_pointers.obj);
 			default:
-				return NULL;
+				return nullptr;
 		}
 	}
 
@@ -504,7 +504,7 @@ public:
 	 *
 	 * Specialization for primitive types are implemented after the class
 	 * because we cannot explitly specialize a function in a non-namespace.
-	 * If the resource is delared as NULL, this function returns true, if
+	 * If the resource is delared as nullptr, this function returns true, if
 	 * it doesn't exist, returns false.
 	 * \return true if the type is compatible with the one of the resource
 	 */
@@ -517,11 +517,11 @@ public:
 
 		switch(m_type) {
 			case t_resource:
-				return (dynamic_cast<T*>(m_pointers.res) != NULL);
+				return (dynamic_cast<T*>(m_pointers.res) != nullptr);
 			case t_component:
-				return (dynamic_cast<T*>(m_pointers.par) != NULL);
+				return (dynamic_cast<T*>(m_pointers.par) != nullptr);
 			case t_qObject:
-				return (dynamic_cast<T*>(m_pointers.obj) != NULL);
+				return (dynamic_cast<T*>(m_pointers.obj) != nullptr);
 			default:
 				return false;
 		}
@@ -686,7 +686,7 @@ T* ResourceAccessor::getResource(QString name, Component* owner)
 	// Trying to retrieve the resource
 	ResourceHandler* h = getResourceHandlerWithOwner(name, owner);
 
-	if ((h == NULL) || !(h->isType<T>())) {
+	if ((h == nullptr) || !(h->isType<T>())) {
 		throw ResourceNotDeclaredException(name.toLatin1().data());
 	}
 
@@ -769,7 +769,7 @@ bool ResourceAccessor::resourceExists(QString name, Component* owner) const
 
         ResourceHandler* h = getResourceHandlerWithOwner(name, owner);
 
-        if (h != NULL) {
+        if (h != nullptr) {
                 return h->isType<T>();
         } else {
                 return false;
@@ -811,7 +811,7 @@ QList<ResourceHandler*> ResourceAccessor::getAllCandidateResourceHandlers(QStrin
 template <class T>
 T* ResourceChangeNotifee::getResource()
 {
-	if ((m_notifiedResourceHandler == NULL) || !m_notifiedResourceHandler->isType<T>()) {
+	if ((m_notifiedResourceHandler == nullptr) || !m_notifiedResourceHandler->isType<T>()) {
 		throw CannotCallNotifeeGetResourceException();
 	}
 
@@ -824,7 +824,7 @@ inline int* ResourceHandler::get<int>() const
 	if (m_type == t_int) {
 		return m_pointers.intp;
 	} else {
-		return NULL;
+		return nullptr;
 	}
 }
 
@@ -834,7 +834,7 @@ inline float* ResourceHandler::get<float>() const
 	if (m_type == t_float) {
 		return m_pointers.floatp;
 	} else {
-		return NULL;
+		return nullptr;
 	}
 }
 
@@ -844,7 +844,7 @@ inline double* ResourceHandler::get<double>() const
 	if (m_type == t_double) {
 		return m_pointers.doublep;
 	} else {
-		return NULL;
+		return nullptr;
 	}
 }
 
@@ -854,7 +854,7 @@ inline bool* ResourceHandler::get<bool>() const
 	if (m_type == t_bool) {
 		return m_pointers.boolp;
 	} else {
-		return NULL;
+		return nullptr;
 	}
 }
 

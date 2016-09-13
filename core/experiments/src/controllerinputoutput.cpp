@@ -31,7 +31,7 @@ namespace salsa {
 AbstractControllerInput::AbstractControllerInput(ConfigurationManager& params)
 	: Component(params)
 	, m_blockIndex(0)
-	, m_it(NULL)
+	, m_it(nullptr)
 {
 }
 
@@ -80,7 +80,7 @@ void AbstractControllerInput::blockIndexChanged(int)
 AbstractControllerOutput::AbstractControllerOutput(ConfigurationManager& params)
 	: Component(params)
 	, m_blockIndex(0)
-	, m_it(NULL)
+	, m_it(nullptr)
 {
 }
 

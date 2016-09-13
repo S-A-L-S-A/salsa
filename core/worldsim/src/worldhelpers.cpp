@@ -54,11 +54,11 @@ bool MaterialDB::createMaterial( QString name ) {
 		newm = NewtonMaterialCreateGroupID( ngdWorld );
 	}
 	worldv->m_priv->matIDs[name] = newm;
-	NewtonMaterialSetCollisionCallback( ngdWorld, newm, newm, (void*)worldv, NULL, (WorldPrivate::processCollisionHandler) );
+	NewtonMaterialSetCollisionCallback( ngdWorld, newm, newm, (void*)worldv, nullptr, (WorldPrivate::processCollisionHandler) );
 	// --- setting callbacks
 	foreach( QString k, mats.values() ) {
 		int kid = worldv->m_priv->matIDs[k];
-		NewtonMaterialSetCollisionCallback( ngdWorld, newm, kid, (void*)worldv, NULL, (WorldPrivate::processCollisionHandler) );
+		NewtonMaterialSetCollisionCallback( ngdWorld, newm, kid, (void*)worldv, nullptr, (WorldPrivate::processCollisionHandler) );
 	}
 	// --- setting nonCollidable material
 	NewtonMaterialSetDefaultCollidable( ngdWorld, worldv->m_priv->matIDs["nonCollidable"], newm, 0 );

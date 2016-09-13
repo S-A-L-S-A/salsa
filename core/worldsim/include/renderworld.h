@@ -53,7 +53,7 @@ public:
 	 *                     which we take data to render
 	 * \param parent the parent widget
 	 */
-	RenderWorld(GUIRenderersContainerDataExchange* dataProvider, QWidget* parent = NULL, Qt::WindowFlags flags = 0);
+	RenderWorld(GUIRenderersContainerDataExchange* dataProvider, QWidget* parent = nullptr, Qt::WindowFlags flags = 0);
 
 	/**
 	 * \brief Destructor

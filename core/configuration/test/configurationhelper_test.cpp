@@ -222,7 +222,7 @@ private slots:
 		const AbstractDescriptorContainer& dc = ConfigurationHelper::getDescriptorForGroup(m, "Typed/SUBG");
 
 		QVERIFY(dc.hasParameterOrSubgroup("subBool"));
-		QVERIFY((dynamic_cast<const SubgroupDescriptor*>(&dc) != NULL));
+		QVERIFY((dynamic_cast<const SubgroupDescriptor*>(&dc) != nullptr));
 
 		const AbstractDescriptor& d2 = ConfigurationHelper::getDescriptorForParameter(m, "Typed/SUBG/subBool");
 

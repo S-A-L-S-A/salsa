@@ -52,7 +52,7 @@ private slots:
 		w.deleteEntity(e);
 
 		QCOMPARE(w.entities().size(), 0);
-		QCOMPARE(w.getEntity("myEntity"), (WEntity*) NULL);
+		QCOMPARE(w.getEntity("myEntity"), (WEntity*) nullptr);
 	}
 };
 

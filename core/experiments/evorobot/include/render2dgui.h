@@ -47,7 +47,7 @@ public:
 	 * \param parent the parent widget
 	 * \param f the window flags
 	 */
-	Render2DGui(QWidget *parent = NULL, Qt::WindowFlags f = Qt::WindowFlags());
+	Render2DGui(QWidget *parent = nullptr, Qt::WindowFlags f = Qt::WindowFlags());
 
 	/**
 	 * \brief Destructor

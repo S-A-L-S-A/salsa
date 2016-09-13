@@ -136,7 +136,7 @@ public:
 	 * \brief Returns a pointer to the wrapped PhyObject
 	 *
 	 * You should avoid changing the PhyObject directly, use the methods of
-	 * this class, instead. The returned pointer can be NULL if the wrapped
+	 * this class, instead. The returned pointer can be nullptr if the wrapped
 	 * object is not a phyObject
 	 * \return a pointer to the wrapped PhyObject
 	 */
@@ -145,7 +145,7 @@ public:
 	/**
 	 * \brief Returns a pointer to the wrapped PhyObject (const version)
 	 *
-	 * The returned pointer can be NULL if the wrapped object is not a
+	 * The returned pointer can be nullptr if the wrapped object is not a
 	 * phyObject
 	 * \return a const pointer to the wrapped PhyObject
 	 */
@@ -164,7 +164,7 @@ public:
 	 *
 	 * Not all type of objects can change between static and dynamic. This
 	 * function does nothing if the wrapped object is not a PhyObject (i.e.
-	 * phyObject() returns NULL)
+	 * phyObject() returns nullptr)
 	 * \param s if true the object will be static
 	 */
 	virtual void setStatic(bool s);
@@ -173,7 +173,7 @@ public:
 	 * \brief Returns true if the object is static
 	 *
 	 * This function returns always true if the wrapped object is not a
-	 * PhyObject (i.e. phyObject() returns NULL)
+	 * PhyObject (i.e. phyObject() returns nullptr)
 	 * \return true if the object is static (or if the wrapped object is not
 	 *         a phyObject)
 	 */
@@ -197,7 +197,7 @@ public:
 	 * \brief Returns true if the object has kinematic behaviour
 	 *
 	 * This function returns always true if the wrapped object is not a
-	 * PhyObject (i.e. phyObject() returns NULL)
+	 * PhyObject (i.e. phyObject() returns nullptr)
 	 * \return true if the object has kinematic behaviour
 	 */
 	bool getKinematic() const;
@@ -931,16 +931,16 @@ public:
 	/**
 	 * \brief Returns a pointer to the wrapped PhyObject
 	 *
-	 * This always returns NULL, as robots are not subclasses of PhyObject
-	 * \return always NULL
+	 * This always returns nullptr, as robots are not subclasses of PhyObject
+	 * \return always nullptr
 	 */
 	virtual PhyObject* phyObject();
 
 	/**
 	 * \brief Returns a pointer to the wrapper PhyObject (const version)
 	 *
-	 * This always returns NULL, as robots are not subclasses of PhyObject
-	 * \return always NULL
+	 * This always returns nullptr, as robots are not subclasses of PhyObject
+	 * \return always nullptr
 	 */
 	virtual const PhyObject* phyObject() const;
 

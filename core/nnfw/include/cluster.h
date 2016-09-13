@@ -72,7 +72,7 @@ namespace salsa {
 class SALSA_NNFW_API Cluster : public Updatable {
 public:
 	/*! Constructor */
-	Cluster( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	Cluster( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~Cluster();
 	/*! Return the number of neurons (the length of input and output arrays) */

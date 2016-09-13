@@ -32,7 +32,7 @@ namespace salsa {
 class SALSA_NNFW_API PeriodicFunction : public OutputFunction {
 public:
 	/*! Construct */
-	PeriodicFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	PeriodicFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~PeriodicFunction() { /* Nothing to do */ };
 	/*! Implement the Periodic function */
@@ -68,7 +68,7 @@ protected:
 class SALSA_NNFW_API SawtoothFunction : public PeriodicFunction {
 public:
 	/*! Construct */
-	SawtoothFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	SawtoothFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~SawtoothFunction() { /* Nothing to do */ };
 	/*! Implement the Sawtooth function */
@@ -81,7 +81,7 @@ public:
 class SALSA_NNFW_API TriangleFunction : public PeriodicFunction {
 public:
 	/*! Construct */
-	TriangleFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	TriangleFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~TriangleFunction() { /* Nothing to do */ };
 	/*! Implement the Triangle function */
@@ -94,7 +94,7 @@ public:
 class SALSA_NNFW_API SinFunction : public PeriodicFunction {
 public:
 	/*! Construct */
-	SinFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	SinFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~SinFunction() { /* Nothing to do */ };
 	/*! Return the frequency of the sinusoidal wave
@@ -111,7 +111,7 @@ public:
 class SALSA_NNFW_API PseudoGaussFunction : public PeriodicFunction {
 public:
 	/*! Construct */
-	PseudoGaussFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	PseudoGaussFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~PseudoGaussFunction() { /* Nothing to do */ };
 	/*! Implement the Triangle function */

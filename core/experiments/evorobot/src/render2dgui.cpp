@@ -75,7 +75,7 @@ void Render2DGui::sendInfo()
 void Render2DGui::timerEvent(QTimerEvent *)
 {
 	const Rendering2DDataToGui* d = downloadDatum();
-	if (d == NULL) {
+	if (d == nullptr) {
 		return;
 	}
 

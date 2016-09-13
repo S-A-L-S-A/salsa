@@ -28,7 +28,7 @@ namespace salsa {
 GeneticAlgo::GeneticAlgo()
 	: evolutionEnd(false),
 	  evaluationDone(false),
-	  genomev(NULL),
+	  genomev(nullptr),
 	  generationv(0),
 	  numGens(0),
 	  bestfits(),

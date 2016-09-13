@@ -50,7 +50,7 @@ void KheperaMotor::describe(RegisteredComponentDescriptor& d)
 
 KheperaWheelVelocityMotor::KheperaWheelVelocityMotor(ConfigurationManager& params)
 	: KheperaMotor(params)
-	, m_robot(NULL)
+	, m_robot(nullptr)
 {
 }
 
@@ -105,7 +105,7 @@ void KheperaWheelVelocityMotor::resourceChanged(QString name, Component*, Resour
 	}
 
 	if ((changeType == ResourceDeleted) && (changeType == ResourceDeclaredAsNull)) {
-		m_robot = NULL;
+		m_robot = nullptr;
 	} else {
 		m_robot = getResource<PhyKhepera>();
 	}

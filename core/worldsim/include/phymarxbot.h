@@ -391,7 +391,7 @@ public:
 	 */
 	bool attachmentDeviceEnabled() const
 	{
-		return (m_attachdev != NULL);
+		return (m_attachdev != nullptr);
 	}
 
 	/**
@@ -426,7 +426,7 @@ public:
 	/**
 	 * \brief Returns the solid modelling the attachment device
 	 *
-	 * \return the solid modelling the attachment device or NULL if the
+	 * \return the solid modelling the attachment device or nullptr if the
 	 *         attachment device is not enabled
 	 */
 	PhyObject* attachmentDevice()
@@ -437,7 +437,7 @@ public:
 	/**
 	 * \brief Returns the joint of the attachment device
 	 *
-	 * \return the joint of the attachment device or NULL if the attachment
+	 * \return the joint of the attachment device or nullptr if the attachment
 	 *         device is not enabled
 	 */
 	PhyHinge* attachmentDeviceJoint()
@@ -586,7 +586,7 @@ private:
 	 * \brief The attachment device
 	 *
 	 * This is only a box modelling the three-fingers attachment device.
-	 * This is NULL if the attachment device is disabled
+	 * This is nullptr if the attachment device is disabled
 	 */
 	PhyObject* m_attachdev;
 
@@ -633,7 +633,7 @@ private:
 	 * \brief The graphical marker on the MarXbot indicating the front of
 	 *        the robot
 	 *
-	 * If NULL no marker is displayed
+	 * If nullptr no marker is displayed
 	 */
 	PlanarArrowGraphicalMarker* m_frontMarker;
 

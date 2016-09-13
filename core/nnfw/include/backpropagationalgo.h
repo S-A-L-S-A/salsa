@@ -35,7 +35,7 @@ namespace salsa {
 class SALSA_NNFW_API BackPropagationAlgo : public LearningAlgorithm {
 public:
 	/*! Default Constructor */
-	BackPropagationAlgo(ConfigurationManager& params, QString prefix, Component* parent = NULL);
+	BackPropagationAlgo(ConfigurationManager& params, QString prefix, Component* parent = nullptr);
 
 	//! Destructor
 	~BackPropagationAlgo();

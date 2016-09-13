@@ -40,7 +40,7 @@ ConfigurationNode::ElementAndPath ConfigurationNode::separateLastElement(QString
 }
 
 ConfigurationNode::ConfigurationNode(QString name)
-	: m_parent(NULL)
+	: m_parent(nullptr)
 	, m_depthLevel(0)
 	, m_name(name)
 	, m_component()
@@ -87,7 +87,7 @@ QList<const ConfigurationNode*> ConfigurationNode::getAncestors() const
 	QList<const ConfigurationNode*> list;
 
 	// If we have a parent, calling its getAncestors and appending us to the result
-	if (m_parent != NULL) {
+	if (m_parent != nullptr) {
 		list = m_parent->getAncestors();
 	}
 
@@ -101,7 +101,7 @@ QStringList ConfigurationNode::getAncestorsNames() const
 	QStringList list;
 
 	// If we have a parent, calling its getAncestorsNames and appending us to the result
-	if (m_parent != NULL) {
+	if (m_parent != nullptr) {
 		list = m_parent->getAncestorsNames();
 	}
 
@@ -113,7 +113,7 @@ QStringList ConfigurationNode::getAncestorsNames() const
 QString ConfigurationNode::getFullName() const
 {
 	// If we have a parent, calling its getFullName and prepending the result to our name
-	if (m_parent != NULL) {
+	if (m_parent != nullptr) {
 		return m_parent->getFullName() + GroupSeparator + m_name;
 	} else {
 		return m_name;
@@ -138,8 +138,8 @@ ConfigurationNode* ConfigurationNode::addNodeOrReturnExisting(QString name)
 	// The validity of the name is checked in the new node constructor
 
 	// Checking if a node with that name already exists
-	ConfigurationNode* child = m_children.value(name, NULL);
-	if (child != NULL) {
+	ConfigurationNode* child = m_children.value(name, nullptr);
+	if (child != nullptr) {
 		return child;
 	}
 
@@ -161,7 +161,7 @@ const ConfigurationNode* ConfigurationNode::getNode(QString path) const
 	QString firstNonExistingGroup;
 	const ConfigurationNode* n = getNodeOrReturnNullIfNonExistent(path, &firstNonExistingGroup);
 
-	if (n == NULL) {
+	if (n == nullptr) {
 		throw NonExistentGroupNameException(firstNonExistingGroup.toLatin1().data());
 	}
 
@@ -170,7 +170,7 @@ const ConfigurationNode* ConfigurationNode::getNode(QString path) const
 
 bool ConfigurationNode::isPathValid(QString path) const
 {
-	return (getNodeOrReturnNullIfNonExistent(path) != NULL);
+	return (getNodeOrReturnNullIfNonExistent(path) != nullptr);
 }
 
 void ConfigurationNode::deleteChild(QString name)
@@ -178,7 +178,7 @@ void ConfigurationNode::deleteChild(QString name)
 	throwIfChildDoesNotExists(name);
 
 	// We checked above that the child exists
-	ConfigurationNode* const childNode = m_children.value(name, NULL);
+	ConfigurationNode* const childNode = m_children.value(name, nullptr);
 	// Here we are supposing that QMap::remove is exception safe, but this is not true...
 	m_children.remove(name);
 	delete childNode;
@@ -191,7 +191,7 @@ void ConfigurationNode::renameChild(QString oldName, QString newName)
 	throwIfChildDoesNotExists(oldName);
 
 	// We checked above that the child exists
-	std::unique_ptr<ConfigurationNode> childNode(m_children.value(oldName, NULL));
+	std::unique_ptr<ConfigurationNode> childNode(m_children.value(oldName, nullptr));
 
 	// Take the element with oldName and re-insert it with newName
 	m_children.remove(oldName);
@@ -232,8 +232,8 @@ void ConfigurationNode::setComponentForNode(QString path, Component* component, 
 
 	// Setting the object and its status
 	if (status == ComponentNotCreated) {
-		node->m_component.component = NULL;
-	} else if ((component != NULL) || (status == CreatingComponent)) {
+		node->m_component.component = nullptr;
+	} else if ((component != nullptr) || (status == CreatingComponent)) {
 		node->m_component.component = component;
 	}
 	node->m_component.status = status;
@@ -241,7 +241,7 @@ void ConfigurationNode::setComponentForNode(QString path, Component* component, 
 
 void ConfigurationNode::resetComponent()
 {
-	m_component.component = NULL;
+	m_component.component = nullptr;
 	m_component.status = ComponentNotCreated;
 }
 
@@ -291,11 +291,11 @@ QString ConfigurationNode::getValueAlsoMatchParents(QString path) const
 
 	// Getting the node, searching parents if necessary
 	const ConfigurationNode* node = getNode(ep.elementPath);
-	while ((node != NULL) && (!node->parameterExists(ep.element))) {
+	while ((node != nullptr) && (!node->parameterExists(ep.element))) {
 		node = node->m_parent;
 	}
 
-	if (node == NULL) {
+	if (node == nullptr) {
 		throw NonExistentParameterException(path.toLatin1().data());
 	}
 
@@ -350,12 +350,12 @@ const ConfigurationNode* ConfigurationNode::getLowestCommonAncestor(const Config
 		}
 	}
 
-	while ((curAncestorOfThis != curAncestorOfOther) && (curAncestorOfThis != NULL) && (curAncestorOfOther != NULL)) {
+	while ((curAncestorOfThis != curAncestorOfOther) && (curAncestorOfThis != nullptr) && (curAncestorOfOther != nullptr)) {
 		curAncestorOfThis = curAncestorOfThis->getParent();
 		curAncestorOfOther = curAncestorOfOther->getParent();
 	}
 
-	if ((curAncestorOfThis == NULL) || (curAncestorOfOther == NULL)) {
+	if ((curAncestorOfThis == nullptr) || (curAncestorOfOther == nullptr)) {
 		throw NoCommonAncestorException();
 	}
 
@@ -379,9 +379,9 @@ void ConfigurationNode::clearAll()
 	// Removing all parameters
 	m_parameters.clear();
 
-	// Resetting to NULL the associated object
+	// Resetting to nullptr the associated object
 	m_component.status = ComponentNotCreated;
-	m_component.component = NULL;
+	m_component.component = nullptr;
 }
 
 ConfigurationNode* ConfigurationNode::duplicateNode(QString soucePath, QString copyName, QString copyPath)
@@ -400,13 +400,13 @@ ConfigurationNode* ConfigurationNode::duplicateNode(QString soucePath, QString c
 ConfigurationNode* ConfigurationNode::createDeepCopy(ConfigurationNode* dest)
 {
 	// Allocating memory for the destination root if necessary
-	if (dest == NULL) {
-		dest = new ConfigurationNode(NULL, m_name);
+	if (dest == nullptr) {
+		dest = new ConfigurationNode(nullptr, m_name);
 	}
 
-	// Clearing the content of dest and setting parent to NULL
+	// Clearing the content of dest and setting parent to nullptr
 	dest->clearAll();
-	dest->m_parent = NULL;
+	dest->m_parent = nullptr;
 	dest->m_depthLevel = 0;
 
 	// Recursively copying this into dest
@@ -427,7 +427,7 @@ ConfigurationNode::ConfigurationNode(ConfigurationNode* parent, QString name)
 
 	// Computing the depth level
 	ConfigurationNode* p = m_parent;
-	while (p != NULL) {
+	while (p != nullptr) {
 		++m_depthLevel;
 		p = p->m_parent;
 	}
@@ -447,17 +447,17 @@ const ConfigurationNode* ConfigurationNode::getNodeOrReturnNullIfNonExistent(QSt
 		if (firstNode == ParentGroup) {
 			// The path points to our parent group, recursively calling
 			// getNodeOrReturnNullIfNonExistent on it (if we have no parent, using self)
-			return ((m_parent == NULL) ? this : m_parent)->getNodeOrReturnNullIfNonExistent(remainingPath);
+			return ((m_parent == nullptr) ? this : m_parent)->getNodeOrReturnNullIfNonExistent(remainingPath);
 		} else {
 			// Getting the first node from the list of my children and,
 			// if it exists, calling its getNodeOrReturnNullIfNonExistent function
 			if (m_children.contains(firstNode)) {
 				return m_children[firstNode]->getNodeOrReturnNullIfNonExistent(remainingPath);
 			} else {
-				if (firstNonExistingGroup != NULL) {
+				if (firstNonExistingGroup != nullptr) {
 					*firstNonExistingGroup = firstNode;
 				}
-				return NULL;
+				return nullptr;
 			}
 		}
 	}

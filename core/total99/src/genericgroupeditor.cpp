@@ -40,7 +40,7 @@ GenericGroupEditor::GenericGroupEditor( QWidget* parent, Qt::WindowFlags f )
 	:	QWidget(parent, f),
 		groupInfo(),
 		groupParent(),
-		confParams(NULL),
+		confParams(nullptr),
 		widgetToParam() {
 	QVBoxLayout* mainLay = new QVBoxLayout( this );
 
@@ -166,7 +166,7 @@ void GenericGroupEditor::setGroup( GroupInfo group, salsa::ConfigurationManager*
 		groupNameEdit->setEnabled( true );
 	}
 
-	ConfigurationWidget* graphicalEditor = NULL;
+	ConfigurationWidget* graphicalEditor = nullptr;
 	if ( groupInfo.hasType ) {
 		// hasType: show type information and change combobox+button
 		QString currType = confParams->getValue( groupInfo.fullPath+"/type" );
@@ -277,8 +277,8 @@ void GenericGroupEditor::setGroup( GroupInfo group, salsa::ConfigurationManager*
 		newParamBox->setEnabled( true );
 		newParamBox->show();
 	}
-	if ( graphicalEditor==NULL ||
-		 ( graphicalEditor!=NULL && !graphicalEditor->configuringSubgroups() ) ) {
+	if ( graphicalEditor==nullptr ||
+		 ( graphicalEditor!=nullptr && !graphicalEditor->configuringSubgroups() ) ) {
 		//--- fill the newSubgroupList
 		QStringList newList;
 		try {
@@ -312,7 +312,7 @@ void GenericGroupEditor::unsetGroup() {
 		delete widget;
 	}
 	widgetToParam.clear();
-	confParams = NULL;
+	confParams = nullptr;
 	groupInfo.groupName = QString();
 	groupParent = QString();
 	groupBox->setEnabled( false );

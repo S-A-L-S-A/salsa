@@ -137,7 +137,7 @@ public:
 	 * \brief Constructor
 	 */
 	ComponentCreator()
-		: m_typeInfo(NULL)
+		: m_typeInfo(nullptr)
 	{
 	}
 
@@ -506,14 +506,14 @@ public:
 	 * the widget also manages subgroups of prefix or not. For this function
 	 * to work the group must be of a type that is present in
 	 * typeDescriptions or have no type, otherwise an exception is thrown.
-	 * If no editor is explicitly set NULL is returned.
+	 * If no editor is explicitly set nullptr is returned.
 	 * \param params the configuration parameters object to edit
 	 * \param prefix the group to edit
 	 * \param parent the parent widget of the editor
 	 * \param f windows flags for the editor
-	 * \return the editor for the group or NULL
+	 * \return the editor for the group or nullptr
 	 */
-	ConfigurationWidget* getEditorForType(ConfigurationManager& params, QString prefix, QWidget* parent = NULL, Qt::WindowFlags f = 0);
+	ConfigurationWidget* getEditorForType(ConfigurationManager& params, QString prefix, QWidget* parent = nullptr, Qt::WindowFlags f = 0);
 
 	/**
 	 * \brief Dumps the description of all registered types to a file
@@ -532,7 +532,7 @@ private:
 	template <class T>
 	std::unique_ptr<const RegisteredTypeInfo> generateInfoForType(const QString& name, const QStringList& parents);
 
-	// This actually performs registration. creator should be NULL if the type cannot be instantiated
+	// This actually performs registration. creator should be nullptr if the type cannot be instantiated
 	template <class NewClass>
 	void registerType(std::unique_ptr<const RegisteredTypeInfo>&& info, std::unique_ptr<ComponentCreator>&& creator);
 
@@ -731,7 +731,7 @@ template <class NewClass>
 void TypesDB::registerType(QString className, QStringList parents, ComponentCreator* creator)
 {
 	std::unique_ptr<const RegisteredTypeInfo> info = generateInfoForType<NewClass>(className, parents);
-	if (!info->canBeCreated && (creator != NULL)) {
+	if (!info->canBeCreated && (creator != nullptr)) {
 		throw ClassNameIsAbstractException(className.toLatin1().data());
 	}
 	std::unique_ptr<ComponentCreator> creatorPtr(creator);
@@ -746,7 +746,7 @@ void TypesDB::registerEditorForType(QString type)
 	if (m_editorsMap.contains(type)) {
 		delete m_editorsMap[type];
 
-		m_editorsMap[type] = NULL;
+		m_editorsMap[type] = nullptr;
 	}
 
 	// Creating the new creator

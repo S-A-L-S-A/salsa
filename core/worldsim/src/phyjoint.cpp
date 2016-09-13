@@ -39,11 +39,11 @@ PhyJoint::PhyJoint(World* world, SharedDataWrapper<Shared> shared, PhyObject* pa
 	, m_parent(parent)
 	, m_child(child)
 	, m_priv(new PhyJointPrivate())
-	, m_parentPriv((parent == NULL) ? NULL : parent->m_priv)
+	, m_parentPriv((parent == nullptr) ? nullptr : parent->m_priv)
 	, m_childPriv(child->m_priv)
 	, m_worldPriv(world->m_priv.get())
 {
-	m_priv->parent = (m_parent == NULL) ? NULL : m_parentPriv->body;
+	m_priv->parent = (m_parent == nullptr) ? nullptr : m_parentPriv->body;
 	m_priv->child = m_childPriv->body;
 
 	// Computing the radius and length values used to draw the joint
@@ -53,7 +53,7 @@ PhyJoint::PhyJoint(World* world, SharedDataWrapper<Shared> shared, PhyObject* pa
 	wVector dimension = m_child->calculateMBBSize();
 	real cube = (dimension[0] + dimension[1] + dimension[2]) / 3.0;
 
-	if (m_parent != NULL) {
+	if (m_parent != nullptr) {
 		dimension = m_parent->calculateMBBSize();
 		const real cube2 = (dimension[0] + dimension[1] + dimension[2]) / 3.0;
 		cube = min(cube2, cube);

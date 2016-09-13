@@ -54,9 +54,9 @@ PhySphere::~PhySphere()
 void PhySphere::createPrivateObject(bool onlyCollisionShape, const wMatrix* collisionShapeOffset)
 {
 #ifdef WORLDSIM_USE_NEWTON
-	NewtonCollision* c = NewtonCreateSphere( m_worldPriv->world, m_shared->radius, m_shared->radius, m_shared->radius, 1, (collisionShapeOffset == NULL) ? NULL : &(*collisionShapeOffset)[0][0] );
+	NewtonCollision* c = NewtonCreateSphere( m_worldPriv->world, m_shared->radius, m_shared->radius, m_shared->radius, 1, (collisionShapeOffset == nullptr) ? nullptr : &(*collisionShapeOffset)[0][0] );
 	m_priv->collision = c;
-	if (collisionShapeOffset != NULL) {
+	if (collisionShapeOffset != nullptr) {
 		m_shared.getModifiableShared()->collisionShapeOffset = *collisionShapeOffset;
 	}
 	if (!onlyCollisionShape) {

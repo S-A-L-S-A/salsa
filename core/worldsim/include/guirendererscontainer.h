@@ -172,11 +172,11 @@ protected:
 	 *
 	 * \param world the world we live in
 	 * \param otherEnd the uplaoder/downloader living in the GUI thread.
-	 *                 This can be NULL (in this case you must create this
+	 *                 This can be nullptr (in this case you must create this
 	 *                 object before the GUI one and pass this to the
 	 *                 constructor of the GUI one)
 	 */
-	GUIRenderersContainer(World* world, WorldDataUploadeDownloaderGUISide* otherEnd = NULL);
+	GUIRenderersContainer(World* world, WorldDataUploadeDownloaderGUISide* otherEnd = nullptr);
 
 	/**
 	 * \brief Destructor
@@ -331,12 +331,12 @@ public:
 	 * \param updateDelay each how many milliseconds we must check for
 	 *                    updates
 	 * \param otherEnd the uplaoder/downloader living in the simulation
-	 *                 thread. This can be NULL (in this case you must
+	 *                 thread. This can be nullptr (in this case you must
 	 *                 create this object before the simulation one and pass
 	 *                 this to the constructor of the simulation one)
 	 * \param parent the parent QObject
 	 */
-	GUIRenderersContainerDataExchange(int updateDelay, WorldDataUploadeDownloaderSimSide* otherEnd = NULL, QObject* parent = NULL);
+	GUIRenderersContainerDataExchange(int updateDelay, WorldDataUploadeDownloaderSimSide* otherEnd = nullptr, QObject* parent = nullptr);
 
 	/**
 	 * \brief Destructor

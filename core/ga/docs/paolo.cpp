@@ -88,9 +88,9 @@ class SteadyState : public EvoAlgo, public salsa::component
 	public:
 		SteadyState()
 			: EvoAlgo()
-			, m_genotypeToTest(NULL)
+			, m_genotypeToTest(nullptr)
 			, m_genotypes()
-			, m_evaluator(NULL)
+			, m_evaluator(nullptr)
 		{
 			int numGenes = m_genotypeToTest->requestedGenotypeLength();
 			... // Create genotype with the correct length and all the rest (reproduction, mutation, ...)
@@ -135,10 +135,10 @@ class xNES : public EvoAlgo, public salsa::component
 	public:
 		xNES()
 			: EvoAlgo()
-			, m_genotypeToTest(NULL)
+			, m_genotypeToTest(nullptr)
 			, m_offspring(),
-			, m_individual(NULL)
-			, m_evaluator(NULL)
+			, m_individual(nullptr)
+			, m_evaluator(nullptr)
 		{
 			int numGenes = m_genotypeToTest->requestedGenotypeLength();
 			Eigen::MatrixXf covMatr(numGenes,numGenes);

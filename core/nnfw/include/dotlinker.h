@@ -31,7 +31,7 @@ namespace salsa {
 class SALSA_NNFW_API DotLinker : public MatrixLinker {
 public:
 	/*! Constructor */
-	DotLinker( ConfigurationManager& params, QString prefix, Component* parent=NULL );
+	DotLinker( ConfigurationManager& params, QString prefix, Component* parent=nullptr );
 	/*!  Destructor */
 	virtual ~DotLinker();
 	/*! Performs the dot-product calculation */

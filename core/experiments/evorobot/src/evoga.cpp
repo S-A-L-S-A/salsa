@@ -194,7 +194,7 @@ int Evoga::mrand(int i)
 
 Evoga::Evoga(ConfigurationManager& params)
 	: Component(params)
-	, exp(NULL)
+	, exp(nullptr)
 	, popSize(1)
 	, glen(0)
 	, elitism(false)
@@ -203,10 +203,10 @@ Evoga::Evoga(ConfigurationManager& params)
 	, genome()
 	, bestgenome()
 	, loadedIndividuals(1)
-	, tfitness(NULL)
-	, ntfitness(NULL)
-	, statfit(NULL)
-	, terror(NULL)
+	, tfitness(nullptr)
+	, ntfitness(nullptr)
+	, statfit(nullptr)
+	, terror(nullptr)
 	, evolutionType()
 	, nogenerations(0)
 	, nreplications(1)
@@ -215,7 +215,7 @@ Evoga::Evoga(ConfigurationManager& params)
 	, mutation(0.05)
 	, mutationdecay(0.01)
 	, initial_mutation(0.05)
-	, mutations(NULL)
+	, mutations(nullptr)
 	, cgen(0)
 	, savebest(1)
 	, fmin(0.0)
@@ -239,7 +239,7 @@ Evoga::~Evoga()
 	delete exp;
 	delete[] tfitness;
 	delete[] terror;
-	if (statfit != NULL) {
+	if (statfit != nullptr) {
 		for(int i = 0; i < nogenerations; i++) {
 			delete[] statfit[i];
 		}
@@ -376,11 +376,11 @@ void Evoga::reproduce()
 		if ((bi+1)<=this->savebest && cgen< this->nogenerations) {
 			sprintf(sbuffer,"B%dS%d.gen",bi+1,this->currentSeed);
 			if (cgen==0) {
-				if ((fp=fopen(sbuffer, "w")) == NULL) {
+				if ((fp=fopen(sbuffer, "w")) == nullptr) {
 					Logger::error(QString("I cannot open file B%1S%2.gen").arg(bi+1).arg(this->currentSeed));
 				}
 			} else {
-				if ((fp=fopen(sbuffer, "a")) == NULL) {
+				if ((fp=fopen(sbuffer, "a")) == nullptr) {
 					Logger::error(QString("I cannot open file B%1S%2.gen").arg(bi+1).arg(this->currentSeed));
 				}
 			}
@@ -426,11 +426,11 @@ void Evoga::saveBestInd()
 
 	sprintf(sbuffer,"B%dS%d.gen",bi+1,this->currentSeed);
 	if (cgen==0) {
-		if ((fp=fopen(sbuffer, "w")) == NULL) {
+		if ((fp=fopen(sbuffer, "w")) == nullptr) {
 			Logger::error(QString("I cannot open file B%1S%2.gen").arg(bi+1).arg(this->currentSeed));
 		}
 	} else {
-		if ((fp=fopen(sbuffer, "a")) == NULL) {
+		if ((fp=fopen(sbuffer, "a")) == nullptr) {
 			Logger::error(QString("I cannot open file B%1S%2.gen").arg(bi+1).arg(this->currentSeed));
 		}
 	}
@@ -467,7 +467,7 @@ void Evoga::saveBestTeam(QVector< QVector<int> > teams, QVector<double> fitness)
     FILE *fp;
 
     sprintf(sbuffer,"B%dS%d.G%d.gen",bi+1,this->currentSeed,cgen);
-    if ((fp=fopen(sbuffer, "w")) == NULL) {
+    if ((fp=fopen(sbuffer, "w")) == nullptr) {
         Logger::error(QString("I cannot open file B%1S%2.G%3.gen").arg(bi+1).arg(this->currentSeed).arg(cgen));
     }
 
@@ -522,11 +522,11 @@ void Evoga::mreproduce()
 		if ((bi+1)<=this->savebest && cgen< this->nogenerations) {
 			sprintf(sbuffer,"B%dS%d.gen",bi+1,this->currentSeed);
 			if (cgen==0) {
-				if ((fp=fopen(sbuffer, "w")) == NULL) {
+				if ((fp=fopen(sbuffer, "w")) == nullptr) {
 					Logger::error(QString("I cannot open file B%1S%2.gen").arg(bi+1).arg(this->currentSeed));
 				}
 			} else {
-				if ((fp=fopen(sbuffer, "a")) == NULL) {
+				if ((fp=fopen(sbuffer, "a")) == nullptr) {
 					Logger::error(QString("I cannot open file B%1S%2.gen").arg(bi+1).arg(this->currentSeed));
 				}
 			}
@@ -654,7 +654,7 @@ void Evoga::saveallg()
 	int i;
 
 	sprintf(filename,"G%dS%d.gen",cgen,currentSeed);
-	if ((fp=fopen(filename, "w+")) == NULL) {
+	if ((fp=fopen(filename, "w+")) == nullptr) {
 		Logger::error(QString("Cannot open file %1").arg(filename));
 	} else {
 		//we save
@@ -673,7 +673,7 @@ void Evoga::saveallgComposed(QVector< QVector<int> > composedGen)
     int i;
 
     sprintf(filename,"G%dS%d.composed.gen",cgen,currentSeed);
-    if ((fp=fopen(filename, "w+")) == NULL) {
+    if ((fp=fopen(filename, "w+")) == nullptr) {
         Logger::error(QString("Cannot open file %1").arg(filename));
     } else {
         //we save
@@ -699,7 +699,7 @@ void Evoga::saveFStat()
 	else
 		fp=fopen(sbuffer , "a");
 
-	if (fp != NULL) {
+	if (fp != nullptr) {
 		fprintf(fp,"%.3f %.3f %.3f\n",fmax,faverage,fmin);
 		fclose(fp);
 	} else
@@ -717,7 +717,7 @@ void Evoga::saveRStat(QVector<int> subsVec)
     else
         fp=fopen(sbuffer , "a");
 
-    if(fp!=NULL){
+    if(fp!=nullptr){
         for(int i=0;i<subsVec.size();i++){
             fprintf(fp,"%i ",subsVec[i]);
         }
@@ -759,10 +759,10 @@ int Evoga::loadallg(int gen, const char *filew)
 		sprintf(filename, "%s", filew);//in case of B%P$S.gen
 	}
 
-	if ((fp = fopen(filename, "r")) != NULL) {
+	if ((fp = fopen(filename, "r")) != nullptr) {
 		genome.clear();
 		while (true) {
-			flag[0] = '\0'; //sprintf(flag,""); //flag = NULL;
+			flag[0] = '\0'; //sprintf(flag,""); //flag = nullptr;
 			fscanf(fp, "%s : %s\n", flag, message);
 			if (strcmp(flag, "**NET") == 0) {
 				loadgenotype(fp, genome.addOne());
@@ -794,14 +794,14 @@ void Evoga::loadallTeams(int gen, const char *filew, QVector< QVector<int> > &te
         sprintf(filename, "%s", filew);//in case of B%P$S.gen
     }
 
-    if ((fp = fopen(filename, "r")) != NULL) {
+    if ((fp = fopen(filename, "r")) != nullptr) {
         int teamInd=0;
         while (true) {
             if(teams.size()<teamInd+1){
                 teams.resize(teamInd+1);
                 teams[teamInd].resize(numModules);
             }
-            flag[0] = '\0'; //sprintf(flag,""); //flag = NULL;
+            flag[0] = '\0'; //sprintf(flag,""); //flag = nullptr;
             fscanf(fp, "%s : %s\n", flag, message);
             if (strcmp(flag, "**TEAM") == 0) {
                 for(int i=0;i<numModules;i++){
@@ -835,7 +835,7 @@ int Evoga::loadStatistics(char *filename)
 	int i=0;
 	float max,av,min;
 	max=min=av=-1;
-	if ((fp=fopen(filename, "r")) != NULL) {
+	if ((fp=fopen(filename, "r")) != nullptr) {
 		while(fscanf(fp,"%f %f %f\n",&max,&av,&min)!=EOF) {
 			this->statfit[i][0]=max;
 			this->statfit[i][1]=av;
@@ -958,7 +958,7 @@ void Evoga::saveBestFitness()
 		fp = fopen(sbuffer, "a");
 	}
 
-	if (fp != NULL)
+	if (fp != nullptr)
 	{
 		fprintf(fp, "%d %.3f\n", fbestgen, fbest);
 		fclose(fp);
@@ -998,7 +998,7 @@ void Evoga::    evolveSteadyState()
 	Logger::info("Number of replications: " + QString::number(nreplications));
 
 	// Creating evaluator objects in case of a multithread simulation. Also setting the actual number of threads used
-	QVector<EvaluatorThreadForEvoga*> evaluators(popSize, NULL);
+	QVector<EvaluatorThreadForEvoga*> evaluators(popSize, nullptr);
 	if (numThreads > 1) {
 		const QString experimentGroup = confPath() + "Experiment";
 		for (int i = 0; i < evaluators.size(); i++) {
@@ -1361,7 +1361,7 @@ unsigned int generateRandomSeed() {
 #ifdef SALSA_WIN
 	unsigned long int startTime = GetTickCount();
 #else
-	unsigned long int startTime = time(NULL);
+	unsigned long int startTime = time(nullptr);
 #endif
 	// the seed is generated mixing the values above
 	unsigned long int randSeed = 0;

@@ -157,7 +157,7 @@ public:
 		 * This creates an invalid ir
 		 */
 		InitParams()
-			: owner(NULL)
+			: owner(nullptr)
 			, displacement()
 			, minDist(0.0)
 			, maxDist(0.0)

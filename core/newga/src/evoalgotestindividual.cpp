@@ -129,7 +129,7 @@ void EvoAlgoTestIndividual::runTest()
 	std::unique_ptr<Genotype> g(m_genotypes[testedIndividual]);
 	// This is necessary in case the list of genotypes gets freed to avoid deleting also the genotype
 	// we are testing
-	m_genotypes[testedIndividual] = NULL;
+	m_genotypes[testedIndividual] = nullptr;
 
 	// We can now release the lock and perform the test
 	locker.unlock();
@@ -216,8 +216,8 @@ void EvoAlgoTestIndividual::freeGenotypes()
 EvoAlgoTestIndividualGUI::EvoAlgoTestIndividualGUI(QString testName, QWidget* parent, Qt::WindowFlags flags)
 	: QWidget(parent, flags)
 	, DataUploaderDownloader<EvoAlgoTestIndividualDataFromGUI, EvoAlgoTestIndividualDataToGUI>(1, OverrideOlder, this)
-	, m_filenameLabel(NULL)
-	, m_individualSpinBox(NULL)
+	, m_filenameLabel(nullptr)
+	, m_individualSpinBox(nullptr)
 	, m_filename()
 {
 	setWindowTitle("Individual for " + testName);
@@ -251,7 +251,7 @@ bool EvoAlgoTestIndividualGUI::event(QEvent* e)
 		// We need a cylce because there could be more than one datum, when the uploader is connected
 		// (see dataexchange.h documentation for more information)
 		const EvoAlgoTestIndividualDataToGUI* d;
-		while ((d = downloadDatum()) != NULL) {
+		while ((d = downloadDatum()) != nullptr) {
 			m_individualSpinBox->setRange(0, d->numIndividuals - 1);
 		}
 

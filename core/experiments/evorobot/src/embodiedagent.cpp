@@ -33,7 +33,7 @@ EmbodiedAgent::EmbodiedAgent(ConfigurationManager& params)
 	, m_inputs()
 	, m_outputs()
 {
-	// We need notifications for the world resource, because if it is destroyed or declared NULL we
+	// We need notifications for the world resource, because if it is destroyed or declared nullptr we
 	// must invalidate the robot pointer
 	addNotifiedResource("world");
 }
@@ -98,7 +98,7 @@ void EmbodiedAgent::recreateRobot()
 
 	// We cannot create a new robot until the old one is destroyed, so we need to perform the
 	// following steps:
-	// 	- declare the robot resource as NULL
+	// 	- declare the robot resource as nullptr
 	// 	- destroy the robot
 	// 	- create a new robot
 	// 	- declare the robot resource

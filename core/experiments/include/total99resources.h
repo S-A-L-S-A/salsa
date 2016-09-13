@@ -165,11 +165,11 @@ private:
 	// Loads a plugin and returns an instance of the SalsaPlugin class.
 	// filename is the name of the plugin to load. If this is an absolute
 	// path, the file is loaded, otherwise this is considered as the name of
-	// a plugin in the default plugin directory. If errorString is not NULL,
+	// a plugin in the default plugin directory. If errorString is not nullptr,
 	// it is filled with the error string from the loader in case of error.
 	// This function returns the instance of the SalsaPlugin class in the
-	// plugin or NULL if an error occurred
-	static SalsaPlugin* loadSinglePlugin(QString filename, QString* errorString = NULL);
+	// plugin or nullptr if an error occurred
+	static SalsaPlugin* loadSinglePlugin(QString filename, QString* errorString = nullptr);
 };
 
 }

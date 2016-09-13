@@ -35,8 +35,8 @@ namespace salsa {
 class SALSA_WSIM_INTERNAL PhyObjectPrivate {
 public:
 	PhyObjectPrivate()
-		: body(NULL)
-		, collision(NULL)
+		: body(nullptr)
+		, collision(nullptr)
 	{
 	}
 

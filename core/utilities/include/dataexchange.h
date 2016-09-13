@@ -57,19 +57,19 @@
  * from the queue. What happends when a new datum is available in the queue can
  * be configured, too. The possible behaviors are:
  * 	- nothing happends and calls to DataDownloader::downloadDatum() when the
- * 	  queue is empty return NULL;
+ * 	  queue is empty return nullptr;
  * 	- nothing happends but calls to DataDownloader::downloadDatum() when the
  * 	  queue is empty block the downloader until at least one datum is
  * 	  available;
  * 	- a qt event of type NewDatumEvent is sent to a QObject. For this to
  * 	  work, the object that receives the event must live inside a thread
  * 	  that has the event dispatcher running (e.g. the GUI thread). Calls to
- * 	  DataDownloader::downloadDatum() when the queue is empty return NULL;
+ * 	  DataDownloader::downloadDatum() when the queue is empty return nullptr;
  * 	- a function is called. The notified object must inherit from
  * 	  NewDatumNotifiable and implement the function
  * 	  NewDatumNotifiable::newDatumAvailable(). Moreover the callback
  * 	  function must be thread-safe. Calls to DataDownloader::downloadDatum()
- * 	  when the queue is empty return NULL.
+ * 	  when the queue is empty return nullptr.
  * The object that creates data must use an instance of the class DataUploader
  * and the object that uses data must use an instance of the class
  * DataDownloader, with the same DataType.
@@ -114,7 +114,7 @@
  * \code
  * void A::f()
  * {
- * 	// This call can block or return NULL depending on the FullQueueBehavior
+ * 	// This call can block or return nullptr depending on the FullQueueBehavior
  * 	MyData* d = m_uploader.createDatum();
  *
  * 	// Fill data
@@ -133,7 +133,7 @@
  * \code
  * void A::f()
  * {
- * 	// This call can block or return NULL depending on the FullQueueBehavior
+ * 	// This call can block or return nullptr depending on the FullQueueBehavior
  * 	DatumToUpload<MyData> d(m_uploader);
  *
  * 	// Fill data
@@ -156,7 +156,7 @@
  * {
  * 	// In this example we use polling
  * 	while (true) {
- * 		// This call can block or retun NULL depending on the
+ * 		// This call can block or retun nullptr depending on the
  * 		// NewDatumAvailableBehavior
  * 		const MyData* d = m_downloader.downloadDatum();
  *
@@ -203,7 +203,7 @@
  *       than notifications: this can happend if the notification is done via a
  *       QT event, but the event handler is called only after more than the
  *       uploader queue length data has been added. Always check that the
- *       returned datum is not NULL before using it in this situation. The
+ *       returned datum is not nullptr before using it in this situation. The
  *       callback notification mechanism doesn't have this kind of problems
  * \note As explained above, when creating a new datum it is possible that an
  *       object used before is returned. This means that you should not rely on
@@ -211,7 +211,7 @@
  * \note When the FullQueueBehavior of an uploader is set to BlockUploader or
  *       the NewDatumAvailableBehavior of a downloader is set to
  *       NoNotificationBlocking, the upload/download function can still return
- *       NULL if all uploaders/downloaders are woken up by
+ *       nullptr if all uploaders/downloaders are woken up by
  *       GlobalUploaderDownloader::stopAllDataExchanges(). This implies
  *       that you must always check the return value of downloader/uploader
  *       functions to get data.
@@ -356,7 +356,7 @@ public:
 	 *
 	 * Modify the object returned by this function, it will be the next
 	 * datum to upload. If the queue is full, this function blocks if the
-	 * FullQueueBehavior is set to BlockUploader, while it returns NULL if
+	 * FullQueueBehavior is set to BlockUploader, while it returns nullptr if
 	 * the FullQueueBehavior is set to SignalUploader
 	 * \return the object that will be the next datum
 	 * \warning If you call this function remember to call uploadDatum()
@@ -502,13 +502,13 @@ public:
 	/**
 	 * \brief Uploads the datum
 	 *
-	 * From this point on the datum pointer will be NULL
+	 * From this point on the datum pointer will be nullptr
 	 */
 	void uploadDatum()
 	{
 		if (!m_datumUploaded) {
 			m_uploader.uploadDatum();
-			m_datum = NULL;
+			m_datum = nullptr;
 			m_datumUploaded = true;
 		}
 	}
@@ -552,7 +552,7 @@ public:
 	 */
 	operator bool() const
 	{
-		return (m_datum != NULL);
+		return (m_datum != nullptr);
 	}
 
 private:
@@ -728,7 +728,7 @@ public:
 	 *
 	 * This constructor sets the NewDatumAvailableBehavior to QtEvent
 	 * \param o the object to send notifications to when a new datum is
-	 *          available. This must not be NULL.
+	 *          available. This must not be nullptr.
 	 */
 	DataDownloader(QObject* o);
 
@@ -737,7 +737,7 @@ public:
 	 *
 	 * This constructor sets the NewDatumAvailableBehavior to Callback
 	 * \param o the object whose callback has to be called when a new datum
-	 *          is available. This must not be NULL.
+	 *          is available. This must not be nullptr.
 	 */
 	DataDownloader(NewDatumNotifiable<DataType>* o);
 
@@ -776,8 +776,8 @@ public:
 	 * This returns the next datum. The returned datum is guaranteed to
 	 * remain valid until the next call to this function. If the queue is
 	 * empty this function blocks if the NewDatumAvailableBehavior is set to
-	 * NoNotificationBlocking, otherwise it returns NULL. If we are not
-	 * associated with any uploader, this function returns NULL.
+	 * NoNotificationBlocking, otherwise it returns nullptr. If we are not
+	 * associated with any uploader, this function returns nullptr.
 	 * \return the next datum
 	 */
 	const DataType* downloadDatum();
@@ -921,7 +921,7 @@ public:
 	 * \param fullQueueBehavior the behavior of the uploader when the queue
 	 *                          is full
 	 * \param o the object to send notifications to when a new datum is
-	 *          available. This must not be NULL.
+	 *          available. This must not be nullptr.
 	 */
 	DataUploaderDownloader(unsigned int uploadQueueSize, FullQueueBehavior fullQueueBehavior, QObject* o) :
 		DataUploader<UploadedData>(uploadQueueSize, fullQueueBehavior),
@@ -943,7 +943,7 @@ public:
 	 * \param fullQueueBehavior the behavior of the uploader when the queue
 	 *                          is full
 	 * \param o the object whose callback has to be called when a new datum
-	 *          is available. This must not be NULL.
+	 *          is available. This must not be nullptr.
 	 */
 	DataUploaderDownloader(unsigned int uploadQueueSize, FullQueueBehavior fullQueueBehavior, NewDatumNotifiable<DownloadedData>* o) :
 		DataUploader<UploadedData>(uploadQueueSize, fullQueueBehavior),
@@ -980,9 +980,9 @@ public:
 	 * downloader. Both must not be associated with anything else (use
 	 * detach in case they are), otherwise an exception is thrown
 	 * \param uploader the uploader to associate with the downloader. Must
-	 *                 not be NULL
+	 *                 not be nullptr
 	 * \param downloader the downloader to associate with the uploader. Must
-	 *                   not be NULL
+	 *                   not be nullptr
 	 */
 	template <class DataType>
 	static void attach(DataUploader<DataType>* uploader, DataDownloader<DataType>* downloader);
@@ -995,8 +995,8 @@ public:
 	 * DataUploaderDownloader objects at the same time. Both objects must
 	 * not be associated with anything else (use detach in case they are),
 	 * otherwise an exception is thrown
-	 * \param first the first object of the association. Must not be NULL
-	 * \param second the second object of the association. Must not be NULL
+	 * \param first the first object of the association. Must not be nullptr
+	 * \param second the second object of the association. Must not be nullptr
 	 */
 	template <class DataType1, class DataType2>
 	static void attach(DataUploaderDownloader<DataType1, DataType2>* first, DataUploaderDownloader<DataType2, DataType1>* second);
@@ -1039,7 +1039,7 @@ public:
 	 * and stop all data exchanges. The function only influences uploaders
 	 * and downloaders that have been created before it is called. All
 	 * attempts to get data to upload/download after this function is called
-	 * will return NULL (see note in dataexchange.h description). It is not
+	 * will return nullptr (see note in dataexchange.h description). It is not
 	 * possible to resume exchanges, you must destroy uploaders and
 	 * downloaders and then re-create them.
 	 */
@@ -1293,12 +1293,12 @@ namespace __DataExchange_internal {
 			, numDataInQueue(0)
 			, queueFullLastDatumCreation(false)
 			, datumCreatedNotUploaded(false)
-			, nextUploaderDatum(NULL)
-			, currentDownloaderDatum(NULL)
+			, nextUploaderDatum(nullptr)
+			, currentDownloaderDatum(nullptr)
 			, nextUploadIt()
 			, nextDownloadIt()
 			, uploader(u)
-			, downloader(NULL)
+			, downloader(nullptr)
 		{
 			// Allocating all memory. We use unique_ptr to ensure exception safety
 			std::unique_ptr<DataType> uploaderDatum(new DataType());
@@ -1453,7 +1453,7 @@ bool DataUploader<DataType_t>::downloaderPresent() const
 {
 	QMutexLocker locker(&(m_queue->mutex));
 
-	return (m_queue->downloader != NULL);
+	return (m_queue->downloader != nullptr);
 }
 
 template <class DataType_t>
@@ -1488,11 +1488,11 @@ DataType_t* DataUploader<DataType_t>::createDatum()
 
 	// Checking whether data exchange has been stopped
 	if (m_queue->dataExchangeStopped) {
-		return NULL;
+		return nullptr;
 	}
 
 	// Checking if we are associated with a downloader if we have to
-	if (m_checkAssociationBeforeUpload && (m_queue->downloader == NULL)) {
+	if (m_checkAssociationBeforeUpload && (m_queue->downloader == nullptr)) {
 		throw UploaderDownloaderAssociationNotPresentException(UploaderDownloaderAssociationNotPresentException::DownloaderNotPresent);
 	}
 
@@ -1524,9 +1524,9 @@ DataType_t* DataUploader<DataType_t>::createDatum()
 				// use nextUploadIt
 				m_queue->waitCondition.wait(&m_queue->mutex);
 
-				// If we were woken up because data exchange has been stopped, simply returning NULL
+				// If we were woken up because data exchange has been stopped, simply returning nullptr
 				if (m_queue->dataExchangeStopped) {
-					return NULL;
+					return nullptr;
 				}
 				break;
 			case IncreaseQueueSize: {
@@ -1537,8 +1537,8 @@ DataType_t* DataUploader<DataType_t>::createDatum()
 					d.release();
 				} break;
 			case SignalUploader:
-				// Returning NULL to tell the uploader that there is no space
-				return NULL;
+				// Returning nullptr to tell the uploader that there is no space
+				return nullptr;
 				break;
 		}
 	}
@@ -1606,7 +1606,7 @@ void DataUploader<DataType_t>::uploadDatum()
 	m_queue->waitCondition.wakeAll();
 
 	// Now we have to notify the downloader
-	if (m_queue->downloader != NULL) {
+	if (m_queue->downloader != nullptr) {
 		// If the downloader expects a callback to be called, we have to release the lock, otherwise a deadlock
 		// is possible if the downloader tries to get the datum from inside the callback
 		if (m_queue->downloader->m_newDatumAvailableBehavior == DataDownloader<DataType>::Callback) {
@@ -1629,8 +1629,8 @@ bool DataUploader<DataType_t>::datumCreatedNotUploaded() const
 template <class DataType_t>
 DataDownloader<DataType_t>::DataDownloader(NewDatumAvailableBehavior b) :
 	m_newDatumAvailableBehavior(b),
-	m_qoject(NULL),
-	m_newDatumNotifiable(NULL),
+	m_qoject(nullptr),
+	m_newDatumNotifiable(nullptr),
 	m_queue(),
 	m_mutex()
 {
@@ -1647,25 +1647,25 @@ template <class DataType_t>
 DataDownloader<DataType_t>::DataDownloader(QObject* o) :
 	m_newDatumAvailableBehavior(QtEvent),
 	m_qoject(o),
-	m_newDatumNotifiable(NULL),
+	m_newDatumNotifiable(nullptr),
 	m_queue(),
 	m_mutex()
 {
-	if (m_qoject == NULL) {
-		throw InvalidNewDatumAvailableBehaviorException("when the NewDatumAvailableBehavior is \"QtEvent\" you must specify a valid (i.e. not NULL) QObject");
+	if (m_qoject == nullptr) {
+		throw InvalidNewDatumAvailableBehaviorException("when the NewDatumAvailableBehavior is \"QtEvent\" you must specify a valid (i.e. not nullptr) QObject");
 	}
 }
 
 template <class DataType_t>
 DataDownloader<DataType_t>::DataDownloader(NewDatumNotifiable<DataType>* o) :
 	m_newDatumAvailableBehavior(Callback),
-	m_qoject(NULL),
+	m_qoject(nullptr),
 	m_newDatumNotifiable(o),
 	m_queue(),
 	m_mutex()
 {
-	if (m_newDatumNotifiable == NULL) {
-		throw InvalidNewDatumAvailableBehaviorException("when the NewDatumAvailableBehavior is \"Callback\" you must specify a valid (i.e. not NULL) NewDatumNotifiable");
+	if (m_newDatumNotifiable == nullptr) {
+		throw InvalidNewDatumAvailableBehaviorException("when the NewDatumAvailableBehavior is \"Callback\" you must specify a valid (i.e. not nullptr) NewDatumNotifiable");
 	}
 }
 
@@ -1686,12 +1686,12 @@ bool DataDownloader<DataType_t>::uploaderPresent() const
 	QMutexLocker internalLocker(&m_mutex);
 
 	if (!m_queue) {
-		return NULL;
+		return false;
 	}
 
 	QMutexLocker locker(&m_queue->mutex);
 
-	return (m_queue->uploader != NULL);
+	return (m_queue->uploader != nullptr);
 }
 
 template <class DataType_t>
@@ -1723,7 +1723,7 @@ const DataType_t* DataDownloader<DataType_t>::downloadDatum()
 
 	// Checking whether data exchange has been stopped
 	if (m_queue->dataExchangeStopped) {
-		return NULL;
+		return nullptr;
 	}
 
 	// Checking if the queue is empty
@@ -1738,14 +1738,14 @@ const DataType_t* DataDownloader<DataType_t>::downloadDatum()
 				// Waiting on the wait condition, we will be woke up when the uploader has uploaded something
 				m_queue->waitCondition.wait(&m_queue->mutex);
 
-				// If we were woken up because data exchange has been stopped, simply returning NULL
+				// If we were woken up because data exchange has been stopped, simply returning nullptr
 				if (m_queue->dataExchangeStopped) {
-					return NULL;
+					return nullptr;
 				}
 				break;
 			default:
-				// In all the other cases we return NULL to tell that no datum is available
-				return NULL;
+				// In all the other cases we return nullptr to tell that no datum is available
+				return nullptr;
 				break;
 		}
 	}
@@ -1781,12 +1781,12 @@ void DataDownloader<DataType_t>::sendNotification()
 			break;
 		case QtEvent:
 			// Posting a QT event
-			Q_ASSERT(m_qoject != NULL);
+			Q_ASSERT(m_qoject != nullptr);
 			QCoreApplication::postEvent(m_qoject, new NewDatumEvent<DataType>(this));
 			break;
 		case Callback:
 			// Calling the callback
-			Q_ASSERT(m_newDatumNotifiable != NULL);
+			Q_ASSERT(m_newDatumNotifiable != nullptr);
 			m_newDatumNotifiable->newDatumAvailable(this);
 			break;
 	}
@@ -1835,9 +1835,9 @@ void GlobalUploaderDownloader::internalAttach(DataUploader<DataType>* uploader, 
 	QMutexLocker queueMutexLocker(&(uploader->m_queue->mutex));
 
 	// First of all checking that neither the uploader nor the downloader is already associated
-	if (uploader->m_queue->downloader != NULL) {
+	if (uploader->m_queue->downloader != nullptr) {
 		throw UploaderDownloaderAssociationNotUniqueException(UploaderDownloaderAssociationNotUniqueException::UploaderAlreadyAssociated);
-	} else if (downloader->m_queue && (downloader->m_queue->uploader != NULL)) {
+	} else if (downloader->m_queue && (downloader->m_queue->uploader != nullptr)) {
 		throw UploaderDownloaderAssociationNotUniqueException(UploaderDownloaderAssociationNotUniqueException::DownloaderAlreadyAssociated);
 	}
 
@@ -1874,13 +1874,13 @@ void GlobalUploaderDownloader::internalAttach(DataUploaderDownloader<DataType1, 
 	QMutexLocker secondQueueMutexLocker(&(secondUploader->m_queue->mutex));
 
 	// First of all checking that neither uploaders nor downloaders are already associated
-	if (firstUploader->m_queue->downloader != NULL) {
+	if (firstUploader->m_queue->downloader != nullptr) {
 		throw UploaderDownloaderAssociationNotUniqueException(UploaderDownloaderAssociationNotUniqueException::UploaderAlreadyAssociated);
-	} else if (firstDownloader->m_queue && (firstDownloader->m_queue->uploader != NULL)) {
+	} else if (firstDownloader->m_queue && (firstDownloader->m_queue->uploader != nullptr)) {
 		throw UploaderDownloaderAssociationNotUniqueException(UploaderDownloaderAssociationNotUniqueException::DownloaderAlreadyAssociated);
-	} else if (secondUploader->m_queue->downloader != NULL) {
+	} else if (secondUploader->m_queue->downloader != nullptr) {
 		throw UploaderDownloaderAssociationNotUniqueException(UploaderDownloaderAssociationNotUniqueException::UploaderAlreadyAssociated);
-	} else if (secondDownloader->m_queue && (secondDownloader->m_queue->uploader != NULL)) {
+	} else if (secondDownloader->m_queue && (secondDownloader->m_queue->uploader != nullptr)) {
 		throw UploaderDownloaderAssociationNotUniqueException(UploaderDownloaderAssociationNotUniqueException::DownloaderAlreadyAssociated);
 	}
 
@@ -1915,7 +1915,7 @@ void GlobalUploaderDownloader::internalDetach(DataUploader<DataType>* uploader)
 
 	// If no association is present, returning directly
 	DataDownloader<DataType>* const downloader = uploader->m_queue->downloader;
-	if (downloader == NULL) {
+	if (downloader == nullptr) {
 		return;
 	}
 
@@ -1926,7 +1926,7 @@ void GlobalUploaderDownloader::internalDetach(DataUploader<DataType>* uploader)
 	QMutexLocker queueMutexLocker(&(uploader->m_queue->mutex));
 
 	// Removing the association
-	uploader->m_queue->downloader = NULL;
+	uploader->m_queue->downloader = nullptr;
 
 	// Unlocking the lock on the queue because here it could be destroyed and if it
 	// isn't, the lock is not necessary
@@ -1952,7 +1952,7 @@ void GlobalUploaderDownloader::internalDetach(DataDownloader<DataType>* download
 	QMutexLocker queueMutexLocker(&(downloader->m_queue->mutex));
 
 	// Removing the association
-	downloader->m_queue->downloader = NULL;
+	downloader->m_queue->downloader = nullptr;
 
 	// Unlocking the lock on the queue because here it could be destroyed and if it
 	// isn't, the lock is not necessary
@@ -1978,7 +1978,7 @@ void GlobalUploaderDownloader::internalDetach(DataUploaderDownloader<DataType1, 
 	// uploaderDownloader (which may not exist), we use an std::unique_ptr
 	std::unique_ptr<QMutexLocker> otherDownloaderMutexLocker;
 	DataDownloader<DataType1>* const otherDownloader = uploader->m_queue->downloader;
-	if (otherDownloader != NULL) {
+	if (otherDownloader != nullptr) {
 		otherDownloaderMutexLocker.reset(new QMutexLocker(&(otherDownloader->m_mutex)));
 	}
 	QMutexLocker queueMutexLocker(&(uploader->m_queue->mutex));
@@ -1989,15 +1989,15 @@ void GlobalUploaderDownloader::internalDetach(DataUploaderDownloader<DataType1, 
 	}
 
 	// Removing all associations
-	uploader->m_queue->downloader = NULL;
-	if (otherDownloader != NULL) {
+	uploader->m_queue->downloader = nullptr;
+	if (otherDownloader != nullptr) {
 		// Unlocking the lock on the queue because here it could be destroyed and if it
 		// isn't, the lock is not necessary
 		otherDownloaderMutexLocker->unlock();
 		otherDownloader->m_queue.reset();
 	}
 	if (downloader->m_queue) {
-		downloader->m_queue->downloader = NULL;
+		downloader->m_queue->downloader = nullptr;
 
 		// Unlocking the lock on the queue because here it could be destroyed and if it
 		// isn't, the lock is not necessary
@@ -2017,7 +2017,7 @@ void GlobalUploaderDownloader::uploaderDestroyed(DataUploader<DataType>* uploade
 
 	// If no association is present, returning directly
 	DataDownloader<DataType>* const downloader = uploader->m_queue->downloader;
-	if (downloader == NULL) {
+	if (downloader == nullptr) {
 		return;
 	}
 
@@ -2028,7 +2028,7 @@ void GlobalUploaderDownloader::uploaderDestroyed(DataUploader<DataType>* uploade
 	QMutexLocker queueMutexLocker(&(uploader->m_queue->mutex));
 
 	// Removing the association
-	uploader->m_queue->uploader = NULL;
+	uploader->m_queue->uploader = nullptr;
 
 	// Unlocking the lock on the queue because here it could be destroyed and if it
 	// isn't, the lock is not necessary

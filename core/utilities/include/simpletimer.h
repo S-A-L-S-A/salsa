@@ -66,7 +66,7 @@ public:
 		QueryPerformanceCounter( &baseCount );
 #else
 		struct timeval tv;
-		gettimeofday( &tv, NULL );
+		gettimeofday( &tv, nullptr );
 		lastTime = tv.tv_sec*1000000 + tv.tv_usec;
 #endif
 	};
@@ -80,7 +80,7 @@ public:
 		return ticks;
 #else
 		struct timeval tv;
-		gettimeofday( &tv, NULL );
+		gettimeofday( &tv, nullptr );
 		return (tv.tv_sec*1000000 + tv.tv_usec) - lastTime;
 #endif
 	};
@@ -95,7 +95,7 @@ public:
 		return ticks;
 #else
 		struct timeval tv;
-		gettimeofday( &tv, NULL );
+		gettimeofday( &tv, nullptr );
 		int ret = (tv.tv_sec*1000000 + tv.tv_usec) - lastTime;
 		lastTime = (tv.tv_sec*1000000 + tv.tv_usec);
 		return ret;

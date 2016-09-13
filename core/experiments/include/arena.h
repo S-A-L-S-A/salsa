@@ -176,7 +176,7 @@ public:
 	 *        resource name
 	 *
 	 * \param robotResource the name of the resource for the robot and its owner
-	 * \return the wrapper for the robot with the given resource or NULL if
+	 * \return the wrapper for the robot with the given resource or nullptr if
 	 *         no wrapper exists for the given robot
 	 */
 	const WheeledRobot2DWrapper* getRobotWrapper(RobotResource robotResource) const;

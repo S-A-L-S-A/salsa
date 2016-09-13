@@ -53,7 +53,7 @@ struct SALSA_CONF_TEMPLATE ComponentAndStatus
 	 * \brief Constructor
 	 */
 	ComponentAndStatus() :
-		component(NULL),
+		component(nullptr),
 		status(ComponentNotCreated)
 	{
 	}

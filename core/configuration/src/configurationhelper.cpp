@@ -42,7 +42,7 @@ namespace ConfigurationHelper {
 namespace {
 	double stringToDoubleAcceptingInfinite(const QString& str, bool* ok)
 	{
-		if (ok != NULL) {
+		if (ok != nullptr) {
 			*ok = true;
 		}
 
@@ -55,7 +55,7 @@ namespace {
 			} else if (trimmedStr == "-inf") {
 				d = -Infinity;
 			} else {
-				if (ok != NULL) {
+				if (ok != nullptr) {
 					*ok = false;
 				}
 			}

@@ -45,7 +45,7 @@ public:
 	 * \param parent the parent widget
 	 * \param f the window flags for this widget
 	 */
-	NeuralNetConfWidget(salsa::ConfigurationManager& params, QString prefix, QWidget* parent = NULL, Qt::WindowFlags f = 0);
+	NeuralNetConfWidget(salsa::ConfigurationManager& params, QString prefix, QWidget* parent = nullptr, Qt::WindowFlags f = 0);
 
 	/**
 	 * \brief Destructor

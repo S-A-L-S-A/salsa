@@ -105,7 +105,7 @@ void WorkerThread::run() {
 		if ( operation.deleteAtEnd ) {
 			delete operation.operation;
 		}
-		operation.operation = NULL;
+		operation.operation = nullptr;
 		mutex.unlock();
 		waitForOperationsToFinish.wakeAll();
 		if ( quitRequested ) {
@@ -126,7 +126,7 @@ void WorkerThread::quit() {
 bool WorkerThread::operationRunning()
 {
 	mutex.lock();
-	bool ret = (operation.operation != NULL);
+	bool ret = (operation.operation != nullptr);
 	mutex.unlock();
 
 	return ret;

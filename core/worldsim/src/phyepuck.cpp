@@ -52,18 +52,18 @@ const real PhyEpuck::passivewheelr = 0.005f;
 const real PhyEpuck::passivewheelm = 0.005f;
 
 PhyEpuck::PhyEpuck(World* world, SharedDataWrapper<Shared> shared, QString name, const wMatrix& tm)
-	: QObject(NULL)
+	: QObject(nullptr)
 	, WObject(world, shared, name, tm)
 	, m_shared(shared)
-	, m_body(NULL)
-	, m_turret(NULL)
+	, m_body(nullptr)
+	, m_turret(nullptr)
 	, m_wheels()
 	, m_wheelsTransformation()
 	, m_wheelJoints()
-	, m_wheelsCtrl(NULL)
-	, m_proximityIR(NULL)
-	, m_groundIR(NULL)
-	, m_frontMarker(NULL)
+	, m_wheelsCtrl(nullptr)
+	, m_proximityIR(nullptr)
+	, m_groundIR(nullptr)
+	, m_frontMarker(nullptr)
 	, m_uniformColor(QList<PhyCylinderSegmentColor>() << PhyCylinderSegmentColor(SimpleInterval(-PI_GRECO, PI_GRECO), color()))
 {
 	// --- reference frame
@@ -339,13 +339,13 @@ void PhyEpuck::setDrawFrontMarker(bool drawMarker)
 		m_frontMarker->setOwner(this, true);
 	} else {
 		world()->deleteEntity(m_frontMarker);
-		m_frontMarker = NULL;
+		m_frontMarker = nullptr;
 	}
 }
 
 bool PhyEpuck::getDrawFrontMarker() const
 {
-	return (m_frontMarker != NULL);
+	return (m_frontMarker != nullptr);
 }
 
 void PhyEpuck::doKinematicSimulation(bool k)

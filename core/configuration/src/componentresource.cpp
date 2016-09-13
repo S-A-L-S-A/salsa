@@ -72,7 +72,7 @@ bool ResourceAccessor::resourceExists(QString name, Component* owner) const
 {
 	ConfigurationManagerLocker locker(m_confManager);
 
-	return (getResourceHandlerWithOwner(name, owner) != NULL);
+	return (getResourceHandlerWithOwner(name, owner) != nullptr);
 }
 
 QList<ResourceHandler*> ResourceAccessor::getAllCandidateResourceHandlers(QString name)
@@ -128,7 +128,7 @@ QMap<QString, QMap<Component*, ResourceHandler*> >& ResourceAccessor::resources(
 
 ResourceHandler* ResourceAccessor::getResourceHandlerWithOwner(QString name, Component* owner) const
 {
-	ResourceHandler* h = resources().value(name).value(owner, NULL);
+	ResourceHandler* h = resources().value(name).value(owner, nullptr);
 
 	return h;
 }
@@ -259,14 +259,14 @@ void ResourceHandler::notifyOne(ResourceChangeNotifee* notifee, ResourceChangeTy
 
 		~ResourceChangeNotifeeResourceHandlerRAII()
 		{
-			m_notifee->m_notifiedResourceHandler = NULL;
+			m_notifee->m_notifiedResourceHandler = nullptr;
 		}
 
 	private:
 		ResourceChangeNotifee* const m_notifee;
 	};
 
-	ResourceHandler* handlerToSet = (changeType == ResourceDeleted) ? NULL : this;
+	ResourceHandler* handlerToSet = (changeType == ResourceDeleted) ? nullptr : this;
 	ResourceChangeNotifeeResourceHandlerRAII raii(notifee, handlerToSet);
 	notifee->resourceChanged(name(), owner(), changeType);
 }

@@ -31,7 +31,7 @@ namespace salsa {
 class SALSA_NNFW_API SimpleCluster : public Cluster {
 public:
 	/*! Constructor */
-	SimpleCluster( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	SimpleCluster( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~SimpleCluster();
 	/*! Update the outputs of neurons */

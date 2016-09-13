@@ -48,10 +48,10 @@ void NewAbstractTest::describe( QString type )
 
 EvoAlgoTest::EvoAlgoTest()
 	: NewAbstractTest()
-	, m_ga(NULL)
-	, m_prototype(NULL)
-	, m_gt(NULL)
-	, m_gae(NULL)
+	, m_ga(nullptr)
+	, m_prototype(nullptr)
+	, m_gt(nullptr)
+	, m_gae(nullptr)
 {
 }
 

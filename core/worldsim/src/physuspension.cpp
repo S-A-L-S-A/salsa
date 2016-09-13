@@ -46,7 +46,7 @@ PhySuspension::PhySuspension(World* world, SharedDataWrapper<Shared> shared, Phy
 	d->localMatrixParent.sanitifize();
 
 	// Calculating the local matrix respect to child object
-	if (m_parent != NULL) {
+	if (m_parent != nullptr) {
 		d->globalMatrixParent = m_shared->localMatrixParent * m_parent->matrix();
 	} else {
 		d->globalMatrixParent = m_shared->localMatrixParent;
@@ -74,7 +74,7 @@ PhySuspension::~PhySuspension()
 wVector PhySuspension::centre() const
 {
 	// Calculating global matrix if necessary
-	if (parent() != NULL) {
+	if (parent() != nullptr) {
 		return (m_shared->localMatrixParent * parent()->matrix()).w_pos;
 	} else {
 		return m_shared->globalMatrixParent.w_pos;
@@ -93,7 +93,7 @@ void PhySuspension::updateJointInfo()
 	//--- calculate the global matrices
 	//--- if parent doesn't exist, then globalMatrixParent and localMatrixParent coincide and
 	//--- there is no need to re-assign it because it was already done in constructor
-	if ( parent() != NULL ) {
+	if ( parent() != nullptr ) {
 		d->globalMatrixParent = m_shared->localMatrixParent * parent()->matrix();
 	}
 	d->globalMatrixChild = m_shared->localMatrixChild * child()->matrix();
@@ -124,7 +124,7 @@ void PhySuspension::updateJointInfo()
 	// we revert to computing the difference with the previous position divided by the timestep
 	if (m_shared->enabled) {
 		//--- the velocity is calculated projecting the angular velocity of objects on the main axis (z_ax)
-		//    This code is not general, becuase it is not appliable in the case of parent==NULL
+		//    This code is not general, becuase it is not appliable in the case of parent==nullptr
 		//    and also return different results respect to the kinematic way
 		//    Then [Gianluca] comment it and replaced with the same code used in the kinematic mode
 		wVector omegaParent, omegaChild;

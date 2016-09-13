@@ -185,13 +185,13 @@ public:
 	 * \brief Constructor
 	 *
 	 * This sets the flow controller to the given flow controller
-	 * \param flowController the flow controller object to use. If NULL, it
+	 * \param flowController the flow controller object to use. If nullptr, it
 	 *                       sets the flow controller to an instance of
 	 *                       DummyFlowController
 	 */
 	FlowControlled(FlowController* flowController)
 		: m_dummyFlowController()
-		, m_flowController((flowController == NULL) ? &m_dummyFlowController : flowController)
+		, m_flowController((flowController == nullptr) ? &m_dummyFlowController : flowController)
 	{
 	}
 
@@ -199,14 +199,14 @@ public:
 	 * \brief Sets the flow controller object to use
 	 *
 	 * The flow controller object is not deleted here,
-	 * \param flowController the flow controller object to use. If NULL, it
+	 * \param flowController the flow controller object to use. If nullptr, it
 	 *                       sets the flow controller to an instance of
 	 *                       DummyFlowController
 	 */
 	void setFlowController(FlowController* flowController)
 	{
 		if (flowController != m_flowController) {
-			if (flowController == NULL) {
+			if (flowController == nullptr) {
 				m_flowController = &m_dummyFlowController;
 			} else {
 				m_flowController = flowController;

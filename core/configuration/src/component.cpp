@@ -62,7 +62,7 @@ Component::~Component()
 	deleteAllResources();
 
 	// Removing association with configuration node
-	m_configurationNode->setComponentForNode("", NULL, ComponentNotCreated);
+	m_configurationNode->setComponentForNode("", nullptr, ComponentNotCreated);
 }
 
 void Component::describe(RegisteredComponentDescriptor& d)
@@ -76,7 +76,7 @@ void Component::declareResourceAsNull(QString name)
 
 	ResourceHandler* h = getResourceHandlerForOurResource(name);
 
-	// Now setting the resource to NULL. If this throws an exception we could have simply created a non-existing
+	// Now setting the resource to nullptr. If this throws an exception we could have simply created a non-existing
 	// resource above that doesn't modify the external behaviour of this and other classes (so we can say
 	// that this function is strongly exception-safe)
 	h->declareAsNull();
@@ -88,7 +88,7 @@ void Component::deleteResource(QString name)
 
 	ResourceHandler* h = getResourceHandlerWithOwner(name, this);
 
-	if (h == NULL) {
+	if (h == nullptr) {
 		throw ResourceNotDeclaredException(name.toLatin1().data());
 	}
 
@@ -131,7 +131,7 @@ void Component::addNotifiedResource(QString name)
 
 	// If in configuration phase, we only record the request
 	if (inConfigurationPhase()) {
-		recordRequestOfResourceChangeNotification(name, NULL);
+		recordRequestOfResourceChangeNotification(name, nullptr);
 
 		return;
 	}
@@ -170,7 +170,7 @@ void Component::removeNotifiedResource(QString name)
 
 	// If in configuration phase, we remove the recorded notification if it exists
 	if (inConfigurationPhase()) {
-		removeRequestOfResourceChangeNotification(name, NULL);
+		removeRequestOfResourceChangeNotification(name, nullptr);
 
 		return;
 	}
@@ -200,7 +200,7 @@ void Component::removeNotifiedResource(QString name, Component* owner)
 	// Getting the resource handler. It will be created if doesn't exists
 	ResourceHandler* h = getResourceHandlerWithOwner(name, owner);
 
-	if (h != NULL) {
+	if (h != nullptr) {
 		h->removeNotifee(this);
 	}
 }
@@ -228,7 +228,7 @@ ResourceHandler* Component::getResourceHandlerForOurResource(QString name)
 {
 	ResourceHandler* h = getResourceHandlerWithOwner(name, this);
 
-	if (h == NULL) {
+	if (h == nullptr) {
 		// Adding an non-existant resource (in an exception-safe way)
 		std::unique_ptr<ResourceHandler> hp(new ResourceHandler(name, this));
 		resources()[name][this] = hp.get();

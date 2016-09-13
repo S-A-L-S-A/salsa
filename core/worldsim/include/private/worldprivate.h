@@ -56,9 +56,9 @@ public:
 			wVector globalPos;
 			wVector normal;
 			wVector normalForce;
-			// The second argument to the next call is NULL because it only influences the way the normal is computed
+			// The second argument to the next call is nullptr because it only influences the way the normal is computed
 			// and here we discard the normal (see Newton source code, Newton.cpp from line 2013 on)
-			NewtonMaterialGetContactPositionAndNormal( material, NULL, &globalPos[0], &normal[0] );
+			NewtonMaterialGetContactPositionAndNormal( material, nullptr, &globalPos[0], &normal[0] );
 			Contact first, second;
 			first.worldPos = globalPos;
 			first.pos = obj1->matrix().untransformVector( globalPos );

@@ -39,9 +39,9 @@ namespace __BatchInstancesManager_internal {
 		, m_action(action)
 		, m_options(options)
 		, m_process(new QProcess(this))
-		, m_log(NULL)
-		, m_statusLabel(NULL)
-		, m_terminationButton(NULL)
+		, m_log(nullptr)
+		, m_statusLabel(nullptr)
+		, m_terminationButton(nullptr)
 	{
 		// The main layout
 		QGridLayout* mainLayout = new QGridLayout(this);
@@ -198,14 +198,14 @@ namespace __BatchInstancesManager_internal {
 BatchInstancesManager::BatchInstancesManager(salsa::ConfigurationManager& params, QWidget* parent, Qt::WindowFlags flags)
 	: QWidget(parent, flags)
 	, m_configurationParameters(params)
-	, m_instanceName(NULL)
-	, m_confFilePathEdit(NULL)
-	, m_actionEdit(NULL)
-	, m_optionsEdit(NULL)
-	, m_instancesTabs(NULL)
-	, m_startNewInstanceButton(NULL)
-	, m_removeCurrentInstanceButton(NULL)
-	, m_removeAllInstancesButton(NULL)
+	, m_instanceName(nullptr)
+	, m_confFilePathEdit(nullptr)
+	, m_actionEdit(nullptr)
+	, m_optionsEdit(nullptr)
+	, m_instancesTabs(nullptr)
+	, m_startNewInstanceButton(nullptr)
+	, m_removeCurrentInstanceButton(nullptr)
+	, m_removeAllInstancesButton(nullptr)
 	, m_instanceIndex(0)
 {
 	setWindowTitle("Total99 - Batch instances manager");
@@ -326,7 +326,7 @@ void BatchInstancesManager::terminateAll()
 		__BatchInstancesManager_internal::BatchProcess* curProcess = dynamic_cast<__BatchInstancesManager_internal::BatchProcess*>(m_instancesTabs->widget(i));
 
 		// Safety check
-		assert(curProcess != NULL);
+		assert(curProcess != nullptr);
 
 		processes.append(curProcess);
 
@@ -403,7 +403,7 @@ void BatchInstancesManager::removeCurrentInstance()
 	__BatchInstancesManager_internal::BatchProcess* curProcess = dynamic_cast<__BatchInstancesManager_internal::BatchProcess*>(m_instancesTabs->currentWidget());
 
 	// Safety check
-	assert(curProcess != NULL);
+	assert(curProcess != nullptr);
 
 	// If the instance is running, asking the user
 	if (curProcess->isRunning()) {
@@ -438,7 +438,7 @@ void BatchInstancesManager::removeAllInstances()
 		__BatchInstancesManager_internal::BatchProcess* curProcess = dynamic_cast<__BatchInstancesManager_internal::BatchProcess*>(m_instancesTabs->widget(i));
 
 		// Safety check
-		assert(curProcess != NULL);
+		assert(curProcess != nullptr);
 
 		if (curProcess->isRunning()) {
 			someRunning = true;

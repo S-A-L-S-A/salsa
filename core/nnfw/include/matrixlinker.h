@@ -39,7 +39,7 @@ namespace salsa {
 class SALSA_NNFW_API MatrixLinker : public Linker {
 public:
 	/*! Constructor */
-	MatrixLinker( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	MatrixLinker( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*!  Destructor */
 	virtual ~MatrixLinker();
 	/*!  Get the number of rows */

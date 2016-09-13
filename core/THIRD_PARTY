@@ -7,18 +7,6 @@ SALSA developers:
    Original license documents included at utilities/Eigen/license/
    See  http://eigen.tuxfamily.org/
 
- * qgv
-   Licensed under GNU LGPL
-   Placed at utilities/qgv
-   Original license document included at utilities/qgv/LICENSE.txt
-   See http://code.google.com/p/qgv/
-
- * Qwt version 6.1.0
-   Licensed under Qwt License, Version 1.0
-   Placed at utilities/qwt
-   Original license document included at utilities/qwt/COPYING
-   See http://qwt.sourceforge.net/
-
  * Newton SDK version 2.33
    Licensed under Newton zlib license
    Placed at worldsim/3rdParts/newton

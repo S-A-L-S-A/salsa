@@ -503,8 +503,8 @@ MarXbotAttachmentDeviceMotorController::MarXbotAttachmentDeviceMotorController(W
 	m_robot(robot),
 	m_status(Open),
 	m_desiredStatus(Open),
-	m_joint(NULL),
-	m_attachedRobot(NULL),
+	m_joint(nullptr),
+	m_attachedRobot(nullptr),
 	m_otherAttachedRobots()
 {
 }
@@ -530,16 +530,16 @@ void MarXbotAttachmentDeviceMotorController::update()
 			{
 				// Here we simply have to detach
 				world()->deleteEntity(m_joint);
-				m_joint = NULL;
+				m_joint = nullptr;
 
 				// Telling the other robot we are no longer attached
-				if (m_attachedRobot != NULL) {
+				if (m_attachedRobot != nullptr) {
 					int i = m_attachedRobot->attachmentDeviceController()->m_otherAttachedRobots.indexOf(m_robot);
 					if (i != -1) {
 						m_attachedRobot->attachmentDeviceController()->m_otherAttachedRobots.remove(i);
 					}
 
-					m_attachedRobot = NULL;
+					m_attachedRobot = nullptr;
 				}
 			}
 			break;
@@ -551,12 +551,12 @@ void MarXbotAttachmentDeviceMotorController::update()
 				} else {
 					// If I was attached, the status was Closed for sure, so we have to change the kind
 					// of joint
-					if (m_attachedRobot != NULL) {
+					if (m_attachedRobot != nullptr) {
 						world()->deleteEntity(m_joint);
 					}
 				}
 
-				if (m_attachedRobot != NULL) {
+				if (m_attachedRobot != nullptr) {
 					// Found a robot to which we can attach, creating the joint (a hinge). The parent
 					// here is the other robot because this way it is easier to specify the axis and
 					// center
@@ -579,12 +579,12 @@ void MarXbotAttachmentDeviceMotorController::update()
 				} else {
 					// If I was attached, the status was HalfClosed for sure, so we have to change the kind
 					// of joint
-					if (m_attachedRobot != NULL) {
+					if (m_attachedRobot != nullptr) {
 						world()->deleteEntity(m_joint);
 					}
 				}
 
-				if (m_attachedRobot != NULL) {
+				if (m_attachedRobot != nullptr) {
 					// Found a robot to which we can attach, creating the joint (a fixed joint)
 					m_joint = world()->createEntity(TypeToCreate<PhyFixed>(), m_robot->attachmentDevice(), m_attachedRobot->turret());
 
@@ -690,7 +690,7 @@ PhyMarXbot* MarXbotAttachmentDeviceMotorController::tryToAttach() const
 	QSet<PhyMarXbot*> candidateRobots;
 	foreach (const Contact& c, contacts) {
 		PhyMarXbot* otherRobot = dynamic_cast<PhyMarXbot*>(c.collide->owner());
-		if ((otherRobot != NULL) && (otherRobot->attachmentDeviceEnabled()) && (!discardedRobots.contains(otherRobot))) {
+		if ((otherRobot != nullptr) && (otherRobot->attachmentDeviceEnabled()) && (!discardedRobots.contains(otherRobot))) {
 			// Checking that the contact is the turret and not the attachment device
 			if (c.collide == otherRobot->turret()) {
 				// We have a candidate robot for attachment!
@@ -705,9 +705,9 @@ PhyMarXbot* MarXbotAttachmentDeviceMotorController::tryToAttach() const
 
 	// Now we have a set of candidates. In practice we should always have at most one candidate due to
 	// physical constraints. In case we have more than one, we simply return the first. If we have none,
-	// we return NULL
+	// we return nullptr
 	if (candidateRobots.isEmpty()) {
-		return NULL;
+		return nullptr;
 	} else {
 		return *(candidateRobots.begin());
 	}
@@ -719,23 +719,23 @@ void MarXbotAttachmentDeviceMotorController::attachmentDeviceAboutToBeDestroyed(
 	world()->deleteEntity(m_joint);
 	m_status = Open;
 	m_desiredStatus = Open;
-	m_joint = NULL;
+	m_joint = nullptr;
 
 	// Telling the other robot we are no longer attached
-	if (m_attachedRobot != NULL) {
+	if (m_attachedRobot != nullptr) {
 		int i = m_attachedRobot->attachmentDeviceController()->m_otherAttachedRobots.indexOf(m_robot);
 		if (i != -1) {
 			m_attachedRobot->attachmentDeviceController()->m_otherAttachedRobots.remove(i);
 		}
-		m_attachedRobot = NULL;
+		m_attachedRobot = nullptr;
 	}
 
 	// Also detachting robots attached to us
 	foreach (PhyMarXbot* other, m_otherAttachedRobots) {
-		// Destroying their joint and setting the robot to which they are attached to NULL
+		// Destroying their joint and setting the robot to which they are attached to nullptr
 		world()->deleteEntity(other->attachmentDeviceController()->m_joint);
-		other->attachmentDeviceController()->m_joint = NULL;
-		other->attachmentDeviceController()->m_attachedRobot = NULL;
+		other->attachmentDeviceController()->m_joint = nullptr;
+		other->attachmentDeviceController()->m_attachedRobot = nullptr;
 	}
 }
 

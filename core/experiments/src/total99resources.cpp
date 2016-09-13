@@ -92,7 +92,7 @@ bool Total99Resources::loadPlugin(QString filename)
 	QString errorString;
 	SalsaPlugin* plugin = loadSinglePlugin(filename, &errorString);
 
-	if (plugin == NULL) {
+	if (plugin == nullptr) {
 		// Error loading the plugin
 		Logger::error("ERROR LOADING PLUGIN: " + errorString);
 		return false;
@@ -118,7 +118,7 @@ bool Total99Resources::loadPlugin(QString filename)
 
 		// Loading the plugin
 		loadedDependencies[curDep] = loadSinglePlugin(curDep, &errorString);
-		if (loadedDependencies[curDep] == NULL) {
+		if (loadedDependencies[curDep] == nullptr) {
 			// Error loading the plugin
 			Logger::error("ERROR LOADING PLUGIN: " + errorString);
 			return false;
@@ -150,7 +150,7 @@ bool Total99Resources::loadPlugin(QString filename)
 
 #ifdef SALSA_WIN
 	// Reverting to the default behaviour
-	SetDllDirectory(NULL);
+	SetDllDirectory(nullptr);
 #endif
 
 	return true;
@@ -249,7 +249,7 @@ SalsaPlugin* Total99Resources::loadSinglePlugin(QString filename, QString* error
 	// Trying to load the plugin
 	QPluginLoader loader(filename);
 	SalsaPlugin* plugin = qobject_cast<SalsaPlugin*>(loader.instance());
-	if ((plugin == NULL) && (errorString != NULL)) {
+	if ((plugin == nullptr) && (errorString != nullptr)) {
 		*errorString = "Error trying to load \"" + filename + "\", reason: " + loader.errorString();
 	}
 

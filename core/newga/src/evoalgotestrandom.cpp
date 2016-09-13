@@ -48,13 +48,13 @@ void EvoAlgoTestRandom::runTest()
 	Genotype* g = getPrototype()->clone();
 	GenotypeFloat* gf;
 	GenotypeInt* gi;
-	if ((gf = dynamic_cast<GenotypeFloat*>(g)) != NULL)
+	if ((gf = dynamic_cast<GenotypeFloat*>(g)) != nullptr)
 	{
 		const float minVal = -5.0;
 		const float maxVal = 5.0;
 		gf->initRandom(minVal, maxVal);
 	}
-	else if ((gi = dynamic_cast<GenotypeInt*>(g)) != NULL)
+	else if ((gi = dynamic_cast<GenotypeInt*>(g)) != nullptr)
 	{
 		const int minVal = 0;
 		const int maxVal = 256;

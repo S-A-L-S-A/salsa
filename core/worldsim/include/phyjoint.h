@@ -780,7 +780,7 @@ public:
 	/**
 	 * \brief Returns the parent object
 	 *
-	 * A NULL return value means that the joint is attached to a fixed point
+	 * A nullptr return value means that the joint is attached to a fixed point
 	 * in the world; see Netwon Documentation
 	 * \return the parent object attached to this joint
 	 */
@@ -792,7 +792,7 @@ public:
 	/**
 	 * \brief Returns the parent object (const version)
 	 *
-	 * A NULL return value means that the joint is attached to a fixed point
+	 * A nullptr return value means that the joint is attached to a fixed point
 	 * in the world; see Netwon Documentation
 	 * \return the parent object attached to this joint
 	 */

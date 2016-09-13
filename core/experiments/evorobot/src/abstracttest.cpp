@@ -43,7 +43,7 @@ namespace salsa {
 // 	if (it != m_map.end()) {
 // 		return it.value();
 // 	} else {
-// 		return NULL;
+// 		return nullptr;
 // 	}
 // }
 //

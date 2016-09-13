@@ -113,7 +113,7 @@ namespace {
 		{
 			//--- Local System
 			const qglviewer::Frame* ls = fr;
-			if ( fr->referenceFrame() != NULL ) {
+			if ( fr->referenceFrame() != nullptr ) {
 				qDebug() << "Using Reference";
 				ls = fr->referenceFrame();
 			}
@@ -137,7 +137,7 @@ namespace {
 }
 
 RenderWorld::RenderWorld(GUIRenderersContainerDataExchange* dataProvider, QWidget* parent, Qt::WindowFlags flags)
-	: QGLViewer(parent, NULL, flags)
+	: QGLViewer(parent, nullptr, flags)
 	, m_dataProvider(dataProvider)
 	, m_contextAndData()
 	, m_showskygroundbox(true)
@@ -338,7 +338,7 @@ void RenderWorld::worldGraphicalInfoChanged()
 
 	// Here we have to change the dimension of the scene
 	MyCameraConstraint* tmp = dynamic_cast<MyCameraConstraint*>(camera()->frame()->constraint());
-	if ( tmp != NULL ) {
+	if ( tmp != nullptr ) {
 		setSceneBoundingBox( qglviewer::Vec( m_worldMin[0], m_worldMin[1], m_worldMin[2] ),
 		                     qglviewer::Vec( m_worldMax[0], m_worldMax[1], m_worldMax[2] ) );
 		tmp->minP = qglviewer::Vec( m_worldMin[0], m_worldMin[1], m_worldMin[2] );

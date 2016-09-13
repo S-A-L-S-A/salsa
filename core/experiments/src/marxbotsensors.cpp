@@ -88,8 +88,8 @@
 //
 // MarXbotProximityIRSensor::MarXbotProximityIRSensor(ConfigurationParameters& params, QString prefix) :
 // 	MarXbotSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL),
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr),
 // 	m_activeSensors(ConfigurationHelper::getBoolVector(params, prefix + "activeSensors", "111111111111111111111111")),
 // 	m_numActiveSensors(m_activeSensors.count(true))
 // {
@@ -186,9 +186,9 @@
 //
 // MarXbotGroundBottomIRSensor::MarXbotGroundBottomIRSensor(ConfigurationParameters& params, QString prefix) :
 // 	MarXbotSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL),
-// 	m_arena(NULL),
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr),
+// 	m_arena(nullptr),
 // 	m_invertActivation(ConfigurationHelper::getBool(params, prefix + "invertActivation", false))
 // {
 // 	// Here we also need the arena to work
@@ -278,9 +278,9 @@
 //
 // MarXbotGroundAroundIRSensor::MarXbotGroundAroundIRSensor(ConfigurationParameters& params, QString prefix) :
 // 	MarXbotSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL),
-// 	m_arena(NULL)
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr),
+// 	m_arena(nullptr)
 // {
 // 	// Here we also need the arena to work
 // 	addUsableResource("arena");
@@ -363,8 +363,8 @@
 //
 // MarXbotLinearCameraSensor::MarXbotLinearCameraSensor(ConfigurationParameters& params, QString prefix) :
 // 	MarXbotSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL),
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr),
 // 	m_numReceptors(ConfigurationHelper::getInt(params, prefix + "numReceptors", 8)),
 // 	m_useRedChannel(ConfigurationHelper::getBool(params, prefix + "useRedChannel", true)),
 // 	m_useGreenChannel(ConfigurationHelper::getBool(params, prefix + "useGreenChannel", true)),
@@ -372,7 +372,7 @@
 // 	m_usedColorChannels((m_useRedChannel ? 1 : 0) + (m_useGreenChannel ? 1 : 0) + (m_useBlueChannel ? 1 : 0)),
 // 	m_aperture(ConfigurationHelper::getDouble(params, prefix + "aperture", 360.0f)),
 // 	m_maxDistance(ConfigurationHelper::getDouble(params, prefix + "maxDistance", +Infinity)),
-// 	m_camera(NULL),
+// 	m_camera(nullptr),
 // 	m_drawCamera(ConfigurationHelper::getBool(params, prefix + "drawCamera", true))
 // {
 // 	// Few sanity checks
@@ -466,7 +466,7 @@
 // 		// Deleting the camera if the robot was deleted
 // 		if (resourceName == m_marxbotResource) {
 // 			delete m_camera;
-// 			m_camera = NULL;
+// 			m_camera = nullptr;
 // 		}
 //
 // 		return;
@@ -511,8 +511,8 @@
 //
 // MarXbotLinearCameraSensorNew::MarXbotLinearCameraSensorNew(ConfigurationParameters& params, QString prefix) :
 // 	MarXbotSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL),
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr),
 // 	m_numReceptors(ConfigurationHelper::getInt(params, prefix + "numReceptors", 8)),
 // 	m_useRedChannel(ConfigurationHelper::getBool(params, prefix + "useRedChannel", true)),
 // 	m_useGreenChannel(ConfigurationHelper::getBool(params, prefix + "useGreenChannel", true)),
@@ -521,7 +521,7 @@
 // 	m_aperture(ConfigurationHelper::getDouble(params, prefix + "aperture", 360.0f)),
 // 	m_maxDistance(ConfigurationHelper::getDouble(params, prefix + "maxDistance", +Infinity)),
 // 	m_receptorsRanges(),
-// 	m_camera(NULL),
+// 	m_camera(nullptr),
 // 	m_drawCamera(ConfigurationHelper::getBool(params, prefix + "drawCamera", true))
 // {
 // 	// We have to get here the receptorsRanges parameter
@@ -641,7 +641,7 @@
 // 		// Deleting the camera if the robot was deleted
 // 		if (resourceName == m_marxbotResource) {
 // 			delete m_camera;
-// 			m_camera = NULL;
+// 			m_camera = nullptr;
 // 		}
 //
 // 		return;
@@ -710,7 +710,7 @@
 // 		 * handPiece to be our owner. This draws an arrow representing
 // 		 * a vector
 // 		 * \param object the object to which this representation is
-// 		 *               attached. This must not be NULL
+// 		 *               attached. This must not be nullptr
 // 		 * \param offset the offset relative to object. The arrow starts
 // 		 *               from the offset in the frame of reference of
 // 		 *               the object
@@ -948,12 +948,12 @@
 //
 // MarXbotTractionSensor::MarXbotTractionSensor(ConfigurationParameters& params, QString prefix) :
 // 	MarXbotSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL),
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr),
 // 	m_maxForce(ConfigurationHelper::getDouble(params, prefix + "maxForce", 1.0f)),
 // 	m_minForce(ConfigurationHelper::getDouble(params, prefix + "minForce", 0.0f)),
 // 	m_drawSensor(ConfigurationHelper::getBool(params, prefix + "drawSensor", true)),
-// 	m_graphics(NULL)
+// 	m_graphics(nullptr)
 // {
 // 	if (m_maxForce < 0.0) {
 // 		ConfigurationHelper::throwUserConfigError(prefix + "maxForce", params.getValue(prefix + "maxForce"), "The parameter must be a positive real number");
@@ -1082,9 +1082,9 @@
 //
 // MarXbotSampledProximityIRSensor::MarXbotSampledProximityIRSensor(ConfigurationParameters& params, QString prefix) :
 // 	MarXbotSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_arena(NULL),
-// 	m_neuronsIterator(NULL),
+// 	m_robot(nullptr),
+// 	m_arena(nullptr),
+// 	m_neuronsIterator(nullptr),
 // 	m_activeSensors(ConfigurationHelper::getBoolVector(params, prefix + "activeSensors", "111111111111111111111111")),
 // 	m_averageNum(ConfigurationHelper::getInt(params, prefix + "averageNum", 0)),
 // 	m_numActiveSensors((m_averageNum == 0) ? m_activeSensors.count(true) : (24 / m_averageNum)),
@@ -1279,8 +1279,8 @@
 //
 // MarXbotAttachmentDeviceSensor::MarXbotAttachmentDeviceSensor(ConfigurationParameters& params, QString prefix) :
 // 	MarXbotSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL),
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr),
 // 	m_enablePosition(ConfigurationHelper::getBool(params, prefix + "enablePosition", true)),
 // 	m_enableStatus(ConfigurationHelper::getBool(params, prefix + "enableStatus", true)),
 // 	m_enableAttached(ConfigurationHelper::getBool(params, prefix + "enableAttached", true)),
@@ -1452,8 +1452,8 @@
 //
 // MarXbotWheelSpeedsSensor::MarXbotWheelSpeedsSensor(ConfigurationParameters& params, QString prefix) :
 // 	MarXbotSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL),
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr),
 // 	m_mode(stringToMode(ConfigurationHelper::getString(params, prefix + "mode", "Absolute")))
 // {
 // 	if (m_mode == UnknownMode) {
@@ -1586,11 +1586,11 @@
 // /*FRONT*/
 // MarXbotLaserFrontDistanceSensor::MarXbotLaserFrontDistanceSensor(ConfigurationParameters& params, QString prefix) :
 //     MarXbotSensor(params, prefix),
-//     m_robot(NULL),
-//     m_neuronsIterator(NULL),
-//     m_sensorLeft(NULL),
-//     m_sensorCenter(NULL),
-//     m_sensorRight(NULL),
+//     m_robot(nullptr),
+//     m_neuronsIterator(nullptr),
+//     m_sensorLeft(nullptr),
+//     m_sensorCenter(nullptr),
+//     m_sensorRight(nullptr),
 //     m_maxDistance(ConfigurationHelper::getDouble(params, prefix + "maxDistance", 1.0)),
 //     m_aperture(ConfigurationHelper::getDouble(params, prefix + "aperture", 60.0)),
 //     m_drawSensors(ConfigurationHelper::getBool(params, prefix + "drawSensors", false)),
@@ -1718,14 +1718,14 @@
 //
 // MarXbotLaserOmniDistanceSensor::MarXbotLaserOmniDistanceSensor(ConfigurationParameters& params, QString prefix) :
 //     MarXbotSensor(params, prefix),
-//     m_robot(NULL),
-//     m_neuronsIterator(NULL),
-//     m_sensorLeft(NULL),
-//     m_sensorCenter(NULL),
-//     m_sensorRight(NULL),
-//     m_sensorRearLeft(NULL),
-//     m_sensorRear(NULL),
-//     m_sensorRearRight(NULL),
+//     m_robot(nullptr),
+//     m_neuronsIterator(nullptr),
+//     m_sensorLeft(nullptr),
+//     m_sensorCenter(nullptr),
+//     m_sensorRight(nullptr),
+//     m_sensorRearLeft(nullptr),
+//     m_sensorRear(nullptr),
+//     m_sensorRearRight(nullptr),
 //     m_maxDistance(ConfigurationHelper::getDouble(params, prefix + "maxDistance", 1.0)),
 //     m_drawSensors(ConfigurationHelper::getBool(params, prefix + "drawSensors", false)),
 //     m_drawRays(ConfigurationHelper::getBool(params, prefix + "drawRays", false)),

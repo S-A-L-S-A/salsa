@@ -172,7 +172,7 @@ private:
 	struct ThreadOperationInfo
 	{
 		ThreadOperationInfo() :
-			operation(NULL),
+			operation(nullptr),
 			deleteAtEnd(false)
 		{
 		}

@@ -56,7 +56,7 @@
 // 	 * \param parent the parent widget
 // 	 * \param flags window flags
 // 	 */
-// 	BaseExperimentGUI(BaseExperiment* experiment, QWidget* parent = NULL, Qt::WindowFlags flags = 0);
+// 	BaseExperimentGUI(BaseExperiment* experiment, QWidget* parent = nullptr, Qt::WindowFlags flags = 0);
 //
 // 	/**
 // 	 * \brief Destructor

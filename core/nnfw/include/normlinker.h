@@ -31,7 +31,7 @@ namespace salsa {
 class SALSA_NNFW_API NormLinker : public MatrixLinker {
 public:
 	/*! Constructor */
-	NormLinker( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	NormLinker( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~NormLinker();
 	/*! Performs the euclidean norm calculation */

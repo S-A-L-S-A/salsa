@@ -500,7 +500,7 @@ namespace ComponentInstantiationTestHierarchy {
 
 	CorrectCircularDependencyB::CorrectCircularDependencyB(salsa::ConfigurationManager& params)
 		: salsa::Component(params)
-		, m_a(NULL)
+		, m_a(nullptr)
 	{
 		FC("CorrectCircularDependencyB::CorrectCircularDependencyB");
 	}
@@ -577,7 +577,7 @@ namespace ComponentInstantiationTestHierarchy {
 
 	ConstructorCircularDependencyB::ConstructorCircularDependencyB(salsa::ConfigurationManager& params)
 		: Component(params)
-		, m_a(NULL)
+		, m_a(nullptr)
 	{
 		FC("ConstructorCircularDependencyB::ConstructorCircularDependencyB");
 
@@ -656,7 +656,7 @@ namespace ComponentInstantiationTestHierarchy {
 
 	WrongCircularDependencyB::WrongCircularDependencyB(salsa::ConfigurationManager& params)
 		: salsa::Component(params)
-		, m_a(NULL)
+		, m_a(nullptr)
 	{
 		FC("WrongCircularDependencyB::WrongCircularDependencyB");
 	}
@@ -686,10 +686,10 @@ namespace ComponentInstantiationTestHierarchy {
 		: salsa::Component(params)
 		, m_p1()
 		, m_p2()
-		, m_another(NULL)
-		, m_two0(NULL)
-		, m_two1(NULL)
-		, m_two2(NULL)
+		, m_another(nullptr)
+		, m_two0(nullptr)
+		, m_two1(nullptr)
+		, m_two2(nullptr)
 	{
 		FC("DestructionOne::DestructionOne");
 
@@ -729,7 +729,7 @@ namespace ComponentInstantiationTestHierarchy {
 		: salsa::Component(params)
 		, m_f(f)
 		, m_p1()
-		, m_three(NULL)
+		, m_three(nullptr)
 	{
 		FC("DestructionTwo::DestructionTwo");
 
@@ -866,7 +866,7 @@ namespace ComponentInstantiationTestHierarchy {
 	DestructionAnother::DestructionAnother(salsa::ConfigurationManager& params)
 		: DestructionAbstractAnother(params)
 		, m_pa()
-		, m_three(NULL)
+		, m_three(nullptr)
 	{
 		FC("DestructionAnother::DestructionAnother");
 
@@ -917,8 +917,8 @@ namespace ConfigurationObserverTestHierarchy {
 
 	One::One(salsa::ConfigurationManager& params)
 		: salsa::Component(params)
-		, m_another(NULL)
-		, m_two(NULL)
+		, m_another(nullptr)
+		, m_two(nullptr)
 	{
 		m_another = params.getComponentFromGroup<Another>(confPath() + "another");
 		m_two = params.getComponentFromGroup<Two>(confPath() + "two");
@@ -936,7 +936,7 @@ namespace ConfigurationObserverTestHierarchy {
 
 	Two::Two(salsa::ConfigurationManager& params)
 		: salsa::Component(params)
-		, m_three(NULL)
+		, m_three(nullptr)
 	{
 		m_three = params.getComponentFromGroup<Three>(confPath() + "three");
 	}
@@ -958,7 +958,7 @@ namespace ConfigurationObserverTestHierarchy {
 
 	Another::Another(salsa::ConfigurationManager& params)
 		: salsa::Component(params)
-		, m_three(NULL)
+		, m_three(nullptr)
 	{
 		m_three = configurationManager().getComponentFromGroup<Three>(confPath() + "three");
 	}
@@ -1304,7 +1304,7 @@ namespace ResourcesTestHierarchy {
 	RCCFirst::RCCFirst(salsa::ConfigurationManager& params)
 		: salsa::Component(params)
 		, m_resource(17)
-		, m_second(NULL)
+		, m_second(nullptr)
 	{
 		declareResource("resource", &m_resource);
 

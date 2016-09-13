@@ -56,7 +56,7 @@ public:
 	 * \param parent the parent widget
 	 * \param flags window flags
 	 */
-	RenderWorldWrapperWidget(WorldDataUploadeDownloaderSimSide* otherEnd, QWidget* parent = NULL, Qt::WindowFlags flags = 0);
+	RenderWorldWrapperWidget(WorldDataUploadeDownloaderSimSide* otherEnd, QWidget* parent = nullptr, Qt::WindowFlags flags = 0);
 
 	/**
 	 * \brief Destructor

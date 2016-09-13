@@ -82,8 +82,8 @@
 //
 // MarXbotWheelVelocityMotor::MarXbotWheelVelocityMotor(ConfigurationParameters& params, QString prefix) :
 // 	MarXbotMotor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL)
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr)
 // {
 // }
 //
@@ -164,8 +164,8 @@
 //
 // MarXbotWheelVelOrient::MarXbotWheelVelOrient(ConfigurationParameters& params, QString prefix) :
 // 	MarXbotMotor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL)
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr)
 // {
 // }
 //
@@ -261,8 +261,8 @@
 //
 // MarXbotColorMotor::MarXbotColorMotor(ConfigurationParameters& params, QString prefix) :
 // 	MarXbotMotor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL),
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr),
 // 	m_onColor(ConfigurationHelper::getString(params, prefix + "onColor", "+00FF00").replace("+", "#")), // We have to do this because # is for comments in .ini files
 // 	m_offColor(ConfigurationHelper::getString(params, prefix + "offColor", "+0000FF").replace("+", "#")), // We have to do this because # is for comments in .ini files
 // 	m_onThreshold(ConfigurationHelper::getDouble(params, prefix + "onThreshold", 0.8f)),
@@ -359,8 +359,8 @@
 //
 // MarXbotAttachmentDeviceMotor::MarXbotAttachmentDeviceMotor(ConfigurationParameters& params, QString prefix) :
 // 	MarXbotMotor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL),
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr),
 // 	m_typeOfClosure(typeOfClosureFromString(ConfigurationHelper::getString(params, prefix + "typeOfClosure", "onlyClose"))),
 // 	m_noMotionRange(ConfigurationHelper::getDouble(params, prefix + "noMotionRange", 0.3f)),
 // 	m_noMotionRangeLow(0.5 - (m_noMotionRange / 2.0)),

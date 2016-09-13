@@ -63,8 +63,8 @@ const float Evonet::DEFAULT_VALUE = -99.0f;
 Evonet::Evonet(ConfigurationManager& params)
 	: Controller(params)
 	, neuronsMonitorUploader(20, DataUploader<ActivationsToGui>::IncreaseQueueSize /*BlockUploader*/) // we can be ahead of GUI by at most 20 steps, then we are blocked
-	, m_evonetUI(NULL)
-	, m_evonetIterator(NULL)
+	, m_evonetUI(nullptr)
+	, m_evonetIterator(nullptr)
 	, m_inputCurIndex(0)
 	, m_outputCurIndex(0)
 {
@@ -73,8 +73,8 @@ Evonet::Evonet(ConfigurationManager& params)
 	brange = 5.0; // bias range
 	neuronlesions = 0;
 	freep = new float[1000];
-	phep = NULL;
-	muts = NULL;
+	phep = nullptr;
+	muts = nullptr;
 	geneMaxValue = 255;
 	pheloaded = false;
 	selectedp= (float **) malloc(100 * sizeof(float **));
@@ -441,7 +441,7 @@ int Evonet::load_net_blocks(const char *filename, int mode)
 	const int bufferSize = 128;
 	char  cbuffer[bufferSize];
 
-	if ((fp = fopen(filename,"r")) != NULL)
+	if ((fp = fopen(filename,"r")) != nullptr)
 	{
 		fscanf(fp,"ARCHITECTURE\n");
 		fscanf(fp,"nneurons %d\n", &nneurons);
@@ -489,7 +489,7 @@ int Evonet::load_net_blocks(const char *filename, int mode)
 			mu = muts;
 			p = freep;
 
-			while (fgets(cbuffer,bufferSize,fp) != NULL && i < np)
+			while (fgets(cbuffer,bufferSize,fp) != nullptr && i < np)
 			{
 				//read values from line
 				QString line = cbuffer;
@@ -551,7 +551,7 @@ void Evonet::readNewPheLine(QStringList line, float* par, float* mut)
             }
         }
 */
-//        *par = strtof(tmp, NULL);
+//        *par = strtof(tmp, nullptr);
 
 
 
@@ -598,7 +598,7 @@ void Evonet::save_net_blocks(const char *filename, int mode)
 		}
 	}
 
-	if ((fp = fopen(filename,"w")) != NULL) {
+	if ((fp = fopen(filename,"w")) != nullptr) {
 		fprintf(fp,"ARCHITECTURE\n");
 		fprintf(fp,"nneurons %d\n", nneurons);
 		fprintf(fp,"nsensors %d\n", ninputs);
@@ -928,7 +928,7 @@ void Evonet::updateNet()
 
 	// If a downloader is associated with the neuronsMonitorUploader, uploading activations
 	if (neuronsMonitorUploader.downloaderPresent() && updateMonitor) {
-		// This call can return NULL if GUI is too slow
+		// This call can return nullptr if GUI is too slow
 		DatumToUpload<ActivationsToGui> d(neuronsMonitorUploader);
 
 		d->activations = true;
@@ -1174,7 +1174,7 @@ void Evonet::setRanges(double weight, double bias, double gain)
 float* Evonet::getOldestStoredActivations()
 {
 	if (firstStoredActivation == nextStoredActivation) {
-		return NULL;
+		return nullptr;
 	}
 
 	const int ret = firstStoredActivation;

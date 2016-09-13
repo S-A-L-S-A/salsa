@@ -27,7 +27,7 @@
 namespace salsa {
 
 ConfigurationObserver::ConfigurationObserver()
-	: m_manager(NULL)
+	: m_manager(nullptr)
 {
 }
 
@@ -42,7 +42,7 @@ void ConfigurationObserver::observe(ConfigurationManager* manager)
 		stopObserving();
 	}
 
-	if (manager != NULL) {
+	if (manager != nullptr) {
 		m_manager = manager;
 
 		m_manager->addObserver(this);
@@ -51,15 +51,15 @@ void ConfigurationObserver::observe(ConfigurationManager* manager)
 
 void ConfigurationObserver::stopObserving()
 {
-	if (m_manager != NULL) {
+	if (m_manager != nullptr) {
 		m_manager->removeObserver(this);
-		m_manager = NULL;
+		m_manager = nullptr;
 	}
 }
 
 void ConfigurationObserver::observedDestroyed()
 {
-	m_manager = NULL;
+	m_manager = nullptr;
 }
 
 } // end namespace salsa

@@ -44,9 +44,9 @@ void OwnerFollower::setDisplacement(const wMatrix& displacement)
 
 void OwnerFollower::postUpdate()
 {
-	if (owner() != NULL) {
+	if (owner() != nullptr) {
 		const WObject* const wObjectOwner = dynamic_cast<WObject*>(owner());
-		if (wObjectOwner != NULL) {
+		if (wObjectOwner != nullptr) {
 			setMatrix(wObjectOwner->matrix());
 		}
 	}

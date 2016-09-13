@@ -107,7 +107,7 @@
 // 	 * The calling instance will lose the possibility to access the
 // 	 * resources it had before this call
 // 	 * \param other the instance with which resources will be shared. If
-// 	 *              NULL we lose the association with other objects and
+// 	 *              nullptr we lose the association with other objects and
 // 	 *              start with an empty resource set
 // 	 * \note This is NOT thread safe (both this and the other instance
 // 	 *       should not be being accessed by other threads)

@@ -74,7 +74,7 @@ PhyHinge::PhyHinge(World* world, SharedDataWrapper<Shared> shared, PhyObject* pa
 	d->localMatrixParent.sanitifize();
 
 	// Calculating the local matrix respect to child object
-	if (m_parent != NULL) {
+	if (m_parent != nullptr) {
 		d->globalMatrixParent = m_shared->localMatrixParent * m_parent->matrix();
 	} else {
 		d->globalMatrixParent = m_shared->localMatrixParent;
@@ -113,7 +113,7 @@ void PhyHinge::construct(const wVector& axis, const wVector& centre, real startA
 	// Calculating the axis that connects the centre of joint with centre of child object
 	wVector start = centre;
 	wVector end = m_child->matrix().w_pos;
-	if (m_parent != NULL) {
+	if (m_parent != nullptr) {
 		start -= m_parent->matrix().w_pos;
 	}
 	wVector newx = (start - end).normalize();
@@ -132,7 +132,7 @@ void PhyHinge::construct(const wVector& axis, const wVector& centre, real startA
 	d->localMatrixParent.sanitifize();
 
 	// Calculating the local matrix respect to child object
-	if (m_parent != NULL) {
+	if (m_parent != nullptr) {
 		d->globalMatrixParent = m_shared->localMatrixParent * m_parent->matrix();
 	} else {
 		d->globalMatrixParent = m_shared->localMatrixParent;
@@ -144,7 +144,7 @@ void PhyHinge::construct(const wVector& axis, const wVector& centre, real startA
 	wQuaternion q(axis, startAngle);
 	d->localMatrixParent = m_shared->localMatrixParent * wMatrix(q, wVector(0.0, 0.0, 0.0));
 	d->localMatrixParent.w_pos = centre;
-	if (m_parent != NULL) {
+	if (m_parent != nullptr) {
 		d->globalMatrixParent = m_shared->localMatrixParent * m_parent->matrix();
 	} else {
 		d->globalMatrixParent = m_shared->localMatrixParent;
@@ -166,7 +166,7 @@ void PhyHinge::construct(const wVector& axis, const wVector& centre, real startA
 wVector PhyHinge::centre() const
 {
 	// Calculating global matrix if necessary
-	if (parent() != NULL) {
+	if (parent() != nullptr) {
 		return (m_shared->localMatrixParent * parent()->matrix()).w_pos;
 	} else {
 		return m_shared->globalMatrixParent.w_pos;
@@ -185,7 +185,7 @@ void PhyHinge::updateJointInfo()
 	//--- calculate the global matrices
 	//--- if parent doesn't exist, then globalMatrixParent and localMatrixParent coincide and
 	//--- there is no need to re-assign it because it was already done in constructor
-	if (parent() != NULL) {
+	if (parent() != nullptr) {
 		d->globalMatrixParent = m_shared->localMatrixParent * parent()->matrix();
 	}
 	d->globalMatrixChild = m_shared->localMatrixChild * child()->matrix();
@@ -216,7 +216,7 @@ void PhyHinge::updateJointInfo()
 	// we revert to computing the difference with the previous position divided by the timestep
 	if (m_shared->enabled) {
 		//--- the velocity is calculated projecting the angular velocity of objects on the main axis (z_ax)
-		//    This code is not general, becuase it is not appliable in the case of parent==NULL
+		//    This code is not general, becuase it is not appliable in the case of parent==nullptr
 		//    and also return different results respect to the kinematic way
 		//    Then [Gianluca] comment it and replaced with the same code used in the kinematic mode
 		wVector omegaParent, omegaChild;

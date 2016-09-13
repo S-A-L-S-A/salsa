@@ -121,7 +121,7 @@ WEntity* World::getEntity(const QString& name)
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 const QHash<PhyObject*, QList<PhyJoint*> >& World::mapObjectsToJoints() const
@@ -180,7 +180,7 @@ bool World::checkContacts(PhyObject* obj1, PhyObject* obj2, int maxContacts, QVe
 	const int numContacts = NewtonCollisionCollide(m_priv->world, maxContacts, obj1->m_priv->collision, &t1[0][0], obj2->m_priv->collision, &t2[0][0], tmp_contacts, tmp_normals, tmp_penetra, 0);
 
 	// Now copying contacts information into user vectors
-	if (contacts != NULL) {
+	if (contacts != nullptr) {
 		contacts->resize(numContacts);
 		for (int i = 0; i < numContacts; i++) {
 			(*contacts)[i].x = tmp_contacts[0 + i * 3];
@@ -188,7 +188,7 @@ bool World::checkContacts(PhyObject* obj1, PhyObject* obj2, int maxContacts, QVe
 			(*contacts)[i].z = tmp_contacts[2 + i * 3];
 		}
 	}
-	if (normals != NULL) {
+	if (normals != nullptr) {
 		normals->resize(numContacts);
 		for (int i = 0; i < numContacts; i++) {
 			(*normals)[i].x = tmp_normals[0 + i * 3];
@@ -196,7 +196,7 @@ bool World::checkContacts(PhyObject* obj1, PhyObject* obj2, int maxContacts, QVe
 			(*normals)[i].z = tmp_normals[2 + i * 3];
 		}
 	}
-	if (penetra != NULL) {
+	if (penetra != nullptr) {
 		penetra->resize(numContacts);
 		for (int i = 0; i < numContacts; i++) {
 			(*penetra)[i] = tmp_penetra[i];
@@ -211,7 +211,7 @@ bool World::checkContacts(PhyObject* obj1, PhyObject* obj2, int maxContacts, QVe
 bool World::smartCheckContacts(PhyObject* obj1, PhyObject* obj2, int maxContacts, QVector<wVector>* contacts)
 {
 	if (obj1->getKinematic() || obj2->getKinematic() || (obj1->getStatic() && obj2->getStatic())) {
-		return checkContacts(obj1, obj2, maxContacts, contacts, NULL, NULL);
+		return checkContacts(obj1, obj2, maxContacts, contacts, nullptr, nullptr);
 	} else {
 		if (!m_cmap.contains(obj1)) {
 			return false;
@@ -220,7 +220,7 @@ bool World::smartCheckContacts(PhyObject* obj1, PhyObject* obj2, int maxContacts
 		// Taking the vector of contacts
 		const ContactVec& c = m_cmap[obj1];
 		bool collision = false;
-		if (contacts != NULL) {
+		if (contacts != nullptr) {
 			contacts->clear();
 		}
 
@@ -228,7 +228,7 @@ bool World::smartCheckContacts(PhyObject* obj1, PhyObject* obj2, int maxContacts
 		for (int i = 0; i < c.size(); i++) {
 			if (c[i].collide == obj2) {
 				collision = true;
-				if ((contacts != NULL) && (contacts->size() < maxContacts)) {
+				if ((contacts != nullptr) && (contacts->size() < maxContacts)) {
 					// Adding contact point
 					contacts->append(c[i].worldPos);
 				}
@@ -251,7 +251,7 @@ real World::collisionRayCast(PhyObject* obj, wVector start, wVector end, wVector
 	// Computing the contact
 	const real contact = NewtonCollisionRayCast(obj->m_priv->collision, &localStart[0], &localEnd[0], n, &attribute);
 
-	if (normal != NULL) {
+	if (normal != nullptr) {
 		(*normal)[0] = n[0];
 		(*normal)[1] = n[1];
 		(*normal)[2] = n[2];
@@ -269,7 +269,7 @@ RayCastHitVector World::worldRayCast(wVector start, wVector end, bool onlyCloses
 	WorldPrivate::WorldRayCastCallbackUserData data(start, end, onlyClosest, ignoredObjs);
 
 	// Casting the ray
-	NewtonWorldRayCast(m_priv->world, &start[0], &end[0], WorldPrivate::worldRayFilterCallback, &data, NULL);
+	NewtonWorldRayCast(m_priv->world, &start[0], &end[0], WorldPrivate::worldRayFilterCallback, &data, nullptr);
 
 	return data.vector;
 #else
@@ -392,7 +392,7 @@ void World::advance()
 
 void World::deleteEntity(WEntity* entity)
 {
-	if (entity == NULL) {
+	if (entity == nullptr) {
 		return;
 	}
 
@@ -414,7 +414,7 @@ void World::deleteEntity(WEntity* entity)
 
 	// Now performing all actions that are type-dependent
 	PhyObject* const phyObject = dynamic_cast<PhyObject*>(entity);
-	if (phyObject != NULL) {
+	if (phyObject != nullptr) {
 		// Destroying joints. We have to do this because Newton destroys them anyway
 		if (m_mapObjJoints.contains(phyObject)) {
 			// Getting the list of joints for the object
@@ -461,14 +461,14 @@ void World::deleteEntity(WEntity* entity)
 		}
 	} else {
 		PhyJoint* const phyJoint = dynamic_cast<PhyJoint*>(entity);
-		if (phyJoint != NULL) {
+		if (phyJoint != nullptr) {
 			if (m_mapObjJoints.contains(phyJoint->child())) {
 				m_mapObjJoints[phyJoint->child()].removeAll(phyJoint);
 				if (m_mapObjJoints[phyJoint->child()].isEmpty()) {
 					m_mapObjJoints.remove(phyJoint->child());
 				}
 			}
-			if ((phyJoint->parent() != NULL) && (m_mapObjJoints.contains(phyJoint->parent()))) {
+			if ((phyJoint->parent() != nullptr) && (m_mapObjJoints.contains(phyJoint->parent()))) {
 				m_mapObjJoints[phyJoint->parent()].removeAll(phyJoint);
 				if (m_mapObjJoints[phyJoint->parent()].isEmpty()) {
 					m_mapObjJoints.remove(phyJoint->parent());
@@ -510,7 +510,7 @@ void World::deleteEntity(WEntity* entity)
 
 void World::deleteRenderersContainer(AbstractRendererContainer* c)
 {
-	if (c == NULL) {
+	if (c == nullptr) {
 		return;
 	}
 
@@ -641,7 +641,7 @@ void World::destroyWorld()
 
 		// We don't delete entities that have a parent because the parent has to delete them.
 		// However, we remove them from the list
-		if (e.entity->owner() == NULL) {
+		if (e.entity->owner() == nullptr) {
 			deleteEntity(e.entity);
 		}
 	}
@@ -653,7 +653,7 @@ void World::destroyWorld()
 
 		// We don't delete entities that have a parent because the parent has to delete them.
 		// However, we remove them from the list
-		if (e.entity->owner() == NULL) {
+		if (e.entity->owner() == nullptr) {
 			deleteEntity(e.entity);
 		}
 	}
@@ -704,7 +704,7 @@ void World::postCreationActionForType(PhyJoint* entity)
 	entity->postCreatePrivateJoint();
 
 	m_mapObjJoints[entity->child()].push_back(entity);
-	if (entity->parent() != NULL) {
+	if (entity->parent() != nullptr) {
 		m_mapObjJoints[entity->parent()].push_back(entity);
 	}
 }

@@ -553,12 +553,12 @@ private:
 	{
 		QMutexLocker locker(&m_mutex);
 
-		T* ret = NULL;
+		T* ret = nullptr;
 		if (m_descriptors.contains(fullPath)) {
 			AbstractDescriptor* const d = m_descriptors.value(fullPath);
 			ret = dynamic_cast<T*>(d);
 
-			if (ret == NULL) {
+			if (ret == nullptr) {
 				throw WrongParameterTypeException(
 					fullPath.toLatin1().data(),
 					descriptorType2String(type2DescriptorType<T>()).toLatin1().data(),
@@ -586,7 +586,7 @@ private:
 		const AbstractDescriptor* const d = descriptor(fullPath);
 		const T* const typedDescr = dynamic_cast<const T*>(d);
 
-		if (typedDescr == NULL) {
+		if (typedDescr == nullptr) {
 			throw WrongParameterTypeException(
 				fullPath.toLatin1().data(),
 				descriptorType2String(type2DescriptorType<T>()).toLatin1().data(),

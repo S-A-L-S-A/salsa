@@ -136,7 +136,7 @@ void Pattern::describe( QString type ) {
 
 LearningAlgorithm::LearningAlgorithm( ConfigurationManager& params, QString prefix, Component* parent )
 	: Component(params,prefix,parent) {
-	this->netp = NULL;
+	this->netp = nullptr;
 }
 
 LearningAlgorithm::~LearningAlgorithm() {

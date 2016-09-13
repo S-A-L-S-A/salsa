@@ -132,14 +132,14 @@ void BackPropagationAlgo::learn() {
 	propagDeltas();
 	// --- make the learn !!
 	for ( int i=0; i<cluster_deltas_vec.size(); ++i ) {
-		if ( cluster_deltas_vec[i].cluster != NULL) {
+		if ( cluster_deltas_vec[i].cluster != nullptr) {
 			for( unsigned int b=0; b<cluster_deltas_vec[i].cluster->numNeurons(); b++ ) {
 				cluster_deltas_vec[i].cluster->biases()[b] += -learn_rate*-cluster_deltas_vec[i].deltas_inputs[b];
 			}
 		}
 
 		for ( int j=0;  j<cluster_deltas_vec[i].incoming_linkers_vec.size(); ++j ) {
-			if ( cluster_deltas_vec[i].incoming_linkers_vec[j] != NULL ) {
+			if ( cluster_deltas_vec[i].incoming_linkers_vec[j] != nullptr ) {
 				DoubleVector& outputs = cluster_deltas_vec[i].incoming_linkers_vec[j]->from()->outputs();
 				DoubleVector& inputs = cluster_deltas_vec[i].deltas_inputs;
 				DoubleMatrix& matrix = cluster_deltas_vec[i].incoming_linkers_vec[j]->matrix();

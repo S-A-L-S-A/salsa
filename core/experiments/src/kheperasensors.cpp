@@ -53,8 +53,8 @@ void KheperaSensor::describe(RegisteredComponentDescriptor& d)
 
 // KheperaProximityIRSensor::KheperaProximityIRSensor(ConfigurationParameters& params, QString prefix) :
 // 	KheperaSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL)
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr)
 // {
 // }
 //
@@ -127,8 +127,8 @@ void KheperaSensor::describe(RegisteredComponentDescriptor& d)
 
 KheperaSampledProximityIRSensor::KheperaSampledProximityIRSensor(ConfigurationManager& params)
 	: KheperaSensor(params)
-	, m_robot(NULL)
-	, m_arena(NULL)
+	, m_robot(nullptr)
+	, m_arena(nullptr)
 	, m_activeSensors(ConfigurationHelper::decodeListOfBools(ConfigurationHelper::getString(configurationManager(), confPath() + "activeSensors")))
 	, m_numActiveSensors(m_activeSensors.count(true))
 	, m_roundSamples(ConfigurationHelper::getString(configurationManager(), confPath() + "roundSamples"))
@@ -250,7 +250,7 @@ void KheperaSampledProximityIRSensor::resourceChanged(QString name, Component*, 
 {
 	if (name == m_kheperaResource) {
 		if ((changeType == ResourceDeleted) || (changeType == ResourceDeclaredAsNull)) {
-			m_robot = NULL;
+			m_robot = nullptr;
 		} else {
 			m_robot = getResource<Khepera>();
 
@@ -259,7 +259,7 @@ void KheperaSampledProximityIRSensor::resourceChanged(QString name, Component*, 
 		}
 	} else if (name == "arena") {
 		if ((changeType == ResourceDeleted) || (changeType == ResourceDeclaredAsNull)) {
-			m_arena = NULL;
+			m_arena = nullptr;
 		} else {
 			m_arena = getResource<Arena>();
 		}
@@ -270,9 +270,9 @@ void KheperaSampledProximityIRSensor::resourceChanged(QString name, Component*, 
 
 // KheperaSampledLightSensor::KheperaSampledLightSensor(ConfigurationParameters& params, QString prefix) :
 // 	KheperaSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_arena(NULL),
-// 	m_neuronsIterator(NULL),
+// 	m_robot(nullptr),
+// 	m_arena(nullptr),
+// 	m_neuronsIterator(nullptr),
 // 	m_activeSensors(ConfigurationHelper::getBoolVector(params, prefix + "activeSensors", "11111111")),
 // 	m_numActiveSensors(m_activeSensors.count(true)),
 // 	m_lightSamples(ConfigurationHelper::getString(params, prefix + "lightSamples", "light.sam"))
@@ -409,9 +409,9 @@ void KheperaSampledProximityIRSensor::resourceChanged(QString name, Component*, 
 //
 // KheperaGroundSensor::KheperaGroundSensor(ConfigurationParameters& params, QString prefix) :
 // 	KheperaSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_arena(NULL),
-// 	m_neuronsIterator(NULL)
+// 	m_robot(nullptr),
+// 	m_arena(nullptr),
+// 	m_neuronsIterator(nullptr)
 //
 // {
 // 	// Here we also need the arena to work
@@ -529,8 +529,8 @@ void KheperaSampledProximityIRSensor::resourceChanged(QString name, Component*, 
 //
 // KheperaWheelSpeedsSensor::KheperaWheelSpeedsSensor(ConfigurationParameters& params, QString prefix) :
 // 	KheperaSensor(params, prefix),
-// 	m_robot(NULL),
-// 	m_neuronsIterator(NULL),
+// 	m_robot(nullptr),
+// 	m_neuronsIterator(nullptr),
 // 	m_mode(stringToMode(ConfigurationHelper::getString(params, prefix + "mode", "Absolute")))
 // {
 // 	if (m_mode == UnknownMode) {

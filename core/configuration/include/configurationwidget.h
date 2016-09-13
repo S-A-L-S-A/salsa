@@ -63,7 +63,7 @@ public:
 	 * \param parent the parent widget
 	 * \param f the window flags for this widget
 	 */
-	ConfigurationWidget(ConfigurationManager& params, QString prefix, QWidget* parent = NULL, Qt::WindowFlags f = 0) :
+	ConfigurationWidget(ConfigurationManager& params, QString prefix, QWidget* parent = nullptr, Qt::WindowFlags f = 0) :
 		QWidget(parent, f),
 		m_params(params),
 		m_prefix(prefix)

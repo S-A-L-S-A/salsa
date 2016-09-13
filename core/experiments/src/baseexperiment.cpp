@@ -160,8 +160,8 @@
 // 	, ThreadOperation()
 // 	, FlowControlled()
 // 	, m_operationsVector()
-// 	, m_actionSignalsMapper(new QSignalMapper(NULL)) // parent is NULL because we take care of deleting this object by ourself
-// 	, m_workerThread(new WorkerThread(NULL)) // parent is NULL because we take care of deleting this object by ourself
+// 	, m_actionSignalsMapper(new QSignalMapper(nullptr)) // parent is nullptr because we take care of deleting this object by ourself
+// 	, m_workerThread(new WorkerThread(nullptr)) // parent is nullptr because we take care of deleting this object by ourself
 // 	, m_runningOperationID(-1)
 // 	, m_batchRunning(false)
 // 	, m_stop(false)

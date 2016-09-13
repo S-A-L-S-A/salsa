@@ -39,11 +39,11 @@ PhyObject::PhyObject(World* world, SharedDataWrapper<Shared> shared, QString nam
 PhyObject::~PhyObject()
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if (m_priv != NULL) {
-		if (m_priv->body != NULL) {
+	if (m_priv != nullptr) {
+		if (m_priv->body != nullptr) {
 			NewtonDestroyBody(m_worldPriv->world, m_priv->body);
 		}
-		if (m_priv->collision != NULL) {
+		if (m_priv->collision != nullptr) {
 			NewtonReleaseCollision(m_worldPriv->world, m_priv->collision);
 		}
 	}
@@ -55,7 +55,7 @@ PhyObject::~PhyObject()
 void PhyObject::setKinematic(bool b, bool c)
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return;
 	}
 #endif
@@ -114,7 +114,7 @@ void PhyObject::setKinematic(bool b, bool c)
 void PhyObject::setStatic(bool b)
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return;
 	}
 #endif
@@ -134,7 +134,7 @@ void PhyObject::setStatic(bool b)
 void PhyObject::reset()
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return;
 	}
 
@@ -166,7 +166,7 @@ void PhyObject::reset()
 void PhyObject::addForce(const wVector& force)
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return;
 	}
 #endif
@@ -177,7 +177,7 @@ void PhyObject::addForce(const wVector& force)
 void PhyObject::setForce(const wVector& force)
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return;
 	}
 #endif
@@ -188,7 +188,7 @@ void PhyObject::setForce(const wVector& force)
 wVector PhyObject::force()
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return wVector(0.0, 0.0, 0.0);
 	}
 #endif
@@ -203,7 +203,7 @@ wVector PhyObject::force()
 void PhyObject::addTorque(const wVector& torque)
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return;
 	}
 #endif
@@ -214,7 +214,7 @@ void PhyObject::addTorque(const wVector& torque)
 void PhyObject::setTorque(const wVector& torque)
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return;
 	}
 #endif
@@ -225,7 +225,7 @@ void PhyObject::setTorque(const wVector& torque)
 wVector PhyObject::torque()
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return wVector(0.0, 0.0, 0.0);
 	}
 #endif
@@ -240,7 +240,7 @@ wVector PhyObject::torque()
 void PhyObject::setMassInertiaVec(const wVector& mi)
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return;
 	}
 #endif
@@ -287,7 +287,7 @@ wVector PhyObject::invInertiaVec() const
 void PhyObject::setMass(real newmass)
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return;
 	}
 
@@ -323,7 +323,7 @@ real PhyObject::mass() const
 void PhyObject::setOmega(const wVector& omega)
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return;
 	}
 
@@ -334,7 +334,7 @@ void PhyObject::setOmega(const wVector& omega)
 wVector PhyObject::omega()
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return wVector(0.0, 0.0, 0.0);
 	}
 #endif
@@ -349,7 +349,7 @@ wVector PhyObject::omega()
 void PhyObject::setVelocity(const wVector& velocity)
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return;
 	}
 
@@ -360,7 +360,7 @@ void PhyObject::setVelocity(const wVector& velocity)
 wVector PhyObject::velocity()
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return wVector(0.0, 0.0, 0.0);
 	}
 #endif
@@ -375,7 +375,7 @@ wVector PhyObject::velocity()
 void PhyObject::addImpulse(const wVector& pointDeltaVeloc, const wVector& pointPosit)
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return;
 	}
 
@@ -386,7 +386,7 @@ void PhyObject::addImpulse(const wVector& pointDeltaVeloc, const wVector& pointP
 void PhyObject::setMaterial(QString material)
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return;
 	}
 #endif
@@ -420,13 +420,13 @@ void PhyObject::setForcesDrawn(bool d)
 
 bool PhyObject::aboutToChangeMatrix()
 {
-	return (m_priv != NULL);
+	return (m_priv != nullptr);
 }
 
 void PhyObject::changedMatrix()
 {
 #ifdef WORLDSIM_USE_NEWTON
-	if ((m_priv == NULL) || (m_priv->body == NULL)) {
+	if ((m_priv == nullptr) || (m_priv->body == nullptr)) {
 		return;
 	}
 
@@ -440,7 +440,7 @@ void PhyObject::createPrivateObject(bool onlyCollisionShape, const wMatrix* coll
 #ifdef WORLDSIM_USE_NEWTON
 	NewtonCollision* c = NewtonCreateNull( m_worldPriv->world );
 	m_priv->collision = c;
-	if (collisionShapeOffset != NULL) {
+	if (collisionShapeOffset != nullptr) {
 		m_shared.getModifiableShared()->collisionShapeOffset = *collisionShapeOffset;
 	}
 	if (!onlyCollisionShape) {

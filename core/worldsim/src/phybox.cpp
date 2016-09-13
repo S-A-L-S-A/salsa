@@ -62,9 +62,9 @@ PhyBox::~PhyBox()
 void PhyBox::createPrivateObject(bool onlyCollisionShape, const wMatrix* collisionShapeOffset)
 {
 #ifdef WORLDSIM_USE_NEWTON
-	NewtonCollision* c = NewtonCreateBox( m_worldPriv->world, m_shared->sideX, m_shared->sideY, m_shared->sideZ, 1, (collisionShapeOffset == NULL) ? NULL : &(*collisionShapeOffset)[0][0] );
+	NewtonCollision* c = NewtonCreateBox( m_worldPriv->world, m_shared->sideX, m_shared->sideY, m_shared->sideZ, 1, (collisionShapeOffset == nullptr) ? nullptr : &(*collisionShapeOffset)[0][0] );
 	m_priv->collision = c;
-	if (collisionShapeOffset != NULL) {
+	if (collisionShapeOffset != nullptr) {
 		m_shared.getModifiableShared()->collisionShapeOffset = *collisionShapeOffset;
 	}
 	if (!onlyCollisionShape) {

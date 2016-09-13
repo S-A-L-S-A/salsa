@@ -177,9 +177,9 @@ private slots:
 	{
 		registerAllComponents();
 
-		m_rResource = NULL;
-		m_cResource = NULL;
-		m_qResource = NULL;
+		m_rResource = nullptr;
+		m_cResource = nullptr;
+		m_qResource = nullptr;
 
 		// Creating the dummy objects to use as resources
 		class DummyResource : public Resource
@@ -194,7 +194,7 @@ private slots:
 		m.createParameter("dummy", "type", "Standalone");
 		m_cResource = m.getComponentFromGroup<Component>("dummy");
 
-		m_qResource = new QObject(NULL);
+		m_qResource = new QObject(nullptr);
 	}
 
 	void noResources()
@@ -389,9 +389,9 @@ private slots:
 
 		s->declareResourceAsNull("i");
 
-		QVERIFY(s->getResource<int>("i") == NULL);
-		QVERIFY(s->getResource<double>("i") == NULL);
-		QVERIFY(s->getResource<Resource>("i") == NULL);
+		QVERIFY(s->getResource<int>("i") == nullptr);
+		QVERIFY(s->getResource<double>("i") == nullptr);
+		QVERIFY(s->getResource<Resource>("i") == nullptr);
 		QVERIFY(s->resourceExists("i", s.get()));
 	}
 

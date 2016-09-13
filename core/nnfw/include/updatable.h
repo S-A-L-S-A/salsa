@@ -32,7 +32,7 @@ namespace salsa {
 class SALSA_NNFW_API Updatable : public Component {
 public:
 	/*! Constructor */
-	Updatable( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	Updatable( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Destructor */
 	virtual ~Updatable();
 	/*! Update the object */

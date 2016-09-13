@@ -32,8 +32,8 @@ namespace salsa {
 class SALSA_NNFW_TEMPLATE OutputFunction : public Component {
 public:
 	/*! Constructor */
-	OutputFunction( ConfigurationManager& params, QString prefix, Component* parent = NULL )
-		: Component(params,prefix,parent), clusterv(NULL), tmp1(1), tmp2(1) { /*nothing to do*/ };
+	OutputFunction( ConfigurationManager& params, QString prefix, Component* parent = nullptr )
+		: Component(params,prefix,parent), clusterv(nullptr), tmp1(1), tmp2(1) { /*nothing to do*/ };
 	/*! Destructor */
 	virtual ~OutputFunction() { /*nothing to do*/ };
 	/*! Calculate the outputs of neurons by the net inputs given */
@@ -60,7 +60,7 @@ public:
 	 *  This is automatically called, and in normal case you don't have to call it directly
 	 */
 	void setCluster( Cluster* cl ) {
-		if ( clusterv != NULL ) throw OutputFunctionSetClusterException();
+		if ( clusterv != nullptr ) throw OutputFunctionSetClusterException();
 		clusterv = cl;
 		clusterSetted();
 	};

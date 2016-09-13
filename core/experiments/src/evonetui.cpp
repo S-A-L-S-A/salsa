@@ -52,9 +52,9 @@ namespace salsa {
 EvonetUI::EvonetUI(Evonet* net, DataUploader<ActivationsToGui>* neuronsMonitorUploader)
 	: QObject()
 	, ComponentUI()
-	, edv(NULL)
-// 	, hlv(NULL)
-// 	, networkDialog(NULL)
+	, edv(nullptr)
+// 	, hlv(nullptr)
+// 	, networkDialog(nullptr)
 	, evonet(net)
 	, neuronsMonitorDownloader( DataDownloader<ActivationsToGui>::NoNotification )
 	, nNeurons(0)
@@ -150,10 +150,10 @@ void EvonetUI::onEvonetUpdated() {
 		QElapsedTimer timer;
 		timer.start();
 		while(true) {
-			// This call returns NULL if no new activation is available
+			// This call returns nullptr if no new activation is available
 			const ActivationsToGui* d = neuronsMonitorDownloader.downloadDatum();
 
-			if (d == NULL) {
+			if (d == nullptr) {
 				break;
 			}
 

@@ -60,26 +60,26 @@ const real PhyMarXbot::attachdevz = turreth * 0.2f;
 const real PhyMarXbot::attachdevm = 0.03f;
 
 PhyMarXbot::PhyMarXbot(World* world, SharedDataWrapper<Shared> shared, QString name, const wMatrix& tm)
-	: QObject(NULL)
+	: QObject(nullptr)
 	, WObject(world, shared, name, tm)
 	, m_shared(shared)
-	, m_base(NULL)
+	, m_base(nullptr)
 	, m_wheels()
 	, m_wheelstm()
 	, m_wheelJoints()
-	, m_wheelsCtrl(NULL)
-	, m_turret(NULL)
+	, m_wheelsCtrl(nullptr)
+	, m_turret(nullptr)
 	, m_turrettm()
-	, m_forceSensor(NULL)
-	, m_attachdev(NULL)
+	, m_forceSensor(nullptr)
+	, m_attachdev(nullptr)
 	, m_attachdevtm()
-	, m_attachdevjoint(NULL)
-	, m_attachdevCtrl(NULL)
-	, m_proximityIR(NULL)
-	, m_groundBottomIR(NULL)
-	, m_groundAroundIR(NULL)
-	, m_tractionSensor(NULL)
-	, m_frontMarker(NULL)
+	, m_attachdevjoint(nullptr)
+	, m_attachdevCtrl(nullptr)
+	, m_proximityIR(nullptr)
+	, m_groundBottomIR(nullptr)
+	, m_groundAroundIR(nullptr)
+	, m_tractionSensor(nullptr)
+	, m_frontMarker(nullptr)
 	, m_uniformColor()
 {
 	// --- reference frame
@@ -368,13 +368,13 @@ void PhyMarXbot::setDrawFrontMarker(bool drawMarker)
 		m_frontMarker->setOwner(this, true);
 	} else {
 		world()->deleteEntity(m_frontMarker);
-		m_frontMarker = NULL;
+		m_frontMarker = nullptr;
 	}
 }
 
 bool PhyMarXbot::getDrawFrontMarker() const
 {
-	return (m_frontMarker != NULL);
+	return (m_frontMarker != nullptr);
 }
 
 void PhyMarXbot::enableAttachmentDevice(bool enable)
@@ -403,9 +403,9 @@ void PhyMarXbot::enableAttachmentDevice(bool enable)
 		m_attachdevCtrl->attachmentDeviceAboutToBeDestroyed();
 		// Destroying the joint and the attachment device
 		world()->deleteEntity(m_attachdevjoint);
-		m_attachdevjoint = NULL;
+		m_attachdevjoint = nullptr;
 		world()->deleteEntity(m_attachdev);
-		m_attachdev = NULL;
+		m_attachdev = nullptr;
 	}
 }
 
@@ -431,7 +431,7 @@ void PhyMarXbot::doKinematicSimulation(bool k)
 			m_wheelJoints[i]->enable(false);
 		}
 		m_forceSensor->enable(false);
-		if (m_attachdevjoint != NULL) {
+		if (m_attachdevjoint != nullptr) {
 			m_attachdevjoint->enable(false);
 		}
 
@@ -441,7 +441,7 @@ void PhyMarXbot::doKinematicSimulation(bool k)
 			m_wheels[i]->setKinematic(true, true);
 		}
 		m_turret->setKinematic(true, true);
-		if (m_attachdev != NULL) {
+		if (m_attachdev != nullptr) {
 			m_attachdev->setKinematic(true, true);
 		}
 	} else {
@@ -451,7 +451,7 @@ void PhyMarXbot::doKinematicSimulation(bool k)
 			m_wheels[i]->setKinematic(false);
 		}
 		m_turret->setKinematic(false);
-		if (m_attachdev != NULL) {
+		if (m_attachdev != nullptr) {
 			m_attachdev->setKinematic(false);
 		}
 
@@ -462,7 +462,7 @@ void PhyMarXbot::doKinematicSimulation(bool k)
 		}
 		m_forceSensor->enable(true);
 		m_forceSensor->updateJointInfo();
-		if (m_attachdevjoint != NULL) {
+		if (m_attachdevjoint != nullptr) {
 			m_attachdevjoint->enable(true);
 			m_attachdevjoint->updateJointInfo();
 		}
@@ -537,7 +537,7 @@ void PhyMarXbot::changedMatrix() {
 	}
 	m_turret->setMatrix(m_turrettm * tm);
 	m_forceSensor->updateJointInfo();
-	if ((m_attachdev != NULL) && (m_attachdevjoint != NULL)) {
+	if ((m_attachdev != nullptr) && (m_attachdevjoint != nullptr)) {
 		m_attachdev->setMatrix(m_attachdevtm * tm);
 		m_attachdevjoint->updateJointInfo();
 	}

@@ -121,7 +121,7 @@ private:
 	 */
 	class nsgaGenotype {
 	public:
-		nsgaGenotype( Genotype* g=NULL, int rank=0, double distance=0 ) {
+		nsgaGenotype( Genotype* g=nullptr, int rank=0, double distance=0 ) {
 			genotype = g;
 			this->rank = rank;
 			this->distance = distance;

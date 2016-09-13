@@ -120,7 +120,7 @@ Arena::Arena(ConfigurationManager& params)
 	, m_plane(createPlane(m_z))
 	, m_robotResourceWrappers()
 	, m_kinematicRobotCollisions()
-	, m_world(NULL)
+	, m_world(nullptr)
 {
 	addNotifiedResource("world");
 
@@ -187,8 +187,8 @@ void Arena::addRobots(RobotsList robots)
 			m_objects2DList.push_back(wrapper);
 			m_robotResourceWrappers.insert(robot, wrapper);
 		} else {
-			// Adding the robot to the map with a NULL wrapper
-			m_robotResourceWrappers.insert(robot, NULL);
+			// Adding the robot to the map with a nullptr wrapper
+			m_robotResourceWrappers.insert(robot, nullptr);
 		}
 	}
 }
@@ -198,7 +198,7 @@ const WheeledRobot2DWrapper* Arena::getRobotWrapper(RobotResource robotResource)
 	if (m_robotResourceWrappers.contains(robotResource)) {
 		return m_robotResourceWrappers[robotResource];
 	} else {
-		return NULL;
+		return nullptr;
 	}
 }
 
@@ -286,7 +286,7 @@ bool Arena::delete2DObject(PhyObject2DWrapper* obj)
 {
 	int index = m_objects2DList.indexOf(obj);
 
-	if ((index == -1) || (dynamic_cast<salsa::WheeledRobot2DWrapper*>(obj) != NULL)) {
+	if ((index == -1) || (dynamic_cast<salsa::WheeledRobot2DWrapper*>(obj) != nullptr)) {
 		return false;
 	}
 
@@ -429,7 +429,7 @@ void Arena::resourceChanged(QString name, Component* owner, ResourceChangeType c
 				break;
 			case ResourceDeclaredAsNull:
 			case ResourceDeleted:
-				m_world = NULL;
+				m_world = nullptr;
 				break;
 		}
 	} else if (m_robotResourceWrappers.contains(robotResource)) {
@@ -440,7 +440,7 @@ void Arena::resourceChanged(QString name, Component* owner, ResourceChangeType c
 				// We have to delete the previous wrapper and add a new one
 				{
 					// Deleting the old wrapper if it exists
-					if (m_robotResourceWrappers[robotResource] != NULL) {
+					if (m_robotResourceWrappers[robotResource] != nullptr) {
 						m_objects2DList.remove(m_objects2DList.indexOf(m_robotResourceWrappers[robotResource]));
 
 						// Deleting the wrapper
@@ -464,7 +464,7 @@ void Arena::resourceChanged(QString name, Component* owner, ResourceChangeType c
 
 					// Deleting the wrapper
 					delete m_robotResourceWrappers[robotResource];
-					m_robotResourceWrappers[robotResource] = NULL;
+					m_robotResourceWrappers[robotResource] = nullptr;
 				}
 				break;
 		}
@@ -476,7 +476,7 @@ void Arena::simpleCollisionsPreAdvance()
 	// Cycling through the list of robots and storing the matrix
 	foreach (WheeledRobot2DWrapper* robot, m_robotResourceWrappers) {
 		// We only act on kinematic robots
-		if ((robot == NULL) || (!robot->robotOnPlane()->isKinematic())) {
+		if ((robot == nullptr) || (!robot->robotOnPlane()->isKinematic())) {
 			continue;
 		}
 		robot->storePreviousMatrix();
@@ -494,7 +494,7 @@ void Arena::simpleCollisionsHandle()
 	// Cycling through the list of robots
 	foreach (WheeledRobot2DWrapper* robot, m_robotResourceWrappers) {
 		// We only act on kinematic robots
-		if ((robot == NULL) || (!robot->robotOnPlane()->isKinematic())) {
+		if ((robot == nullptr) || (!robot->robotOnPlane()->isKinematic())) {
 			continue;
 		}
 
@@ -503,7 +503,7 @@ void Arena::simpleCollisionsHandle()
 		foreach (PhyObject2DWrapper* obj, m_objects2DList) {
 			// Not checking the collision of the robot with itself (obviously...) and
 			// not checking collisions with non-collidable objects
-			if ((obj == robot) || ((obj->phyObject() != NULL) && (obj->phyObject()->isCollidable() == false))) {
+			if ((obj == robot) || ((obj->phyObject() != nullptr) && (obj->phyObject()->isCollidable() == false))) {
 				continue;
 			}
 
@@ -529,7 +529,7 @@ void Arena::simpleCollisionsHandle()
 
 				// If obj is a robot, registering the collision for him, too
 				WheeledRobot2DWrapper* otherRobot = dynamic_cast<WheeledRobot2DWrapper*>(obj);
-				if (otherRobot != NULL) {
+				if (otherRobot != nullptr) {
 					m_kinematicRobotCollisions[otherRobot].insert(robot);
 				}
 			}
@@ -547,7 +547,7 @@ void Arena::circleCollisionsPreAdvance()
 	// Cycling through the list of robots and storing the matrix
 	foreach (WheeledRobot2DWrapper* robot, m_robotResourceWrappers) {
 		// We only act on kinematic robots
-		if ((robot == NULL) || (!robot->robotOnPlane()->isKinematic())) {
+		if ((robot == nullptr) || (!robot->robotOnPlane()->isKinematic())) {
 			continue;
 		}
 		robot->storePreviousMatrix();
@@ -573,7 +573,7 @@ void Arena::circleCollisionsHandle()
 	// Cycling through the list of robots
 	foreach (WheeledRobot2DWrapper* robot, m_robotResourceWrappers) {
 		// We only act on kinematic robots
-		if ((robot == NULL) || (!robot->robotOnPlane()->isKinematic())) {
+		if ((robot == nullptr) || (!robot->robotOnPlane()->isKinematic())) {
 			continue;
 		}
 
@@ -587,7 +587,7 @@ void Arena::circleCollisionsHandle()
 		foreach (PhyObject2DWrapper* obj, m_objects2DList) {
 			// Not checking the collision of the robot with itself (obviously...) and
 			// not checking collisions with non-collidable objects
-			if ((obj == robot) || ((obj->phyObject() != NULL) && (obj->phyObject()->isCollidable() == false))) {
+			if ((obj == robot) || ((obj->phyObject() != nullptr) && (obj->phyObject()->isCollidable() == false))) {
 				continue;
 			}
 
@@ -616,7 +616,7 @@ void Arena::circleCollisionsHandle()
 
 				// If obj is a robot, registering the collision for him, too
 				WheeledRobot2DWrapper* otherRobot = dynamic_cast<WheeledRobot2DWrapper*>(obj);
-				if (otherRobot != NULL) {
+				if (otherRobot != nullptr) {
 					m_kinematicRobotCollisions[otherRobot].insert(robot);
 				}
 			}
@@ -625,10 +625,10 @@ void Arena::circleCollisionsHandle()
 		// If the robot collides with something else we have to check if it only collided with movable objects (we then
 		// move both the objects and the robot) or with static objects (we thus move only the robot)
 		if (collides) {
-			PhyObject2DWrapper* firstStaticObj = NULL;
+			PhyObject2DWrapper* firstStaticObj = nullptr;
 			double distanceStaticObj = 0.0;
 			double angleStaticObj = 0.0;
-			for (int i = 0; (i < distances.size()) && (firstStaticObj == NULL); i++) {
+			for (int i = 0; (i < distances.size()) && (firstStaticObj == nullptr); i++) {
 				PhyObject2DWrapper* obj = collidingObjs[i];
 				if (obj->getStatic()) {
 					// We get here also if the other object is a robot (getStatic() returns true for robots...)
@@ -639,7 +639,7 @@ void Arena::circleCollisionsHandle()
 				}
 			}
 
-			if (firstStaticObj == NULL) {
+			if (firstStaticObj == nullptr) {
 				const wVector robotDisplacement = robot->position() - robot->previousMatrix().w_pos;
 				const wVector objectDisplacement = robotDisplacement.scale(robotDisplacementFractionToObject);
 
@@ -656,7 +656,7 @@ void Arena::circleCollisionsHandle()
 					obj->wObject()->setMatrix(objectMtr);
 				}
 			} else {
-				if (dynamic_cast<WheeledRobot2DWrapper*>(firstStaticObj) != NULL) {
+				if (dynamic_cast<WheeledRobot2DWrapper*>(firstStaticObj) != nullptr) {
 					WheeledRobot2DWrapper* otherRobot = (WheeledRobot2DWrapper*) firstStaticObj;
 
 					// Here we move both robots back (along the direction of their velocity) of a quantity which is sufficient
@@ -736,7 +736,7 @@ void Arena::circleCollisionsHandle()
 					robotMtr = robotMtr.rotateAround(wVector::Z(), robotMtr.w_pos, globalRNG->getDouble(-noiseOnOrientation, noiseOnOrientation));
 					robotMtr.w_pos = robotPos;
 					otherRobot->wObject()->setMatrix(robotMtr);
-				} else if (dynamic_cast<Box2DWrapper*>(firstStaticObj) != NULL) {
+				} else if (dynamic_cast<Box2DWrapper*>(firstStaticObj) != nullptr) {
 #if defined(__GNUC__) && defined(DEVELOPER_WARNINGS)
 	#warning COMPLETARE QUESTO (COLLISIONI CON BOX)
 #endif
@@ -749,7 +749,7 @@ void Arena::circleCollisionsHandle()
 // 					angleStaticObj
 
 					robot->wObject()->setMatrix(robot->previousMatrix());
-				} else if (dynamic_cast<Cylinder2DWrapper*>(firstStaticObj) != NULL) {
+				} else if (dynamic_cast<Cylinder2DWrapper*>(firstStaticObj) != nullptr) {
 					// Computing the robot displacement
 					const wVector robotDisplacement = robot->position() - robot->previousMatrix().w_pos;
 

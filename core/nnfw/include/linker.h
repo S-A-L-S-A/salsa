@@ -32,7 +32,7 @@ namespace salsa {
 class SALSA_NNFW_API Linker : public Updatable {
 public:
 	/*! Constructor */
-	Linker( ConfigurationManager& params, QString prefix, Component* parent = NULL );
+	Linker( ConfigurationManager& params, QString prefix, Component* parent = nullptr );
 	/*! Return the Cluster From */
 	Cluster* from() const {
 		return fromc;

@@ -476,8 +476,8 @@ public:
 	 * This returns the oldest activation vector and deletes it (memory is
 	 * not freed, simply an internal index is incremented), so that
 	 * subsequent calls will progressively return newer activation vectors.
-	 * Returns NULL when no activation vector is stored
-	 * \return the oldest stored activation or NULL if no stored activation
+	 * Returns nullptr when no activation vector is stored
+	 * \return the oldest stored activation or nullptr if no stored activation
 	 *         vector is present
 	 */
 	float* getOldestStoredActivations();

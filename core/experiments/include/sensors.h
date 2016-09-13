@@ -109,7 +109,7 @@ namespace salsa {
 // 	 * The calling instance will lose the possibility to access the
 // 	 * resources it had before this call
 // 	 * \param other the instance with which resources will be shared. If
-// 	 *              NULL we lose the association with other objects and
+// 	 *              nullptr we lose the association with other objects and
 // 	 *              start with an empty resource set
 // 	 * \note This is NOT thread safe (both this and the other instance
 // 	 *       should not be being accessed by other threads)
@@ -235,7 +235,7 @@ namespace salsa {
 // 		 * \brief Constructor
 // 		 *
 // 		 * \param obj the object to which the sensor is attached. This cannot be
-// 		 *            NULL
+// 		 *            nullptr
 // 		 * \param mtr the transformation matrix relative to the object to which
 // 		 *            the sensor is attached. The up vector is the local Z axis,
 // 		 *            the camera points towards X and is on the XY plane.
@@ -357,7 +357,7 @@ namespace salsa {
 //
 // 		/**
 // 		 * \brief The object to which the sensor is attached. This cannot be
-// 		 *        NULL
+// 		 *        nullptr
 // 		 */
 // 		WObject* const m_object;
 //
@@ -433,7 +433,7 @@ namespace salsa {
 // 		/**
 // 		 * \brief The graphical representation of the camera, if present
 // 		 *
-// 		 * This is NULL if m_drawCamera is false
+// 		 * This is nullptr if m_drawCamera is false
 // 		 */
 // 		__LinearCamera_internal::LinearCameraGraphic* m_graphicalCamera;
 // 	};
@@ -492,7 +492,7 @@ namespace salsa {
 // 		 * Use this constructor to have receptors that have the same aperture
 // 		 * and are symmetrical with respect to the X axis
 // 		 * \param obj the object to which the sensor is attached. This cannot be
-// 		 *            NULL
+// 		 *            nullptr
 // 		 * \param mtr the transformation matrix relative to the object to which
 // 		 *            the sensor is attached. The up vector is the local Z axis,
 // 		 *            the camera points towards X and is on the XY plane.
@@ -511,7 +511,7 @@ namespace salsa {
 // 		 * Use this contructor to be able to directly specify the list of
 // 		 * receptors
 // 		 * \param obj the object to which the sensor is attached. This cannot be
-// 		 *            NULL
+// 		 *            nullptr
 // 		 * \param mtr the transformation matrix relative to the object to which
 // 		 *            the sensor is attached. The up vector is the local Z axis,
 // 		 *            the camera points towards X and is on the XY plane.
@@ -623,7 +623,7 @@ namespace salsa {
 //
 // 		/**
 // 		 * \brief The object to which the sensor is attached. This cannot be
-// 		 *        NULL
+// 		 *        nullptr
 // 		 */
 // 		WObject* const m_object;
 //
@@ -673,7 +673,7 @@ namespace salsa {
 // 		/**
 // 		 * \brief The graphical representation of the camera, if present
 // 		 *
-// 		 * This is NULL if m_drawCamera is false
+// 		 * This is nullptr if m_drawCamera is false
 // 		 */
 // 		__LinearCamera_internal::LinearCameraGraphic* m_graphicalCamera;
 // 	};

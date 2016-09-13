@@ -139,7 +139,7 @@ void SimulatedIRGroundSensorController::update()
 
 			// Now taking the color of the nearest solid, converting to HSL and taking
 			// normalized lightness as activation
-			if (m_sensors[i]->getRayCastHit().object != NULL) {
+			if (m_sensors[i]->getRayCastHit().object != nullptr) {
 				m_activations[i] = m_sensors[i]->getRayCastHit().object->color().lightnessF();
 			} else {
 				m_activations[i] = 0.0;

@@ -79,7 +79,7 @@ PhyCompoundObjectShared::PhyCompoundObjectShared()
 	: PhyObjectShared()
 	, m_components()
 	, m_destroySharedDataHolders(true)
-	, m_phyCompoundObject(NULL)
+	, m_phyCompoundObject(nullptr)
 {
 }
 
@@ -113,7 +113,7 @@ PhyCompoundObjectShared& PhyCompoundObjectShared::operator=(const PhyCompoundObj
 		return *this;
 	}
 
-	if (m_phyCompoundObject == NULL) {
+	if (m_phyCompoundObject == nullptr) {
 		m_phyCompoundObject = other.m_phyCompoundObject;
 
 		// We have to create shared data of components
@@ -235,18 +235,18 @@ PhyCompoundObject::~PhyCompoundObject()
 	// This is to avoid throwing exceptions when components are destroyed
 	m_skipComponentOwnershipChecks = true;
 	foreach (PhyCompoundComponentAndAbstractComponent c, m_components) {
-		// Setting a NULL listener: we cannot be the listener anymore because we will be already destroyed when
+		// Setting a nullptr listener: we cannot be the listener anymore because we will be already destroyed when
 		// components are destroyed
-		c.object->registerOwnertshipChangesListener(NULL);
+		c.object->registerOwnertshipChangesListener(nullptr);
 	}
 }
 
 void PhyCompoundObject::createPrivateObject(bool onlyCollisionShape, const wMatrix* collisionShapeOffset)
 {
 #ifdef WORLDSIM_USE_NEWTON
-	// Newton does not support a collision shape offset for compound collisions. If we got anything different from NULL
+	// Newton does not support a collision shape offset for compound collisions. If we got anything different from nullptr
 	// in collisionShapeOffset, printing a warning
-	if (collisionShapeOffset != NULL) {
+	if (collisionShapeOffset != nullptr) {
 		qWarning("Cannot set a collision shape offset for PhyCompoundObjects in Newton");
 	}
 
@@ -261,11 +261,11 @@ void PhyCompoundObject::createPrivateObject(bool onlyCollisionShape, const wMatr
 	m_priv->collision = c;
 	for(int i = 0; i < dim; i++) {
 		NewtonReleaseCollision(m_worldPriv->world, m_components[i].object->m_priv->collision);
-		m_components[i].object->m_priv->collision = NULL;
+		m_components[i].object->m_priv->collision = nullptr;
 
 		// We also delete the private object of components, they are not used anymore
 		delete m_components[i].object->m_priv;
-		m_components[i].object->m_priv = NULL;
+		m_components[i].object->m_priv = nullptr;
 	}
 	delete []temp;
 	if (!onlyCollisionShape) {

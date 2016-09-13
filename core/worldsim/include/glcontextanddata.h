@@ -124,7 +124,7 @@ public:
 	/**
 	 * \brief Returns the QGLWidget inside which we draw
 	 *
-	 * This can be NULL if we are not drawn inside a QGLWidget
+	 * This can be nullptr if we are not drawn inside a QGLWidget
 	 * \return the QGLWidget inside which we draw
 	 */
 	QGLWidget* widget()
@@ -135,7 +135,7 @@ public:
 	/**
 	 * \brief Returns the QGLWidget inside which we draw (const version)
 	 *
-	 * This can be NULL if we are not drawn inside a QGLWidget
+	 * This can be nullptr if we are not drawn inside a QGLWidget
 	 * \return the QGLWidget inside which we draw
 	 */
 	const QGLWidget* widget() const
@@ -320,7 +320,7 @@ protected:
 	/**
 	 * \brief The QGLWidget inside which we draw
 	 *
-	 * This can be NULL if we are not drawn inside a QGLWidget
+	 * This can be nullptr if we are not drawn inside a QGLWidget
 	 */
 	QGLWidget* m_widget;
 

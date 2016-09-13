@@ -35,7 +35,7 @@
 
 // QUI CREARE UNA RISORSA PER OGNI OGGETTO CREATO TRAMITE LA FACTORY CON IL FILE DI CONFIGURAZIONE E DARE COME NOME IL NOME DEL GRUPPO (NON IL FULL PATH, SOLO IL NOME DEL GRUPPO, IL NOME DOPO L ULTIMO /). NELLA SOTTOCLASSI DI Component SI PUÒ PENSARE DI AGGIUNGERE ANCHE UN ALTRO NOME DI RISORSA, AD ESEMPIO PARI AL PARAMETRO name DEI ROBOT. GLI ALIAS, PERÒ, (NOME DIVERSO PER LA STESSA RISORSA) FORSE NECESSITANO CAMBIAMENTI NEL CODICE PERCHÈ QUANDO SI MODIFICA O CANCELLA UNA RISORSA SI DOVREBBERO CAMBIARE TUTTI GLI ALIAS (FORSE METTERE LA LISTA DEGLI ALIAS NEL ResourceHandler?)
 
-#warning CONTROLLARE CHE getComponentFromGroup FUNZIONI CORRETTAMENTE ANCHE PER PRENDERE UN OGGETTO DOPO LA FASE DI CREAZIONE E CONFIGURAZIONE (AD ESEMPIO PER AVERE IL PARENT DI UN OGGETTO, DEVE ESSERE POSSIBILE SPECIFICARE CHE SE L OGGETTO NON ESISTE DEVE TORNARE NULL E NON CREARE NULLA) E/O AGGIUNGERE FUNZIONI CHE RITORNANO OGGETTI ASSOCIATI AD UN CONFIGURATION NODE E PERMETTANO DI NAVIGARE L ALBERO DEGLI OGGETTI/GRUPPI
+#warning CONTROLLARE CHE getComponentFromGroup FUNZIONI CORRETTAMENTE ANCHE PER PRENDERE UN OGGETTO DOPO LA FASE DI CREAZIONE E CONFIGURAZIONE (AD ESEMPIO PER AVERE IL PARENT DI UN OGGETTO, DEVE ESSERE POSSIBILE SPECIFICARE CHE SE L OGGETTO NON ESISTE DEVE TORNARE nullptr E NON CREARE nullptrA) E/O AGGIUNGERE FUNZIONI CHE RITORNANO OGGETTI ASSOCIATI AD UN CONFIGURATION NODE E PERMETTANO DI NAVIGARE L ALBERO DEGLI OGGETTI/GRUPPI
 
 #warning VEDI COMMENTO SOTTO
 // SEGNARSI QUESTA COSA, È IMPORTANTE: NEL NUOVO GA (E PRESUMIBILMENTE ANCHE
@@ -159,7 +159,7 @@ ConfigurationManager* ConfigurationManager::createDeepCopy(ConfigurationManager*
 	// Allocating memory for the destination if necessary. The unique_ptr for the allocated object
 	// is needed to stay exception-safe
 	std::unique_ptr<ConfigurationManager> allocatedObj;
-	if (dest == NULL) {
+	if (dest == nullptr) {
 		dest = new ConfigurationManager();
 		allocatedObj.reset(dest);
 	} else {
@@ -409,7 +409,7 @@ void ConfigurationManager::callPostConfigureInitializationForConfiguredComponent
 void ConfigurationManager::registerAllStoredNotifications()
 {
 	for (QList<RegisteredRequestForResourceChangeNotification>::iterator it = m_shared->requestedNotifications.begin(); it != m_shared->requestedNotifications.end(); it++) {
-		if (it->resourceOwner == NULL) {
+		if (it->resourceOwner == nullptr) {
 			it->notifee->addNotifiedResource(it->resourceName);
 		} else {
 			it->notifee->addNotifiedResource(it->resourceName, it->resourceOwner);
@@ -492,7 +492,7 @@ QString ConfigurationManager::getPrefixForCurrentComponent()
 void ConfigurationManager::recursivelyDestroyComponents(ConfigurationNode* node)
 {
 	ComponentAndStatus o = node->getComponentForNode("");
-	node->setComponentForNode("", NULL, ComponentNotCreated);
+	node->setComponentForNode("", nullptr, ComponentNotCreated);
 	delete o.component;
 
 	// Recursively calling self for all child nodes

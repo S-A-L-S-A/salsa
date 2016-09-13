@@ -69,7 +69,7 @@ public:
 		m_menuText("Abstract Text"),
 		m_tooltip("Abstract Text"),
 		m_iconFilename(QString()),
-		m_component(NULL)
+		m_component(nullptr)
 	{
 	}
 
@@ -179,7 +179,7 @@ private:
 // 	/**
 // 	 * \brief Returns the test with the given name
 // 	 *
-// 	 * \return the test with the given name or NULL if no test exists with
+// 	 * \return the test with the given name or nullptr if no test exists with
 // 	 *         that name
 // 	 */
 // 	static AbstractTest* getTest(QString name);

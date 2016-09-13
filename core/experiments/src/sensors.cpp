@@ -44,7 +44,7 @@ namespace salsa {
 // 	m_additionalInputs(ConfigurationHelper::getUnsignedInt(params, prefix + "additionalInputs", 1)),
 // 	m_neuronsIteratorResource(actualResourceNameForMultirobot(ConfigurationHelper::getString(params, prefix + "neuronsIterator", "neuronsIterator"))),
 // 	m_additionalInputsResource(actualResourceNameForMultirobot(ConfigurationHelper::getString(params, prefix + "additionalInputsResource", "additionalInputs"))),
-// 	m_neuronsIterator(NULL)
+// 	m_neuronsIterator(nullptr)
 // {
 // 	usableResources(QStringList() << m_neuronsIteratorResource << m_additionalInputsResource);
 //
@@ -499,10 +499,10 @@ namespace salsa {
 // 		m_apertureMin(-m_aperture / 2.0),
 // 		m_apertureMax(m_aperture / 2.0),
 // 		m_receptorRange(m_aperture / double(m_numReceptors)),
-// 		m_arena(NULL),
+// 		m_arena(nullptr),
 // 		m_drawCamera(false),
 // 		m_ignoreWalls(false),
-// 		m_graphicalCamera(NULL)
+// 		m_graphicalCamera(nullptr)
 //
 // 	{
 // 		// Stating which resources we use here
@@ -579,7 +579,7 @@ namespace salsa {
 // 	void LinearCamera::update()
 // 	{
 // 		// Getting the list of objects from the arena (if we have the pointer to the arena)
-// 		if (m_arena == NULL) {
+// 		if (m_arena == nullptr) {
 // 			m_receptors.fill(m_backgroundColor);
 //
 // 			return;
@@ -724,7 +724,7 @@ namespace salsa {
 // 					m_arena = getResource<Arena>();
 // 					break;
 // 				case Deleted:
-// 					m_arena = NULL;
+// 					m_arena = nullptr;
 // 					break;
 // 			}
 // 		} else {
@@ -1010,10 +1010,10 @@ namespace salsa {
 // 		m_receptorsRanges(receptorsFromApertureAndNumReceptors(aperture, numReceptors)),
 // 		m_maxDistance(maxDistance),
 // 		m_backgroundColor(backgroundColor),
-// 		m_arena(NULL),
+// 		m_arena(nullptr),
 // 		m_drawCamera(false),
 // 		m_ignoreWalls(false),
-// 		m_graphicalCamera(NULL)
+// 		m_graphicalCamera(nullptr)
 //
 // 	{
 // 		// Stating which resources we use here
@@ -1028,10 +1028,10 @@ namespace salsa {
 // 		m_receptorsRanges(receptorsRanges),
 // 		m_maxDistance(maxDistance),
 // 		m_backgroundColor(backgroundColor),
-// 		m_arena(NULL),
+// 		m_arena(nullptr),
 // 		m_drawCamera(false),
 // 		m_ignoreWalls(false),
-// 		m_graphicalCamera(NULL)
+// 		m_graphicalCamera(nullptr)
 //
 // 	{
 // 		// Stating which resources we use here
@@ -1109,7 +1109,7 @@ namespace salsa {
 // 	void LinearCamera::update()
 // 	{
 // 		// Getting the list of objects from the arena (if we have the pointer to the arena)
-// 		if (m_arena == NULL) {
+// 		if (m_arena == nullptr) {
 // 			m_receptors.fill(m_backgroundColor);
 //
 // 			return;
@@ -1257,7 +1257,7 @@ namespace salsa {
 // 					m_arena = getResource<Arena>();
 // 					break;
 // 				case Deleted:
-// 					m_arena = NULL;
+// 					m_arena = nullptr;
 // 					break;
 // 			}
 // 		} else {

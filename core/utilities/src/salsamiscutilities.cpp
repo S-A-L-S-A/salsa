@@ -164,7 +164,7 @@ QPair<CommentsPositions, StringsPositions> findCommentsAndStrings(const QString&
 			break;
 	}
 
-	if (parsedProgram != NULL) {
+	if (parsedProgram != nullptr) {
 		*parsedProgram = cleaned;
 	}
 

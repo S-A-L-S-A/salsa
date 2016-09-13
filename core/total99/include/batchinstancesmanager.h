@@ -54,7 +54,7 @@ namespace __BatchInstancesManager_internal {
 		 * \param options additional command line options
 		 * \param parent the parent widget
 		 */
-		BatchProcess(QString confFilePath, QString action, QStringList options, QWidget* parent = NULL);
+		BatchProcess(QString confFilePath, QString action, QStringList options, QWidget* parent = nullptr);
 
 		/**
 		 * \brief Destructor
@@ -175,7 +175,7 @@ public:
 	 * \param parent the parent widget
 	 * \param flags the window flags
 	 */
-	BatchInstancesManager(salsa::ConfigurationManager& params, QWidget* parent = NULL, Qt::WindowFlags flags = 0);
+	BatchInstancesManager(salsa::ConfigurationManager& params, QWidget* parent = nullptr, Qt::WindowFlags flags = 0);
 
 	/**
 	 * \brief Destructor

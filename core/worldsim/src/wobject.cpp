@@ -225,7 +225,7 @@ void RenderWObject::drawLabel(const WObjectShared* sharedData, GLContextAndData*
 
 	// We can only draw text through QGLWidget, so if this fails, we quit
 	QGLWidget* const qglwidget = contextAndData->widget();
-	if (qglwidget == NULL) {
+	if (qglwidget == nullptr) {
 		return;
 	}
 

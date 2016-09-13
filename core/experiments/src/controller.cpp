@@ -33,8 +33,8 @@ Controller::Controller(ConfigurationManager& params)
 	: Component(params)
 	, m_inputIterator()
 	, m_outputIterator()
-	, m_inputsList(NULL)
-	, m_outputsList(NULL)
+	, m_inputsList(nullptr)
+	, m_outputsList(nullptr)
 {
 }
 

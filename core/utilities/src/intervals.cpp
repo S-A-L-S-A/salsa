@@ -26,9 +26,9 @@ SimpleInterval SimpleInterval::fromString(QString str, bool* ok)
 {
 	SimpleInterval ret;
 
-	// If not NULL ok is set to false (will be set to true at the end of the function
+	// If not nullptr ok is set to false (will be set to true at the end of the function
 	// if everything goes well)
-	if (ok != NULL) {
+	if (ok != nullptr) {
 		*ok = false;
 	}
 
@@ -50,7 +50,7 @@ SimpleInterval SimpleInterval::fromString(QString str, bool* ok)
 	}
 
 	// The string is a valid interval, setting ok to true if we have to
-	if (ok != NULL) {
+	if (ok != nullptr) {
 		*ok = true;
 	}
 	return ret;
@@ -109,7 +109,7 @@ QVector<SimpleInterval> SimpleInterval::vectorOfSimpleIntervalsFromString(QStrin
 		intervals.append(SimpleInterval::fromString(str.mid(startInterval, (curPos - startInterval + 1)), &conversionOk));
 	} while ((curPos != (str.size() - 1)) && conversionOk);
 
-	if (ok != NULL) {
+	if (ok != nullptr) {
 		*ok = conversionOk;
 	}
 

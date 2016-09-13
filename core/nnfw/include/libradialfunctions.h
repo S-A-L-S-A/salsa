@@ -32,7 +32,7 @@ namespace salsa {
 class SALSA_NNFW_API GaussFunction : public OutputFunction {
 public:
 	/*! Construct */
-	GaussFunction( ConfigurationManager& params, QString prefix, Component* parent=NULL );
+	GaussFunction( ConfigurationManager& params, QString prefix, Component* parent=nullptr );
 	/*! Destructor */
 	virtual ~GaussFunction() { /* Nothing to do */ };
 	/*! Implement the Gaussian function */

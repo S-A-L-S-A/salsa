@@ -413,14 +413,14 @@ const WObject* PhyObject2DWrapper::wObject() const
 
 void PhyObject2DWrapper::setStatic(bool s)
 {
-	if (phyObject() != NULL) {
+	if (phyObject() != nullptr) {
 		phyObject()->setStatic(s);
 	}
 }
 
 bool PhyObject2DWrapper::getStatic() const
 {
-	if (phyObject() != NULL) {
+	if (phyObject() != nullptr) {
 		return phyObject()->getStatic();
 	} else {
 		return true;
@@ -429,14 +429,14 @@ bool PhyObject2DWrapper::getStatic() const
 
 void PhyObject2DWrapper::setKinematic(bool b, bool c)
 {
-	if (phyObject() != NULL) {
+	if (phyObject() != nullptr) {
 		phyObject()->setKinematic(b, c);
 	}
 }
 
 bool PhyObject2DWrapper::getKinematic() const
 {
-	if (phyObject() != NULL) {
+	if (phyObject() != nullptr) {
 		return phyObject()->getKinematic();
 	} else {
 		return true;
@@ -902,12 +902,12 @@ const WObject* WheeledRobot2DWrapper::wObject() const
 
 PhyObject* WheeledRobot2DWrapper::phyObject()
 {
-	return NULL;
+	return nullptr;
 }
 
 const PhyObject* WheeledRobot2DWrapper::phyObject() const
 {
-	return NULL;
+	return nullptr;
 }
 
 WheeledRobot2DWrapper::Type WheeledRobot2DWrapper::type() const
@@ -934,10 +934,10 @@ void WheeledRobot2DWrapper::computeLinearViewFieldOccupiedRange(const wMatrix& c
 	#warning QUESTA ROBA È BRUTTA, IL CODICE PER LE SIMULAZIONI CON I WHEELED SI STA INGARBUGLIANDO...
 #endif
 	PhyMarXbot* marxbot = dynamic_cast<PhyMarXbot*>(m_robot);
-	if (marxbot == NULL) {
+	if (marxbot == nullptr) {
 		PhyEpuck* epuck = dynamic_cast<PhyEpuck*>(m_robot);
 
-		if (epuck == NULL) {
+		if (epuck == nullptr) {
 			// This cast should never fail!
 			WObject* r = dynamic_cast<WObject*>(m_robot);
 			PhyCylinderSegmentColor s(SimpleInterval(-PI_GRECO, PI_GRECO), r->color());

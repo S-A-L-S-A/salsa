@@ -39,8 +39,8 @@ KheperaDiscriminationExperiment::KheperaDiscriminationExperiment(salsa::Configur
 	, m_minObjectDistanceFromWall(0.05f)
 	, m_minInitialRobotDistanceFromObject(0.1f)
 	, m_minInitialRobotDistanceFromWall(0.1f)
-	, m_object(NULL)
-	, m_rewardArea(NULL)
+	, m_object(nullptr)
+	, m_rewardArea(nullptr)
 	, m_recreateWorld(false)
 {
 }

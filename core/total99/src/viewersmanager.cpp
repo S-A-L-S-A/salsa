@@ -36,7 +36,7 @@
 #include <QRegExp>
 
 ViewerWidget::ViewerWidget(QString title, QString group, QWidget* central, ViewersManager* manager, QWidget* /*parent*/) :
-	QFrame(NULL),
+	QFrame(nullptr),
 	m_central(central),
 	m_manager(manager),
 	m_title(title),
@@ -225,7 +225,7 @@ void ViewersManager::restoreViewersStatus(QString projectFilename)
 		if (dirFiles.size() != 0) {
 			QString lastFileName = dirFiles.last();
 			lastFileName.chop(4); // This removes the final .ini
-			index = lastFileName.toUInt(NULL, 16) + 1;
+			index = lastFileName.toUInt(nullptr, 16) + 1;
 		}
 		do {
 			m_currentViewersStateFile = QString("%1").arg(index, 16, 16, QChar('0'));

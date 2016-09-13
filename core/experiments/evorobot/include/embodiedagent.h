@@ -149,7 +149,7 @@ public:
 	/**
 	 * \brief Returns the robot
 	 *
-	 * This is NULL if the agent is disabled
+	 * This is nullptr if the agent is disabled
 	 * \return the robotic model
 	 */
 	Robot* robot();
@@ -157,7 +157,7 @@ public:
 	/**
 	 * \brief Returns the robot (const version)
 	 *
-	 * This is NULL if the agent is disabled
+	 * This is nullptr if the agent is disabled
 	 * \return the robotic model
 	 */
 	const Robot* robot() const;

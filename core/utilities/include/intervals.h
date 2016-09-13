@@ -164,12 +164,12 @@ public:
 	 * The string should be in the form "[start, end]" where start and end
 	 * are the starting and ending values of the interval
 	 * \param str the string to convert
-	 * \param ok if not NULL, it is set to false if conversion was
+	 * \param ok if not nullptr, it is set to false if conversion was
 	 *           successful, to false otherwise
 	 * \return the SimpleInterval represented by str. If conversion was not
 	 *         successful, returns an empty interval
 	 */
-	static SimpleInterval fromString(QString str, bool* ok = NULL);
+	static SimpleInterval fromString(QString str, bool* ok = nullptr);
 
 	/**
 	 * \brief Converts a vector of simple intervals to string
@@ -184,12 +184,12 @@ public:
 	 *
 	 * The string should be a comma-separated list of simple intervals
 	 * \param s the string to convert
-	 * \param ok if not NULL, it is set to false if conversion was
+	 * \param ok if not nullptr, it is set to false if conversion was
 	 *           successful, to false otherwise
 	 * \return a vector of SimpleIntervals. If the string is not valid, an
 	 *         empty vector is returned
 	 */
-	static QVector<SimpleInterval> vectorOfSimpleIntervalsFromString(QString s, bool* ok = NULL);
+	static QVector<SimpleInterval> vectorOfSimpleIntervalsFromString(QString s, bool* ok = nullptr);
 
 	/**
 	 * \brief The starting value of the interval

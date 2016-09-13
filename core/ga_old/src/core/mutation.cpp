@@ -81,7 +81,7 @@ void Mutation::setMutationRate( double initialRate, double finalRate, double var
 	newRate.initial = initialRate;
 	newRate.final = finalRate;
 	newRate.variation = variation;
-	if (ga != NULL) {
+	if (ga != nullptr) {
 		newRate.rateForGeneration(ga->generation());
 	} else {
 		newRate.mutaRate = initialRate;
@@ -97,7 +97,7 @@ double Mutation::mutationRate( int bit ) {
 	// Create a mutex locker to make this method thread-safe
 	QMutexLocker locker(&mutaRatesMutex);
 
-	if ((ga != NULL) && (ga->generation() != lastGenMutaRatesChange)) {
+	if ((ga != nullptr) && (ga->generation() != lastGenMutaRatesChange)) {
 		lastGenMutaRatesChange = ga->generation();
 		updateMutationRates();
 	}
@@ -161,7 +161,7 @@ void Mutation::describe( QString type ) {
 
 void Mutation::updateMutationRates() {
 	for (QMap<int, MutationRate>::iterator iter = mutaRates.begin(); iter != mutaRates.end(); iter++) {
-		if (ga != NULL) {
+		if (ga != nullptr) {
 			iter.value().rateForGeneration(ga->generation());
 		} else {
 			iter.value().mutaRate = iter.value().initial;

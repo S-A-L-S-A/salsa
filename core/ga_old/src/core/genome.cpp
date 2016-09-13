@@ -24,7 +24,7 @@
 namespace salsa {
 
 Genome::Genome() {
-	prototype = NULL;
+	prototype = nullptr;
 }
 
 Genome::Genome( unsigned int numGenotype, unsigned int numBits ) {

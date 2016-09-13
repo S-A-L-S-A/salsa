@@ -28,7 +28,7 @@ namespace salsa {
 
 RobotExperimentUI::RobotExperimentUI( RobotExperiment* e )
 	: ParameterSettableUI()
-	, renderworld(NULL)
+	, renderworld(nullptr)
 	, exp(e)
 {
 	QTimer* timer = new QTimer(this);
@@ -61,7 +61,7 @@ ParameterSettableUIViewer RobotExperimentUI::renderWorldView( QWidget* parent, Q
 
 void RobotExperimentUI::updateRenderWorld()
 {
-	if (renderworld != NULL)
+	if (renderworld != nullptr)
 	{
 		renderworld->updateRenderWorld();
 	}

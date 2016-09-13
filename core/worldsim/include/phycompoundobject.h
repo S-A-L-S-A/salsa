@@ -760,7 +760,7 @@ protected:
 	 * This is called by world after the object has been constructed (so
 	 * that the correct virtual function is called)
 	 * \param onlyCollisionShape if true only the collision shape is created
-	 * \param collisionShapeOffset if not NULL, the offset of the collision
+	 * \param collisionShapeOffset if not nullptr, the offset of the collision
 	 *                             shape is set to this matrix
 	 */
 	virtual void createPrivateObject(bool onlyCollisionShape, const wMatrix* collisionShapeOffset);

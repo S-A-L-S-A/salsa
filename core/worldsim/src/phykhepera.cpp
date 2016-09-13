@@ -45,18 +45,18 @@ const real PhyKhepera::passivewheelr = 0.003f;
 const real PhyKhepera::passivewheelm = 0.002f;
 
 PhyKhepera::PhyKhepera(World* world, SharedDataWrapper<Shared> shared, QString name, const wMatrix& tm)
-	: QObject(NULL)
+	: QObject(nullptr)
 	, WObject(world, shared, name, tm)
 	, m_shared(shared)
-	, m_body(NULL)
+	, m_body(nullptr)
 	, m_bodyTransformation()
 	, m_bodyInvTransformation()
 	, m_wheels()
 	, m_wheelsTransformation()
 	, m_wheelJoints()
-	, m_wheelsCtrl(NULL)
-	, m_proximityIR(NULL)
-	, m_frontMarker(NULL)
+	, m_wheelsCtrl(nullptr)
+	, m_proximityIR(nullptr)
+	, m_frontMarker(nullptr)
 {
 	// --- reference frame
 	//  X
@@ -302,13 +302,13 @@ void PhyKhepera::setDrawFrontMarker(bool drawMarker)
 		m_frontMarker->setOwner(this, true);
 	} else {
 		world()->deleteEntity(m_frontMarker);
-		m_frontMarker = NULL;
+		m_frontMarker = nullptr;
 	}
 }
 
 bool PhyKhepera::drawingFrontMarker() const
 {
-	return (m_frontMarker != NULL);
+	return (m_frontMarker != nullptr);
 }
 
 void PhyKhepera::doKinematicSimulation(bool k)

@@ -1600,7 +1600,7 @@
 //     int i;
 //     int mode;
 //     QPoint xy;
-//     float *o = NULL;
+//     float *o = nullptr;
 //     float oldp1,oldp2;
 //     int   cn;
 //

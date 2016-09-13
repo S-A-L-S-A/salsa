@@ -365,7 +365,7 @@ public:
 	 * \brief Destructor
 	 *
 	 * If the current instance is the one used by FunctionCall instances,
-	 * resets the pointer to NULL (NOT to the previous instance!)
+	 * resets the pointer to nullptr (NOT to the previous instance!)
 	 */
 	~FunctionCallsSequenceRecorder();
 
